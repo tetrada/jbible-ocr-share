@@ -3,6 +3,7 @@
 The inherited v3 comparison labels are translated to v4 in saved JSON reports.
 """
 import sys
+import json
 from pathlib import Path
 import fr88_v3_pilot as pilot
 
@@ -25,4 +26,11 @@ def compare_v4(start,end,gold=None):
 pilot.compare=compare_v4
 
 if __name__=="__main__":
-    sys.exit(pilot.main())
+    code=pilot.main()
+    summary_file=pilot.OUT/"run_summary.json"
+    if summary_file.is_file():
+        summary=json.loads(summary_file.read_text(encoding="utf-8"))
+        summary["edition"]="FR1988-v4-few-shot"
+        pilot.save_json(summary_file,summary)
+        print("V4 RUN SUMMARY SAVED:",summary_file,flush=True)
+    sys.exit(code)
