@@ -30,7 +30,7 @@ SEGMENT_COLUMNS = [
     "segment_id", "row_id", "image_page", "side", "y_fraction", "raw_line",
     "literal", "book_printed", "book_code", "reference_type", "chapter",
     "verse", "end_chapter", "end_verse", "verses", "suffix", "target",
-    "parse_status", "catalog_status", "target_extent", "anchor_status",
+    "parse_status", "catalog_status", "target_extent", "chapter_verse_split_candidates", "anchor_status",
     "source_chapter", "source_verse", "source_anchor_confident",
     "layout_uncertain", "review_reasons", "row_fingerprint",
     "stored_vs_current_parser_diff", "verified",
@@ -139,6 +139,35 @@ def validate_target(ref, limits, chapters):
             return "INVALID", ["VERSE_LIST_OUTSIDE_CATALOG"]
         return "VALID", []
     return "NOT_CHECKABLE", ["NOTATION_NOT_INTERPRETED"]
+
+
+def propose_merged_chapter_verse(ref, limits):
+    """Suggest chapter/verse splits collapsed by OCR; never silently correct.
+
+    The scan may distinguish bold chapter digits from ordinary verse digits.
+    '2 P 25' might represent '2 P 2 5', but only an image can prove this.
+    """
+    if ref.get("type") != "CHAPTER_ONLY" or not ref.get("book_code"):
+        return []
+    digits = str(ref.get("literal") or "").strip()
+    if not digits.isdigit() or not 2 <= len(digits) <= 6:
+        return []
+    book = ref["book_code"]
+    result = []
+    for index in range(1, len(digits)):
+        chapter_part, verse_part = digits[:index], digits[index:]
+        if chapter_part.startswith("0") or verse_part.startswith("0"):
+            continue
+        chapter, verse = int(chapter_part), int(verse_part)
+        max_verse = limits.get((book, chapter))
+        if max_verse is not None and 1 <= verse <= max_verse:
+            result.append({
+                "target": "%s %d:%d" % (book, chapter, verse),
+                "book_code": book, "chapter": chapter, "verse": verse,
+                "basis": "POSSIBLE_OCR_MERGED_BOLD_CHAPTER_AND_VERSE",
+                "status": "UNCONFIRMED_SCAN_REVIEW_REQUIRED",
+            })
+    return result
 
 
 def describe_target(r):
@@ -342,6 +371,9 @@ def run(args):
                 raise ValueError("Malformed reference in " + row_id)
             pstatus = ref.get("status") or "UNKNOWN"
             cstatus, why = validate_target(ref, limits, chapters)
+            # Only propose a split when the original catalog interpretation is invalid.
+            split_candidates = (propose_merged_chapter_verse(ref, limits)
+                                if cstatus == "INVALID" else [])
             extent = (
                 "OPEN_ENDED_SUFFIX_NOT_EXPANDED" if ref.get("suffix") else
                 {"VERSE": "EXACT_VERSE", "VERSE_RANGE": "EXPLICIT_VERSE_RANGE",
@@ -355,6 +387,8 @@ def run(args):
                 rwhy.append("LAYOUT_UNCERTAIN")
             if ref.get("suffix"):
                 rwhy.append("SUFFIX_EXTENT_AMBIGUOUS")
+            if split_candidates:
+                rwhy.append("POSSIBLE_OCR_MERGED_BOLD_CHAPTER_AND_VERSE")
             rwhy.append("SOURCE_ANCHOR_UNVERIFIED")
             if changed:
                 rwhy.append("PARSER_OUTPUT_CHANGED")
@@ -376,6 +410,7 @@ def run(args):
                 "verses": ref.get("verses"), "suffix": ref.get("suffix") or "",
                 "target": describe_target(ref), "parse_status": pstatus,
                 "catalog_status": cstatus, "target_extent": extent,
+                "chapter_verse_split_candidates": split_candidates,
                 "anchor_status": anchor, "source_chapter": row.get("source_chapter"),
                 "source_verse": row.get("source_verse"),
                 "source_anchor_confident": bool(row.get("source_anchor_confident")),
@@ -443,6 +478,8 @@ def run(args):
         "target_interpretation_review_segments": len(target_review),
         "source_alignment_pending_reference_rows": sum(r["kind"] == "REFERENCE" for r in row_results),
         "invalid_target_segments": catalog_counts["INVALID"],
+        "potential_typography_merge_segments": sum(bool(s["chapter_verse_split_candidates"])
+                                                   for s in seg_results),
         "suffix_segments": sum(bool(s["suffix"]) for s in seg_results),
         "layout_uncertain_rows": sum(r["layout_uncertain"] for r in row_results),
         "parser_drift_rows": drift,
@@ -458,6 +495,7 @@ def run(args):
         "catalog_aliases": sum(len(a) for a in aliases.values()),
         "verified": 0, "sql_writes": False, "api_calls": 0,
         "notes": [
+            "Chapter/verse split candidates are only structural hypotheses until typography on the scan is inspected.",
             "PARSED only means the deterministic parser understood the printed notation.",
             "Catalog VALID does not prove accurate OCR or edition-specific versification.",
             "All source-verse suggestions are OCR only; nothing is scan-verified.",
@@ -494,6 +532,7 @@ def run(args):
           "PARSER REVIEW:", summary["parser_review_segments"],
           "INVALID TARGETS:", summary["invalid_target_segments"])
     print("TARGET INTERPRETATION REVIEW:", len(target_review))
+    print("POSSIBLE TYPOGRAPHY MERGES:", summary["potential_typography_merge_segments"])
     print("CATALOG:", json.dumps(summary["counts_by_catalog_status"]))
     print("ANCHORS:", json.dumps(summary["counts_by_source_anchor_status"]))
     print("Verified: 0; SQL writes: 0; API calls: 0")
