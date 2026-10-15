@@ -102,7 +102,7 @@ def interpret_line(raw_line, csv_path, layout_uncertain=False):
     segment = ""
     for a, b in zip(boundaries, boundaries[1:]):
         span = raw_line[a:b]
-        if not span or span == ";":
+        if not span:
             continue
         mark = next((m for m in marks if m.start() == a and m.end() == b), None)
         if mark:
