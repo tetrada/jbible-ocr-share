@@ -758,5 +758,2564 @@
         "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
       }
     ]
+  },
+  {
+    "id": "fr88v2:p0252:L:01",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "L",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 34 9",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.14,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 34,
+        "verse": 9,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "34 9",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:L:02",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "L",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "1 5",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.18,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 1,
+        "verse": 5,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "1 5",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:L:03",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "L",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 17 12",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.2,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 17,
+        "verse": 12,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "17 12",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:L:04",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "L",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "7 2",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.3,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 7,
+        "verse": 2,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "7 2",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:L:05",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "L",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Nb 13",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.32,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "CHAPTER_ONLY",
+        "chapter": 13,
+        "suffix": "",
+        "literal": "13",
+        "book_code": "Num",
+        "book_printed": "Nb",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:L:06",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "L",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Jg 18 2",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.335,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 18,
+        "verse": 2,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "18 2",
+        "book_code": "Judg",
+        "book_printed": "Jg",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:L:07",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "L",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Mt 1 5",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.39,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 1,
+        "verse": 5,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "1 5",
+        "book_code": "Matt",
+        "book_printed": "Mt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:L:08",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "L",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Nb 13",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.48,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "CHAPTER_ONLY",
+        "chapter": 13,
+        "suffix": "",
+        "literal": "13",
+        "book_code": "Num",
+        "book_printed": "Nb",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:L:09",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "L",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "He 11 31",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.65,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 11,
+        "verse": 31,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "11 31",
+        "book_code": "Heb",
+        "book_printed": "He",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:L:10",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "L",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Jc 2 25",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.665,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 2,
+        "verse": 25,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "2 25",
+        "book_code": "Jas",
+        "book_printed": "Jc",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:L:11",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "L",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "9 9-10",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.84,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 9,
+        "verse": 9,
+        "end_verse": 10,
+        "suffix": "",
+        "literal": "9 9-10",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:L:12",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "L",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 14",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.855,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "CHAPTER_ONLY",
+        "chapter": 14,
+        "suffix": "",
+        "literal": "14",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:R:01",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "R",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 2 26s",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.07,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 2,
+        "verse": 26,
+        "end_verse": null,
+        "suffix": "s",
+        "literal": "2 26s",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:R:02",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "R",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Nb 21 23s, 33",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.09,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "21 23s, 33",
+        "reason": "notation_not_covered",
+        "book_code": "Num",
+        "book_printed": "Nb",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:R:03",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "R",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "5 1",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.11,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 5,
+        "verse": 1,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "5 1",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:R:04",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "R",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 4 39+",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.13,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 4,
+        "verse": 39,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "4 39+",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:R:05",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "R",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "6 22-25",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.3,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 6,
+        "verse": 22,
+        "end_verse": 25,
+        "suffix": "",
+        "literal": "6 22-25",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:R:06",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "R",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "1 S 19 12",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.32,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 19,
+        "verse": 12,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "19 12",
+        "book_code": "1Sam",
+        "book_printed": "1 S",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:R:07",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "R",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ac 9 25",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.33,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 9,
+        "verse": 25,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "9 25",
+        "book_code": "Acts",
+        "book_printed": "Ac",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:R:08",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "R",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "2 Co 11 33",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.35,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 11,
+        "verse": 33,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "11 33",
+        "book_code": "2Cor",
+        "book_printed": "2 Co",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0252:R:09",
+    "edition": "fr88v2",
+    "image_page": 252,
+    "side": "R",
+    "source_image": "image_0252.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "2 S 1 16+",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.53,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 1,
+        "verse": 16,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "1 16+",
+        "book_code": "2Sam",
+        "book_printed": "2 S",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:L:01",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "L",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "1 10+",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.31,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 1,
+        "verse": 10,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "1 10+",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:L:02",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "L",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "8 33",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.39,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 8,
+        "verse": 33,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "8 33",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:L:03",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "L",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 19 10, 15",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.49,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_LIST",
+        "chapter": 19,
+        "verses": [
+          10,
+          15
+        ],
+        "suffix": "",
+        "literal": "19 10, 15",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:L:04",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "L",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "1 5, 17",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.6,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_LIST",
+        "chapter": 1,
+        "verses": [
+          5,
+          17
+        ],
+        "suffix": "",
+        "literal": "1 5, 17",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:L:05",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "L",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 34 9-10",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.7,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 34,
+        "verse": 9,
+        "end_verse": 10,
+        "suffix": "",
+        "literal": "34 9-10",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:L:06",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "L",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 7 1+",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.71,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 7,
+        "verse": 1,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "7 1+",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:R:01",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "R",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "6 2; 8 7;",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.07,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 6,
+        "verse": 2,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "6 2",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      {
+        "type": "VERSE",
+        "chapter": 8,
+        "verse": 7,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "8 7",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:R:02",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "R",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "10 8",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.1,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 10,
+        "verse": 8,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "10 8",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:R:03",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "R",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "5 1",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.15,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 5,
+        "verse": 1,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "5 1",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:R:04",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "R",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "4 2",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.24,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 4,
+        "verse": 2,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "4 2",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:R:05",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "R",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 14 21",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.6,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 14,
+        "verse": 21,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "14 21",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:R:06",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "R",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 14 22",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.72,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 14,
+        "verse": 22,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "14 22",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0253:R:07",
+    "edition": "fr88v2",
+    "image_page": 253,
+    "side": "R",
+    "source_image": "image_0253.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "2 R 2 8",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.74,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 2,
+        "verse": 8,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "2 8",
+        "book_code": "2Kgs",
+        "book_printed": "2 R",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0254:L:01",
+    "edition": "fr88v2",
+    "image_page": 254,
+    "side": "L",
+    "source_image": "image_0254.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "= 4 21-24",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.29,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 4,
+        "verse": 21,
+        "end_verse": 24,
+        "suffix": "",
+        "literal": "4 21-24",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0254:L:02",
+    "edition": "fr88v2",
+    "image_page": 254,
+    "side": "L",
+    "source_image": "image_0254.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 12 26",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.31,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 12,
+        "verse": 26,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "12 26",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0254:L:03",
+    "edition": "fr88v2",
+    "image_page": 254,
+    "side": "L",
+    "source_image": "image_0254.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 6 20",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.33,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 6,
+        "verse": 20,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "6 20",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0254:R:01",
+    "edition": "fr88v2",
+    "image_page": 254,
+    "side": "R",
+    "source_image": "image_0254.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "= 4 6-7",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.31,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 4,
+        "verse": 6,
+        "end_verse": 7,
+        "suffix": "",
+        "literal": "4 6-7",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0254:R:02",
+    "edition": "fr88v2",
+    "image_page": 254,
+    "side": "R",
+    "source_image": "image_0254.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 14 21",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.4,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 14,
+        "verse": 21,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "14 21",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0254:R:03",
+    "edition": "fr88v2",
+    "image_page": 254,
+    "side": "R",
+    "source_image": "image_0254.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 14 31",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.44,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 14,
+        "verse": 31,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "14 31",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0254:R:04",
+    "edition": "fr88v2",
+    "image_page": 254,
+    "side": "R",
+    "source_image": "image_0254.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "2 11",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.55,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 2,
+        "verse": 11,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "2 11",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0254:R:05",
+    "edition": "fr88v2",
+    "image_page": 254,
+    "side": "R",
+    "source_image": "image_0254.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Gn 17 10+",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.63,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 17,
+        "verse": 10,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "17 10+",
+        "book_code": "Gen",
+        "book_printed": "Gn",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0255:L:01",
+    "edition": "fr88v2",
+    "image_page": 255,
+    "side": "L",
+    "source_image": "image_0255.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Nb 14 20-38",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.06,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 14,
+        "verse": 20,
+        "end_verse": 38,
+        "suffix": "",
+        "literal": "14 20-38",
+        "book_code": "Num",
+        "book_printed": "Nb",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0255:L:02",
+    "edition": "fr88v2",
+    "image_page": 255,
+    "side": "L",
+    "source_image": "image_0255.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 3 8",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.19,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 3,
+        "verse": 8,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "3 8",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0255:L:03",
+    "edition": "fr88v2",
+    "image_page": 255,
+    "side": "L",
+    "source_image": "image_0255.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Nb 22 22",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.4,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 22,
+        "verse": 22,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "22 22",
+        "book_code": "Num",
+        "book_printed": "Nb",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0255:L:04",
+    "edition": "fr88v2",
+    "image_page": 255,
+    "side": "L",
+    "source_image": "image_0255.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "1 Ch 21 16",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.42,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 21,
+        "verse": 16,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "21 16",
+        "book_code": "1Chr",
+        "book_printed": "1 Ch",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0255:L:05",
+    "edition": "fr88v2",
+    "image_page": 255,
+    "side": "L",
+    "source_image": "image_0255.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 23 20",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.46,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 23,
+        "verse": 20,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "23 20",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0255:L:06",
+    "edition": "fr88v2",
+    "image_page": 255,
+    "side": "L",
+    "source_image": "image_0255.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dn 12 1",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.48,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 12,
+        "verse": 1,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "12 1",
+        "book_code": "Dan",
+        "book_printed": "Dn",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0255:L:07",
+    "edition": "fr88v2",
+    "image_page": 255,
+    "side": "L",
+    "source_image": "image_0255.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ap 19 11-16",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.5,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 19,
+        "verse": 11,
+        "end_verse": 16,
+        "suffix": "",
+        "literal": "19 11-16",
+        "book_code": "Rev",
+        "book_printed": "Ap",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0255:L:08",
+    "edition": "fr88v2",
+    "image_page": 255,
+    "side": "L",
+    "source_image": "image_0255.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 3 5",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.57,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 3,
+        "verse": 5,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "3 5",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0255:L:09",
+    "edition": "fr88v2",
+    "image_page": 255,
+    "side": "L",
+    "source_image": "image_0255.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 19 12+",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.59,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 19,
+        "verse": 12,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "19 12+",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0255:R:01",
+    "edition": "fr88v2",
+    "image_page": 255,
+    "side": "R",
+    "source_image": "image_0255.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 16 1+",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.46,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 16,
+        "verse": 1,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "16 1+",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0256:L:01",
+    "edition": "fr88v2",
+    "image_page": 256,
+    "side": "L",
+    "source_image": "image_0256.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Lv 27 28-29",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.45,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 27,
+        "verse": 28,
+        "end_verse": 29,
+        "suffix": "",
+        "literal": "27 28-29",
+        "book_code": "Lev",
+        "book_printed": "Lv",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0256:L:02",
+    "edition": "fr88v2",
+    "image_page": 256,
+    "side": "L",
+    "source_image": "image_0256.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "2 1-21",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.49,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 2,
+        "verse": 1,
+        "end_verse": 21,
+        "suffix": "",
+        "literal": "2 1-21",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0256:L:03",
+    "edition": "fr88v2",
+    "image_page": 256,
+    "side": "L",
+    "source_image": "image_0256.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "7 1-26",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.55,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 7,
+        "verse": 1,
+        "end_verse": 26,
+        "suffix": "",
+        "literal": "7 1-26",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0256:L:04",
+    "edition": "fr88v2",
+    "image_page": 256,
+    "side": "L",
+    "source_image": "image_0256.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "→ He 11 30",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.66,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      {
+        "type": "VERSE",
+        "chapter": 11,
+        "verse": 30,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "11 30",
+        "book_code": "Heb",
+        "book_printed": "He",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0256:L:05",
+    "edition": "fr88v2",
+    "image_page": 256,
+    "side": "L",
+    "source_image": "image_0256.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "2 1-21",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.79,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 2,
+        "verse": 1,
+        "end_verse": 21,
+        "suffix": "",
+        "literal": "2 1-21",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0256:R:01",
+    "edition": "fr88v2",
+    "image_page": 256,
+    "side": "R",
+    "source_image": "image_0256.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Nb 31 22",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.36,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 31,
+        "verse": 22,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "31 22",
+        "book_code": "Num",
+        "book_printed": "Nb",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0256:R:02",
+    "edition": "fr88v2",
+    "image_page": 256,
+    "side": "R",
+    "source_image": "image_0256.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "1 R 16 34",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.5,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 16,
+        "verse": 34,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "16 34",
+        "book_code": "1Kgs",
+        "book_printed": "1 R",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0256:R:03",
+    "edition": "fr88v2",
+    "image_page": 256,
+    "side": "R",
+    "source_image": "image_0256.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "1 5+",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.54,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 1,
+        "verse": 5,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "1 5+",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0256:R:04",
+    "edition": "fr88v2",
+    "image_page": 256,
+    "side": "R",
+    "source_image": "image_0256.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "2 1",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.74,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 2,
+        "verse": 1,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "2 1",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0257:L:01",
+    "edition": "fr88v2",
+    "image_page": 257,
+    "side": "L",
+    "source_image": "image_0257.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Jg 20 20-21",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.14,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 20,
+        "verse": 20,
+        "end_verse": 21,
+        "suffix": "",
+        "literal": "20 20-21",
+        "book_code": "Judg",
+        "book_printed": "Jg",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0257:L:02",
+    "edition": "fr88v2",
+    "image_page": 257,
+    "side": "L",
+    "source_image": "image_0257.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Jg 20 26",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.21,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 20,
+        "verse": 26,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "20 26",
+        "book_code": "Judg",
+        "book_printed": "Jg",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0257:L:03",
+    "edition": "fr88v2",
+    "image_page": 257,
+    "side": "L",
+    "source_image": "image_0257.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 32 11-14",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.33,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 32,
+        "verse": 11,
+        "end_verse": 14,
+        "suffix": "",
+        "literal": "32 11-14",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0257:R:01",
+    "edition": "fr88v2",
+    "image_page": 257,
+    "side": "R",
+    "source_image": "image_0257.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "1 S 14 40-42",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.08,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 14,
+        "verse": 40,
+        "end_verse": 42,
+        "suffix": "",
+        "literal": "14 40-42",
+        "book_code": "1Sam",
+        "book_printed": "1 S",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0258:L:01",
+    "edition": "fr88v2",
+    "image_page": 258,
+    "side": "L",
+    "source_image": "image_0258.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Jg 20 28",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.24,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 20,
+        "verse": 28,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "20 28",
+        "book_code": "Judg",
+        "book_printed": "Jg",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0258:L:02",
+    "edition": "fr88v2",
+    "image_page": 258,
+    "side": "L",
+    "source_image": "image_0258.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Jg 20 29-48",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.35,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 20,
+        "verse": 29,
+        "end_verse": 48,
+        "suffix": "",
+        "literal": "20 29-48",
+        "book_code": "Judg",
+        "book_printed": "Jg",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0258:R:01",
+    "edition": "fr88v2",
+    "image_page": 258,
+    "side": "R",
+    "source_image": "image_0258.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "8 26",
+    "page_book_header": null,
+    "source_chapter": 8,
+    "source_verse": 26,
+    "source_anchor_confident": false,
+    "y_fraction": 0.62,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 8,
+        "verse": 26,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "8 26",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0258:R:02",
+    "edition": "fr88v2",
+    "image_page": 258,
+    "side": "R",
+    "source_image": "image_0258.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 17 8-15",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.63,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 17,
+        "verse": 8,
+        "end_verse": 15,
+        "suffix": "",
+        "literal": "17 8-15",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0258:R:03",
+    "edition": "fr88v2",
+    "image_page": 258,
+    "side": "R",
+    "source_image": "image_0258.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "2 R 13 14-19",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.65,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 13,
+        "verse": 14,
+        "end_verse": 19,
+        "suffix": "",
+        "literal": "13 14-19",
+        "book_code": "2Kgs",
+        "book_printed": "2 R",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0259:L:01",
+    "edition": "fr88v2",
+    "image_page": 259,
+    "side": "L",
+    "source_image": "image_0259.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Ex 20 25",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.28,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 20,
+        "verse": 25,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "20 25",
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0259:L:02",
+    "edition": "fr88v2",
+    "image_page": 259,
+    "side": "L",
+    "source_image": "image_0259.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 27 5-7",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.3,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 27,
+        "verse": 5,
+        "end_verse": 7,
+        "suffix": "",
+        "literal": "27 5-7",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0259:L:03",
+    "edition": "fr88v2",
+    "image_page": 259,
+    "side": "L",
+    "source_image": "image_0259.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 27 2-4, 8",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.44,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "27 2-4, 8",
+        "reason": "notation_not_covered",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0259:L:04",
+    "edition": "fr88v2",
+    "image_page": 259,
+    "side": "L",
+    "source_image": "image_0259.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 27 9-26",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.48,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 27,
+        "verse": 9,
+        "end_verse": 26,
+        "suffix": "",
+        "literal": "27 9-26",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0259:L:05",
+    "edition": "fr88v2",
+    "image_page": 259,
+    "side": "L",
+    "source_image": "image_0259.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Jg 1 9",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.58,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 1,
+        "verse": 9,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "1 9",
+        "book_code": "Judg",
+        "book_printed": "Jg",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0259:L:06",
+    "edition": "fr88v2",
+    "image_page": 259,
+    "side": "L",
+    "source_image": "image_0259.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 7 1+",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.63,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 7,
+        "verse": 1,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "7 1+",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0259:R:01",
+    "edition": "fr88v2",
+    "image_page": 259,
+    "side": "R",
+    "source_image": "image_0259.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 21 22-23",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.27,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 21,
+        "verse": 22,
+        "end_verse": 23,
+        "suffix": "",
+        "literal": "21 22-23",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0259:R:02",
+    "edition": "fr88v2",
+    "image_page": 259,
+    "side": "R",
+    "source_image": "image_0259.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Jos 10 27",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.29,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 10,
+        "verse": 27,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "10 27",
+        "book_code": "Josh",
+        "book_printed": "Jos",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0259:R:03",
+    "edition": "fr88v2",
+    "image_page": 259,
+    "side": "R",
+    "source_image": "image_0259.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "7 26+",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.32,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 7,
+        "verse": 26,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "7 26+",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0259:R:04",
+    "edition": "fr88v2",
+    "image_page": 259,
+    "side": "R",
+    "source_image": "image_0259.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "3 3",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.47,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 3,
+        "verse": 3,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "3 3",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0259:R:05",
+    "edition": "fr88v2",
+    "image_page": 259,
+    "side": "R",
+    "source_image": "image_0259.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 11 29",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.52,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 11,
+        "verse": 29,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "11 29",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0259:R:06",
+    "edition": "fr88v2",
+    "image_page": 259,
+    "side": "R",
+    "source_image": "image_0259.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 31 10-12",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.63,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 31,
+        "verse": 10,
+        "end_verse": 12,
+        "suffix": "",
+        "literal": "31 10-12",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0260:L:01",
+    "edition": "fr88v2",
+    "image_page": 260,
+    "side": "L",
+    "source_image": "image_0260.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "2 S 21",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.63,
+    "layout_uncertain": false,
+    "notes": "In footnotes",
+    "verified": false,
+    "references": [
+      {
+        "type": "CHAPTER_ONLY",
+        "chapter": 21,
+        "suffix": "",
+        "literal": "21",
+        "book_code": "2Sam",
+        "book_printed": "2 S",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0260:L:02",
+    "edition": "fr88v2",
+    "image_page": 260,
+    "side": "L",
+    "source_image": "image_0260.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Gn 31 46s",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.95,
+    "layout_uncertain": false,
+    "notes": "In footnotes",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 31,
+        "verse": 46,
+        "end_verse": null,
+        "suffix": "s",
+        "literal": "31 46s",
+        "book_code": "Gen",
+        "book_printed": "Gn",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0260:R:01",
+    "edition": "fr88v2",
+    "image_page": 260,
+    "side": "R",
+    "source_image": "image_0260.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 29 10",
+    "page_book_header": "JOSUÉ",
+    "source_chapter": 9,
+    "source_verse": 21,
+    "source_anchor_confident": true,
+    "y_fraction": 0.47,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 29,
+        "verse": 10,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "29 10",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
   }
 ]
