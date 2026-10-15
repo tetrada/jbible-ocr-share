@@ -1,8 +1,9 @@
 {
   "edition": "FR1988-v2",
   "source": "JPEG marginal references",
-  "checkpoint_margins": 938,
+  "checkpoint_margins": 940,
   "pages_with_checkpoints": [
+    31,
     32,
     33,
     34,
@@ -473,44 +474,31 @@
     499,
     500
   ],
-  "ocr_rows": 5272,
-  "reference_rows": 5249,
+  "ocr_rows": 5287,
+  "reference_rows": 5264,
   "section_labels": 23,
-  "parsed_segments": 3893,
-  "interpretation_review": 1922,
-  "segments_total": 5815,
-  "parse_success_percent": 66.9,
-  "parse_review_percent": 33.1,
+  "parsed_segments": 3908,
+  "interpretation_review": 1923,
+  "segments_total": 5831,
+  "parse_success_percent": 67.0,
+  "parse_review_percent": 33.0,
   "metrics_note": "Parse success means the deterministic interpreter understood the printed notation; it is not independently measured OCR accuracy.",
-  "source_anchor_missing": 5033,
+  "source_anchor_missing": 5048,
   "layout_uncertain_rows": 29,
   "no_auto_book_inheritance_across_rows": true,
   "verified": 0,
   "sql_writes": false,
   "requested_pages": [
-    32,
-    500
+    31,
+    31
   ],
-  "margins_in_run": 938,
-  "margins_total": 938,
-  "api_calls": 938,
-  "recovery_api_calls": 2,
-  "cached_jobs": 936,
+  "margins_in_run": 2,
+  "margins_total": 2,
+  "api_calls": 2,
+  "cached_jobs": 0,
   "errors": 0,
   "failures": [],
-  "recovered_failures": [
-    {
-      "page": 89,
-      "side": "L",
-      "error": "IncompleteRead: IncompleteRead(0 bytes read)"
-    },
-    {
-      "page": 263,
-      "side": "L",
-      "error": "IncompleteRead: IncompleteRead(0 bytes read)"
-    }
-  ],
-  "ocr_margins_success": 938,
+  "ocr_margins_success": 2,
   "ocr_margin_success_percent": 100.0,
-  "last_update_utc": "2026-10-15T20:09:32.280382+00:00"
+  "last_update_utc": "2026-10-15T20:42:15.979542+00:00"
 }
