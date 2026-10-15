@@ -27,7 +27,7 @@ The preflight checks existing scans and Bible catalog, plus the saved v2 interpr
 ./run_fr88_v3_pilot.sh 2>&1 | tee /root/jbible_fr88_v3_pilot_31_50.log
 ```
 
-This sends at most **40 new margin jobs** (each may retry transient network failures). Every successful response is checkpointed, so rerunning continues without paying twice for completed margins. There is no automatic retry loop of the entire batch. Source images, v2 checkpoints, v2 aggregate output, GitHub sync, and SQL remain untouched.
+This sends at most **40 new margin jobs** (each may retry transient network failures). Every successful response is checkpointed, so rerunning continues without paying twice for completed margins. There is no automatic retry loop of the entire batch. Source images, v2 checkpoints, v2 aggregate output, GitHub sync, and SQL remain untouched. The Docker runner mounts all existing raw data **read-only**, and makes only the dedicated v3 output folder writable.
 
 You can test one page first, without forfeiting the 20-page test:
 
