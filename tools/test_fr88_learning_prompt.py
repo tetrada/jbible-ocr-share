@@ -31,7 +31,7 @@ def test():
     })
     enhanced,n=mod.build("ORIGINAL SYSTEM PROMPT",multi)
     assert n==2
-    assert "ROW 1: Qo 3 20s;\\nROW 2: 12 7" in enhanced
+    assert "ROW 1: Qo 3 20s;\nROW 2: 12 7" in enhanced
     bad=copy.deepcopy(gold)
     bad["examples"][0]["verification"]="unverified_model_guess"
     try:
