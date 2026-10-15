@@ -162,6 +162,21 @@ def parse(response, page, side):
         )
     return rows
 
+def collect_saved_records():
+    """Merge existing margin checkpoints across all runs; never duplicate IDs."""
+    records = []
+    for checkpoint in sorted(OUT.glob("image_????_?.result.json")):
+        data = json.loads(checkpoint.read_text(encoding="utf-8"))
+        items = data.get("items")
+        if not isinstance(items, list):
+            raise ValueError("Invalid checkpoint items: %s" % checkpoint.name)
+        records.extend(items)
+    ids = [r.get("id") for r in records]
+    if len(ids) != len(set(ids)):
+        raise ValueError("Duplicate reference IDs in saved checkpoints")
+    return records
+
+
 def summarize(rows, en, catalog, completed, total, calls, cached, errors):
     comparison = compare(rows, en, catalog, (1, 50))
     refs = [r for r in comparison if r.get("kind") == "REFERENCE"]
@@ -277,7 +292,7 @@ def main():
                               "verified": 0, "sql_writes": False}
                     save(result_path, result)
 
-                rows.extend(result["items"])
+                # Individual records are saved in the page checkpoint.
                 print("  %s: %d items" % (stem, len(result["items"])), flush=True)
             except Exception as exc:
                 errors += 1
@@ -288,6 +303,7 @@ def main():
             finally:
                 if not args.prepare_only:
                     done += 1
+                    rows = collect_saved_records()
                     comparison, metrics = summarize(
                         rows, en, catalog, done, total, calls, cached, errors)
                     elapsed = time.monotonic() - began
@@ -314,8 +330,11 @@ def main():
         print("PREPARE ONLY; API 0; SQL 0", flush=True)
         return 0
 
+    rows = collect_saved_records()
     comparison, metrics = summarize(rows, en, catalog, done, total, calls, cached, errors)
     metrics["pages_requested"] = [args.start, args.end]
+    metrics["pages_covered"] = sorted({r["image_page"] for r in rows})
+    metrics["records_in_requested_pages"] = sum(args.start <= r["image_page"] <= args.end for r in rows)
     metrics["failures"] = failures
     save(OUT / "all_records.json", rows)
     save(OUT / "comparison.json", comparison)
