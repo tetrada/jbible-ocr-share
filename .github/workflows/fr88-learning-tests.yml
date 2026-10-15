@@ -15,7 +15,7 @@ on:
       - "tools/run_fr88_v5_visibility.sh"
       - "tools/test_fr88_v5_visibility.py"
       - "tools/fr88_v4_git_export.py"
-      - "tools/publish_fr88_v4_learning.sh tools/run_fr88_v5_visibility.sh"
+      - "tools/publish_fr88_v4_learning.sh"
       - "tools/test_fr88_v4_git_export.py"
       - "tools/test_fr88_v4_holdout_eval.py"
       - "tools/install_fr88_v4_learning.sh"
@@ -35,7 +35,7 @@ jobs:
       - name: Python compile
         run: python -m py_compile tools/fr88_learning_prompt.py tools/test_fr88_learning_prompt.py tools/fr88_v3_git_export.py tools/fr88_v4_learning_proxy.py tools/fr88_v4_holdout_eval.py tools/test_fr88_v4_holdout_eval.py tools/fr88_v4_git_export.py tools/test_fr88_v4_git_export.py tools/fr88_v5_cutoff_eval.py tools/fr88_v5_visibility_proxy.py tools/test_fr88_v5_visibility.py
       - name: Shell validation
-        run: bash -n tools/publish_fr88_v3_learning.sh tools/run_fr88_v4_learning.sh tools/install_fr88_v4_learning.sh tools/publish_fr88_v4_learning.sh
+        run: bash -n tools/publish_fr88_v3_learning.sh tools/run_fr88_v4_learning.sh tools/install_fr88_v4_learning.sh tools/publish_fr88_v4_learning.sh tools/run_fr88_v5_visibility.sh
       - name: Verify the learning policy
         run: cd tools && python test_fr88_learning_prompt.py
       - name: Verify independent held-out scan labels and scoring
