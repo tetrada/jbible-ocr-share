@@ -14,6 +14,38 @@
       "verification_status": "SCAN_CONFIRMED",
       "notes": "",
       "saved_at_utc": "2026-10-15T22:19:08.598878+00:00"
+    },
+    "D010": {
+      "choice": "neither",
+      "corrected_lines": [
+        "↗ Ap 22 1s,1"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "page margin is cut, cant see right from that",
+      "saved_at_utc": "2026-10-15T22:21:16.183050+00:00"
+    },
+    "D012": {
+      "choice": "v3",
+      "corrected_lines": [
+        "↗ Ba 3 26s",
+        "↗ Sg 14 6-7",
+        "↗ Mt 24 37sp"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "",
+      "saved_at_utc": "2026-10-15T22:21:46.869982+00:00"
+    },
+    "D013": {
+      "choice": "v3",
+      "corrected_lines": [
+        "↗ 2 P 2 5"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "",
+      "saved_at_utc": "2026-10-15T22:21:54.391149+00:00"
     }
   }
 }
