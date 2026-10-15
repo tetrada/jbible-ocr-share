@@ -1,5 +1,12 @@
 # JBible FR88 OCR: learning from verified corrections
 
+## Latest: V4 error analysis and held-out cut-off reference (D051)
+
+The twentieth human scan review reported that page 32 right has only the visible prefix `↗ 1 Co 15`: the scan is cut after it. V2/V3 added unseen verse `45`; V4 added unseen verse `2`. **Neither is a verified full reference.** This is not evidence of a confirmed regression unique to V4; it is evidence of a cut-off hallucination problem affecting all versions.
+
+The gold corpus now contains **13 teaching examples** and **6 holdouts**. The page-34 cut-off case D010 is used to teach *visible prefix + CUT_OFF*; the different page-32 case D051 is a held-out evaluation and excluded from the DeepSeek prompt. See [V5 visibility experiment](../tools/README_fr88_v5_visibility.md). V5 will run on only two page-32 margins before any scaling.
+
+
 ## Current verified learning snapshot — after 19 human reviews
 
 The authenticated VPS reviewer has now published **19 scan-confirmed review decisions**. One (D010 on page 34) is excluded from the gold corpus because the page margin is cut off, so its entire transcription cannot be independently verified. For the next controlled pilot:
