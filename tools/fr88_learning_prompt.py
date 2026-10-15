@@ -36,8 +36,12 @@ def build(base,gold,max_examples=20):
         "These are typography transcription examples, NOT a reason to guess missing text."]
     for x in examples:
         correct_lines=x.get("corrected_lines") or [x["corrected_raw_line"]]
-        prompt.extend(["","Gold "+x["id"]+":",
-            "WRONG MODEL TRANSCRIPTION: "+str(x.get("baseline_ocr_error") or ""),
+        prompt.extend(["", "Gold "+x["id"]+":"])
+        if x.get("baseline_ocr_error"):
+            prompt.append("PREVIOUS OCR ERROR: "+str(x["baseline_ocr_error"]))
+        else:
+            prompt.append("SCAN-CONFIRMED TRANSCRIPTION (not a measured OCR improvement)")
+        prompt.extend([
             "CORRECT PHYSICAL REFERENCE ROWS (one per line):",
             "\n".join("ROW %d: %s" % (i+1, line) for i,line in enumerate(correct_lines)),
             "VISIBLE TYPOGRAPHY / INCLUSION RULE: "+str(x.get("typography") or "")])
