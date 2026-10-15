@@ -1,0 +1,246 @@
+{
+  "schema": "jbible.fr88.v3.prioritized-review.v1",
+  "pages": [
+    31,
+    50
+  ],
+  "counts": {
+    "total_disagreements": 32,
+    "punctuation_arrow_only": 25,
+    "reference_or_segmentation_changes": 7
+  },
+  "definition": "Cosmetic-only ignores arrow glyphs and whitespace around semicolons/hyphens while retaining meaningful gaps between digit groups and row boundaries.",
+  "safety": "Candidate findings are not OCR gold labels and cannot enter training without evidence from scanned pages.",
+  "priorities": [
+    {
+      "case_id": "D003",
+      "page": 32,
+      "side": "R",
+      "issue": "Potentially wrong chapter-range splitting and physical-row segmentation; compare scan before any adoption",
+      "v2": [
+        {
+          "id": "fr88v2:p0032:R:11",
+          "raw_line": "11-24",
+          "y_fraction": 0.36
+        },
+        {
+          "id": "fr88v2:p0032:R:12",
+          "raw_line": "Qo 3 20s; 12 7",
+          "y_fraction": 0.54
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0032:R:11",
+          "raw_line": "1 1 - 2 4",
+          "y_fraction": 0.6
+        },
+        {
+          "id": "fr88v3:p0032:R:12",
+          "raw_line": "Qo 3 20s;",
+          "y_fraction": 0.72
+        },
+        {
+          "id": "fr88v3:p0032:R:13",
+          "raw_line": "12 7",
+          "y_fraction": 0.735
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null
+    },
+    {
+      "case_id": "D010",
+      "page": 34,
+      "side": "R",
+      "issue": "V3 added verse digit after a comma; verify whether continuation is printed",
+      "v2": [
+        {
+          "id": "fr88v2:p0034:R:11",
+          "raw_line": "Ap 22 1s,",
+          "y_fraction": 0.65
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0034:R:11",
+          "raw_line": "↗ Ap 22 1s, 2",
+          "y_fraction": 0.72
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null
+    },
+    {
+      "case_id": "D012",
+      "page": 37,
+      "side": "L",
+      "issue": "V3 seems to omit 'Si 16 7'; inspect original margin",
+      "v2": [
+        {
+          "id": "fr88v2:p0037:L:02",
+          "raw_line": "Si 16 7",
+          "y_fraction": 0.168
+        },
+        {
+          "id": "fr88v2:p0037:L:03",
+          "raw_line": "Ba 3 26s",
+          "y_fraction": 0.182
+        },
+        {
+          "id": "fr88v2:p0037:L:04",
+          "raw_line": "Sg 14 6-7",
+          "y_fraction": 0.196
+        },
+        {
+          "id": "fr88v2:p0037:L:05",
+          "raw_line": "Mt 24 37sp",
+          "y_fraction": 0.21
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0037:L:02",
+          "raw_line": "↗ Ba 3 26s",
+          "y_fraction": 0.176
+        },
+        {
+          "id": "fr88v3:p0037:L:03",
+          "raw_line": "↗ Sg 14 6-7",
+          "y_fraction": 0.198
+        },
+        {
+          "id": "fr88v3:p0037:L:04",
+          "raw_line": "↗ Mt 24 37sp",
+          "y_fraction": 0.22
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null
+    },
+    {
+      "case_id": "D013",
+      "page": 37,
+      "side": "R",
+      "issue": "Bold chapter/regular verse split (2 P 2 5), user provided supporting scan crop but exact occurrence not independently identified",
+      "v2": [
+        {
+          "id": "fr88v2:p0037:R:02",
+          "raw_line": "2 P 25",
+          "y_fraction": 0.35
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0037:R:02",
+          "raw_line": "↗ 2 P 2 5",
+          "y_fraction": 0.22
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null
+    },
+    {
+      "case_id": "D014",
+      "page": 37,
+      "side": "R",
+      "issue": "Second occurrence of 2 P 2 5, needs independent scan confirmation",
+      "v2": [
+        {
+          "id": "fr88v2:p0037:R:04",
+          "raw_line": "Sg 10 4",
+          "y_fraction": 0.72
+        },
+        {
+          "id": "fr88v2:p0037:R:05",
+          "raw_line": "2 P 25",
+          "y_fraction": 0.74
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0037:R:04",
+          "raw_line": "↗ Sg 10 4",
+          "y_fraction": 0.64
+        },
+        {
+          "id": "fr88v3:p0037:R:05",
+          "raw_line": "↗ 2 P 2 5",
+          "y_fraction": 0.66
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null
+    },
+    {
+      "case_id": "D016",
+      "page": 40,
+      "side": "L",
+      "issue": "V3 omitted numeric-only row 10 6; determine if margin reference",
+      "v2": [
+        {
+          "id": "fr88v2:p0040:L:01",
+          "raw_line": "10 6",
+          "y_fraction": 0.27
+        }
+      ],
+      "v3": [],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null
+    },
+    {
+      "case_id": "D017",
+      "page": 41,
+      "side": "L",
+      "issue": "V3 classified 'La tour de Babel a' as section label / prose; inspect whether extra row should be excluded",
+      "v2": [
+        {
+          "id": "fr88v2:p0041:L:01",
+          "raw_line": "Sg 10 5",
+          "y_fraction": 0.71
+        },
+        {
+          "id": "fr88v2:p0041:L:02",
+          "raw_line": "Ac 2 5-12",
+          "y_fraction": 0.72
+        },
+        {
+          "id": "fr88v2:p0041:L:03",
+          "raw_line": "Ap 7 9-10",
+          "y_fraction": 0.73
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0041:L:01",
+          "raw_line": "↗ Sg 10 5",
+          "y_fraction": 0.7
+        },
+        {
+          "id": "fr88v3:p0041:L:02",
+          "raw_line": "↗ Ac 2 5-12",
+          "y_fraction": 0.71
+        },
+        {
+          "id": "fr88v3:p0041:L:03",
+          "raw_line": "↗ Ap 7 9-10",
+          "y_fraction": 0.72
+        },
+        {
+          "id": "fr88v3:p0041:L:04",
+          "raw_line": "La tour de Babel a",
+          "y_fraction": 0.73
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null
+    }
+  ]
+}
