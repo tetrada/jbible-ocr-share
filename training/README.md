@@ -1,5 +1,34 @@
 # JBible FR88 OCR: learning from verified corrections
 
+## Current verified learning snapshot — after 19 human reviews
+
+The authenticated VPS reviewer has now published **19 scan-confirmed review decisions**. One (D010 on page 34) is excluded from the gold corpus because the page margin is cut off, so its entire transcription cannot be independently verified. For the next controlled pilot:
+
+- **12 confirmed teaching examples** in [fr88_ocr_gold.json](fr88_ocr_gold.json), including bold chapter/verse boundaries, preserving bare numeric rows, multi-row segmentation, suffixes, trailing commas, numbered book abbreviations and excluding unrelated editorial prose.
+- **5 held-out scan-confirmed examples** in the same file, with separate case IDs and no overlap with the teaching prompt. The selected holdouts are previously agreed V2/V3 readings. They are a **regression check**, not a proof of improved accuracy.
+- The D003 adjacent section-label `1 1 - 2 4` was removed from **positive reference** examples; the prompt explicitly says to exclude it.
+- Duplicate examples of `2 P 2 5` count as one typography pattern.
+
+### Install and preflight v4 (zero new DeepSeek API calls)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main/tools/install_fr88_v4_learning.sh | bash
+```
+
+### Run small v4 OCR test (paid, just 4 pages / 8 margins)
+
+```bash
+cd /opt/jbible/importer
+./run_fr88_v4_learning.sh --start 31 --end 34 2>&1 | tee /root/jbible_fr88_v4_31_34.log
+```
+
+The runner uses exactly the verified gold **prompt examples** plus the original v3 typography prompt; it **does not** inject held-out examples into API requests. Outputs are isolated under `/opt/jbible/data/raw/jbible_fr1988_v4_learning/`, and all existing scans, V2 and V3 checkpoints are mounted read-only in the Docker process. On completion, the runner writes `heldout_comparison.json`, comparing the three models on the holdouts that fall within the processed pages. Results must be interpreted as a regression screen, not absolute OCR accuracy. No SQL writes.
+
+Only if the four-page run is satisfactory should we consider completing the rest of pages 31–50; for real improvement measurement we'll need independently reviewed **errors** from pages not used to construct the prompt.
+
+---
+
+
 This repository stores a **human-confirmed OCR gold corpus** in [fr88_ocr_gold.json](fr88_ocr_gold.json). It is NOT a model checkpoint, and it does not modify the hosted DeepSeek model's weights.
 
 ## Human reviews received and next training batch
