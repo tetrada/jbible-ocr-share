@@ -1,0 +1,58 @@
+{
+  "schema": "jbible.fr88.v4.learning.public-summary.v1",
+  "pages": [
+    31,
+    34
+  ],
+  "margins_processed": 8,
+  "model": "deepseek-flash",
+  "new_margin_jobs": 8,
+  "v2": {
+    "physical_rows": 79,
+    "reference_rows": 79,
+    "section_labels": 0,
+    "total_segments": 90,
+    "parser_parsed_segments": 77,
+    "note": "Parser success is NOT independent OCR accuracy."
+  },
+  "v3": {
+    "physical_rows": 80,
+    "reference_rows": 79,
+    "section_labels": 1,
+    "total_segments": 89,
+    "parser_parsed_segments": 76,
+    "note": "Parser success is NOT independent OCR accuracy."
+  },
+  "v4": {
+    "physical_rows": 80,
+    "reference_rows": 79,
+    "section_labels": 1,
+    "total_segments": 89,
+    "parser_parsed_segments": 76,
+    "note": "Parser success is NOT independent OCR accuracy."
+  },
+  "holdout_regression": {
+    "holdouts_total": 5,
+    "results_by_model": {
+      "v2": {
+        "EXACT_TEXT_NEAR_ANCHOR": 5
+      },
+      "v3": {
+        "EXACT_TEXT_NEAR_ANCHOR": 5
+      },
+      "v4": {
+        "EXACT_TEXT_NEAR_ANCHOR": 3,
+        "NOT_PROCESSED": 2
+      }
+    },
+    "scope": "Raw transcription presence by original page margin, with approximate v2 y-position cross-check.",
+    "warning": "The five holdouts were previous v2/v3 agreements; they test regression, not improvement."
+  },
+  "source_to_target_verified": 0,
+  "ocr_accuracy_improvement": "NOT_MEASURED",
+  "sql_writes": false,
+  "images_or_provider_responses_published": false,
+  "v2_to_v3_difference_groups": 2,
+  "v2_to_v4_difference_groups": 2,
+  "v3_to_v4_difference_groups": 2
+}
