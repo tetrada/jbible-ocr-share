@@ -13,7 +13,7 @@
       "verified_against_scan": true,
       "verification_status": "SCAN_CONFIRMED",
       "notes": "",
-      "saved_at_utc": "2026-10-15T22:19:08.598878+00:00"
+      "saved_at_utc": "2026-10-15T22:34:13.988181+00:00"
     },
     "D010": {
       "choice": "neither",
@@ -23,7 +23,7 @@
       "verified_against_scan": true,
       "verification_status": "SCAN_CONFIRMED",
       "notes": "page margin is cut, cant see right from that",
-      "saved_at_utc": "2026-10-15T22:21:16.183050+00:00"
+      "saved_at_utc": "2026-10-15T22:34:21.130169+00:00"
     },
     "D012": {
       "choice": "v3",
@@ -35,7 +35,7 @@
       "verified_against_scan": true,
       "verification_status": "SCAN_CONFIRMED",
       "notes": "",
-      "saved_at_utc": "2026-10-15T22:21:46.869982+00:00"
+      "saved_at_utc": "2026-10-15T22:34:25.398540+00:00"
     },
     "D013": {
       "choice": "v3",
@@ -45,7 +45,7 @@
       "verified_against_scan": true,
       "verification_status": "SCAN_CONFIRMED",
       "notes": "",
-      "saved_at_utc": "2026-10-15T22:21:54.391149+00:00"
+      "saved_at_utc": "2026-10-15T22:34:27.437257+00:00"
     },
     "D014": {
       "choice": "v3",
@@ -56,7 +56,7 @@
       "verified_against_scan": true,
       "verification_status": "SCAN_CONFIRMED",
       "notes": "",
-      "saved_at_utc": "2026-10-15T22:23:01.092371+00:00"
+      "saved_at_utc": "2026-10-15T22:34:28.918392+00:00"
     },
     "D016": {
       "choice": "v2",
@@ -66,7 +66,7 @@
       "verified_against_scan": true,
       "verification_status": "SCAN_CONFIRMED",
       "notes": "",
-      "saved_at_utc": "2026-10-15T22:23:14.520636+00:00"
+      "saved_at_utc": "2026-10-15T22:34:34.698537+00:00"
     },
     "D017": {
       "choice": "neither",
@@ -78,7 +78,67 @@
       "verified_against_scan": true,
       "verification_status": "SCAN_CONFIRMED",
       "notes": "",
-      "saved_at_utc": "2026-10-15T22:24:06.311016+00:00"
+      "saved_at_utc": "2026-10-15T22:34:37.096603+00:00"
+    },
+    "D033": {
+      "choice": "v2",
+      "corrected_lines": [
+        "Jb 38-39"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "",
+      "saved_at_utc": "2026-10-15T22:35:02.530620+00:00"
+    },
+    "D034": {
+      "choice": "v2",
+      "corrected_lines": [
+        "Ps 8; 104"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "",
+      "saved_at_utc": "2026-10-15T22:35:10.902000+00:00"
+    },
+    "D035": {
+      "choice": "v2",
+      "corrected_lines": [
+        "7 11+"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "",
+      "saved_at_utc": "2026-10-15T22:35:18.864942+00:00"
+    },
+    "D036": {
+      "choice": "v2",
+      "corrected_lines": [
+        "Si 43 6,7"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "",
+      "saved_at_utc": "2026-10-15T22:35:30.116834+00:00"
+    },
+    "D037": {
+      "choice": "v2",
+      "corrected_lines": [
+        "5 1, 3; 9 6"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "",
+      "saved_at_utc": "2026-10-15T22:35:46.114362+00:00"
+    },
+    "D038": {
+      "choice": "v2",
+      "corrected_lines": [
+        "↗ Mt 19 4p"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "",
+      "saved_at_utc": "2026-10-15T22:35:56.291850+00:00"
     }
   }
 }
