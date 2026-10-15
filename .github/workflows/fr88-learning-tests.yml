@@ -12,6 +12,8 @@ on:
       - "tools/fr88_v5_visibility_proxy.py"
       - "tools/fr88_v5_visibility_rules.txt"
       - "tools/fr88_v5_cutoff_eval.py"
+      - "tools/fr88_visibility_gate.py"
+      - "tools/test_fr88_visibility_gate.py"
       - "tools/run_fr88_v5_visibility.sh"
       - "tools/test_fr88_v5_visibility.py"
       - "tools/fr88_v4_git_export.py"
@@ -33,7 +35,7 @@ jobs:
       - name: Install image preparation dependency for wrapper tests
         run: python -m pip install pillow
       - name: Python compile
-        run: python -m py_compile tools/fr88_learning_prompt.py tools/test_fr88_learning_prompt.py tools/fr88_v3_git_export.py tools/fr88_v4_learning_proxy.py tools/fr88_v4_holdout_eval.py tools/test_fr88_v4_holdout_eval.py tools/fr88_v4_git_export.py tools/test_fr88_v4_git_export.py tools/fr88_v5_cutoff_eval.py tools/fr88_v5_visibility_proxy.py tools/test_fr88_v5_visibility.py
+        run: python -m py_compile tools/fr88_learning_prompt.py tools/test_fr88_learning_prompt.py tools/fr88_v3_git_export.py tools/fr88_v4_learning_proxy.py tools/fr88_v4_holdout_eval.py tools/test_fr88_v4_holdout_eval.py tools/fr88_v4_git_export.py tools/test_fr88_v4_git_export.py tools/fr88_v5_cutoff_eval.py tools/fr88_v5_visibility_proxy.py tools/test_fr88_v5_visibility.py tools/fr88_visibility_gate.py tools/test_fr88_visibility_gate.py
       - name: Shell validation
         run: bash -n tools/publish_fr88_v3_learning.sh tools/run_fr88_v4_learning.sh tools/install_fr88_v4_learning.sh tools/publish_fr88_v4_learning.sh tools/run_fr88_v5_visibility.sh
       - name: Verify the learning policy
@@ -44,5 +46,7 @@ jobs:
         run: cd tools && python test_fr88_v4_git_export.py
       - name: Validate cut-off visibility handling without DeepSeek
         run: cd tools && python test_fr88_v5_visibility.py
+      - name: Verify visibility quarantine and prevent unverified auto-linking
+        run: cd tools && python test_fr88_visibility_gate.py
       - name: Compile currently confirmed gold examples offline
         run: python tools/fr88_learning_prompt.py --base tools/fr88_v3_typography_prompt.txt --gold training/fr88_ocr_gold.json --output /tmp/fr88_learned_prompt.txt --min-verified 1
