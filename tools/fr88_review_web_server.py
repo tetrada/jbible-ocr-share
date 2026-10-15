@@ -4,6 +4,7 @@ Only original scanned pages are served to authenticated users; never to Git.
 """
 import argparse
 import base64
+import binascii
 import hmac
 import json
 import os
@@ -121,7 +122,7 @@ class Handler(BaseHTTPRequestHandler):
             decoded = base64.b64decode(authorization[6:].encode("ascii"),
                                        validate=True).decode("utf-8")
             username, supplied = decoded.split(":", 1)
-        except (ValueError, UnicodeError, TypeError):
+        except (ValueError, UnicodeError, TypeError, binascii.Error):
             return False
         expected = self.server.password
         return username == "reviewer" and hmac.compare_digest(supplied, expected)
