@@ -55,9 +55,11 @@ docker_args=(docker run --rm --memory=4g --env-file "$BASE/.env.deepseek"
   -v "$RAW:/raw:ro"
   -v "$OUT:/raw/jbible_fr1988_v5_visibility:rw"
   jbible-ocr:1 /app/fr88_v5_visibility_proxy.py "$@")
-if [[ "${1:-}" == "--preflight" || "${3:-}" == "--preflight" ]]; then
-  exec flock -n /run/jbible-fr88-v2.lock flock -n /run/jbible-fr88-v5.lock "${docker_args[@]}"
-fi
+for argument in "$@"; do
+  if [[ "$argument" == "--preflight" ]]; then
+    exec flock -n /run/jbible-fr88-v2.lock flock -n /run/jbible-fr88-v5.lock "${docker_args[@]}"
+  fi
+done
 set +e
 flock -n /run/jbible-fr88-v2.lock flock -n /run/jbible-fr88-v5.lock "${docker_args[@]}"
 status=$?
