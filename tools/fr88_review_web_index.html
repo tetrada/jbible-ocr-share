@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>JBible · Reference Review</title>
+<style>
+:root{--bg:#f4f5f2;--paper:#fff;--ink:#1c3029;--sub:#5f6d67;--line:#dce2dc;--accent:#12684b;--pale:#e8f3ed;--warning:#9c6119;--shadow:0 4px 24px #1b302719}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:0}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--paper);padding:16px max(20px,calc((100vw - 1350px)/2));border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px}.brandicon{height:38px;width:38px;display:grid;place-items:center;border-radius:11px;background:var(--accent);color:white;font:bold 24px Georgia,serif}
+h1{font-size:19px;margin:0;line-height:1.2;letter-spacing:-.02em}.muted{color:var(--sub)}.small{font-size:12px}
+.pill{border:1px solid var(--line);padding:6px 11px;border-radius:99px;font-size:12px;white-space:nowrap}
+.layout{max-width:1390px;margin:22px auto;display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px;padding:0 18px}
+aside,.panel{background:var(--paper);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}
+aside{align-self:start;position:sticky;top:16px;overflow:hidden}
+.sidehead{padding:18px;border-bottom:1px solid var(--line)}.sidehead p{margin:7px 0 0;font-size:12px;color:var(--sub)}
+#caseNav{display:grid;gap:3px;padding:9px}.casebutton{border:0;background:transparent;width:100%;text-align:left;display:flex;gap:10px;align-items:center;padding:11px 12px;border-radius:9px;color:var(--ink);cursor:pointer;font:inherit}
+.casebutton:hover{background:#f4f7f3}.casebutton.active{background:var(--pale);color:var(--accent);font-weight:700}
+.number{font-variant-numeric:tabular-nums;font-size:12px;min-width:33px;color:var(--sub)}.casebutton .name{flex:1}.casebutton .state{font-size:15px;color:#9da9a1}.casebutton.complete .state{color:var(--accent)}
+main{min-width:0;display:grid;gap:16px}
+.intro{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.intro h2{font-size:24px;letter-spacing:-.04em;margin:0}.intro p{color:var(--sub);margin:3px 0 0}
+.casebar{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;padding:16px 18px;border-bottom:1px solid var(--line)}
+.casebar strong{font-size:16px}.casebar .right{display:flex;gap:6px}
+button{cursor:pointer;font:inherit}
+button:disabled{opacity:.45;cursor:default}
+.button{background:white;border:1px solid var(--line);border-radius:9px;padding:9px 15px;color:var(--ink);font-weight:600}
+.button:hover:not(:disabled){border-color:#95afa0;background:#f8fbf9}
+.primary{background:var(--accent);color:white;border-color:var(--accent)}
+.primary:hover:not(:disabled){background:#0d583f}
+.content{padding:18px}
+.twocol{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(310px,.95fr);gap:20px}
+.reviewLabel{display:block;font-size:12px;color:var(--sub);font-weight:700;text-transform:uppercase;letter-spacing:.065em;margin:0 0 9px}
+.scanpane{background:#f0e9dd;border:1px solid #d9d2c2;border-radius:12px;overflow:hidden;min-height:330px;display:flex;flex-direction:column}
+.canvaswrap{flex:1;display:flex;align-items:center;justify-content:center;position:relative;min-height:310px;overflow:hidden;background:#ded5c5}
+canvas{width:100%;height:auto;display:block;max-height:540px;object-fit:contain}
+.canvasoverlay{position:absolute;pointer-events:none;top:50%;left:0;right:0;border-top:1px dashed #bf3a2b99}
+.scanfoot{background:#fffefa;padding:9px 12px;display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}
+.scanfoot .small{color:#785f4e}
+.tools{display:flex;gap:8px;align-items:center}.tools input{max-width:85px}
+.warning{font-size:12px;color:var(--warning);padding:12px 14px;background:#fff7e9;border:1px solid #e8d1af;border-radius:9px;margin:12px 0}
+.choicecard{width:100%;text-align:left;border:1px solid var(--line);border-radius:11px;background:white;padding:12px 14px;display:grid;gap:5px;margin-bottom:10px}
+.choicecard:hover{border-color:#729985}.choicecard.selected{border:2px solid var(--accent);padding:11px 13px;background:#f1f8f3}
+.choicecard .top{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--sub);font-weight:700}
+.choicecard pre{font:600 15px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+input[type=checkbox]{accent-color:var(--accent);width:17px;height:17px}
+label[for=corrected],label[for=notes]{font-size:13px;font-weight:700;display:block;margin:14px 0 7px}
+textarea{width:100%;resize:vertical;min-height:86px;border:1px solid #cbd5ce;border-radius:9px;padding:11px;background:#fcfdfb;color:var(--ink);font:14px/1.6 ui-monospace,monospace}
+textarea:focus{outline:2px solid #9dc6ac;border-color:var(--accent)}
+.notearea{font:14px system-ui,sans-serif;min-height:58px}
+.verified{display:flex;align-items:flex-start;gap:11px;border:1px solid #d8e2d8;border-radius:10px;padding:11px 13px;margin:14px 0;cursor:pointer}
+.verified span{font-size:13px}
+.actions{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+#feedback{font-size:12px;min-height:22px;color:var(--accent);margin-top:9px}
+footer{text-align:center;padding:24px;color:var(--sub);font-size:12px}
+#fullDialog{max-width:95vw;width:1100px;max-height:92vh;border:0;border-radius:12px;padding:14px;background:white;box-shadow:0 24px 80px #0007}
+#fullDialog::backdrop{background:#15231caa}
+#fullImg{max-width:100%;width:100%;height:auto;display:block}
+.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+@media(max-width:950px){.layout{grid-template-columns:1fr}aside{position:static}#caseNav{grid-template-columns:repeat(auto-fit,minmax(125px,1fr))}.casebutton{padding:9px}.twocol{grid-template-columns:1fr}.intro h2{font-size:22px}}
+@media(max-width:540px){header{padding:12px 16px}.layout{padding:0 10px;margin:12px auto;gap:12px}aside{border-radius:11px}.sidehead{padding:12px}.sidehead p{display:none}#caseNav{display:flex;overflow:auto;scroll-snap-type:x proximity}.casebutton{min-width:122px;scroll-snap-align:start}.panel{border-radius:11px}.content{padding:12px}.scanpane{min-height:230px}.canvaswrap{min-height:220px}.intro h2{font-size:20px}.button{padding:9px 12px}.tools input{max-width:62px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="brandicon">✝</div><div><h1>JBible <span class="muted">/ Reference Review</span></h1><div class="muted small">French Jerusalem Bible · 1988</div></div></div>
+  <span class="pill" id="progress">Loading cases…</span>
+</header>
+<div class="layout">
+  <aside><div class="sidehead"><strong>Review queue</strong><p>Confirm what you can actually see in the scan. Do not infer from Bible knowledge.</p></div><nav id="caseNav" aria-label="Reference cases"></nav></aside>
+  <main>
+    <div class="intro"><div><h2>Verify the printed reference</h2><p>Compare OCR readings with the original Bible page.</p></div></div>
+    <section class="panel">
+      <div class="casebar"><div><strong id="caseTitle">Loading…</strong><div class="muted small" id="caseSubtitle"></div></div><div class="right"><button class="button" id="prevBtn" type="button">← Previous</button><button class="button" id="nextBtn" type="button">Next →</button></div></div>
+      <div class="content">
+        <div class="twocol">
+          <div>
+            <span class="reviewLabel">Original printed scan</span>
+            <div class="scanpane"><div class="canvaswrap"><canvas id="scanCanvas" width="800" height="470" aria-label="Zoomed scan image"></canvas><div class="canvasoverlay"></div></div>
+              <div class="scanfoot"><span class="small" id="scanHint">Position is approximate</span><div class="tools"><button class="button" id="moveUp" title="Move crop upwards">↑</button><button class="button" id="moveDown" title="Move crop downwards">↓</button><label class="small" for="zoom">Zoom</label><input id="zoom" type="range" min="1" max="5" step=".5" value="2.5"><button class="button" id="fullBtn" type="button">Full page ↗</button></div></div>
+            </div>
+            <div class="warning">Look at the <strong>bold chapter</strong> and normal verse digits. If the reference is cut off, move the crop ↑ ↓ or open the full page.</div>
+          </div>
+          <div>
+            <span class="reviewLabel">Choose the correct reading</span>
+            <button type="button" class="choicecard" id="v2Choice"><span class="top">V2 original OCR <span id="v2Mark"></span></span><pre id="v2Text"></pre></button>
+            <button type="button" class="choicecard" id="v3Choice"><span class="top">V3 typography-aware OCR <span id="v3Mark"></span></span><pre id="v3Text"></pre></button>
+            <button type="button" class="choicecard" id="neitherChoice"><span class="top">Neither / I will correct it <span id="neitherMark"></span></span><span class="muted small">Edit the reference below exactly as printed.</span></button>
+            <button type="button" class="choicecard" id="uncertainChoice"><span class="top">Cannot tell from the scan <span id="uncertainMark"></span></span><span class="muted small">Save as uncertain; it will not become a teaching example.</span></button>
+            <label for="corrected">Exact printed text — one physical row per line</label>
+            <textarea id="corrected" spellcheck="false" placeholder="Type exactly what is printed, preserving spaces and punctuation"></textarea>
+            <label for="notes">Optional notes</label>
+            <textarea id="notes" class="notearea" placeholder="e.g. The chapter 2 is bold; verse 5 is regular."></textarea>
+            <label class="verified" for="confirmed"><input type="checkbox" id="confirmed"><span><strong>I checked the original scanned image.</strong><span class="muted"> This is my confirmed transcription; it may be used later as a teaching example.</span></span></label>
+            <div class="actions"><span class="small muted">Saved securely on this VPS; text corrections sync to Git.</span><button class="button primary" id="saveBtn">Save and next →</button></div>
+            <div id="feedback" role="status"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<footer>The original scanned Bible pages remain private on your VPS. Only text-based review decisions are published to Git.</footer>
+<dialog id="fullDialog"><div class="modalhead"><strong id="fullTitle">Original full-page scan</strong><button class="button" id="closeFull">Close ✕</button></div><img id="fullImg" alt="Original scanned Bible page"></dialog>
+<script src="app.js" defer></script>
+</body></html>
