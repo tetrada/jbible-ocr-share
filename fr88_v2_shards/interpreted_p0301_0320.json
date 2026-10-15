@@ -2730,14 +2730,6 @@
     "verified": false,
     "references": [
       {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
-      {
         "type": "VERSE_RANGE",
         "chapter": 1,
         "verse": 3,
@@ -2767,14 +2759,6 @@
     "notes": "",
     "verified": false,
     "references": [
-      {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
       {
         "type": "VERSE_RANGE",
         "chapter": 3,
@@ -3202,14 +3186,6 @@
     "notes": "",
     "verified": false,
     "references": [
-      {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
       {
         "type": "VERSE_RANGE",
         "chapter": 1,
@@ -3971,14 +3947,6 @@
     "notes": "",
     "verified": false,
     "references": [
-      {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
       {
         "type": "VERSE",
         "chapter": 2,

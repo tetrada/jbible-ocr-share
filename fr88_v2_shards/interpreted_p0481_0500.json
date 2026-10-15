@@ -2759,7 +2759,7 @@
         "literal": "7-9",
         "book_code": "Isa",
         "book_printed": "Is",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },
@@ -2847,7 +2847,7 @@
         "literal": "7-8",
         "book_code": "Isa",
         "book_printed": "Is",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },
@@ -3570,7 +3570,7 @@
         "literal": "28-29",
         "book_code": "Num",
         "book_printed": "Nb",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },

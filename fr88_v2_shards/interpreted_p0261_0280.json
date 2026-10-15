@@ -761,6 +761,66 @@
     ]
   },
   {
+    "id": "fr88v2:p0263:L:01",
+    "edition": "fr88v2",
+    "image_page": 263,
+    "side": "L",
+    "source_image": "image_0263.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "Dt 7 1+",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.08,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 7,
+        "verse": 1,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "7 1+",
+        "book_code": "Deut",
+        "book_printed": "Dt",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0263:L:02",
+    "edition": "fr88v2",
+    "image_page": 263,
+    "side": "L",
+    "source_image": "image_0263.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "17 16",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.3,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 17,
+        "verse": 16,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "17 16",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
     "id": "fr88v2:p0263:R:01",
     "edition": "fr88v2",
     "image_page": 263,
@@ -1763,7 +1823,7 @@
         "literal": "13-14",
         "book_code": "Num",
         "book_printed": "Nb",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },
@@ -3930,7 +3990,7 @@
         "literal": "1-3",
         "book_code": "Lev",
         "book_printed": "Lv",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },
@@ -4400,7 +4460,7 @@
         "literal": "12-24",
         "book_code": "Gen",
         "book_printed": "Gn",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       },
       {
         "type": "VERSE_RANGE",
@@ -4519,7 +4579,7 @@
         "literal": "3-15",
         "book_code": "Exod",
         "book_printed": "Ex",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },
@@ -4604,7 +4664,7 @@
         "literal": "22-24",
         "book_code": "Num",
         "book_printed": "Nb",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },
@@ -5437,7 +5497,7 @@
         "literal": "22-24",
         "book_code": "Num",
         "book_printed": "Nb",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },

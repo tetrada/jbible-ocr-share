@@ -1659,7 +1659,7 @@
         "literal": "4-5",
         "book_code": "Judg",
         "book_printed": "Jg",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },
@@ -1687,7 +1687,7 @@
         "literal": "13-16",
         "book_code": "Judg",
         "book_printed": "Jg",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },
@@ -1745,7 +1745,7 @@
         "literal": "6-8",
         "book_code": "Judg",
         "book_printed": "Jg",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       },
       {
         "type": "CHAPTER_RANGE",
@@ -1754,7 +1754,7 @@
         "literal": "4-5",
         "book_code": "Judg",
         "book_printed": "Jg",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       },
       {
         "type": "CHAPTER_RANGE",
@@ -1763,7 +1763,7 @@
         "literal": "11-12",
         "book_code": "Judg",
         "book_printed": "Jg",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },

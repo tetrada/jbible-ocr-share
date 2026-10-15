@@ -182,14 +182,6 @@
     "verified": false,
     "references": [
       {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
-      {
         "type": "VERSE",
         "chapter": 11,
         "verse": 7,
@@ -279,14 +271,6 @@
     "notes": "",
     "verified": false,
     "references": [
-      {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
       {
         "type": "VERSE",
         "chapter": 19,
@@ -683,14 +667,6 @@
     "verified": false,
     "references": [
       {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
-      {
         "type": "VERSE",
         "chapter": 20,
         "verse": 11,
@@ -750,14 +726,6 @@
     "notes": "",
     "verified": false,
     "references": [
-      {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
       {
         "type": "VERSE",
         "chapter": 4,
@@ -889,14 +857,6 @@
     "references": [
       {
         "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
-      {
-        "type": "UNRESOLVED_NUMERIC",
         "literal": "15 8,",
         "reason": "notation_not_covered",
         "book_code": "Wis",
@@ -982,14 +942,6 @@
     "notes": "text partially cut at right edge",
     "verified": false,
     "references": [
-      {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
       {
         "type": "VERSE",
         "chapter": 15,
@@ -2594,14 +2546,6 @@
     "notes": "",
     "verified": false,
     "references": [
-      {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
       {
         "type": "VERSE",
         "chapter": 11,

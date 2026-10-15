@@ -348,14 +348,6 @@
     "references": [
       {
         "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
-      {
-        "type": "UNRESOLVED_NUMERIC",
         "literal": "1 14-",
         "reason": "notation_not_covered",
         "book_code": "John",
@@ -1038,14 +1030,6 @@
     "verified": false,
     "references": [
       {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
-      {
         "type": "VERSE",
         "chapter": 1,
         "verse": 14,
@@ -1135,14 +1119,6 @@
     "notes": "",
     "verified": false,
     "references": [
-      {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
       {
         "type": "VERSE",
         "chapter": 1,
@@ -2803,14 +2779,6 @@
     "notes": "",
     "verified": false,
     "references": [
-      {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
       {
         "type": "VERSE",
         "chapter": 15,
@@ -6553,14 +6521,6 @@
     "verified": false,
     "references": [
       {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
-      {
         "type": "VERSE_RANGE",
         "chapter": 15,
         "verse": 10,
@@ -6590,14 +6550,6 @@
     "notes": "",
     "verified": false,
     "references": [
-      {
-        "type": "UNRESOLVED_NUMERIC",
-        "literal": "",
-        "reason": "notation_not_covered",
-        "book_code": null,
-        "book_printed": null,
-        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
-      },
       {
         "type": "VERSE_RANGE",
         "chapter": 10,

@@ -1,7 +1,7 @@
 {
   "edition": "FR1988-v2",
   "source": "JPEG marginal references",
-  "checkpoint_margins": 936,
+  "checkpoint_margins": 938,
   "pages_with_checkpoints": [
     32,
     33,
@@ -473,13 +473,16 @@
     499,
     500
   ],
-  "ocr_rows": 5258,
-  "reference_rows": 5235,
+  "ocr_rows": 5272,
+  "reference_rows": 5249,
   "section_labels": 23,
-  "parsed_segments": 3852,
-  "interpretation_review": 1997,
-  "segments_total": 5849,
-  "source_anchor_missing": 5019,
+  "parsed_segments": 3893,
+  "interpretation_review": 1922,
+  "segments_total": 5815,
+  "parse_success_percent": 66.9,
+  "parse_review_percent": 33.1,
+  "metrics_note": "Parse success means the deterministic interpreter understood the printed notation; it is not independently measured OCR accuracy.",
+  "source_anchor_missing": 5033,
   "layout_uncertain_rows": 29,
   "no_auto_book_inheritance_across_rows": true,
   "verified": 0,
@@ -490,10 +493,12 @@
   ],
   "margins_in_run": 938,
   "margins_total": 938,
-  "api_calls": 936,
-  "cached_jobs": 0,
-  "errors": 2,
-  "failures": [
+  "api_calls": 938,
+  "recovery_api_calls": 2,
+  "cached_jobs": 936,
+  "errors": 0,
+  "failures": [],
+  "recovered_failures": [
     {
       "page": 89,
       "side": "L",
@@ -505,5 +510,7 @@
       "error": "IncompleteRead: IncompleteRead(0 bytes read)"
     }
   ],
-  "last_update_utc": "2026-10-15T18:33:40.679537+00:00"
+  "ocr_margins_success": 938,
+  "ocr_margin_success_percent": 100.0,
+  "last_update_utc": "2026-10-15T20:09:32.280382+00:00"
 }

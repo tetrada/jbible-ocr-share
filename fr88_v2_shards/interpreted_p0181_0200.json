@@ -231,7 +231,7 @@
         "literal": "6-7",
         "book_code": "Lev",
         "book_printed": "Lv",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },
@@ -8401,7 +8401,7 @@
         "literal": "14-19",
         "book_code": "Josh",
         "book_printed": "Jos",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },
@@ -8980,7 +8980,7 @@
         "literal": "20-21",
         "book_code": "Josh",
         "book_printed": "Jos",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },

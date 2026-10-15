@@ -678,7 +678,7 @@
         "literal": "9-10",
         "book_code": "2Kgs",
         "book_printed": "2 R",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },

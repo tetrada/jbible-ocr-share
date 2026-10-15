@@ -7325,7 +7325,7 @@
         "literal": "18-20",
         "book_code": "Deut",
         "book_printed": "Dt",
-        "status": "NEEDS_RANGE_INTERPRETATION"
+        "status": "PARSED"
       }
     ]
   },
