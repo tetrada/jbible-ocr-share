@@ -9,6 +9,9 @@ on:
       - "tools/publish_fr88_v3_learning.sh"
       - "tools/fr88_v4_learning_proxy.py"
       - "tools/fr88_v4_holdout_eval.py"
+      - "tools/fr88_v4_git_export.py"
+      - "tools/publish_fr88_v4_learning.sh"
+      - "tools/test_fr88_v4_git_export.py"
       - "tools/test_fr88_v4_holdout_eval.py"
       - "tools/install_fr88_v4_learning.sh"
       - "tools/run_fr88_v4_learning.sh"
@@ -23,12 +26,14 @@ jobs:
         with:
           python-version: "3.11"
       - name: Python compile
-        run: python -m py_compile tools/fr88_learning_prompt.py tools/test_fr88_learning_prompt.py tools/fr88_v3_git_export.py tools/fr88_v4_learning_proxy.py tools/fr88_v4_holdout_eval.py tools/test_fr88_v4_holdout_eval.py
+        run: python -m py_compile tools/fr88_learning_prompt.py tools/test_fr88_learning_prompt.py tools/fr88_v3_git_export.py tools/fr88_v4_learning_proxy.py tools/fr88_v4_holdout_eval.py tools/test_fr88_v4_holdout_eval.py tools/fr88_v4_git_export.py tools/test_fr88_v4_git_export.py
       - name: Shell validation
-        run: bash -n tools/publish_fr88_v3_learning.sh tools/run_fr88_v4_learning.sh tools/install_fr88_v4_learning.sh
+        run: bash -n tools/publish_fr88_v3_learning.sh tools/run_fr88_v4_learning.sh tools/install_fr88_v4_learning.sh tools/publish_fr88_v4_learning.sh
       - name: Verify the learning policy
         run: cd tools && python test_fr88_learning_prompt.py
       - name: Verify independent held-out scan labels and scoring
         run: cd tools && python test_fr88_v4_holdout_eval.py
+      - name: Validate Git-only V4 publication using synthetic data
+        run: cd tools && python test_fr88_v4_git_export.py
       - name: Compile currently confirmed gold examples offline
         run: python tools/fr88_learning_prompt.py --base tools/fr88_v3_typography_prompt.txt --gold training/fr88_ocr_gold.json --output /tmp/fr88_learned_prompt.txt --min-verified 1
