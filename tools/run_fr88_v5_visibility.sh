@@ -2,6 +2,10 @@
 # FR88 v5 cut-off visibility test: only pages 31..50, default 32..32 (2 margins).
 # Paid DeepSeek calls only after successful preflight; all older OCR data read-only.
 set -euo pipefail
+# Never default to a 20-page paid run.
+if [[ "$#" -eq 0 ]]; then
+  set -- --start 32 --end 32 --max-new-margins 2
+fi
 BASE=/opt/jbible/importer
 RAW=/opt/jbible/data/raw
 OUT="$RAW/jbible_fr1988_v5_visibility"
