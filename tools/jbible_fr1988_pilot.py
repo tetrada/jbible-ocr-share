@@ -363,7 +363,6 @@ def main():
                             structural_ok=metrics["structural_ok"],
                             structural_percent=metrics["structural_percent"],
                             parseable_percent=metrics["parseable_percent"],
-                            structural_ok=metrics["structural_ok"],
                             typography_review=metrics["typography_review"],
                             hard_errors=metrics["hard_errors"],
                             duplicate_pairs=metrics["duplicate_pairs"],
