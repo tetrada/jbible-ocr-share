@@ -404,8 +404,9 @@ def main():
                             stop = True
                             break
                         print("OCR V3 %s (%d/%d)" % (name, completed + 1, total), flush=True)
-                        response, attempts = api_call(key, parts, page, side, prompt)
+                        # Count attempts started even on failure: budget caps new paid jobs.
                         new_calls += 1
+                        response, attempts = api_call(key, parts, page, side, prompt)
                         save_json(prov, {"signature": sig, "response": response,
                                          "created_utc": utc(), "attempts": attempts})
                     rows, warnings = provider_rows(response, page, side)
@@ -425,7 +426,7 @@ def main():
     result = compare(args.start, args.end, args.gold)
     report = {"edition": "FR1988-v3-pilot", "pages": [args.start, args.end],
               "finished_utc": utc(), "model": MODEL,
-              "fresh_successful_margin_calls": new_calls,
+              "fresh_requested_margin_jobs": new_calls,
               "cached_margins_used": cached, "errors": failures,
               "comparison": str(OUT / "comparison.json"),
               "complete": result["margins_complete"] == result["margins_expected"],
