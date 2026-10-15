@@ -9,6 +9,8 @@ import fr88_v3_pilot as v3
 
 
 def test():
+    # Use the same committed prompt in VPS Docker and GitHub Actions.
+    v3.PROMPT = Path(__file__).with_name("fr88_v3_typography_prompt.txt")
     assert "BOLD" in v3.PROMPT.read_text(encoding="utf-8").upper()
     assert "2 P 2 5" in v3.PROMPT.read_text(encoding="utf-8")
     with tempfile.TemporaryDirectory() as tmp:
