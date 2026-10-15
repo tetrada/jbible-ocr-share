@@ -36,6 +36,10 @@ OUT = RAW / "jbible_fr1988_pilot"
 EN_FILE = RAW / "jbible_dual_v1/en/all_records.json"
 MODEL = "deepseek-flash"
 
+# Visually confirmed against image_0054.jpg: no marginal references on its left.
+# Suppress from aggregate outputs ONLY; retain original OCR checkpoints untouched.
+CONFIRMED_EMPTY_MARGINS = {(54, "L")}
+
 bridge.WIDGETS = [
     {"type": "progress", "title": "French 1988 OCR", "metric": "processed", "total_metric": "total"},
     {"type": "metric", "title": "FR88 references", "metric": "candidates"},
@@ -110,13 +114,22 @@ def request_ocr(token, images, page, side):
         "type": "text",
         "text": (
             "French Bible 1988, Genesis, image page %d, margin side %s. "
-            "The first image is PAGE CONTEXT only. "
+            "The first image is the %s HALF of the page for context; "
+            "the opposite half is NOT supplied. "
             "Read cross-references ONLY from the %s side crops and "
-            "do not repeat overlapped entries." % (page, side, side)
+            "do not repeat overlapped entries." % (page, side, side, side)
         )
     }]
     for part in ("overview", "full", "upper", "lower"):
-        content.append(ocr.image_part(images[part]))
+        photo = images[part]
+        if part == "overview":
+            # Never show the OPPOSITE margin to this OCR call.
+            # Deliberately apply this at request time to keep old checkpoints usable.
+            with Image.open(io.BytesIO(photo)) as src:
+                w, h = src.size
+                box = (0, 0, w // 2, h) if side == "L" else (w // 2, 0, w, h)
+                photo = jpeg(src.crop(box), 1000, 2200)
+        content.append(ocr.image_part(photo))
     payload = {
         "model": MODEL,
         "thinking": {"type": "disabled"},
@@ -173,6 +186,9 @@ def collect_saved_records():
         items = data.get("items")
         if not isinstance(items, list):
             raise ValueError("Invalid checkpoint items: %s" % checkpoint.name)
+        page_side = (data.get("page"), data.get("side"))
+        if page_side in CONFIRMED_EMPTY_MARGINS:
+            continue
         records.extend(items)
     ids = [r.get("id") for r in records]
     if len(ids) != len(set(ids)):
@@ -234,6 +250,10 @@ def summarize(rows, en, catalog, completed, total, calls, cached, errors):
         "typography_review": len(soft),
         "hard_errors": len(hard),
         "duplicate_pairs": len(duplicates),
+        "visually_excluded_margins": [
+            {"page": page, "side": side, "why": "confirmed empty by human"}
+            for page, side in sorted(CONFIRMED_EMPTY_MARGINS)
+        ],
         "note": "parseable_percent is NOT OCR accuracy or human verification",
         "supported_by_en": counts["SUPPORTED_BY_EN"],
         "review_records": counts["REVIEW"],
@@ -394,6 +414,7 @@ def main():
     save(OUT / "comparison.json", comparison)
     soft, hard, duplicates = quality_groups(comparison)
     save(OUT / "quality_audit.json", {
+        "visually_excluded_margins": metrics["visually_excluded_margins"],
         "typography_review_ids": [r["id"] for r in soft],
         "hard_error_ids": [r["id"] for r in hard],
         "potential_cross_side_duplicate_pairs": duplicates,
