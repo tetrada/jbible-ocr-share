@@ -399,6 +399,35 @@ def run(args):
     for seg in seg_results:
         by_row[seg["row_id"]].append(seg)
     review = [s for s in seg_results if s["review_reasons"]]
+    # Target interpretation issues and source alignment are independent workflows.
+    # A valid catalog coordinate is not yet OCR-confirmed or source-verse-aligned.
+    target_review = [s for s in seg_results
+                     if s["parse_status"] != "PARSED" or s["catalog_status"] != "VALID"]
+    by_margin = defaultdict(list)
+    for row in row_results:
+        by_margin[row["image_page"], row["side"]].append(row)
+    margin_neighbors = {}
+    for margin_rows in by_margin.values():
+        for index, current in enumerate(margin_rows):
+            margin_neighbors[current["row_id"]] = {
+                "previous_printed_rows": [
+                    {"row_id": x["row_id"], "raw_line": x["raw_line"],
+                     "y_fraction": x["y_fraction"]}
+                    for x in margin_rows[max(0, index - 2):index]
+                ],
+                "next_printed_rows": [
+                    {"row_id": x["row_id"], "raw_line": x["raw_line"],
+                     "y_fraction": x["y_fraction"]}
+                    for x in margin_rows[index + 1:index + 3]
+                ],
+            }
+    target_context = []
+    for seg in target_review:
+        target_context.append({
+            "segment": seg,
+            "neighbors_for_visual_review_only": margin_neighbors[seg["row_id"]],
+            "important": "Neighboring rows do NOT establish inherited book or source verse. Check the original scan.",
+        })
     summary = {
         "purpose": "Read-only structural audit, not scanned-image or Bible verification",
         "edition": "FR1988-v2", "data_file": str(args.data),
@@ -411,6 +440,8 @@ def run(args):
         "segments": len(seg_results),
         "parsed_by_parser": parse_counts["PARSED"],
         "parser_review_segments": len(seg_results) - parse_counts["PARSED"],
+        "target_interpretation_review_segments": len(target_review),
+        "source_alignment_pending_reference_rows": sum(r["kind"] == "REFERENCE" for r in row_results),
         "invalid_target_segments": catalog_counts["INVALID"],
         "suffix_segments": sum(bool(s["suffix"]) for s in seg_results),
         "layout_uncertain_rows": sum(r["layout_uncertain"] for r in row_results),
@@ -438,6 +469,8 @@ def run(args):
     save_csv(out / "rows.csv", row_results, ROW_COLUMNS)
     save_csv(out / "segments.csv", seg_results, SEGMENT_COLUMNS)
     save_csv(out / "review_queue.csv", review, SEGMENT_COLUMNS)
+    save_csv(out / "target_interpretation_queue.csv", target_review, SEGMENT_COLUMNS)
+    save_json(out / "target_interpretation_context.json", target_context)
     with (out / "segments.jsonl").open("w", encoding="utf-8") as f:
         for s in seg_results:
             f.write(json.dumps(s, ensure_ascii=False) + "\n")
@@ -460,6 +493,7 @@ def run(args):
     print("PARSER PARSED:", summary["parsed_by_parser"],
           "PARSER REVIEW:", summary["parser_review_segments"],
           "INVALID TARGETS:", summary["invalid_target_segments"])
+    print("TARGET INTERPRETATION REVIEW:", len(target_review))
     print("CATALOG:", json.dumps(summary["counts_by_catalog_status"]))
     print("ANCHORS:", json.dumps(summary["counts_by_source_anchor_status"]))
     print("Verified: 0; SQL writes: 0; API calls: 0")
