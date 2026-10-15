@@ -254,6 +254,9 @@ def compute_aggregate(checkpoints):
         raise ValueError("Duplicate OCR row IDs across checkpoints")
     interpreted = [interpret_ocr_row(r, CATALOG) for r in rows]
     segments = [part for r in interpreted for part in r["references"]]
+    successful = sum(x["status"] == "PARSED" for x in segments)
+    needs_review = len(segments) - successful
+    parse_percent = round(100 * successful / len(segments), 1) if segments else 0.0
     metrics = {
         "edition": "FR1988-v2",
         "source": "JPEG marginal references",
@@ -263,9 +266,13 @@ def compute_aggregate(checkpoints):
         "ocr_rows": len(rows),
         "reference_rows": sum(r["kind"] == "REFERENCE" for r in rows),
         "section_labels": sum(r["kind"] == "SECTION_LABEL" for r in rows),
-        "parsed_segments": sum(x["status"] == "PARSED" for x in segments),
-        "interpretation_review": sum(x["status"] != "PARSED" for x in segments),
+        "parsed_segments": successful,
+        "interpretation_review": needs_review,
         "segments_total": len(segments),
+        "parse_success_percent": parse_percent,
+        "parse_review_percent": round(100 * needs_review / len(segments), 1) if segments else 0.0,
+        "metrics_note": ("Parse success means the deterministic interpreter understood "
+                         "the printed notation; it is not independently measured OCR accuracy."),
         "source_anchor_missing": sum(r["kind"] == "REFERENCE"
                                      and not r["source_anchor_confident"] for r in rows),
         "layout_uncertain_rows": sum(bool(r["layout_uncertain"]) for r in rows),
@@ -360,6 +367,8 @@ def main():
             "margins_total": (args.end - args.start + 1) * 2,
             "api_calls": 0, "cached_jobs": 0,
             "errors": 0, "failures": [],
+            "ocr_margins_success": 0,
+            "ocr_margin_success_percent": 0.0,
             "last_update_utc": datetime.now(timezone.utc).isoformat(),
         })
         print("INITIALIZED: %d existing OCR rows; no API calls" %
@@ -373,6 +382,8 @@ def main():
     bridge.WIDGETS = [
         {"type":"progress","title":"FR88 v2 margins","metric":"processed","total_metric":"total"},
         {"type":"metric","title":"OCR printed rows","metric":"ocr_rows"},
+        {"type":"metric","title":"Reference interpretation (%)","metric":"parse_success_percent"},
+        {"type":"metric","title":"OCR margin processing success (%)","metric":"ocr_margin_success_percent"},
         {"type":"metric","title":"Parsed reference segments","metric":"parsed_segments"},
         {"type":"metric","title":"Interpretation review","metric":"interpretation_review"},
         {"type":"metric","title":"Missing source anchors","metric":"source_anchor_missing"},
@@ -439,6 +450,8 @@ def main():
                 rows_now, interpreted, review, metrics = compute_aggregate(saved)
                 elapsed = time.monotonic() - begin
                 eta = round(elapsed * (total - done) / done) if done else None
+                ocr_margin_success_percent = round(
+                    100 * (done - len(errors)) / done, 1) if done else 0.0
                 status.update(message="FR88 v2 p%04d %s, %d/%d" %
                               (page, side, done, total),
                               status="running",
@@ -448,6 +461,8 @@ def main():
                               ocr_rows=metrics["ocr_rows"],
                               parsed_segments=metrics["parsed_segments"],
                               interpretation_review=metrics["interpretation_review"],
+                              parse_success_percent=metrics["parse_success_percent"],
+                              ocr_margin_success_percent=ocr_margin_success_percent,
                               source_anchor_missing=metrics["source_anchor_missing"],
                               api_calls=api_calls, cache_hits=cache_hits,
                               errors=len(errors), verified=0)
@@ -456,11 +471,15 @@ def main():
                            "margins_in_run": done, "margins_total": total,
                            "api_calls": api_calls, "cached_jobs": cache_hits,
                            "errors": len(errors), "failures": errors,
+                           "ocr_margins_success": done - len(errors),
+                           "ocr_margin_success_percent": ocr_margin_success_percent,
                            "last_update_utc": datetime.now(timezone.utc).isoformat()}
                     metrics = write_aggregates(saved, run)
-                    print("CHECKPOINT: %d margins, %d rows, %d parsed segments, "
-                          "%d interpretation review, %d errors" %
-                          (done, metrics["ocr_rows"], metrics["parsed_segments"],
+                    print("CHECKPOINT: %d margins, %d rows, parsed %.1f%% (%d/%d), "
+                          "OCR-processing success %.1f%%, review %d, errors %d" %
+                          (done, metrics["ocr_rows"], metrics["parse_success_percent"],
+                           metrics["parsed_segments"], metrics["segments_total"],
+                           metrics["ocr_margin_success_percent"],
                            metrics["interpretation_review"], len(errors)), flush=True)
     if errors:
         status.finish("warning", "FR88 v2 finished with %d failed margins" % len(errors))
