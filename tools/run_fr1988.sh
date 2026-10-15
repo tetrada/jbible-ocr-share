@@ -23,6 +23,7 @@ exec docker run --rm \
   --env-file "$BASE/.env.status" \
   --entrypoint python \
   -v "$BASE/jbible_fr1988_pilot.py:/app/jbible_fr1988_pilot.py:ro" \
+  -v "$BASE/fr88_multibook.py:/app/fr88_multibook.py:ro" \
   -v "$BASE/jbible_dual.py:/app/jbible_dual.py:ro" \
   -v "$BASE/jbible_v79_typography.py:/app/jbible_v79_typography.py:ro" \
   -v "$BASE/jbible_v710_validate.py:/app/jbible_v710_validate.py:ro" \
