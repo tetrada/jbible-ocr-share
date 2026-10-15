@@ -1,0 +1,29 @@
+name: FR88 learning corpus and prompt tests
+on:
+  push:
+    paths:
+      - "training/fr88_ocr_gold.json"
+      - "tools/fr88_learning_prompt.py"
+      - "tools/test_fr88_learning_prompt.py"
+      - "tools/fr88_v3_git_export.py"
+      - "tools/publish_fr88_v3_learning.sh"
+      - "tools/fr88_v4_learning_proxy.py"
+      - "tools/run_fr88_v4_learning.sh"
+      - ".github/workflows/fr88-learning-tests.yml"
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Python compile
+        run: python -m py_compile tools/fr88_learning_prompt.py tools/test_fr88_learning_prompt.py tools/fr88_v3_git_export.py tools/fr88_v4_learning_proxy.py
+      - name: Shell validation
+        run: bash -n tools/publish_fr88_v3_learning.sh tools/run_fr88_v4_learning.sh
+      - name: Verify the learning policy
+        run: cd tools && python test_fr88_learning_prompt.py
+      - name: Compile currently confirmed gold examples offline
+        run: python tools/fr88_learning_prompt.py --base tools/fr88_v3_typography_prompt.txt --gold training/fr88_ocr_gold.json --output /tmp/fr88_learned_prompt.txt --min-verified 1
