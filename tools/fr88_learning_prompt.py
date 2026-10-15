@@ -41,10 +41,19 @@ def build(base,gold,max_examples=20):
             prompt.append("PREVIOUS OCR ERROR: "+str(x["baseline_ocr_error"]))
         else:
             prompt.append("SCAN-CONFIRMED TRANSCRIPTION (not a measured OCR improvement)")
-        prompt.extend([
-            "CORRECT PHYSICAL REFERENCE ROWS (one per line):",
-            "\n".join("ROW %d: %s" % (i+1, line) for i,line in enumerate(correct_lines)),
-            "VISIBLE TYPOGRAPHY / INCLUSION RULE: "+str(x.get("typography") or "")])
+        if x.get("visually_truncated") is True:
+            prompt.extend([
+                "CASE TYPE: CUT_OFF. The FULL printed reference is UNKNOWN.",
+                "VISIBLE PREFIX ONLY (NOT a complete reference):",
+                "\n".join("ROW %d VISIBLE ONLY: %s" % (i+1, line)
+                          for i,line in enumerate(correct_lines)),
+                "Set visibility_status=CUT_OFF and DO NOT hallucinate any unseen suffix."])
+        else:
+            prompt.extend([
+                "CORRECT PHYSICAL REFERENCE ROWS (one per line):",
+                "\n".join("ROW %d: %s" % (i+1, line)
+                          for i,line in enumerate(correct_lines))])
+        prompt.append("VISIBLE TYPOGRAPHY / INCLUSION RULE: "+str(x.get("typography") or ""))
     prompt.extend(["","When something similar appears, read the actual BOLD chapter and",
                    "regular verse typography. Never alter raw text just to make a valid Bible coordinate."])
     return "\n".join(prompt).strip()+"\n",len(examples)
