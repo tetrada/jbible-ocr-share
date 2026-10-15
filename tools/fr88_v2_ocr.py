@@ -282,9 +282,42 @@ def compute_aggregate(checkpoints):
 def write_aggregates(checkpoints, run):
     rows, interpreted, review, metrics = compute_aggregate(checkpoints)
     metrics.update(run)
+    # Full outputs remain on the VPS. Small, stable 20-page shards are
+    # published to GitHub for reliable inspection by ChatGPT.
     save(OUTPUT / "all_rows.json", rows)
     save(OUTPUT / "interpreted_rows.json", interpreted)
     save(OUTPUT / "parse_review.json", review)
+    shards = OUTPUT / "shards"
+    shards.mkdir(parents=True, exist_ok=True)
+    raw_groups, parsed_groups = {}, {}
+    for row, parsed in zip(rows, interpreted):
+        page = row["image_page"]
+        first = ((page - 1) // 20) * 20 + 1
+        last = first + 19
+        bucket = (first, last)
+        raw_groups.setdefault(bucket, []).append(row)
+        parsed_groups.setdefault(bucket, []).append(parsed)
+    manifest = {"edition": "FR1988-v2", "shard_page_span": 20,
+                "rows_total": len(rows), "chunks": [],
+                "verified": 0, "sql_writes": False}
+    produced = set()
+    for first, last in sorted(raw_groups):
+        suffix = "p%04d_%04d.json" % (first, last)
+        rows_name = "rows_" + suffix
+        interpreted_name = "interpreted_" + suffix
+        save(shards / rows_name, raw_groups[(first, last)])
+        save(shards / interpreted_name, parsed_groups[(first, last)])
+        produced.update((rows_name, interpreted_name))
+        manifest["chunks"].append({
+            "page_range": [first, last],
+            "rows_file": "fr88_v2_shards/" + rows_name,
+            "interpreted_file": "fr88_v2_shards/" + interpreted_name,
+            "row_count": len(raw_groups[(first, last)]),
+        })
+    for old in shards.glob("*.json"):
+        if old.name not in produced:
+            old.unlink()
+    save(OUTPUT / "manifest.json", manifest)
     save(OUTPUT / "summary.json", metrics)
     return metrics
 
