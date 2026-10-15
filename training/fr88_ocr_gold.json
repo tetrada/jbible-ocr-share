@@ -18,6 +18,72 @@
       "typography": "Leading 2 is part of 2 Peter abbreviation; bold second 2 is chapter; regular 5 is verse.",
       "inclusion": "prompt_example",
       "note": "Exact position on page 37 not confirmed from the single cropped image; do not attach either row ID without checking scan."
+    },
+    {
+      "id": "GOLD-0002",
+      "verification": "human_confirmed_from_original_scan",
+      "source": "JBible private authenticated review webpage; published text-only human reviews",
+      "case_id": "D003",
+      "image_page": 32,
+      "side": "R",
+      "baseline_ocr_error": "11-24\nQo 3 20s; 12 7",
+      "corrected_lines": [
+        "1 1 - 2 4",
+        "Qo 3 20s;",
+        "12 7"
+      ],
+      "typography": "Preserve 'Qo 3 20s;' and the following standalone '12 7' as TWO physically separate reference rows. The nearby '1 1 - 2 4' was classified as a section label, not a reference; do not promote it to a Bible cross-reference.",
+      "inclusion": "prompt_example",
+      "note": "Curated reference rows only; exclude nonreference section label from this positive training example."
+    },
+    {
+      "id": "GOLD-0003",
+      "verification": "human_confirmed_from_original_scan",
+      "source": "JBible private authenticated review webpage; published text-only human reviews",
+      "case_id": "D012",
+      "image_page": 37,
+      "side": "L",
+      "baseline_ocr_error": "Si 16 7\nBa 3 26s\nSg 14 6-7\nMt 24 37sp",
+      "corrected_lines": [
+        "↗ Ba 3 26s",
+        "↗ Sg 14 6-7",
+        "↗ Mt 24 37sp"
+      ],
+      "typography": "Do not duplicate a nearby marginal reference while reading another group. Keep the three confirmed printed references including the '37sp' suffix without changing it.",
+      "inclusion": "prompt_example",
+      "note": "The user's scan review selected v3's three-row group; the earlier Si 16 7 entry elsewhere on the page is a separate matter."
+    },
+    {
+      "id": "GOLD-0004",
+      "verification": "human_confirmed_from_original_scan",
+      "source": "JBible private authenticated review webpage; published text-only human reviews",
+      "case_id": "D016",
+      "image_page": 40,
+      "side": "L",
+      "baseline_ocr_error": "[OCR omitted this margin row]",
+      "corrected_lines": [
+        "10 6"
+      ],
+      "typography": "A physically printed bare numeric reference '10 6' must be transcribed even without a printed book abbreviation. Do NOT invent the missing book name.",
+      "inclusion": "prompt_example",
+      "note": "V2 was scan-confirmed; v3 missed this row."
+    },
+    {
+      "id": "GOLD-0005",
+      "verification": "human_confirmed_from_original_scan",
+      "source": "JBible private authenticated review webpage; published text-only human reviews",
+      "case_id": "D017",
+      "image_page": 41,
+      "side": "L",
+      "baseline_ocr_error": "↗ Sg 10 5\n↗ Ac 2 5-12\n↗ Ap 7 9-10\nLa tour de Babel a",
+      "corrected_lines": [
+        "↗ Sg 10 5",
+        "↗ Ac 2 5-12",
+        "↗ Ap 7 9-10"
+      ],
+      "typography": "Include only printed marginal reference rows. 'La tour de Babel a' is non-reference editorial text, not an OCR citation. Preserve all three genuine reference rows separately.",
+      "inclusion": "prompt_example",
+      "note": "Human chose neither because v3 additionally included prose; the corrected references are scan confirmed."
     }
   ],
   "held_out_examples": [],
