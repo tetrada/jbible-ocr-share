@@ -81,6 +81,10 @@
     $("zoom").value = String(zoom);
     $("caseTitle").textContent = c.case_id + " · " + caseName(c);
     $("caseSubtitle").textContent = c.issue + " · exact typeface / printed rows matter";
+    const agreement = c.matching_text_is_not_accuracy === true;
+    $("v2Choice").querySelector(".top").firstChild.nodeValue =
+      agreement ? "Both OCR versions agree (not verified) " : "V2 original OCR ";
+    $("v3Choice").style.display = agreement ? "none" : "";
     $("v2Text").textContent = textFor(c.v2) || "(no reference detected)";
     $("v3Text").textContent = textFor(c.v3) || "(no reference detected)";
     $("corrected").value = (review.corrected_lines || []).join("\n");
