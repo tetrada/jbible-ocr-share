@@ -1,0 +1,31 @@
+{
+  "schema": "jbible.fr88.ocr.gold.v1",
+  "description": "Human-confirmed reference typography examples; visually verified, not automatically inferred from catalog validity. No copyrighted scan images or API keys.",
+  "examples": [
+    {
+      "id": "GOLD-0001",
+      "verification": "human_confirmed_from_user_image",
+      "source": "User-supplied close-up of printed French 1988 marginal reference",
+      "image_page": null,
+      "side": null,
+      "row_id": null,
+      "observed_print": "↗ 2 P 2 5",
+      "baseline_ocr_error": "2 P 25",
+      "corrected_raw_line": "↗ 2 P 2 5",
+      "book_code": "2Pet",
+      "chapter": 2,
+      "verse": 5,
+      "typography": "Leading 2 is part of 2 Peter abbreviation; bold second 2 is chapter; regular 5 is verse.",
+      "inclusion": "prompt_example",
+      "note": "Exact position on page 37 not confirmed from the single cropped image; do not attach either row ID without checking scan."
+    }
+  ],
+  "held_out_examples": [],
+  "learning_policy": {
+    "require_human_scan_confirmation": true,
+    "no_auto_promotion_by_catalog_validity": true,
+    "prompt_examples_only_when_inclusion_is_prompt_example": true,
+    "never_use_evaluation_holdouts_as_prompt_examples": true,
+    "minimum_distinct_examples_before_full_20_page_retest": 20
+  }
+}
