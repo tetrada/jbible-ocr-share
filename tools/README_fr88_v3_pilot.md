@@ -64,6 +64,22 @@ To measure genuine OCR improvement: copy `gold_review_template.csv` to a review 
 
 Note: the `--gold` path is inside Docker (`/raw/...`), not the host path (`/opt/jbible/data/raw/...`). The evaluator uses nearby y coordinates to pair rows; ambiguous/unpaired rows are excluded and must be reviewed.
 
+## Prepare evidence-based 20-page review pack (offline)
+
+After the pilot finishes, create one ZIP containing **all OCR disagreements** and any V3 section labels with original scan crops (no API calls):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main/tools/install_fr88_v3_pilot.sh | bash
+cd /opt/jbible/importer
+./run_fr88_v3_review.sh
+```
+
+The ZIP is written to:
+
+`/opt/jbible/data/raw/jbible_fr1988_v3_pilot_31_50/fr88_v3_review_pack.zip`
+
+It includes `review_report.html`, source scan crops, `review_cases.json`, and a blank `review_decisions_template.csv`. **Upload this ZIP in the ChatGPT conversation for visual comparison; do not publish scanned Bible page crops to the public GitHub repository.** Only the dedicated v3 output directory is writable to the report Docker process. A difference does not mean V2 or V3 is correct until the image is inspected.
+
 ## Interpretation safety
 
 - A chapter/verse split like **2 P 2 5** should be preserved because the scanned bold chapter **2** and ordinary verse **5** are distinct. No structural plausibility-based changes to raw_line.
