@@ -39,9 +39,12 @@ MODEL = "deepseek-flash"
 bridge.WIDGETS = [
     {"type": "progress", "title": "French 1988 OCR", "metric": "processed", "total_metric": "total"},
     {"type": "metric", "title": "FR88 references", "metric": "candidates"},
-    {"type": "metric", "title": "Structural pass (%)", "metric": "structural_percent"},
+    {"type": "metric", "title": "No structural errors (%)", "metric": "parseable_percent"},
+    {"type": "metric", "title": "No warnings", "metric": "structural_ok"},
+    {"type": "metric", "title": "Typography review", "metric": "typography_review"},
+    {"type": "metric", "title": "Structural errors", "metric": "hard_errors"},
+    {"type": "metric", "title": "Potential duplicate pairs", "metric": "duplicate_pairs"},
     {"type": "metric", "title": "Supported by EN", "metric": "supported_by_en"},
-    {"type": "metric", "title": "Needs review", "metric": "review_records"},
     {"type": "metric", "title": "DeepSeek calls", "metric": "api_calls"},
     {"type": "events", "title": "OCR activity"},
 ]
@@ -177,11 +180,47 @@ def collect_saved_records():
     return records
 
 
+SOFT_ISSUES = {
+    "CHAPTER_BOLDNESS_UNCONFIRMED",
+    "END_CHAPTER_BOLDNESS_UNCONFIRMED",
+    "AI_UNCERTAIN",
+}
+
+def quality_groups(comparison):
+    """Preserve all review flags; distinguish uncertainty from broken structure."""
+    soft, hard = [], []
+    by_page_literal = {}
+    for r in comparison:
+        if r.get("kind") != "REFERENCE":
+            continue
+        if r.get("review_status") == "REVIEW":
+            issues = set(r.get("issues") or [])
+            (soft if issues and issues <= SOFT_ISSUES else hard).append(r)
+        key = (r.get("image_page"), " ".join((r.get("literal") or "").lower().split()))
+        if key[1]:
+            by_page_literal.setdefault(key, []).append(r)
+    duplicate_pairs = []
+    for (page, literal), rows in sorted(by_page_literal.items()):
+        left = [r for r in rows if r.get("side") == "L"]
+        right = [r for r in rows if r.get("side") == "R"]
+        for a, b in zip(left, right):
+            duplicate_pairs.append({
+                "page": page, "literal": literal,
+                "ids": [a["id"], b["id"]],
+                "source": [[a.get("source_chapter"), a.get("source_verse")],
+                           [b.get("source_chapter"), b.get("source_verse")]],
+                "confirmed_duplicate": False
+            })
+    return soft, hard, duplicate_pairs
+
+
 def summarize(rows, en, catalog, completed, total, calls, cached, errors):
     comparison = compare(rows, en, catalog, (1, 50))
     refs = [r for r in comparison if r.get("kind") == "REFERENCE"]
     counts = Counter(r.get("review_status") for r in refs)
     accepted = counts["CANDIDATE_UNVERIFIED"] + counts["SUPPORTED_BY_EN"]
+    soft, hard, duplicates = quality_groups(comparison)
+    plausible = accepted + len(soft)
     return comparison, {
         "source": "French Bible 1988 JPEG",
         "pages_requested": [min(r["image_page"] for r in rows), max(r["image_page"] for r in rows)] if rows else [],
@@ -190,6 +229,12 @@ def summarize(rows, en, catalog, completed, total, calls, cached, errors):
         "references": len(refs),
         "structural_ok": accepted,
         "structural_percent": round(100 * accepted / len(refs), 1) if refs else 0,
+        "parseable_no_hard_errors": plausible,
+        "parseable_percent": round(100 * plausible / len(refs), 1) if refs else 0,
+        "typography_review": len(soft),
+        "hard_errors": len(hard),
+        "duplicate_pairs": len(duplicates),
+        "note": "parseable_percent is NOT OCR accuracy or human verification",
         "supported_by_en": counts["SUPPORTED_BY_EN"],
         "review_records": counts["REVIEW"],
         "source_anchor_missing": sum(not r.get("source_anchor_confident") for r in refs),
@@ -317,14 +362,20 @@ def main():
                             candidates=metrics["references"],
                             structural_ok=metrics["structural_ok"],
                             structural_percent=metrics["structural_percent"],
+                            parseable_percent=metrics["parseable_percent"],
+                            structural_ok=metrics["structural_ok"],
+                            typography_review=metrics["typography_review"],
+                            hard_errors=metrics["hard_errors"],
+                            duplicate_pairs=metrics["duplicate_pairs"],
                             supported_by_en=metrics["supported_by_en"],
                             review_records=metrics["review_records"],
                             api_calls=calls, cached_jobs=cached, errors=errors,
                             valid_records=0)
                         status.event(
-                            "%s: %d refs; %.1f%% structure; EN %d; review %d" %
-                            (stem, metrics["references"], metrics["structural_percent"],
-                             metrics["supported_by_en"], metrics["review_records"])
+                            "%s: %d refs; %.1f%% no hard error; EN %d; typography %d; hard %d" %
+                            (stem, metrics["references"], metrics["parseable_percent"],
+                             metrics["supported_by_en"], metrics["typography_review"],
+                             metrics["hard_errors"])
                         )
     if args.prepare_only:
         print("PREPARE ONLY; API 0; SQL 0", flush=True)
@@ -334,10 +385,21 @@ def main():
     comparison, metrics = summarize(rows, en, catalog, done, total, calls, cached, errors)
     metrics["pages_requested"] = [args.start, args.end]
     metrics["pages_covered"] = sorted({r["image_page"] for r in rows})
+    metrics["pages_with_checkpoints"] = sorted({
+        int(p.name.split("_")[1])
+        for p in OUT.glob("image_????_?.result.json")
+    })
     metrics["records_in_requested_pages"] = sum(args.start <= r["image_page"] <= args.end for r in rows)
     metrics["failures"] = failures
     save(OUT / "all_records.json", rows)
     save(OUT / "comparison.json", comparison)
+    soft, hard, duplicates = quality_groups(comparison)
+    save(OUT / "quality_audit.json", {
+        "typography_review_ids": [r["id"] for r in soft],
+        "hard_error_ids": [r["id"] for r in hard],
+        "potential_cross_side_duplicate_pairs": duplicates,
+        "verified": 0, "sql_writes": False
+    })
     save(OUT / "review_queue.json",
          [r for r in comparison if r.get("review_status") == "REVIEW"])
     save(OUT / "summary.json", metrics)
@@ -351,10 +413,10 @@ def main():
     if status:
         status.finish(
             "warning" if errors else "completed",
-            "FR1988 pages %d-%d: %d refs; structure %.1f%%; EN %d; review %d; errors %d" %
+            "FR1988 pages %d-%d: %d refs; parseable %.1f%%; EN %d; typography %d; hard %d; errors %d" %
             (args.start, args.end, metrics["references"],
-             metrics["structural_percent"], metrics["supported_by_en"],
-             metrics["review_records"], errors)
+             metrics["parseable_percent"], metrics["supported_by_en"],
+             metrics["typography_review"], metrics["hard_errors"], errors)
         )
     return 1 if errors else 0
 
