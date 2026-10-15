@@ -1,0 +1,179 @@
+[
+  {
+    "id": "fr88v2:p0421:L:01",
+    "edition": "fr88v2",
+    "image_page": 421,
+    "side": "L",
+    "source_image": "image_0421.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "2 Ch 26 1-2",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.27,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 26,
+        "verse": 1,
+        "end_verse": 2,
+        "suffix": "",
+        "literal": "26 1-2",
+        "book_code": "2Chr",
+        "book_printed": "2 Ch",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0421:L:02",
+    "edition": "fr88v2",
+    "image_page": 421,
+    "side": "L",
+    "source_image": "image_0421.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "13 4-5",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.58,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 13,
+        "verse": 4,
+        "end_verse": 5,
+        "suffix": "",
+        "literal": "13 4-5",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0421:L:03",
+    "edition": "fr88v2",
+    "image_page": 421,
+    "side": "L",
+    "source_image": "image_0421.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "1 R 14 10+",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.59,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 14,
+        "verse": 10,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "14 10+",
+        "book_code": "1Kgs",
+        "book_printed": "1 R",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0421:L:04",
+    "edition": "fr88v2",
+    "image_page": 421,
+    "side": "L",
+    "source_image": "image_0421.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "2 Ch 26 3-4, 21-23",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.79,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "26 3-4, 21-23",
+        "reason": "notation_not_covered",
+        "book_code": "2Chr",
+        "book_printed": "2 Ch",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0421:R:01",
+    "edition": "fr88v2",
+    "image_page": 421,
+    "side": "R",
+    "source_image": "image_0421.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "1 R 4 2+",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.3,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 4,
+        "verse": 2,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "4 2+",
+        "book_code": "1Kgs",
+        "book_printed": "1 R",
+        "status": "PARSED"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0421:R:02",
+    "edition": "fr88v2",
+    "image_page": 421,
+    "side": "R",
+    "source_image": "image_0421.jpg",
+    "kind": "REFERENCE",
+    "raw_line": "10 30",
+    "page_book_header": null,
+    "source_chapter": null,
+    "source_verse": null,
+    "source_anchor_confident": false,
+    "y_fraction": 0.6,
+    "layout_uncertain": false,
+    "notes": "",
+    "verified": false,
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 10,
+        "verse": 30,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "10 30",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  }
+]
