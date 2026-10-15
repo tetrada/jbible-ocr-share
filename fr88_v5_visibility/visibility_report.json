@@ -1,0 +1,222 @@
+{
+  "schema": "jbible.fr88.v5.visibility.public-report.v1",
+  "pages": [
+    32,
+    32
+  ],
+  "v5_counts": {
+    "rows": 31,
+    "reference_rows": 30,
+    "segments": 34,
+    "parsed": 29,
+    "catalog_VALID": 29,
+    "parse_review": 5,
+    "catalog_MISSING_BOOK": 4,
+    "section_labels": 1,
+    "catalog_NOT_CHECKABLE": 1
+  },
+  "visibility_counts": {
+    "COMPLETE": 30,
+    "CUT_OFF": 1,
+    "UNREADABLE": 0,
+    "UNSPECIFIED": 0
+  },
+  "cutoff_regression": {
+    "schema": "jbible.fr88.v5.cutoff-holdout.v1",
+    "human_verified_visible_prefix": "↗ 1 Co 15",
+    "page": 32,
+    "side": "R",
+    "not_visible": "Any trailing verse digits or punctuation after this prefix",
+    "cases": {
+      "v2": {
+        "result": "UNVERIFIED_COMPLETION_BEYOND_VISIBLE_TEXT",
+        "observed_raw_line": "↗ 1 Co 15 45",
+        "ocr_visibility_status": "UNSPECIFIED",
+        "row_id": "fr88v2:p0032:R:16",
+        "full_reference_verified": false
+      },
+      "v3": {
+        "result": "UNVERIFIED_COMPLETION_BEYOND_VISIBLE_TEXT",
+        "observed_raw_line": "↗ 1 Co 15 45",
+        "ocr_visibility_status": "UNSPECIFIED",
+        "row_id": "fr88v3:p0032:R:17",
+        "full_reference_verified": false
+      },
+      "v4": {
+        "result": "UNVERIFIED_COMPLETION_BEYOND_VISIBLE_TEXT",
+        "observed_raw_line": "↗ 1 Co 15 2",
+        "ocr_visibility_status": "UNSPECIFIED",
+        "row_id": "fr88v3:p0032:R:17",
+        "full_reference_verified": false
+      },
+      "v5": {
+        "result": "UNVERIFIED_COMPLETION_BEYOND_VISIBLE_TEXT",
+        "observed_raw_line": "↗ 1 Co 15 4",
+        "ocr_visibility_status": "CUT_OFF",
+        "row_id": "fr88v3:p0032:R:17",
+        "full_reference_verified": false
+      }
+    },
+    "v5_pass": false,
+    "not_full_reference_accuracy": true,
+    "sql_writes": false,
+    "api_calls_for_evaluation": 0
+  },
+  "rows_page_32_right": [
+    {
+      "id": "fr88v3:p0032:R:01",
+      "kind": "REFERENCE",
+      "raw_line": "Ps 104 14s",
+      "y_fraction": 0.106,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:02",
+      "kind": "REFERENCE",
+      "raw_line": "Ps 104 24",
+      "y_fraction": 0.158,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:03",
+      "kind": "REFERENCE",
+      "raw_line": "Qo 3 11; 7 2",
+      "y_fraction": 0.171,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:04",
+      "kind": "REFERENCE",
+      "raw_line": "Si 39 21,33",
+      "y_fraction": 0.184,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:05",
+      "kind": "REFERENCE",
+      "raw_line": "1 Tm 4 4",
+      "y_fraction": 0.197,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:06",
+      "kind": "REFERENCE",
+      "raw_line": "Ex 20 8+",
+      "y_fraction": 0.276,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:07",
+      "kind": "REFERENCE",
+      "raw_line": "↗ Ex 20 11s",
+      "y_fraction": 0.289,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:08",
+      "kind": "REFERENCE",
+      "raw_line": "31 12s",
+      "y_fraction": 0.302,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:09",
+      "kind": "REFERENCE",
+      "raw_line": "↗ He 4 4",
+      "y_fraction": 0.315,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:10",
+      "kind": "REFERENCE",
+      "raw_line": "Jr 10 11s",
+      "y_fraction": 0.393,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:11",
+      "kind": "SECTION_LABEL",
+      "raw_line": "1 1 - 2 4",
+      "y_fraction": 0.441,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:12",
+      "kind": "REFERENCE",
+      "raw_line": "Qo 3 20s;",
+      "y_fraction": 0.67,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:13",
+      "kind": "REFERENCE",
+      "raw_line": "12 7",
+      "y_fraction": 0.684,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:14",
+      "kind": "REFERENCE",
+      "raw_line": "↗ Sg 15 8,",
+      "y_fraction": 0.697,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:15",
+      "kind": "REFERENCE",
+      "raw_line": "Ps 104 29s",
+      "y_fraction": 0.71,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:16",
+      "kind": "REFERENCE",
+      "raw_line": "Jb 34 14s;",
+      "y_fraction": 0.723,
+      "visibility_status": "COMPLETE",
+      "visually_truncated": false,
+      "visibility_note": ""
+    },
+    {
+      "id": "fr88v3:p0032:R:17",
+      "kind": "REFERENCE",
+      "raw_line": "↗ 1 Co 15 4",
+      "y_fraction": 0.736,
+      "visibility_status": "CUT_OFF",
+      "visually_truncated": true,
+      "visibility_note": "right edge of page clips the line after visible glyph '4'"
+    }
+  ],
+  "no_provider_response_or_scans": true,
+  "sql_writes": false
+}
