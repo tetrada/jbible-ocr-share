@@ -180,7 +180,7 @@ def build():
         "note": "Unverified optical transcription differences, use original scans before choosing."
     }
     tmp = OUTFILE.with_name(OUTFILE.name + ".tmp")
-    with zipfile.ZipFile(str(tmp), "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as z:
+    with zipfile.ZipFile(str(tmp), "w", compression=zipfile.ZIP_DEFLATED) as z:
         z.writestr("review_report.html", render_html(cases))
         z.writestr("review_cases.json", json.dumps(
             {"summary": data, "cases": cases}, ensure_ascii=False, indent=2).encode("utf-8"))
