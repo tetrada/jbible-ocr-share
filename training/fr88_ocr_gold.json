@@ -188,6 +188,22 @@
       "inclusion": "prompt_example",
       "note": "Human verified the printed row against the original scan. Baseline OCR already reproduced the same character sequence; this is a scan-confirmed example, NOT a measured correction.",
       "baseline_observation": "1 M 2 52"
+    },
+    {
+      "id": "GOLD-0013",
+      "verification": "human_confirmed_from_original_scan",
+      "source": "Authenticated JBible private review webpage (text only)",
+      "case_id": "D010",
+      "image_page": 34,
+      "side": "R",
+      "baseline_ocr_error": "Ap 22 1s, [V2]; ↗ Ap 22 1s, 2 [V3]",
+      "visible_prefix": "↗ Ap 22 1s,1",
+      "corrected_raw_line": "↗ Ap 22 1s,1",
+      "visually_truncated": true,
+      "visibility_status": "CUT_OFF",
+      "typography": "The original scan is cut off. Only the visible prefix ↗ Ap 22 1s,1 is human-confirmed; NEVER invent trailing unseen verse digits, punctuation, or book context. Mark this row CUT_OFF and require visual review.",
+      "inclusion": "prompt_example",
+      "note": "page margin is cut, cant see right from that Exact full reference is UNKNOWN; this is NOT a verified complete citation."
     }
   ],
   "held_out_examples": [
@@ -255,6 +271,21 @@
       "expected_raw_line": "= 15",
       "source": "Human-reviewed original Bible page",
       "note": "Printed equals sign and number confirmed; semantic note type is not yet verified."
+    },
+    {
+      "id": "EVAL-CUT-0001",
+      "case_id": "D051",
+      "verification": "human_confirmed_from_original_scan",
+      "inclusion": "holdout",
+      "image_page": 32,
+      "side": "R",
+      "v2_row_id": "fr88v2:p0032:R:16",
+      "baseline_y_fraction": 0.795,
+      "expected_visible_prefix": "↗ 1 Co 15",
+      "visually_truncated": true,
+      "visibility_status": "CUT_OFF",
+      "expected_full_reference": null,
+      "note": "its cut, not visible after Only the visible prefix is confirmed; any additional characters are unverified; held out of DeepSeek prompts."
     }
   ],
   "learning_policy": {
@@ -265,6 +296,8 @@
     "minimum_distinct_examples_before_full_20_page_retest": 20,
     "minimum_verified_prompt_examples_for_small_pilot": 12,
     "minimum_held_out_scan_confirmed_examples_for_evaluation": 5,
-    "split_strategy": "Holdout cases never enter prompts; one cut-off page 34 reference D010 excluded; D003 section label excluded from positive REFERENCE examples."
+    "split_strategy": "Holdout cases never enter prompts; one cut-off page 34 reference D010 excluded; D003 section label excluded from positive REFERENCE examples.",
+    "prevent_completion_of_cut_references": true,
+    "incomplete_prefix_holdout_not_counted_as_full_reference_accuracy": true
   }
 }
