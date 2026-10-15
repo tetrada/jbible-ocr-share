@@ -27,6 +27,7 @@ from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 import jbible_v79_typography as ocr
 import jbible_v711_catalog as bible
 from jbible_dual import compare
+from fr88_multibook import normalize_records
 import jbible_status_bridge as bridge
 from jbible_status_bridge import AsyncStatus
 
@@ -48,6 +49,7 @@ bridge.WIDGETS = [
     {"type": "metric", "title": "Typography review", "metric": "typography_review"},
     {"type": "metric", "title": "Structural errors", "metric": "hard_errors"},
     {"type": "metric", "title": "Potential duplicate pairs", "metric": "duplicate_pairs"},
+    {"type": "metric", "title": "Multi-book records split", "metric": "split_parent_records"},
     {"type": "metric", "title": "Supported by EN", "metric": "supported_by_en"},
     {"type": "metric", "title": "DeepSeek calls", "metric": "api_calls"},
     {"type": "events", "title": "OCR activity"},
@@ -231,7 +233,8 @@ def quality_groups(comparison):
 
 
 def summarize(rows, en, catalog, completed, total, calls, cached, errors):
-    comparison = compare(rows, en, catalog, (1, 50))
+    derived, split_audit = normalize_records(rows, RAW / "jbible_catalog.csv")
+    comparison = compare(derived, en, catalog, (1, 50))
     refs = [r for r in comparison if r.get("kind") == "REFERENCE"]
     counts = Counter(r.get("review_status") for r in refs)
     accepted = counts["CANDIDATE_UNVERIFIED"] + counts["SUPPORTED_BY_EN"]
@@ -250,6 +253,10 @@ def summarize(rows, en, catalog, completed, total, calls, cached, errors):
         "typography_review": len(soft),
         "hard_errors": len(hard),
         "duplicate_pairs": len(duplicates),
+        "raw_ocr_records": split_audit["raw_records"],
+        "split_parent_records": len(split_audit["split_parent_ids"]),
+        "split_derived_records": split_audit["split_children"],
+        "unsplit_multibook_candidates": len(split_audit["unsplit_multibook_candidates"]),
         "visually_excluded_margins": [
             {"page": page, "side": side, "why": "confirmed empty by human"}
             for page, side in sorted(CONFIRMED_EMPTY_MARGINS)
@@ -386,6 +393,7 @@ def main():
                             typography_review=metrics["typography_review"],
                             hard_errors=metrics["hard_errors"],
                             duplicate_pairs=metrics["duplicate_pairs"],
+                            split_parent_records=metrics["split_parent_records"],
                             supported_by_en=metrics["supported_by_en"],
                             review_records=metrics["review_records"],
                             api_calls=calls, cached_jobs=cached, errors=errors,
@@ -410,7 +418,11 @@ def main():
     })
     metrics["records_in_requested_pages"] = sum(args.start <= r["image_page"] <= args.end for r in rows)
     metrics["failures"] = failures
+    # Preserve raw OCR record set; publish independent, revalidated derived records.
+    derived, split_audit = normalize_records(rows, RAW / "jbible_catalog.csv")
     save(OUT / "all_records.json", rows)
+    save(OUT / "derived_records.json", derived)
+    save(OUT / "multibook_audit.json", split_audit)
     save(OUT / "comparison.json", comparison)
     soft, hard, duplicates = quality_groups(comparison)
     save(OUT / "quality_audit.json", {
