@@ -1,0 +1,3193 @@
+{
+  "schema": "jbible.fr88.ocr.v3.review.v1",
+  "status": "UNVERIFIED_NEEDS_ORIGINAL_SCAN",
+  "cases": [
+    {
+      "case_id": "D001",
+      "page": 31,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0031:L:04",
+          "image_page": 31,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Jn 1 1-3",
+          "y_fraction": 0.402,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "John",
+              "chapter": 1,
+              "verse": 1,
+              "end_chapter": null,
+              "end_verse": 3,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "1 1-3"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0031:L:04",
+          "image_page": 31,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Jn 1 1-3",
+          "y_fraction": 0.375,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "John",
+              "chapter": 1,
+              "verse": 1,
+              "end_chapter": null,
+              "end_verse": 3,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "1 1-3"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D002",
+      "page": 31,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0031:L:07",
+          "image_page": 31,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "2 Co 4 6",
+          "y_fraction": 0.452,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "2Cor",
+              "chapter": 4,
+              "verse": 6,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "4 6"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0031:L:07",
+          "image_page": 31,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ 2 Co 4 6",
+          "y_fraction": 0.44,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "2Cor",
+              "chapter": 4,
+              "verse": 6,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "4 6"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D003",
+      "page": 32,
+      "side": "R",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0032:R:11",
+          "image_page": 32,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "11-24",
+          "y_fraction": 0.36,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": null,
+              "chapter": 11,
+              "verse": null,
+              "end_chapter": 24,
+              "end_verse": null,
+              "type": "CHAPTER_RANGE",
+              "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT",
+              "literal": "11-24"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0032:R:12",
+          "image_page": 32,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Qo 3 20s; 12 7",
+          "y_fraction": 0.54,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Eccl",
+              "chapter": 3,
+              "verse": 20,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 20s"
+            },
+            {
+              "book_code": "Eccl",
+              "chapter": 12,
+              "verse": 7,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "12 7"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0032:R:11",
+          "image_page": 32,
+          "side": "R",
+          "kind": "SECTION_LABEL",
+          "raw_line": "1 1 - 2 4",
+          "y_fraction": 0.6,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": []
+        },
+        {
+          "id": "fr88v3:p0032:R:12",
+          "image_page": 32,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Qo 3 20s;",
+          "y_fraction": 0.72,
+          "typography_evidence": "3 bold chapter, 20 regular verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Eccl",
+              "chapter": 3,
+              "verse": 20,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 20s"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0032:R:13",
+          "image_page": 32,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "12 7",
+          "y_fraction": 0.735,
+          "typography_evidence": "12 bold chapter, 7 regular verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": null,
+              "chapter": 12,
+              "verse": 7,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT",
+              "literal": "12 7"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D004",
+      "page": 33,
+      "side": "R",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0033:R:01",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "1 Co 11 8-9",
+          "y_fraction": 0.06,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "1Cor",
+              "chapter": 11,
+              "verse": 8,
+              "end_chapter": null,
+              "end_verse": 9,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "11 8-9"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0033:R:02",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "1 Tm 2 13",
+          "y_fraction": 0.075,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "1Tim",
+              "chapter": 2,
+              "verse": 13,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "2 13"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0033:R:03",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Mt 19 5p",
+          "y_fraction": 0.19,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Matt",
+              "chapter": 19,
+              "verse": 5,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "19 5p"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0033:R:04",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Ep 5 31",
+          "y_fraction": 0.2,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Eph",
+              "chapter": 5,
+              "verse": 31,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "5 31"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0033:R:05",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "1 Co 6 16",
+          "y_fraction": 0.215,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "1Cor",
+              "chapter": 6,
+              "verse": 16,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "6 16"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0033:R:01",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ 1 Co 11 8-9",
+          "y_fraction": 0.06,
+          "typography_evidence": "1 = book ordinal, bold 11 = chapter, regular 8-9 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "1Cor",
+              "chapter": 11,
+              "verse": 8,
+              "end_chapter": null,
+              "end_verse": 9,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "11 8-9"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0033:R:02",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ 1 Tm 2 13",
+          "y_fraction": 0.08,
+          "typography_evidence": "1 = book ordinal, bold 2 = chapter, regular 13 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "1Tim",
+              "chapter": 2,
+              "verse": 13,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "2 13"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0033:R:03",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Mt 19 5p",
+          "y_fraction": 0.19,
+          "typography_evidence": "bold 19 = chapter, regular 5 with suffix p = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Matt",
+              "chapter": 19,
+              "verse": 5,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "19 5p"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0033:R:04",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ep 5 31",
+          "y_fraction": 0.21,
+          "typography_evidence": "bold 5 = chapter, regular 31 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Eph",
+              "chapter": 5,
+              "verse": 31,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "5 31"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0033:R:05",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ 1 Co 6 16",
+          "y_fraction": 0.23,
+          "typography_evidence": "1 = book ordinal, bold 6 = chapter, regular 16 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "1Cor",
+              "chapter": 6,
+              "verse": 16,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "6 16"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D005",
+      "page": 33,
+      "side": "R",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0033:R:07",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Jn 8 44",
+          "y_fraction": 0.38,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "John",
+              "chapter": 8,
+              "verse": 44,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "8 44"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0033:R:08",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Ap 12 9; 20 2",
+          "y_fraction": 0.39,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rev",
+              "chapter": 12,
+              "verse": 9,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "12 9"
+            },
+            {
+              "book_code": "Rev",
+              "chapter": 20,
+              "verse": 2,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "20 2"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0033:R:09",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Rm 5 12-21",
+          "y_fraction": 0.4,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 5,
+              "verse": 12,
+              "end_chapter": null,
+              "end_verse": 21,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "5 12-21"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0033:R:07",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Jn 8 44",
+          "y_fraction": 0.38,
+          "typography_evidence": "bold 8 = chapter, regular 44 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "John",
+              "chapter": 8,
+              "verse": 44,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "8 44"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0033:R:08",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ap 12 9; 20 2",
+          "y_fraction": 0.4,
+          "typography_evidence": "bold 12 = chapter, regular 9; bold 20 = chapter, regular 2 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rev",
+              "chapter": 12,
+              "verse": 9,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "12 9"
+            },
+            {
+              "book_code": "Rev",
+              "chapter": 20,
+              "verse": 2,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "20 2"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0033:R:09",
+          "image_page": 33,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Rm 5 12-21",
+          "y_fraction": 0.42,
+          "typography_evidence": "bold 5 = chapter, regular 12-21 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 5,
+              "verse": 12,
+              "end_chapter": null,
+              "end_verse": 21,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "5 12-21"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D006",
+      "page": 34,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0034:L:02",
+          "image_page": 34,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "2 Co 11 3",
+          "y_fraction": 0.24,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "2Cor",
+              "chapter": 11,
+              "verse": 3,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "11 3"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0034:L:02",
+          "image_page": 34,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ 2 Co 11 3",
+          "y_fraction": 0.45,
+          "typography_evidence": "2 Co = book abbreviation with ordinal, bold 11 = chapter, regular 3 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "2Cor",
+              "chapter": 11,
+              "verse": 3,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "11 3"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D007",
+      "page": 34,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0034:L:04",
+          "image_page": 34,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ap 12 17",
+          "y_fraction": 0.39,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rev",
+              "chapter": 12,
+              "verse": 17,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "12 17"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0034:L:05",
+          "image_page": 34,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ap 12 2",
+          "y_fraction": 0.46,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rev",
+              "chapter": 12,
+              "verse": 2,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "12 2"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0034:L:04",
+          "image_page": 34,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ap 12 17",
+          "y_fraction": 0.68,
+          "typography_evidence": "Ap = book abbreviation, bold 12 = chapter, regular 17 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rev",
+              "chapter": 12,
+              "verse": 17,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "12 17"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0034:L:05",
+          "image_page": 34,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ap 12 2",
+          "y_fraction": 0.76,
+          "typography_evidence": "Ap = book abbreviation, bold 12 = chapter, regular 2 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rev",
+              "chapter": 12,
+              "verse": 2,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "12 2"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D008",
+      "page": 34,
+      "side": "R",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0034:R:02",
+          "image_page": 34,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Rm 8 20",
+          "y_fraction": 0.18,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 8,
+              "verse": 20,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "8 20"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0034:R:02",
+          "image_page": 34,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Rm 8 20",
+          "y_fraction": 0.18,
+          "typography_evidence": "bold 8 = chapter, regular 20 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 8,
+              "verse": 20,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "8 20"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D009",
+      "page": 34,
+      "side": "R",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0034:R:09",
+          "image_page": 34,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Rm 5 12",
+          "y_fraction": 0.45,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 5,
+              "verse": 12,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "5 12"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0034:R:09",
+          "image_page": 34,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Rm 5 12",
+          "y_fraction": 0.48,
+          "typography_evidence": "bold 5 = chapter, regular 12 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 5,
+              "verse": 12,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "5 12"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D010",
+      "page": 34,
+      "side": "R",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0034:R:11",
+          "image_page": 34,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Ap 22 1s,",
+          "y_fraction": 0.65,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rev",
+              "chapter": null,
+              "verse": null,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "UNRESOLVED_NUMERIC",
+              "status": "NEEDS_NOTATION_REVIEW",
+              "literal": "22 1s,"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0034:R:11",
+          "image_page": 34,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ap 22 1s, 2",
+          "y_fraction": 0.72,
+          "typography_evidence": "bold 22 = chapter, regular 1 = verse with s suffix, comma, regular 2 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rev",
+              "chapter": null,
+              "verse": null,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "UNRESOLVED_NUMERIC",
+              "status": "NEEDS_NOTATION_REVIEW",
+              "literal": "22 1s, 2"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D011",
+      "page": 35,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0035:L:06",
+          "image_page": 35,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "1 Jn 3 12",
+          "y_fraction": 0.492,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "1John",
+              "chapter": 3,
+              "verse": 12,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 12"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0035:L:07",
+          "image_page": 35,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Mt 23 35",
+          "y_fraction": 0.618,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Matt",
+              "chapter": 23,
+              "verse": 35,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "23 35"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0035:L:08",
+          "image_page": 35,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "He 12 24",
+          "y_fraction": 0.635,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Heb",
+              "chapter": 12,
+              "verse": 24,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "12 24"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0035:L:06",
+          "image_page": 35,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ 1 Jn 3 12",
+          "y_fraction": 0.45,
+          "typography_evidence": "↗ arrow, 1 Jn = book abbreviation (1 = book ordinal), bold 3 = chapter, regular 12 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "1John",
+              "chapter": 3,
+              "verse": 12,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 12"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0035:L:07",
+          "image_page": 35,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Mt 23 35",
+          "y_fraction": 0.53,
+          "typography_evidence": "↗ arrow, Mt = book abbreviation, bold 23 = chapter, regular 35 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Matt",
+              "chapter": 23,
+              "verse": 35,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "23 35"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0035:L:08",
+          "image_page": 35,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ He 12 24",
+          "y_fraction": 0.55,
+          "typography_evidence": "↗ arrow, He = book abbreviation, bold 12 = chapter, regular 24 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Heb",
+              "chapter": 12,
+              "verse": 24,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "12 24"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D012",
+      "page": 37,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0037:L:02",
+          "image_page": 37,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Si 16 7",
+          "y_fraction": 0.168,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Sir",
+              "chapter": 16,
+              "verse": 7,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "16 7"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0037:L:03",
+          "image_page": 37,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ba 3 26s",
+          "y_fraction": 0.182,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Bar",
+              "chapter": 3,
+              "verse": 26,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 26s"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0037:L:04",
+          "image_page": 37,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Sg 14 6-7",
+          "y_fraction": 0.196,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Wis",
+              "chapter": 14,
+              "verse": 6,
+              "end_chapter": null,
+              "end_verse": 7,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "14 6-7"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0037:L:05",
+          "image_page": 37,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Mt 24 37sp",
+          "y_fraction": 0.21,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Matt",
+              "chapter": null,
+              "verse": null,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "UNRESOLVED_NUMERIC",
+              "status": "NEEDS_NOTATION_REVIEW",
+              "literal": "24 37sp"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0037:L:02",
+          "image_page": 37,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ba 3 26s",
+          "y_fraction": 0.176,
+          "typography_evidence": "Ba = book abbreviation, bold 3 = chapter, regular 26 = verse, s suffix",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Bar",
+              "chapter": 3,
+              "verse": 26,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 26s"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0037:L:03",
+          "image_page": 37,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Sg 14 6-7",
+          "y_fraction": 0.198,
+          "typography_evidence": "Sg = book abbreviation, bold 14 = chapter, regular 6-7 = verse range",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Wis",
+              "chapter": 14,
+              "verse": 6,
+              "end_chapter": null,
+              "end_verse": 7,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "14 6-7"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0037:L:04",
+          "image_page": 37,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Mt 24 37sp",
+          "y_fraction": 0.22,
+          "typography_evidence": "Mt = book abbreviation, bold 24 = chapter, regular 37 = verse, sp suffix",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Matt",
+              "chapter": null,
+              "verse": null,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "UNRESOLVED_NUMERIC",
+              "status": "NEEDS_NOTATION_REVIEW",
+              "literal": "24 37sp"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D013",
+      "page": 37,
+      "side": "R",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0037:R:02",
+          "image_page": 37,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "2 P 25",
+          "y_fraction": 0.35,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "2Pet",
+              "chapter": 25,
+              "verse": null,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "CHAPTER_ONLY",
+              "status": "PARSED",
+              "literal": "25"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0037:R:02",
+          "image_page": 37,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ 2 P 2 5",
+          "y_fraction": 0.22,
+          "typography_evidence": "2 = book ordinal, P = book abbreviation, bold 2 = chapter, regular 5 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "2Pet",
+              "chapter": 2,
+              "verse": 5,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "2 5"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D014",
+      "page": 37,
+      "side": "R",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0037:R:04",
+          "image_page": 37,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Sg 10 4",
+          "y_fraction": 0.72,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Wis",
+              "chapter": 10,
+              "verse": 4,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "10 4"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0037:R:05",
+          "image_page": 37,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "2 P 25",
+          "y_fraction": 0.74,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "2Pet",
+              "chapter": 25,
+              "verse": null,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "CHAPTER_ONLY",
+              "status": "PARSED",
+              "literal": "25"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0037:R:04",
+          "image_page": 37,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Sg 10 4",
+          "y_fraction": 0.64,
+          "typography_evidence": "Sg = book abbreviation (regular), bold 10 = chapter, regular 4 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Wis",
+              "chapter": 10,
+              "verse": 4,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "10 4"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0037:R:05",
+          "image_page": 37,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ 2 P 2 5",
+          "y_fraction": 0.66,
+          "typography_evidence": "2 = book ordinal, P = book abbreviation, bold 2 = chapter, regular 5 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "2Pet",
+              "chapter": 2,
+              "verse": 5,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "2 5"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D015",
+      "page": 39,
+      "side": "R",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0039:R:04",
+          "image_page": 39,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Si 44 18",
+          "y_fraction": 0.3,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Sir",
+              "chapter": 44,
+              "verse": 18,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "44 18"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0039:R:05",
+          "image_page": 39,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Is 54 9-10",
+          "y_fraction": 0.31,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Isa",
+              "chapter": 54,
+              "verse": 9,
+              "end_chapter": null,
+              "end_verse": 10,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "54 9-10"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0039:R:04",
+          "image_page": 39,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Si 44 18",
+          "y_fraction": 0.5,
+          "typography_evidence": "Si abbreviation, bold 44 = chapter, regular 18 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Sir",
+              "chapter": 44,
+              "verse": 18,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "44 18"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0039:R:05",
+          "image_page": 39,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Is 54 9-10",
+          "y_fraction": 0.52,
+          "typography_evidence": "Is abbreviation, bold 54 = chapter, regular 9-10 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Isa",
+              "chapter": 54,
+              "verse": 9,
+              "end_chapter": null,
+              "end_verse": 10,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "54 9-10"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D016",
+      "page": 40,
+      "side": "L",
+      "change": "delete",
+      "v2": [
+        {
+          "id": "fr88v2:p0040:L:01",
+          "image_page": 40,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "10 6",
+          "y_fraction": 0.27,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": null,
+              "chapter": 10,
+              "verse": 6,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT",
+              "literal": "10 6"
+            }
+          ]
+        }
+      ],
+      "v3": [],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D017",
+      "page": 41,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0041:L:01",
+          "image_page": 41,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Sg 10 5",
+          "y_fraction": 0.71,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Wis",
+              "chapter": 10,
+              "verse": 5,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "10 5"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0041:L:02",
+          "image_page": 41,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ac 2 5-12",
+          "y_fraction": 0.72,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 2,
+              "verse": 5,
+              "end_chapter": null,
+              "end_verse": 12,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "2 5-12"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0041:L:03",
+          "image_page": 41,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ap 7 9-10",
+          "y_fraction": 0.73,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rev",
+              "chapter": 7,
+              "verse": 9,
+              "end_chapter": null,
+              "end_verse": 10,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "7 9-10"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0041:L:01",
+          "image_page": 41,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Sg 10 5",
+          "y_fraction": 0.7,
+          "typography_evidence": "10 = chapter in regular type, 5 = verse in regular type",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Wis",
+              "chapter": 10,
+              "verse": 5,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "10 5"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0041:L:02",
+          "image_page": 41,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ac 2 5-12",
+          "y_fraction": 0.71,
+          "typography_evidence": "2 = chapter in regular type, 5-12 = verse range in regular type",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 2,
+              "verse": 5,
+              "end_chapter": null,
+              "end_verse": 12,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "2 5-12"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0041:L:03",
+          "image_page": 41,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ap 7 9-10",
+          "y_fraction": 0.72,
+          "typography_evidence": "7 = chapter in regular type, 9-10 = verse range in regular type",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rev",
+              "chapter": 7,
+              "verse": 9,
+              "end_chapter": null,
+              "end_verse": 10,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "7 9-10"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0041:L:04",
+          "image_page": 41,
+          "side": "L",
+          "kind": "SECTION_LABEL",
+          "raw_line": "La tour de Babel a",
+          "y_fraction": 0.73,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": []
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D018",
+      "page": 42,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0042:L:01",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Sg 10 5",
+          "y_fraction": 0.32,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Wis",
+              "chapter": 10,
+              "verse": 5,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "10 5"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0042:L:02",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ac 7 2-3",
+          "y_fraction": 0.34,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 7,
+              "verse": 2,
+              "end_chapter": null,
+              "end_verse": 3,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "7 2-3"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0042:L:03",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "He 11 8s",
+          "y_fraction": 0.36,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Heb",
+              "chapter": 11,
+              "verse": 8,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "11 8s"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0042:L:04",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Jr 4 2",
+          "y_fraction": 0.53,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Jer",
+              "chapter": 4,
+              "verse": 2,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "4 2"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0042:L:05",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Si 44 21",
+          "y_fraction": 0.54,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Sir",
+              "chapter": 44,
+              "verse": 21,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "44 21"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0042:L:06",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ac 3 25",
+          "y_fraction": 0.55,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 3,
+              "verse": 25,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 25"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0042:L:07",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ga 3 8",
+          "y_fraction": 0.56,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Gal",
+              "chapter": 3,
+              "verse": 8,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 8"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0042:L:01",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Sg 10 5",
+          "y_fraction": 0.31,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Wis",
+              "chapter": 10,
+              "verse": 5,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "10 5"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0042:L:02",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ac 7 2-3",
+          "y_fraction": 0.33,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 7,
+              "verse": 2,
+              "end_chapter": null,
+              "end_verse": 3,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "7 2-3"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0042:L:03",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ He 11 8s",
+          "y_fraction": 0.35,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Heb",
+              "chapter": 11,
+              "verse": 8,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "11 8s"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0042:L:04",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Jr 4 2",
+          "y_fraction": 0.51,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Jer",
+              "chapter": 4,
+              "verse": 2,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "4 2"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0042:L:05",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Si 44 21",
+          "y_fraction": 0.52,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Sir",
+              "chapter": 44,
+              "verse": 21,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "44 21"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0042:L:06",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ac 3 25",
+          "y_fraction": 0.54,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 3,
+              "verse": 25,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 25"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0042:L:07",
+          "image_page": 42,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ga 3 8",
+          "y_fraction": 0.56,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Gal",
+              "chapter": 3,
+              "verse": 8,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 8"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D019",
+      "page": 44,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0044:L:05",
+          "image_page": 44,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "He 5-7",
+          "y_fraction": 0.73,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Heb",
+              "chapter": 5,
+              "verse": null,
+              "end_chapter": 7,
+              "end_verse": null,
+              "type": "CHAPTER_RANGE",
+              "status": "PARSED",
+              "literal": "5-7"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0044:L:05",
+          "image_page": 44,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ He 5-7",
+          "y_fraction": 0.89,
+          "typography_evidence": "bold 5-7 = chapter range",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Heb",
+              "chapter": 5,
+              "verse": null,
+              "end_chapter": 7,
+              "end_verse": null,
+              "type": "CHAPTER_RANGE",
+              "status": "PARSED",
+              "literal": "5-7"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D020",
+      "page": 44,
+      "side": "R",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0044:R:06",
+          "image_page": 44,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "He 11 12",
+          "y_fraction": 0.63,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Heb",
+              "chapter": 11,
+              "verse": 12,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "11 12"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0044:R:06",
+          "image_page": 44,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ He 11 12",
+          "y_fraction": 0.61,
+          "typography_evidence": "arrow, He abbreviation, bold 11 chapter, regular 12 verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Heb",
+              "chapter": 11,
+              "verse": 12,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "11 12"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D021",
+      "page": 44,
+      "side": "R",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0044:R:08",
+          "image_page": 44,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Rm 4",
+          "y_fraction": 0.66,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 4,
+              "verse": null,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "CHAPTER_ONLY",
+              "status": "PARSED",
+              "literal": "4"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0044:R:09",
+          "image_page": 44,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Ga 3 6s",
+          "y_fraction": 0.67,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Gal",
+              "chapter": 3,
+              "verse": 6,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 6s"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0044:R:10",
+          "image_page": 44,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Jc 2 23",
+          "y_fraction": 0.68,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Jas",
+              "chapter": 2,
+              "verse": 23,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "2 23"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0044:R:08",
+          "image_page": 44,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Rm 4",
+          "y_fraction": 0.67,
+          "typography_evidence": "arrow, Rm abbreviation, bold 4 chapter only",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 4,
+              "verse": null,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "CHAPTER_ONLY",
+              "status": "PARSED",
+              "literal": "4"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0044:R:09",
+          "image_page": 44,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ga 3 6s",
+          "y_fraction": 0.69,
+          "typography_evidence": "arrow, Ga abbreviation, bold 3 chapter, regular 6 with s suffix",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Gal",
+              "chapter": 3,
+              "verse": 6,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 6s"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0044:R:10",
+          "image_page": 44,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Jc 2 23",
+          "y_fraction": 0.71,
+          "typography_evidence": "arrow, Jc abbreviation, bold 2 chapter, regular 23 verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Jas",
+              "chapter": 2,
+              "verse": 23,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "2 23"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D022",
+      "page": 45,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0045:L:01",
+          "image_page": 45,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ac 7 6-7",
+          "y_fraction": 0.29,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 7,
+              "verse": 6,
+              "end_chapter": null,
+              "end_verse": 7,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "7 6-7"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0045:L:01",
+          "image_page": 45,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ac 7 6-7",
+          "y_fraction": 0.32,
+          "typography_evidence": "chapter 7 not visibly bold, verse 6-7 regular",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 7,
+              "verse": 6,
+              "end_chapter": null,
+              "end_verse": 7,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "7 6-7"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D023",
+      "page": 45,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0045:L:04",
+          "image_page": 45,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ga 3 17",
+          "y_fraction": 0.37,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Gal",
+              "chapter": 3,
+              "verse": 17,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 17"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0045:L:05",
+          "image_page": 45,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ac 13 20",
+          "y_fraction": 0.38,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 13,
+              "verse": 20,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "13 20"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0045:L:04",
+          "image_page": 45,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ga 3 17",
+          "y_fraction": 0.44,
+          "typography_evidence": "chapter 3 not visibly bold, verse 17 regular",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Gal",
+              "chapter": 3,
+              "verse": 17,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "3 17"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0045:L:05",
+          "image_page": 45,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ac 13 20",
+          "y_fraction": 0.46,
+          "typography_evidence": "chapter 13 not visibly bold, verse 20 regular",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 13,
+              "verse": 20,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "13 20"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D024",
+      "page": 46,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0046:L:01",
+          "image_page": 46,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ga 4 22",
+          "y_fraction": 0.09,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Gal",
+              "chapter": 4,
+              "verse": 22,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "4 22"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0046:L:01",
+          "image_page": 46,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ga 4 22",
+          "y_fraction": 0.11,
+          "typography_evidence": "Ga = book abbreviation, bold 4 = chapter, regular 22 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Gal",
+              "chapter": 4,
+              "verse": 22,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "4 22"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D025",
+      "page": 46,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0046:L:06",
+          "image_page": 46,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Rm 4 17",
+          "y_fraction": 0.46,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 4,
+              "verse": 17,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "4 17"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0046:L:06",
+          "image_page": 46,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Rm 4 17",
+          "y_fraction": 0.435,
+          "typography_evidence": "Rm = book abbreviation, bold 4 chapter, regular 17 verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 4,
+              "verse": 17,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "4 17"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D026",
+      "page": 46,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0046:L:08",
+          "image_page": 46,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Rm 4 11-12",
+          "y_fraction": 0.64,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 4,
+              "verse": 11,
+              "end_chapter": null,
+              "end_verse": 12,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "4 11-12"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0046:L:09",
+          "image_page": 46,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ac 7 8",
+          "y_fraction": 0.66,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 7,
+              "verse": 8,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "7 8"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0046:L:08",
+          "image_page": 46,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Rm 4 11-12",
+          "y_fraction": 0.655,
+          "typography_evidence": "Rm = book abbreviation, bold 4 chapter, regular 11-12 verse range",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 4,
+              "verse": 11,
+              "end_chapter": null,
+              "end_verse": 12,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "4 11-12"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0046:L:09",
+          "image_page": 46,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ac 7 8",
+          "y_fraction": 0.675,
+          "typography_evidence": "Ac = book abbreviation, bold 7 chapter, regular 8 verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 7,
+              "verse": 8,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "7 8"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D027",
+      "page": 47,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0047:L:01",
+          "image_page": 47,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "He 13 2",
+          "y_fraction": 0.27,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Heb",
+              "chapter": 13,
+              "verse": 2,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "13 2"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0047:L:01",
+          "image_page": 47,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ He 13 2",
+          "y_fraction": 0.17,
+          "typography_evidence": "He = book abbreviation, bold 13 = chapter, regular 2 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Heb",
+              "chapter": 13,
+              "verse": 2,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "13 2"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D028",
+      "page": 47,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0047:L:04",
+          "image_page": 47,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Rm 9 9",
+          "y_fraction": 0.66,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 9,
+              "verse": 9,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "9 9"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0047:L:04",
+          "image_page": 47,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Rm 9 9",
+          "y_fraction": 0.49,
+          "typography_evidence": "Rm = book abbreviation, bold 9 = chapter, regular 9 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 9,
+              "verse": 9,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "9 9"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D029",
+      "page": 49,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0049:L:02",
+          "image_page": 49,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗Lc 17 32",
+          "y_fraction": 0.352,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Luke",
+              "chapter": 17,
+              "verse": 32,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "17 32"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0049:L:02",
+          "image_page": 49,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Lc 17 32",
+          "y_fraction": 0.469,
+          "typography_evidence": "Lc = book, bold 17 = chapter, regular 32 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Luke",
+              "chapter": 17,
+              "verse": 32,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "17 32"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D030",
+      "page": 49,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0049:L:05",
+          "image_page": 49,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗Ap 14 10-11",
+          "y_fraction": 0.458,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rev",
+              "chapter": 14,
+              "verse": 10,
+              "end_chapter": null,
+              "end_verse": 11,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "14 10-11"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0049:L:05",
+          "image_page": 49,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ap 14 10-11",
+          "y_fraction": 0.577,
+          "typography_evidence": "Ap = book, bold 14 = chapter, regular 10-11 = verse range; reference wrapped across two baselines",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rev",
+              "chapter": 14,
+              "verse": 10,
+              "end_chapter": null,
+              "end_verse": 11,
+              "type": "VERSE_RANGE",
+              "status": "NEEDS_LAYOUT_REVIEW",
+              "literal": "14 10-11"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D031",
+      "page": 50,
+      "side": "L",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0050:L:01",
+          "image_page": 50,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "Ac 7 8",
+          "y_fraction": 0.645,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 7,
+              "verse": 8,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "7 8"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0050:L:01",
+          "image_page": 50,
+          "side": "L",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ac 7 8",
+          "y_fraction": 0.63,
+          "typography_evidence": "Ac = book abbreviation, bold 7 = chapter, regular 8 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Acts",
+              "chapter": 7,
+              "verse": 8,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "7 8"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    },
+    {
+      "case_id": "D032",
+      "page": 50,
+      "side": "R",
+      "change": "replace",
+      "v2": [
+        {
+          "id": "fr88v2:p0050:R:02",
+          "image_page": 50,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Ga 4 22-31",
+          "y_fraction": 0.14,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Gal",
+              "chapter": 4,
+              "verse": 22,
+              "end_chapter": null,
+              "end_verse": 31,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "4 22-31"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0050:R:03",
+          "image_page": 50,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Jn 8 31-37",
+          "y_fraction": 0.155,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "John",
+              "chapter": 8,
+              "verse": 31,
+              "end_chapter": null,
+              "end_verse": 37,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "8 31-37"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0050:R:04",
+          "image_page": 50,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "Rm 9 7",
+          "y_fraction": 0.33,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 9,
+              "verse": 7,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "9 7"
+            }
+          ]
+        },
+        {
+          "id": "fr88v2:p0050:R:05",
+          "image_page": 50,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "He 11 18",
+          "y_fraction": 0.345,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Heb",
+              "chapter": 11,
+              "verse": 18,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "11 18"
+            }
+          ]
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0050:R:02",
+          "image_page": 50,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Ga 4 22-31",
+          "y_fraction": 0.155,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Gal",
+              "chapter": 4,
+              "verse": 22,
+              "end_chapter": null,
+              "end_verse": 31,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "4 22-31"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0050:R:03",
+          "image_page": 50,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Jn 8 31-37",
+          "y_fraction": 0.172,
+          "typography_evidence": "",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "John",
+              "chapter": 8,
+              "verse": 31,
+              "end_chapter": null,
+              "end_verse": 37,
+              "type": "VERSE_RANGE",
+              "status": "PARSED",
+              "literal": "8 31-37"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0050:R:04",
+          "image_page": 50,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ Rm 9 7",
+          "y_fraction": 0.3,
+          "typography_evidence": "Rm = book abbreviation, bold 9 = chapter, regular 7 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Rom",
+              "chapter": 9,
+              "verse": 7,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "9 7"
+            }
+          ]
+        },
+        {
+          "id": "fr88v3:p0050:R:05",
+          "image_page": 50,
+          "side": "R",
+          "kind": "REFERENCE",
+          "raw_line": "↗ He 11 18",
+          "y_fraction": 0.315,
+          "typography_evidence": "He = book abbreviation, bold 11 = chapter, regular 18 = verse",
+          "typography_uncertain": false,
+          "references": [
+            {
+              "book_code": "Heb",
+              "chapter": 11,
+              "verse": 18,
+              "end_chapter": null,
+              "end_verse": null,
+              "type": "VERSE",
+              "status": "PARSED",
+              "literal": "11 18"
+            }
+          ]
+        }
+      ],
+      "review_state": "PENDING_IMAGE_REVIEW",
+      "confirmed_raw_line": null,
+      "human_notes": null
+    }
+  ],
+  "v3_section_labels_to_verify": [
+    {
+      "id": "fr88v3:p0032:R:11",
+      "image_page": 32,
+      "side": "R",
+      "kind": "SECTION_LABEL",
+      "raw_line": "1 1 - 2 4",
+      "y_fraction": 0.6,
+      "typography_evidence": "",
+      "typography_uncertain": false,
+      "references": []
+    },
+    {
+      "id": "fr88v3:p0041:L:04",
+      "image_page": 41,
+      "side": "L",
+      "kind": "SECTION_LABEL",
+      "raw_line": "La tour de Babel a",
+      "y_fraction": 0.73,
+      "typography_evidence": "",
+      "typography_uncertain": false,
+      "references": []
+    },
+    {
+      "id": "fr88v3:p0046:L:02",
+      "image_page": 46,
+      "side": "L",
+      "kind": "SECTION_LABEL",
+      "raw_line": "= 15",
+      "y_fraction": 0.205,
+      "typography_evidence": "section label with equals sign, not a citation",
+      "typography_uncertain": false,
+      "references": []
+    }
+  ],
+  "no_scanned_images_published": true
+}
