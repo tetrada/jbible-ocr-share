@@ -27,5 +27,13 @@ print("Review queue: %d existing, %d new, %d total"%(
 PY
 chmod 0644 "$TEMP"
 mv -f "$TEMP" "$FILE"
-echo 'QUEUE REFRESHED. Reload https://status.tetrada.eu/jbible-review/'
+JSTEMP="$(mktemp "$BASE/.app_refresh_XXXXXXXX")"
+trap 'rm -f "$TEMP" "$JSTEMP"' EXIT
+curl -fsSL --retry 3 --connect-timeout 20 \
+  https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main/tools/fr88_review_web_app.js \
+  -o "$JSTEMP"
+test -s "$JSTEMP"
+chmod 0644 "$JSTEMP"
+mv -f "$JSTEMP" "$BASE/app.js"
+echo 'QUEUE AND WEB REVIEW APP REFRESHED. Reload https://status.tetrada.eu/jbible-review/'
 echo 'Previously saved scan confirmations remain untouched.'
