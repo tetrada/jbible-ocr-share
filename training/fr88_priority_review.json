@@ -9,7 +9,8 @@
     "punctuation_arrow_only": 25,
     "reference_or_segmentation_changes": 7,
     "agreement_spot_checks": 12,
-    "total_review_cases": 19
+    "total_review_cases": 20,
+    "v4_regression_checks": 1
   },
   "definition": "Cosmetic-only ignores arrow glyphs and whitespace around semicolons/hyphens while retaining meaningful gaps between digit groups and row boundaries.",
   "safety": "Candidate findings are not OCR gold labels and cannot enter training without evidence from scanned pages.",
@@ -531,6 +532,34 @@
       "confirmed_raw_lines": [],
       "review_evidence": null,
       "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D051",
+      "page": 32,
+      "side": "R",
+      "issue": "V4 POSSIBLE REGRESSION: V2 and V3 read 1 Co 15 45, but the new example-trained V4 reads 1 Co 15 2. Confirm the printed verse number and bold chapter boundary.",
+      "left_label": "V2 & V3 agreed",
+      "right_label": "V4 learned OCR",
+      "right_version": "v4",
+      "target_y_fraction": 0.805,
+      "v2": [
+        {
+          "id": "fr88v3:p0032:R:17",
+          "raw_line": "↗ 1 Co 15 45",
+          "y_fraction": 0.795
+        }
+      ],
+      "v3": [
+        {
+          "id": "fr88v3:p0032:R:17",
+          "raw_line": "↗ 1 Co 15 2",
+          "y_fraction": 0.82
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "note": "V4 reading is structurally valid but not independently verified. This case must be held out of V4 few-shot prompts until assessed."
     }
   ],
   "note": "7 completed substantive disagreements plus 12 representative OCR-agreement spot checks. Agreement is not verification. After review, keep at least 5 of the newer scan-confirmed examples as held-out tests, train only on separate examples."
