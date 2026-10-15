@@ -1,0 +1,42 @@
+name: FR88 protected visual review web tests
+on:
+  push:
+    paths:
+      - "tools/fr88_review_web_server.py"
+      - "tools/fr88_review_web_app.js"
+      - "tools/fr88_review_web_index.html"
+      - "tools/fr88_review_nginx.py"
+      - "tools/fr88_review_publish.sh"
+      - "tools/install_fr88_review_web.sh"
+      - "tools/test_fr88_review_web.py"
+      - ".github/workflows/fr88-review-web-tests.yml"
+  workflow_dispatch:
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Python compilation
+        run: python -m py_compile tools/fr88_review_web_server.py tools/fr88_review_nginx.py tools/test_fr88_review_web.py
+      - name: Shell syntax
+        run: bash -n tools/fr88_review_publish.sh tools/install_fr88_review_web.sh
+      - name: JavaScript syntax
+        run: node --check tools/fr88_review_web_app.js
+      - name: Offline secured API regression
+        run: cd tools && python test_fr88_review_web.py
+      - name: Guard test: scans are never published to Git
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          publish=Path('tools/fr88_review_publish.sh').read_text()
+          assert "human_reviews.json" in publish
+          assert "git -C \"$REPO\" add -- \"$TARGET\"" in publish
+          assert "image_" not in publish
+          install=Path('tools/install_fr88_review_web.sh').read_text()
+          assert "127.0.0.1:8765" in Path('tools/README_fr88_review_web.md').read_text()
+          assert 'jbible-review' in install
+          print("PASS: read-only image hosting, text-only Git sync")
+          PY
