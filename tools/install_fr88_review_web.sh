@@ -107,7 +107,7 @@ systemctl restart jbible-fr88-review-web.service
 if [[ -f /etc/systemd/system/jbible-fr88-review-publish.timer ]]; then
   systemctl enable --now jbible-fr88-review-publish.timer
 fi
-curl -fsS --max-time 10 http://127.0.0.1:8765/healthz >/dev/null || {
+curl -fsS --max-time 10 http://127.0.0.1:8765/healthz | grep -q '"status": "ok"' || {
   echo 'Review web health check failed. Run systemctl status jbible-fr88-review-web.service' >&2
   exit 1
 }
