@@ -39,7 +39,7 @@ def build(base,gold,max_examples=20):
         prompt.extend(["","Gold "+x["id"]+":",
             "WRONG MODEL TRANSCRIPTION: "+str(x.get("baseline_ocr_error") or ""),
             "CORRECT PHYSICAL REFERENCE ROWS (one per line):",
-            "\\n".join("ROW %d: %s" % (i+1, line) for i,line in enumerate(correct_lines)),
+            "\n".join("ROW %d: %s" % (i+1, line) for i,line in enumerate(correct_lines)),
             "VISIBLE TYPOGRAPHY / INCLUSION RULE: "+str(x.get("typography") or "")])
     prompt.extend(["","When something similar appears, read the actual BOLD chapter and",
                    "regular verse typography. Never alter raw text just to make a valid Bible coordinate."])
