@@ -46,6 +46,39 @@
       "verification_status": "SCAN_CONFIRMED",
       "notes": "",
       "saved_at_utc": "2026-10-15T22:21:54.391149+00:00"
+    },
+    "D014": {
+      "choice": "v3",
+      "corrected_lines": [
+        "↗ Sg 10 4",
+        "↗ 2 P 2 5"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "",
+      "saved_at_utc": "2026-10-15T22:23:01.092371+00:00"
+    },
+    "D016": {
+      "choice": "v2",
+      "corrected_lines": [
+        "10 6"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "",
+      "saved_at_utc": "2026-10-15T22:23:14.520636+00:00"
+    },
+    "D017": {
+      "choice": "neither",
+      "corrected_lines": [
+        "↗ Sg 10 5",
+        "↗ Ac 2 5-12",
+        "↗ Ap 7 9-10"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "",
+      "saved_at_utc": "2026-10-15T22:23:54.567457+00:00"
     }
   }
 }
