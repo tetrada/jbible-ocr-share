@@ -17,7 +17,12 @@ def build(base,gold,max_examples=20):
             "human_confirmed_from_user_image","human_confirmed_from_original_scan"):
             raise ValueError("Unverified example attempted as training: "+str(row.get("id")))
         correct=row.get("corrected_raw_line")
-        if not isinstance(correct,str) or not correct.strip():
+        lines=row.get("corrected_lines")
+        if lines is not None:
+            if (not isinstance(lines,list) or not lines or len(lines)>20 or
+                    any(not isinstance(item,str) or not item.strip() for item in lines)):
+                raise ValueError("Invalid corrected physical rows")
+        elif not isinstance(correct,str) or not correct.strip():
             raise ValueError("Empty correct transcription")
         examples.append(row)
         if len(examples)>=max_examples:
@@ -30,10 +35,12 @@ def build(base,gold,max_examples=20):
     prompt=[base.rstrip(),"","SCAN-VERIFIED FR88 OCR CORRECTIONS:",
         "These are typography transcription examples, NOT a reason to guess missing text."]
     for x in examples:
+        correct_lines=x.get("corrected_lines") or [x["corrected_raw_line"]]
         prompt.extend(["","Gold "+x["id"]+":",
             "WRONG MODEL TRANSCRIPTION: "+str(x.get("baseline_ocr_error") or ""),
-            "CORRECT PRINTED LINE: "+x["corrected_raw_line"],
-            "VISIBLE TYPOGRAPHY: "+str(x.get("typography") or "")])
+            "CORRECT PHYSICAL REFERENCE ROWS (one per line):",
+            "\\n".join("ROW %d: %s" % (i+1, line) for i,line in enumerate(correct_lines)),
+            "VISIBLE TYPOGRAPHY / INCLUSION RULE: "+str(x.get("typography") or "")])
     prompt.extend(["","When something similar appears, read the actual BOLD chapter and",
                    "regular verse typography. Never alter raw text just to make a valid Bible coordinate."])
     return "\n".join(prompt).strip()+"\n",len(examples)
