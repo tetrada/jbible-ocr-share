@@ -199,6 +199,16 @@
       "verification_status": "SCAN_CONFIRMED",
       "notes": "",
       "saved_at_utc": "2026-10-15T22:37:32.234806+00:00"
+    },
+    "D051": {
+      "choice": "neither",
+      "corrected_lines": [
+        "↗ 1 Co 15"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "its cut, not visible after",
+      "saved_at_utc": "2026-10-15T22:59:18.557376+00:00"
     }
   }
 }
