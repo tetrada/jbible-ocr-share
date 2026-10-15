@@ -4,6 +4,8 @@ on:
     paths:
       - "tools/fr88_v2_normalize.py"
       - "tools/fr88_v2_ocr.py"
+      - "tools/run_fr88_v2.sh"
+      - "tools/start_fr88_v2_32_500.sh"
       - ".github/workflows/fr88-v2-tests.yml"
       - "catalog.csv"
   workflow_dispatch:
@@ -17,5 +19,7 @@ jobs:
           python-version: "3.11"
       - name: Compile new OCR and parser
         run: python -m py_compile tools/fr88_v2_normalize.py tools/fr88_v2_ocr.py
+      - name: Validate shell launch scripts
+        run: bash -n tools/run_fr88_v2.sh tools/start_fr88_v2_32_500.sh
       - name: Verify user-provided notation examples
         run: python tools/fr88_v2_normalize.py --catalog catalog.csv --self-test
