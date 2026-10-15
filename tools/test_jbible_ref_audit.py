@@ -92,6 +92,21 @@ def run_tests():
         assert "NOT verified verse alignment" in (report / "audit_report.html").read_text()
         assert len(json.loads((report / "sample_30_records.json").read_text())) == 6
         assert (report / "review_decisions_template.csv").exists()
+        # Typography can separate bold chapter 2 from verse 5 in '2 P 2 5'.
+        # OCR may flatten it to '2 P 25'; this must remain a candidate only.
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("audit_candidate_test", str(AUDIT))
+        audit_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(audit_module)
+        proposal = audit_module.propose_merged_chapter_verse(
+            {"book_code": "2Pet", "type": "CHAPTER_ONLY",
+             "chapter": 25, "literal": "25"}, {("2Pet", 2): 22})
+        assert len(proposal) == 1, proposal
+        assert proposal[0]["target"] == "2Pet 2:5", proposal
+        assert proposal[0]["status"] == "UNCONFIRMED_SCAN_REVIEW_REQUIRED"
+        assert audit_module.propose_merged_chapter_verse(
+            {"book_code": "2Pet", "type": "CHAPTER_ONLY",
+             "chapter": 25, "literal": "25"}, {}) == []
         with (report / "target_interpretation_queue.csv").open(newline="", encoding="utf-8") as f:
             targets = list(csv.DictReader(f))
         assert len(targets) == 3
