@@ -7,7 +7,9 @@
   "counts": {
     "total_disagreements": 32,
     "punctuation_arrow_only": 25,
-    "reference_or_segmentation_changes": 7
+    "reference_or_segmentation_changes": 7,
+    "agreement_spot_checks": 18,
+    "total_review_cases": 25
   },
   "definition": "Cosmetic-only ignores arrow glyphs and whitespace around semicolons/hyphens while retaining meaningful gaps between digit groups and row boundaries.",
   "safety": "Candidate findings are not OCR gold labels and cannot enter training without evidence from scanned pages.",
@@ -241,6 +243,439 @@
       "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
       "confirmed_raw_lines": [],
       "review_evidence": null
+    },
+    {
+      "case_id": "D033",
+      "page": 31,
+      "side": "L",
+      "issue": "AGREEMENT_SPOT_CHECK: Bold chapter and chapter range — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0031:L:01",
+          "raw_line": "Jb 38-39",
+          "y_fraction": 0.365
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0031:L:01",
+          "raw_line": "Jb 38-39",
+          "y_fraction": 0.365
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D034",
+      "page": 31,
+      "side": "L",
+      "issue": "AGREEMENT_SPOT_CHECK: Two chapter-only references separated by semicolon — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0031:L:02",
+          "raw_line": "Ps 8; 104",
+          "y_fraction": 0.378
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0031:L:02",
+          "raw_line": "Ps 8; 104",
+          "y_fraction": 0.378
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D035",
+      "page": 31,
+      "side": "L",
+      "issue": "AGREEMENT_SPOT_CHECK: Bare numeric target with plus suffix — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0031:L:09",
+          "raw_line": "7 11+",
+          "y_fraction": 0.588
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0031:L:09",
+          "raw_line": "7 11+",
+          "y_fraction": 0.588
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D036",
+      "page": 31,
+      "side": "R",
+      "issue": "AGREEMENT_SPOT_CHECK: Comma-separated verse list — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0031:R:04",
+          "raw_line": "Si 43 6,7",
+          "y_fraction": 0.36
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0031:R:04",
+          "raw_line": "Si 43 6,7",
+          "y_fraction": 0.36
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D037",
+      "page": 32,
+      "side": "L",
+      "issue": "AGREEMENT_SPOT_CHECK: Bare multi-reference physical row — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0032:L:02",
+          "raw_line": "5 1, 3; 9 6",
+          "y_fraction": 0.44
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0032:L:02",
+          "raw_line": "5 1, 3; 9 6",
+          "y_fraction": 0.44
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D038",
+      "page": 32,
+      "side": "L",
+      "issue": "AGREEMENT_SPOT_CHECK: Book-prefixed reference with p suffix — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0032:L:09",
+          "raw_line": "↗ Mt 19 4p",
+          "y_fraction": 0.6
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0032:L:09",
+          "raw_line": "↗ Mt 19 4p",
+          "y_fraction": 0.6
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D039",
+      "page": 32,
+      "side": "R",
+      "issue": "AGREEMENT_SPOT_CHECK: Abbreviation, arrow and trailing comma — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0032:R:13",
+          "raw_line": "↗ Sg 15 8,",
+          "y_fraction": 0.55
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0032:R:13",
+          "raw_line": "↗ Sg 15 8,",
+          "y_fraction": 0.55
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D040",
+      "page": 33,
+      "side": "R",
+      "issue": "AGREEMENT_SPOT_CHECK: Uncertain prefix and plus suffix — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0033:R:11",
+          "raw_line": "s 14 14+",
+          "y_fraction": 0.57
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0033:R:11",
+          "raw_line": "s 14 14+",
+          "y_fraction": 0.57
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D041",
+      "page": 34,
+      "side": "R",
+      "issue": "AGREEMENT_SPOT_CHECK: Chapter and verse mixed with chapter-only shorthand — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0034:R:07",
+          "raw_line": "Ps 90 3; 104",
+          "y_fraction": 0.36
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0034:R:07",
+          "raw_line": "Ps 90 3; 104",
+          "y_fraction": 0.36
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D042",
+      "page": 36,
+      "side": "L",
+      "issue": "AGREEMENT_SPOT_CHECK: Editorial heading or Bible reference boundary — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0036:L:01",
+          "raw_line": "Ch 1 1-4",
+          "y_fraction": 0.14
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0036:L:01",
+          "raw_line": "Ch 1 1-4",
+          "y_fraction": 0.14
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D043",
+      "page": 36,
+      "side": "R",
+      "issue": "AGREEMENT_SPOT_CHECK: Standalone chapter-like number — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0036:R:06",
+          "raw_line": "27",
+          "y_fraction": 0.77
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0036:R:06",
+          "raw_line": "27",
+          "y_fraction": 0.77
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D044",
+      "page": 37,
+      "side": "L",
+      "issue": "AGREEMENT_SPOT_CHECK: Numbered book prefix and verse list — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0037:L:08",
+          "raw_line": "1 S 15 11,35",
+          "y_fraction": 0.376
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0037:L:08",
+          "raw_line": "1 S 15 11,35",
+          "y_fraction": 0.376
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D045",
+      "page": 42,
+      "side": "R",
+      "issue": "AGREEMENT_SPOT_CHECK: Equals editorial notation — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0042:R:10",
+          "raw_line": "= 20",
+          "y_fraction": 0.435
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0042:R:10",
+          "raw_line": "= 20",
+          "y_fraction": 0.435
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D046",
+      "page": 44,
+      "side": "R",
+      "issue": "AGREEMENT_SPOT_CHECK: Numbered Maccabees abbreviation — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0044:R:07",
+          "raw_line": "1 M 2 52",
+          "y_fraction": 0.65
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0044:R:07",
+          "raw_line": "1 M 2 52",
+          "y_fraction": 0.65
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D047",
+      "page": 46,
+      "side": "L",
+      "issue": "AGREEMENT_SPOT_CHECK: Bare multi-reference and comma notation — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0046:L:04",
+          "raw_line": "5 22,24; 6 9",
+          "y_fraction": 0.25
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0046:L:04",
+          "raw_line": "5 22,24; 6 9",
+          "y_fraction": 0.25
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D048",
+      "page": 46,
+      "side": "L",
+      "issue": "AGREEMENT_SPOT_CHECK: Equals note or standalone reference — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0046:L:02",
+          "raw_line": "= 15",
+          "y_fraction": 0.17
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0046:L:02",
+          "raw_line": "= 15",
+          "y_fraction": 0.17
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D049",
+      "page": 48,
+      "side": "R",
+      "issue": "AGREEMENT_SPOT_CHECK: Following-suffix s — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0048:R:03",
+          "raw_line": "Mt 24 15s",
+          "y_fraction": 0.757
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0048:R:03",
+          "raw_line": "Mt 24 15s",
+          "y_fraction": 0.757
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
+    },
+    {
+      "case_id": "D050",
+      "page": 50,
+      "side": "R",
+      "issue": "AGREEMENT_SPOT_CHECK: Equals notation with explicit range — both OCR versions matched in the v2/v3 comparison, but neither has been checked against the scanned print",
+      "v2": [
+        {
+          "id": "fr88v2:p0050:R:08",
+          "raw_line": "= 26 15-33",
+          "y_fraction": 0.69
+        }
+      ],
+      "v3": [
+        {
+          "id": "v3-equal:fr88v2:p0050:R:08",
+          "raw_line": "= 26 15-33",
+          "y_fraction": 0.69
+        }
+      ],
+      "review_state": "NEEDS_HUMAN_SCAN_VERIFICATION",
+      "confirmed_raw_lines": [],
+      "review_evidence": null,
+      "matching_text_is_not_accuracy": true
     }
-  ]
+  ],
+  "note": "First 7 were substantive differences. Subsequent cases are OCR agreement spot checks to obtain independent scan-confirmed training/holdout labels; agreement does NOT prove correctness."
 }
