@@ -25,6 +25,19 @@ Outputs:
 
 A reviewer checks each proposed change on its original VPS scan `/opt/jbible/data/raw/fr_bible_1988/image_####.jpg`, then commits confirmed examples to the gold file, using `human_confirmed_from_original_scan`. Include exact book abbreviation, bold chapter boundary and verse digits, and record why the previous OCR reading failed. **Do not copy unconfirmed V3 interpretations into the gold file.**
 
+## Prioritized visual review: seven substantive differences
+
+The 20-page V2/V3 comparison has **32 difference groups, but 25 are cosmetic arrow/spacing changes**. The seven meaningfully different groups are in [fr88_priority_review.json](fr88_priority_review.json):
+
+- D003, page 32 right: physical-row split and number boundaries.
+- D010, page 34 right: newly added number after comma.
+- D012, page 37 left: missing `Si 16 7` in V3.
+- D013 and D014, page 37 right: chapter/verse `2 P 2 5` typography.
+- D016, page 40 left: bare `10 6` omitted by V3.
+- D017, page 41 left: prose/label inclusion.
+
+Review the original JPEGs, not only the two models' transcriptions. The priority file is a **review queue, not additional gold labels**. Once the exact printed rows are visually confirmed, add representative cases to the gold corpus; preserve a separate held-out validation set.
+
 ## Teach the API model for the next run
 
 The tool [fr88_learning_prompt.py](../tools/fr88_learning_prompt.py) compiles only human-confirmed `inclusion: prompt_example` cases into the v3 typography instructions, rejects held-out examples and uncertain labels, and embeds the confirmed corrections into **every request** of the next isolated v4 experiment.
