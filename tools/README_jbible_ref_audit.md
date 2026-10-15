@@ -28,6 +28,8 @@ Inspect the timestamped report folder printed on completion:
 - rows.csv — one record per physical printed OCR row.
 - segments.csv, segments.jsonl — one record per parsed or ambiguous target-reference segment.
 - review_queue.csv — records requiring further verification.
+- target_interpretation_queue.csv — ONLY syntax/catalog problems, independent of source-verse alignment (31 segments in the pages 31–40 pilot).
+- target_interpretation_context.json — each target problem with preceding/following two rows on the same page margin, for **visual review only**; never auto-inherit a book from those rows.
 - review_decisions_template.csv — blank evidence/correction ledger, never auto-imported.
 - sample_30_records.json — a stratified sample of 30 different printed rows.
 
