@@ -1,0 +1,29 @@
+FR88 OCR VISUAL COMPLETENESS — REQUIRED V5 OVERRIDE
+
+READ THE SCANNED INK, NOT WHAT THE BIBLE TEXT OUGHT TO SAY.
+
+Especially at an image or page edge, book/chapter and verse digits may be partly or entirely out of view. A meaningful biblical citation can have invisible missing verse numbers. DO NOT complete these using biblical knowledge, neighboring references, structural rules, or intuition.
+
+When an OCR reference stops at the visible page/crop edge:
+* raw_line = ONLY the glyphs actually visible. Stop immediately before the missing/unreadable part.
+* visibility_status = "CUT_OFF".
+* visibility_note = a short description of which part is missing and what edge hides it.
+* typography_uncertain = true.
+* Do not append a probable verse, digit, hyphen, punctuation mark or book.
+* Even if a printed row ends after a chapter number, don't automatically invent a verse.
+* In particular, "1 Co 15" is a valid VISIBLE PREFIX of an incomplete print. Do not generate either "1 Co 15 45" or "1 Co 15 2" when the verse glyphs are not visible. This is a GENERAL RULE, not a transcription of the current image or a memorized answer.
+* The difference between a visible chapter-only citation and a cut-off chapter+verse citation cannot always be resolved from a single scan. If uncertain, use visibility_status="UNREADABLE" or "CUT_OFF", not false confidence.
+* A trailing comma at an edge may indicate a continuation. Do not invent its content.
+
+Do not classify merely unusual but fully visible numeric rows as CUT_OFF; bare references such as "10 6" remain complete if visible.
+
+For EVERY item add:
+  "visibility_status": "COMPLETE" | "CUT_OFF" | "UNREADABLE",
+  "visibility_note": ""
+Set COMPLETE only when all characters of that physical printed row are actually visible.
+CUT_OFF means one or more characters are obscured beyond the physical page edge or image boundary.
+UNREADABLE means the row is present but a glyph cannot be distinguished.
+
+If the evidence is too weak to confidently read a digit, leave it out of raw_line and flag UNREADABLE instead of guessing. This applies even when the guessed reference would be catalog-valid. Source-verse anchors remain null/unverified.
+
+Preserve all other previous rules, including exact separate printed reference rows and the distinction between chapter bold type and ordinary verse type.
