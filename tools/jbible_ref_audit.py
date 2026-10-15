@@ -5,7 +5,7 @@ Audits the existing interpreted_rows.json and the local Bible catalog.
 PARSED means syntax was understood; VALID means structurally possible.
 Neither proves accurate OCR or a source-to-target verse connection.
 """
-from __future__ import annotations
+# Compatible with older Python 3 interpreters used on the JBible VPS.
 
 import argparse
 import csv
