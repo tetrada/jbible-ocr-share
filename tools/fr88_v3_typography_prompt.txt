@@ -1,0 +1,54 @@
+You are transcribing PRINTED MARGINAL BIBLE CROSS-REFERENCES, not interpreting the prose, from scanned pages of the FRENCH 1988 JERUSALEM BIBLE.
+
+GOAL: Recover exact reference notation, preserving printed physical rows and the visual boundaries between book abbreviation, BOLD chapter number, and ordinary verse number.
+
+PRIORITY 1 — TYPOGRAPHY:
+* After the book abbreviation, chapter numerals are commonly BOLD. Verse numerals are regular type. Distinguish these even if the gap is extremely narrow.
+* A leading 1, 2 or 3 can belong to the BOOK abbreviation (e.g., "2 P" = 2 Peter). Do not confuse the book ordinal with the chapter.
+* Example VISUAL: arrow, "2 P", then BOLD "2", then ordinary "5". Transcribe raw_line as "↗ 2 P 2 5" (or "2 P 2 5" if arrow genuinely absent). NEVER collapse this into "2 P 25".
+* The OCR string "2 P 25" may be invalid but do NOT add a missing digit/space merely to make a valid citation. The image, not biblical plausibility, determines transcription.
+* If genuinely unreadable, retain the most faithful raw transcription, set typography_uncertain true, and describe exactly which character boundary cannot be seen.
+* Treat Psalm chapter and verse typography the same way where visibly applicable. Italics or superscripts are not necessarily separators.
+
+PRIORITY 2 — PHYSICAL ROWS:
+* EXACTLY ONE item per PHYSICALLY PRINTED ROW of marginal references, ordered top to bottom. NEVER merge distinct printed rows.
+* Multiple references separated by semicolons on the SAME printed row stay in one raw_line.
+* Wrapping across two baselines stays two items and layout_uncertain true.
+* Do not use book/chapter context from a PREVIOUS printed row. A bare "7 11+" remains "7 11+"; do not invent a book.
+* Do not confuse large main Scripture text, footnotes, chapter headings, book headers, prose, running headers, or page numbers with marginal references.
+
+PRIORITY 3 — EXACT TRANSCRIPTION:
+* Preserve accents if printed, book abbreviations (e.g., 1 R, 2 P, Jb, Sg, Pr, Ps, Nb, Mt, Ap), spaces between BOLD chapters and ordinary verses, punctuation, commas, semicolons, hyphens, arrows, and suffixes s, ss, p, +.
+* s, ss, p and + carry editorial meaning; preserve them literally, do not silently expand verse spans.
+* Printed "Sg 11 14-20" on one line and "16-18" on the next are TWO items, not one.
+* "Ps 78 47s; 105 32; Ap 16 21; 8 7" is ONE item if physically on the same baseline, even if it has multiple target references.
+* If the image seems to show "Sg 15 8," preserve the final comma; don't automatically strip it.
+* No completing references from Bible memory, no imported English annotations, no invented words. No source-to-verse anchoring on visual proximity alone.
+
+INPUT:
+Image 1 is the requested PAGE HALF (context); image 2 is the requested MARGIN FULL HEIGHT; images 3 and 4 are enlarged overlapping MARGIN TOP and BOTTOM. Read references only from the requested side. Do not duplicate references in overlap.
+Coordinates: y_fraction is approximate vertical center of physical printed row relative to the full page (0..1).
+Do not attempt source-verse alignment in this run. Set source_chapter, source_verse to null and source_anchor_confident=false.
+
+OUTPUT STRICT JSON, no markdown:
+{
+  "page_book_header": null,
+  "items": [
+    {
+      "kind": "REFERENCE",
+      "raw_line": "↗ 2 P 2 5",
+      "y_fraction": 0.42,
+      "source_chapter": null,
+      "source_verse": null,
+      "source_anchor_confident": false,
+      "layout_uncertain": false,
+      "typography_uncertain": false,
+      "typography_evidence": "2 = book ordinal, bold 2 = chapter, regular 5 = verse",
+      "notes": ""
+    }
+  ],
+  "warnings": []
+}
+kind may be REFERENCE or SECTION_LABEL (the latter only for marginal labels that could be mistaken for citations). page_book_header may be null. For no rows return items: [].
+typography_evidence should describe only VISIBLE typesetting, especially for adjacent digits. Don't claim certainty from Bible knowledge. If no relevant bold/regular distinction visible, leave evidence empty.
+Every raw_line must be an independently printed row.
