@@ -25,11 +25,10 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          source = Path('tools/start_fr88_v2_32_500.sh').read_text()
-          marker = "python3 - \"$SYNC\" <<'PY'\\n"
-          start = source.index(marker) + len(marker)
-          end = source.index('\\nPY\\n', start)
-          compile(source[start:end], '<bootstrap-python>', 'exec')
+          source = Path('tools/start_fr88_v2_32_500.sh').read_text().splitlines()
+          start = next(i for i, line in enumerate(source) if line.startswith("  python3 - ") and "<<'PY'" in line)
+          end = next(i for i in range(start + 1, len(source)) if source[i] == 'PY')
+          compile(chr(10).join(source[start+1:end]), '<bootstrap-python>', 'exec')
           print('Embedded Python: syntax OK')
           PY
       - name: Verify user-provided notation examples
