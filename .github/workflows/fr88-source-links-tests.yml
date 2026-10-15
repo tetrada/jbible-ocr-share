@@ -1,0 +1,38 @@
+name: JBible FR88 source verse matching tests
+on:
+  push:
+    paths:
+      - 'tools/fr88_source_links.py'
+      - 'tools/test_fr88_source_links.py'
+      - 'tools/fr88_source_anchor_prompt.txt'
+      - 'tools/fr88_source_visibility_overrides.json'
+      - 'tools/run_fr88_source_links.sh'
+      - 'tools/publish_fr88_source_links.sh'
+      - '.github/workflows/fr88-source-links-tests.yml'
+  workflow_dispatch:
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Pillow
+        run: python -m pip install pillow
+      - name: Compile Python scripts
+        run: python -m py_compile tools/fr88_source_links.py tools/test_fr88_source_links.py
+      - name: Validate VPS shell scripts
+        run: bash -n tools/run_fr88_source_links.sh tools/publish_fr88_source_links.sh
+      - name: Validate original-scan cut-off evidence
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('tools/fr88_source_visibility_overrides.json').read_text(encoding='utf8'))
+          assert p['schema']=='jbible.fr88.source-visibility-overrides.v1'
+          assert len(p['overrides'])==2
+          assert all(x['visibility_status']=='CUT_OFF' for x in p['overrides'])
+          PY
+      - name: Test source-to-target link candidates without DeepSeek
+        run: cd tools && python test_fr88_source_links.py
