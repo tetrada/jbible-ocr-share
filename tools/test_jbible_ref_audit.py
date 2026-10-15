@@ -74,6 +74,8 @@ def run_tests():
         assert summary["reference_rows"] == 5
         assert summary["segments"] == 6
         assert summary["invalid_target_segments"] == 1
+        assert summary["target_interpretation_review_segments"] == 3
+        assert summary["source_alignment_pending_reference_rows"] == 5
         assert summary["verified"] == 0
         assert summary["sql_writes"] is False
         assert summary["api_calls"] == 0
@@ -90,6 +92,13 @@ def run_tests():
         assert "NOT verified verse alignment" in (report / "audit_report.html").read_text()
         assert len(json.loads((report / "sample_30_records.json").read_text())) == 6
         assert (report / "review_decisions_template.csv").exists()
+        with (report / "target_interpretation_queue.csv").open(newline="", encoding="utf-8") as f:
+            targets = list(csv.DictReader(f))
+        assert len(targets) == 3
+        assert {x["catalog_status"] for x in targets} == {"MISSING_BOOK", "INVALID", "NOT_CHECKABLE"}
+        context = json.loads((report / "target_interpretation_context.json").read_text())
+        assert len(context) == 3
+        assert context[0]["neighbors_for_visual_review_only"]["previous_printed_rows"]
         print("PASS: six rows and six reference segments; original unchanged, no API or SQL")
 
 
