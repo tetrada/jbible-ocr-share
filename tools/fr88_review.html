@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JBible · FR 1988 — Review</title>
+<style>
+:root{color-scheme:dark;--bg:#10151d;--panel:#19212d;--line:#324052;--text:#edf3fa;--muted:#9faec0;--accent:#74b9ff;--danger:#fb8a87;--warn:#f3c57b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}button,input,select{font:inherit}a{color:var(--accent)}
+header{display:flex;align-items:center;justify-content:space-between;padding:17px 24px;border-bottom:1px solid var(--line);gap:20px}
+header h1{font-size:20px;margin:0;font-weight:650}header p{margin:2px 0 0;color:var(--muted)}
+.muted{color:var(--muted)}.toolbar{display:flex;gap:9px;align-items:center;padding:15px 24px;flex-wrap:wrap}
+button,input{border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--text);padding:9px 12px}
+button{cursor:pointer}button:hover{border-color:var(--accent)}button.active{background:#213d56;border-color:#6db4e6}
+input{min-width:230px;flex:1;max-width:460px}small{color:var(--muted)}.counts{margin-left:auto;color:var(--muted)}
+main{display:grid;grid-template-columns:minmax(300px,390px) minmax(0,1fr);min-height:calc(100vh - 132px)}
+#entries{border-right:1px solid var(--line);max-height:calc(100vh - 132px);overflow:auto;padding:0 10px 16px}
+.entry{width:100%;display:block;text-align:left;background:transparent;padding:13px;border:1px solid transparent;border-bottom-color:var(--line);border-radius:7px;margin:2px 0}
+.entry.active{background:#1c3041;border-color:#456785}.entry:hover{background:#1c2938}.entry b{font-size:15px;display:block;margin:3px 0;word-break:break-word}
+.entry .top{display:flex;justify-content:space-between;gap:10px;font-size:12px}
+.entry .reason{color:var(--warn);font-size:12px}
+#detail{overflow:auto;max-height:calc(100vh - 132px);padding:22px 26px}
+.panel{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:17px;margin:0 0 16px}
+.detail-top{display:flex;justify-content:space-between;gap:12px;align-items:start}.detail-top h2{font-size:22px;margin:4px 0}
+.tag{display:inline-block;border-radius:5px;background:#553a36;color:#ffaaa4;font-size:12px;padding:2px 7px}
+.tag.soft{background:#594c30;color:#f7d68f}ul{padding-left:20px}li{margin-bottom:3px}
+table{border-collapse:collapse;width:100%;font-size:13px}td,th{border-bottom:1px solid var(--line);padding:7px;text-align:left}th{color:var(--muted);font-weight:500}
+.preview{display:block;max-width:100%;max-height:75vh;object-fit:contain;background:#efe7d3;border-radius:5px;cursor:zoom-in;margin:12px auto}
+code{color:#c5dbff}#message{padding:18px 24px;color:var(--muted)}
+@media(max-width:860px){main{display:block}#entries{max-height:38vh;border-right:0;border-bottom:1px solid var(--line)}#detail{max-height:none;padding:16px}header{padding:14px}.toolbar{padding:14px}}
+</style>
+</head>
+<body>
+<header>
+<div><h1>JBible / French 1988</h1><p>OCR review · read-only · verified: 0 · SQL writes: none</p></div>
+<a href="fr88_comparison.json" target="_blank" rel="noopener">Raw JSON ↗</a>
+</header>
+<div class="toolbar">
+<button id="hard" class="active" type="button">Structural errors</button>
+<button id="soft" type="button">Typography / uncertain</button>
+<button id="all" type="button">All references</button>
+<input id="search" type="search" placeholder="Search page, verse, issue, OCR text…">
+<span id="count" class="counts">Loading…</span>
+</div>
+<div id="message" hidden></div>
+<main>
+<div id="entries" aria-label="Reference list"></div>
+<div id="detail"><div class="panel muted">Select a reference from the list.</div></div>
+</main>
+<script>
+(function(){
+"use strict";
+var items=[], filtered=[], selected=null, mode="hard";
+var SOFT=new Set(["CHAPTER_BOLDNESS_UNCONFIRMED","END_CHAPTER_BOLDNESS_UNCONFIRMED","AI_UNCERTAIN"]);
+var $=function(id){return document.getElementById(id)};
+var esc=function(v){return String(v==null?"":v).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+function kind(r){
+if(r.kind!=="REFERENCE")return "excluded";
+if(r.review_status!=="REVIEW")return "pass";
+var issues=r.issues||[];
+return issues.length && issues.every(function(x){return SOFT.has(x)}) ? "soft" : "hard";
+}
+function pg(r){return String(r.image_page||r.pdf_page||"").padStart(4,"0")}
+function imgPath(r){return "fr88_margin_previews/image_"+pg(r)+"_"+r.side+"_full.jpg"}
+function source(r){var ch=r.source_chapter, v=r.source_verse;return ch==null?"Unknown":"Gn "+ch+":"+(v==null?"?":v)}
+function redraw(){
+var q=$("search").value.trim().toLowerCase();
+filtered=items.filter(function(r){
+if(r.kind!=="REFERENCE")return false;
+if(mode!=="all" && kind(r)!==mode)return false;
+if(!q)return true;
+return [r.id,r.literal,r.normalized_structure,source(r),(r.issues||[]).join(" "),r.book_printed,r.book_resolved,r.review_status].join(" ").toLowerCase().indexOf(q)>=0;
+});
+$("count").textContent=filtered.length+" shown · "+items.filter(function(r){return kind(r)==="hard"}).length+" hard · "+items.filter(function(r){return kind(r)==="soft"}).length+" typography";
+if(!filtered.some(function(r){return r.id===selected}))selected=filtered.length?filtered[0].id:null;
+$("entries").innerHTML=filtered.map(function(r){
+return '<button type="button" class="entry '+(selected===r.id?"active":"")+'" data-id="'+esc(r.id)+'">'+
+'<div class="top"><span>p'+pg(r)+' · '+esc(r.side)+' · '+esc(source(r))+'</span><span>'+esc(r.review_status)+'</span></div>'+
+'<b>'+esc(r.literal||"(empty)")+'</b><span class="reason">'+esc((r.issues||[]).join(" · ")||"No issues")+'</span></button>';
+}).join("") || '<p class="muted" style="padding:14px">No records found.</p>';
+Array.from($("entries").querySelectorAll("button[data-id]")).forEach(function(button){
+button.onclick=function(){selected=button.getAttribute("data-id");redraw();}
+});
+show();
+}
+function show(){
+var r=filtered.find(function(v){return v.id===selected});
+if(!r){$("detail").innerHTML='<div class="panel muted">No selected reference.</div>';return}
+var issueType=kind(r),issues=r.issues||[];
+var clauses=r.clauses||[];
+var image=imgPath(r);
+var rows=clauses.map(function(c){
+return "<tr><td>"+esc(c.relation)+"</td><td>"+esc(c.chapter)+"</td><td>"+esc(c.verse)+"</td><td>"+esc(c.end_chapter)+"</td><td>"+esc(c.end_verse)+"</td><td>"+esc(c.chapter_bold)+"</td><td>"+esc(c.suffix)+"</td></tr>";
+}).join("");
+$("detail").innerHTML=
+'<div class="panel"><div class="detail-top"><div><span class="tag '+(issueType==="soft"?"soft":"")+'">'+esc(issueType==="hard"?"Structural error":issueType==="soft"?"Typography / uncertain":"No structural warning")+'</span>'+
+'<h2>'+esc(r.literal||"(empty)")+'</h2><div class="muted">'+esc(r.id)+'</div></div>'+
+'<button id="copy" type="button">Copy ID</button></div>'+
+'<p><b>Source:</b> '+esc(source(r))+' &nbsp; <b>Printed book:</b> '+esc(r.book_printed||"(inherited)")+' &nbsp; <b>Resolved:</b> '+esc(r.book_resolved||"—")+'</p>'+
+'<p><b>Structure:</b> <code>'+esc(r.normalized_structure||"—")+'</code></p>'+
+'<p><b>Issues:</b></p><ul>'+issues.map(function(v){return "<li>"+esc(v)+"</li>"}).join("")+(issues.length?"":"<li>None</li>")+'</ul>'+
+'<table><tr><th>Relation</th><th>Chap.</th><th>Verse</th><th>End chap.</th><th>End verse</th><th>Bold</th><th>Suffix</th></tr>'+rows+'</table>'+
+'<p class="muted">Read-only preview. Nothing here changes OCR records or verification state.</p></div>'+
+'<div class="panel"><div class="detail-top"><b>Margin image — page '+pg(r)+' / '+esc(r.side)+'</b><a href="'+image+'" target="_blank" rel="noopener">Open image ↗</a></div>'+
+'<a href="'+image+'" target="_blank" rel="noopener"><img id="img" class="preview" alt="OCR source crop for page '+pg(r)+'" src="'+image+'"></a>'+
+'<p id="noimage" class="muted" hidden>Preview not published for this margin. Original images remain available on VPS.</p></div>';
+$("copy").onclick=function(){if(navigator.clipboard){navigator.clipboard.writeText(r.id)}else{prompt("Copy record ID:",r.id)}};
+$("img").onerror=function(){$("img").style.display="none";$("noimage").hidden=false};
+}
+function setMode(m){
+mode=m;["hard","soft","all"].forEach(function(x){$(x).classList.toggle("active",x===m)});redraw();
+}
+["hard","soft","all"].forEach(function(x){$(x).onclick=function(){setMode(x)}});
+$("search").oninput=redraw;
+fetch("fr88_comparison.json",{cache:"no-store"}).then(function(res){if(!res.ok)throw Error("HTTP "+res.status);return res.json()}).then(function(data){
+if(!Array.isArray(data))throw Error("Expected JSON array");
+items=data;redraw();
+}).catch(function(err){
+$("message").hidden=false;
+$("message").textContent="Could not load fr88_comparison.json: "+err.message+" — copy the JSON file into the same directory as this HTML.";
+$("count").textContent="No data";
+});
+})();
+</script>
+</body>
+</html>
