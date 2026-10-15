@@ -1,0 +1,28 @@
+{
+  "schema": "jbible.fr88.source-visibility-overrides.v1",
+  "basis": "Human-confirmed cropped original scans from authenticated JBible review webpage (D010, D051)",
+  "overrides": [
+    {
+      "row_id": "fr88v2:p0032:R:16",
+      "image_page": 32,
+      "side": "R",
+      "case_id": "D051",
+      "visibility_status": "CUT_OFF",
+      "human_confirmed_visible_prefix": "↗ 1 Co 15",
+      "full_target_reference_known": false,
+      "note": "Trailing characters are outside visible scan; no generated complete reference may be verified"
+    },
+    {
+      "row_id": "fr88v2:p0034:R:11",
+      "image_page": 34,
+      "side": "R",
+      "case_id": "D010",
+      "visibility_status": "CUT_OFF",
+      "human_confirmed_visible_prefix": "↗ Ap 22 1s,1",
+      "full_target_reference_known": false,
+      "note": "Right edge cut; do not treat either OCR completion as verified"
+    }
+  ],
+  "source_to_target_links_verified": 0,
+  "sql_writes": false
+}
