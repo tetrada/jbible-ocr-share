@@ -1,0 +1,54 @@
+{
+  "hints": [
+    {
+      "fr_id": "fr:p0038:L:03",
+      "fr_literal": "12 6+",
+      "suggestion": "GEN 1:26+",
+      "en_ids": [
+        "en:p0036:R:03"
+      ],
+      "source_chapter": 5,
+      "source_verse": 1,
+      "verified": false,
+      "requires_validation": true
+    },
+    {
+      "fr_id": "fr:p0044:L:01",
+      "fr_literal": "1 Ch 15-23",
+      "suggestion": "1 Ch 1:5-23",
+      "en_ids": [
+        "en:p0041:L:06"
+      ],
+      "source_chapter": 10,
+      "source_verse": 1,
+      "verified": false,
+      "requires_validation": true
+    },
+    {
+      "fr_id": "fr:p0062:R:04",
+      "fr_literal": "16 12",
+      "suggestion": "GEN 16:12",
+      "en_ids": [
+        "en:p0059:R:05"
+      ],
+      "source_chapter": 25,
+      "source_verse": 18,
+      "verified": false,
+      "requires_validation": true
+    },
+    {
+      "fr_id": "fr:p0070:L:03",
+      "fr_literal": "28 18-22",
+      "suggestion": "GEN 28:18-22",
+      "en_ids": [
+        "en:p0067:R:02"
+      ],
+      "source_chapter": 31,
+      "source_verse": 13,
+      "verified": false,
+      "requires_validation": true
+    }
+  ],
+  "verified": false,
+  "sql_writes": false
+}
