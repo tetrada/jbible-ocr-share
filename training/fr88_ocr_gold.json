@@ -28,13 +28,12 @@
       "side": "R",
       "baseline_ocr_error": "11-24\nQo 3 20s; 12 7",
       "corrected_lines": [
-        "1 1 - 2 4",
         "Qo 3 20s;",
         "12 7"
       ],
-      "typography": "Preserve 'Qo 3 20s;' and the following standalone '12 7' as TWO physically separate reference rows. The nearby '1 1 - 2 4' was classified as a section label, not a reference; do not promote it to a Bible cross-reference.",
+      "typography": "The printed '1 1 - 2 4' is an adjacent section label, not a marginal biblical reference; do not output it as a REFERENCE. 'Qo 3 20s;' and '12 7' are two separate reference rows; do not merge them or supply an unprinted book name.",
       "inclusion": "prompt_example",
-      "note": "Curated reference rows only; exclude nonreference section label from this positive training example."
+      "note": "Excluded section-label text from positive OCR rows; retained explicit section exclusion in instruction."
     },
     {
       "id": "GOLD-0003",
@@ -84,14 +83,181 @@
       "typography": "Include only printed marginal reference rows. 'La tour de Babel a' is non-reference editorial text, not an OCR citation. Preserve all three genuine reference rows separately.",
       "inclusion": "prompt_example",
       "note": "Human chose neither because v3 additionally included prose; the corrected references are scan confirmed."
+    },
+    {
+      "id": "GOLD-0006",
+      "verification": "human_confirmed_from_original_scan",
+      "source": "Authenticated JBible review web with human-checked original page scan",
+      "case_id": "D033",
+      "image_page": 31,
+      "side": "L",
+      "row_id": "fr88v2:p0031:L:01",
+      "baseline_ocr_error": "Jb 38-39",
+      "corrected_raw_line": "Jb 38-39",
+      "typography": "Preserve chapter-only ranges: 'Jb 38-39' has Job and chapters 38 through 39; do not force a verse number.",
+      "inclusion": "prompt_example",
+      "note": "Human verified the printed row against the original scan."
+    },
+    {
+      "id": "GOLD-0007",
+      "verification": "human_confirmed_from_original_scan",
+      "source": "Authenticated JBible review web with human-checked original page scan",
+      "case_id": "D035",
+      "image_page": 31,
+      "side": "L",
+      "row_id": "fr88v2:p0031:L:09",
+      "baseline_ocr_error": "7 11+",
+      "corrected_raw_line": "7 11+",
+      "typography": "The standalone numeric row '7 11+' is legitimate; retain plus suffix and do not fabricate the target book.",
+      "inclusion": "prompt_example",
+      "note": "Human verified the printed row against the original scan."
+    },
+    {
+      "id": "GOLD-0008",
+      "verification": "human_confirmed_from_original_scan",
+      "source": "Authenticated JBible review web with human-checked original page scan",
+      "case_id": "D037",
+      "image_page": 32,
+      "side": "L",
+      "row_id": "fr88v2:p0032:L:02",
+      "baseline_ocr_error": "5 1, 3; 9 6",
+      "corrected_raw_line": "5 1, 3; 9 6",
+      "typography": "The notation '5 1, 3; 9 6' belongs to one printed row; retain internal comma and semicolon without inventing a book.",
+      "inclusion": "prompt_example",
+      "note": "Human verified the printed row against the original scan."
+    },
+    {
+      "id": "GOLD-0009",
+      "verification": "human_confirmed_from_original_scan",
+      "source": "Authenticated JBible review web with human-checked original page scan",
+      "case_id": "D038",
+      "image_page": 32,
+      "side": "L",
+      "row_id": "fr88v2:p0032:L:09",
+      "baseline_ocr_error": "↗ Mt 19 4p",
+      "corrected_raw_line": "↗ Mt 19 4p",
+      "typography": "Printed 'Mt 19 4p' includes an editorial suffix 'p', not a digit; retain it exactly.",
+      "inclusion": "prompt_example",
+      "note": "Human verified the printed row against the original scan."
+    },
+    {
+      "id": "GOLD-0010",
+      "verification": "human_confirmed_from_original_scan",
+      "source": "Authenticated JBible review web with human-checked original page scan",
+      "case_id": "D039",
+      "image_page": 32,
+      "side": "R",
+      "row_id": "fr88v2:p0032:R:13",
+      "baseline_ocr_error": "↗ Sg 15 8,",
+      "corrected_raw_line": "↗ Sg 15 8,",
+      "typography": "Printed 'Sg 15 8,' ends in a comma. Keep the trailing comma; do not complete an unseen continuation.",
+      "inclusion": "prompt_example",
+      "note": "Human verified the printed row against the original scan."
+    },
+    {
+      "id": "GOLD-0011",
+      "verification": "human_confirmed_from_original_scan",
+      "source": "Authenticated JBible review web with human-checked original page scan",
+      "case_id": "D043",
+      "image_page": 36,
+      "side": "R",
+      "row_id": "fr88v2:p0036:R:06",
+      "baseline_ocr_error": "27",
+      "corrected_raw_line": "2 7",
+      "typography": "The user identified BOLD chapter 2 followed by regular verse 7; preserve the boundary '2 7', even when no book is written.",
+      "inclusion": "prompt_example",
+      "note": "2 bold 7 regular"
+    },
+    {
+      "id": "GOLD-0012",
+      "verification": "human_confirmed_from_original_scan",
+      "source": "Authenticated JBible review web with human-checked original page scan",
+      "case_id": "D046",
+      "image_page": 44,
+      "side": "R",
+      "row_id": "fr88v2:p0044:R:07",
+      "baseline_ocr_error": "1 M 2 52",
+      "corrected_raw_line": "1 M 2 52",
+      "typography": "In '1 M 2 52', 1 M is the book ordinal + abbreviation (1 Maccabees), 2 is chapter, and 52 is verse; preserve spaces.",
+      "inclusion": "prompt_example",
+      "note": "Human verified the printed row against the original scan."
     }
   ],
-  "held_out_examples": [],
+  "held_out_examples": [
+    {
+      "id": "EVAL-0001",
+      "case_id": "D034",
+      "verification": "human_confirmed_from_original_scan",
+      "inclusion": "holdout",
+      "image_page": 31,
+      "side": "L",
+      "v2_row_id": "fr88v2:p0031:L:02",
+      "baseline_y_fraction": 0.378,
+      "expected_raw_line": "Ps 8; 104",
+      "source": "Human-reviewed original Bible page",
+      "note": ""
+    },
+    {
+      "id": "EVAL-0002",
+      "case_id": "D036",
+      "verification": "human_confirmed_from_original_scan",
+      "inclusion": "holdout",
+      "image_page": 31,
+      "side": "R",
+      "v2_row_id": "fr88v2:p0031:R:04",
+      "baseline_y_fraction": 0.36,
+      "expected_raw_line": "Si 43 6,7",
+      "source": "Human-reviewed original Bible page",
+      "note": ""
+    },
+    {
+      "id": "EVAL-0003",
+      "case_id": "D040",
+      "verification": "human_confirmed_from_original_scan",
+      "inclusion": "holdout",
+      "image_page": 33,
+      "side": "R",
+      "v2_row_id": "fr88v2:p0033:R:11",
+      "baseline_y_fraction": 0.57,
+      "expected_raw_line": "s 14 14+",
+      "source": "Human-reviewed original Bible page",
+      "note": ""
+    },
+    {
+      "id": "EVAL-0004",
+      "case_id": "D042",
+      "verification": "human_confirmed_from_original_scan",
+      "inclusion": "holdout",
+      "image_page": 36,
+      "side": "L",
+      "v2_row_id": "fr88v2:p0036:L:01",
+      "baseline_y_fraction": 0.14,
+      "expected_raw_line": "Ch 1 1-4",
+      "source": "Human-reviewed original Bible page",
+      "note": ""
+    },
+    {
+      "id": "EVAL-0005",
+      "case_id": "D048",
+      "verification": "human_confirmed_from_original_scan",
+      "inclusion": "holdout",
+      "image_page": 46,
+      "side": "L",
+      "v2_row_id": "fr88v2:p0046:L:02",
+      "baseline_y_fraction": 0.17,
+      "expected_raw_line": "= 15",
+      "source": "Human-reviewed original Bible page",
+      "note": "Printed equals sign and number confirmed; semantic note type is not yet verified."
+    }
+  ],
   "learning_policy": {
     "require_human_scan_confirmation": true,
     "no_auto_promotion_by_catalog_validity": true,
     "prompt_examples_only_when_inclusion_is_prompt_example": true,
     "never_use_evaluation_holdouts_as_prompt_examples": true,
-    "minimum_distinct_examples_before_full_20_page_retest": 20
+    "minimum_distinct_examples_before_full_20_page_retest": 20,
+    "minimum_verified_prompt_examples_for_small_pilot": 12,
+    "minimum_held_out_scan_confirmed_examples_for_evaluation": 5,
+    "split_strategy": "Holdout cases never enter prompts; one cut-off page 34 reference D010 excluded; D003 section label excluded from positive REFERENCE examples."
   }
 }
