@@ -1,19 +1,23 @@
 {
   "source": "French Bible 1988 JPEG",
   "pages_requested": [
-    81,
-    120
+    119,
+    119
   ],
-  "margins_done": 80,
-  "margins_total": 80,
-  "references": 888,
-  "structural_ok": 644,
-  "structural_percent": 72.5,
-  "parseable_no_hard_errors": 823,
-  "parseable_percent": 92.7,
+  "margins_done": 2,
+  "margins_total": 2,
+  "references": 895,
+  "structural_ok": 653,
+  "structural_percent": 73.0,
+  "parseable_no_hard_errors": 832,
+  "parseable_percent": 93.0,
   "typography_review": 179,
-  "hard_errors": 65,
-  "duplicate_pairs": 8,
+  "hard_errors": 63,
+  "duplicate_pairs": 9,
+  "raw_ocr_records": 890,
+  "split_parent_records": 5,
+  "split_derived_records": 12,
+  "unsplit_multibook_candidates": 17,
   "visually_excluded_margins": [
     {
       "page": 54,
@@ -23,16 +27,16 @@
   ],
   "note": "parseable_percent is NOT OCR accuracy or human verification",
   "supported_by_en": 54,
-  "review_records": 244,
-  "source_anchor_missing": 235,
+  "review_records": 242,
+  "source_anchor_missing": 238,
   "section_labels": 2,
   "status_counts": {
-    "CANDIDATE_UNVERIFIED": 590,
-    "REVIEW": 244,
+    "CANDIDATE_UNVERIFIED": 599,
+    "REVIEW": 242,
     "SUPPORTED_BY_EN": 54
   },
-  "api_calls": 80,
-  "cached_jobs": 0,
+  "api_calls": 0,
+  "cached_jobs": 2,
   "errors": 0,
   "verified": 0,
   "sql_writes": false,
@@ -216,6 +220,6 @@
     119,
     120
   ],
-  "records_in_requested_pages": 498,
+  "records_in_requested_pages": 20,
   "failures": []
 }
