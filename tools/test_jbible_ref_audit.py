@@ -64,7 +64,8 @@ def run_tests():
             "--data",str(source), "--catalog",str(catalog),
             "--images",str(d / "missing_images"), "--out-dir",str(d / "outputs"),
             "--start-page","31", "--end-page","31", "--sample","30",
-        ], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        ], stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        universal_newlines=True)
         assert p.returncode == 0, p.stdout + "\n" + p.stderr
         assert before == source.read_bytes(), "Audit mutated input!"
         report = next((d / "outputs").iterdir())
