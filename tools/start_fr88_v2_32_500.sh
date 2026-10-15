@@ -64,27 +64,35 @@ import sys
 p = Path(sys.argv[1])
 s = p.read_text(encoding="utf-8")
 mapping = {
-    '"fr88_records.json"': '"fr88_v2_rows.json"',
-    '"fr88_comparison.json"': '"fr88_v2_interpreted.json"',
+    '"fr88_records.json"': '"fr88_v2_manifest.json"',
+    '"fr88_comparison.json"': '"fr88_v2_parse_review.json"',
     '"fr88_summary.json"': '"fr88_v2_summary.json"',
     '"$SRC/jbible_fr1988_pilot/all_records.json"':
-        '"$SRC/jbible_fr1988_v2/all_rows.json"',
+        '"$SRC/jbible_fr1988_v2/manifest.json"',
     '"$SRC/jbible_fr1988_pilot/comparison.json"':
-        '"$SRC/jbible_fr1988_v2/interpreted_rows.json"',
+        '"$SRC/jbible_fr1988_v2/parse_review.json"',
     '"$SRC/jbible_fr1988_pilot/summary.json"':
         '"$SRC/jbible_fr1988_v2/summary.json"',
 }
-if '"fr88_v2_rows.json"' in s and '"fr88_v2_summary.json"' in s:
+if '"fr88_v2_manifest.json"' in s and '"fr88_v2_summary.json"' in s:
     print("GitHub sync already uses v2.")
 else:
     for old, new in mapping.items():
         if s.count(old) != 1:
             raise SystemExit("Unexpected GitHub sync script: " + old)
         s = s.replace(old, new, 1)
+    anchor = 'git -C "$DST" add -- "${FILES[@]}"'
+    if s.count(anchor) != 1:
+        raise SystemExit("Unexpected git add section in sync script.")
+    shard_sync = '''mkdir -p "$DST/fr88_v2_shards"
+cp -a "$SRC/jbible_fr1988_v2/shards/." "$DST/fr88_v2_shards/"
+git -C "$DST" add -A -- fr88_v2_shards
+'''
+    s = s.replace(anchor, shard_sync + anchor, 1)
     backup = p.with_name(p.name + ".before_fr88_v2")
     backup.write_text(p.read_text(encoding="utf-8"), encoding="utf-8")
     p.write_text(s, encoding="utf-8")
-    print("Updated sync script; backup: " + str(backup))
+    print("Updated sync script, including 20-page shards; backup: " + str(backup))
 PY
   bash -n "$SYNC"
 
