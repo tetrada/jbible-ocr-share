@@ -25,6 +25,18 @@ Outputs:
 
 A reviewer checks each proposed change on its original VPS scan `/opt/jbible/data/raw/fr_bible_1988/image_####.jpg`, then commits confirmed examples to the gold file, using `human_confirmed_from_original_scan`. Include exact book abbreviation, bold chapter boundary and verse digits, and record why the previous OCR reading failed. **Do not copy unconfirmed V3 interpretations into the gold file.**
 
+## Easy visual verification webpage (recommended)
+
+Deploy the password-protected reviewer once:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main/tools/install_fr88_review_web.sh | bash
+```
+
+Then open **https://status.tetrada.eu/jbible-review/** with the username/password printed during installation. For each page scan, choose V2/V3/Neither/Unsure, edit the exact physical printed lines if necessary, check the original-image confirmation box and save. Seven substantive cases are queued first. See [review web README](../tools/README_fr88_review_web.md) for implementation and security notes.
+
+The server stores human decisions locally and its 2-minute publishing timer commits **text only** to `fr88_v3_learning/human_reviews.json`. The GitHub corpus still requires explicit curation to become DeepSeek few-shot training examples. No ZIPs, no public scan uploads and no automatic assumption that a model's guess is ground truth.
+
 ## Prioritized visual review: seven substantive differences
 
 The 20-page V2/V3 comparison has **32 difference groups, but 25 are cosmetic arrow/spacing changes**. The seven meaningfully different groups are in [fr88_priority_review.json](fr88_priority_review.json):
