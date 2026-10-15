@@ -136,7 +136,7 @@ def request_ocr(token, images, page, side):
         "response_format": {"type": "json_object"},
         "max_tokens": 8000,
         "messages": [
-            {"role": "system", "content": PROMPT},
+            {"role": "system", "content": PROMPT.replace("The first image shows the whole page for context.", "The first image shows ONLY the requested page half for context.")},
             {"role": "user", "content": content}
         ]
     }
