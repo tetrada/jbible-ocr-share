@@ -20,7 +20,7 @@ for p in 0031 0032 0033 0034 0035 0036 0037 0038 0039 0040; do
   }
 done
 mkdir -p "$BASE" "$OUT"
-for name in fr88_source_links.py fr88_source_visibility_overrides.json; do
+for name in fr88_source_links.py fr88_source_visibility_overrides.json test_fr88_source_links.py; do
   temp="$(mktemp "$BASE/.source_links_download_XXXXXXXX")"
   if ! curl -fsSL --retry 3 --connect-timeout 20 "$URL/$name" -o "$temp"; then
     rm -f "$temp"
@@ -31,7 +31,12 @@ for name in fr88_source_links.py fr88_source_visibility_overrides.json; do
   chmod 0644 "$temp"
   mv -f "$temp" "$BASE/$name"
 done
-python3 -m py_compile "$BASE/fr88_source_links.py"
+python3 -m py_compile "$BASE/fr88_source_links.py" "$BASE/test_fr88_source_links.py"
+# Before any paid vision request, test source/target association and all safeguards.
+docker run --rm --memory=2g --entrypoint python \
+  -v "$BASE/fr88_source_links.py:/app/fr88_source_links.py:ro" \
+  -v "$BASE/test_fr88_source_links.py:/app/test_fr88_source_links.py:ro" \
+  jbible-ocr:1 /app/test_fr88_source_links.py
 if [[ ! -s "$OUT/frozen_source_prompt.txt" ]]; then
   temp="$(mktemp "$OUT/.prompt_download_XXXXXXXX")"
   curl -fsSL --retry 3 --connect-timeout 20 \
