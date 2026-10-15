@@ -1,0 +1,28 @@
+{
+  "edition": "FR1988-v2",
+  "source": "JPEG marginal references",
+  "checkpoint_margins": 0,
+  "pages_with_checkpoints": [],
+  "ocr_rows": 0,
+  "reference_rows": 0,
+  "section_labels": 0,
+  "parsed_segments": 0,
+  "interpretation_review": 0,
+  "segments_total": 0,
+  "source_anchor_missing": 0,
+  "layout_uncertain_rows": 0,
+  "no_auto_book_inheritance_across_rows": true,
+  "verified": 0,
+  "sql_writes": false,
+  "requested_pages": [
+    32,
+    500
+  ],
+  "margins_in_run": 0,
+  "margins_total": 938,
+  "api_calls": 0,
+  "cached_jobs": 0,
+  "errors": 0,
+  "failures": [],
+  "last_update_utc": "2026-10-15T17:37:29.899959+00:00"
+}
