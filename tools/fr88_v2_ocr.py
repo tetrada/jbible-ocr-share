@@ -157,7 +157,7 @@ def call_deepseek(api_key, parts, page, side):
     body = json.dumps({
         "model": MODEL, "thinking": {"type": "disabled"},
         "response_format": {"type": "json_object"},
-        "temperature": 0, "max_tokens": 8000,
+        "max_tokens": 8000,
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": content}
@@ -311,11 +311,26 @@ def main():
     cli.add_argument("--start", type=int, default=32)
     cli.add_argument("--end", type=int, default=500)
     cli.add_argument("--preflight", action="store_true")
+    cli.add_argument("--initialize", action="store_true",
+                     help="Create empty v2 aggregate files without DeepSeek calls")
     args = cli.parse_args()
     if args.start < 1 or args.end < args.start:
         cli.error("Invalid page range")
     preflight(args.start, args.end)
     if args.preflight:
+        return 0
+    if args.initialize:
+        OUTPUT.mkdir(parents=True, exist_ok=True)
+        metrics = write_aggregates(collect_existing(), {
+            "requested_pages": [args.start, args.end],
+            "margins_in_run": 0,
+            "margins_total": (args.end - args.start + 1) * 2,
+            "api_calls": 0, "cached_jobs": 0,
+            "errors": 0, "failures": [],
+            "last_update_utc": datetime.now(timezone.utc).isoformat(),
+        })
+        print("INITIALIZED: %d existing OCR rows; no API calls" %
+              metrics["ocr_rows"], flush=True)
         return 0
     api_key = os.environ.get("DEEPSEEK_API_KEY", "").strip()
     if not api_key:
