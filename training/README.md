@@ -2,6 +2,18 @@
 
 This repository stores a **human-confirmed OCR gold corpus** in [fr88_ocr_gold.json](fr88_ocr_gold.json). It is NOT a model checkpoint, and it does not modify the hosted DeepSeek model's weights.
 
+## Human reviews received and next training batch
+
+Seven substantive cases were reviewed through the private webpage and published as text in `fr88_v3_learning/human_reviews.json`. The cropped or cut-off page-34 reading (D010) is **not** a trustworthy training label, despite its confirmation flag. The two identical `2 P 2 5` findings count as one teaching concept, not independent examples.
+
+Five distinct gold prompt examples are currently in `training/fr88_ocr_gold.json` (the original user-shared image, plus D003, D012, D016 and D017), including row-separation and excluding editorial prose. For meaningful held-out accuracy tests, we've queued **12 additional diverse agreed OCR references** (they still need actual scan inspection, since V2/V3 agreement does not verify them). To refresh the installed webpage without losing previous reviews:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main/tools/refresh_fr88_review_queue.sh | bash
+```
+
+Then refresh https://status.tetrada.eu/jbible-review/; you should see 7/19 confirmed and 12 new cases. The aim is 12 distinct prompt-training examples plus 5 unseen holdout examples before the next paid v4 20-page comparison. **Do not bypass the 12-example guard** just to get another misleading comparison.
+
 ## Current state
 
 - 20-page OCR v3 pilot (pages 31–50) had 32 **disagreement groups**, but neither variant has been proven more accurate. v2 reported 2 invalid coordinates; v3 reported none and 3 more section labels.
