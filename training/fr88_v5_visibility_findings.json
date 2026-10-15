@@ -1,0 +1,62 @@
+{
+  "schema": "jbible.fr88.v5.visibility-findings.v1",
+  "basis": "Published V5 text-only OCR report and human-reviewed original scan D051",
+  "page": 32,
+  "side": "R",
+  "pilot": {
+    "pages": [
+      32,
+      32
+    ],
+    "ocr_rows": 31,
+    "visibility": {
+      "COMPLETE": 30,
+      "CUT_OFF": 1,
+      "UNREADABLE": 0,
+      "UNSPECIFIED": 0
+    },
+    "cutoff_holdout_pass": false
+  },
+  "critical_case": {
+    "review_case_id": "D051",
+    "human_verified_visible_prefix": "↗ 1 Co 15",
+    "print_after_prefix": "NOT_VISIBLE_AT_PAGE_EDGE",
+    "human_verified_complete_reference": null,
+    "original_ocr_proposal": "↗ 1 Co 15 4",
+    "source_row_id": "fr88v3:p0032:R:17",
+    "source_visibility_status": "CUT_OFF",
+    "row_policy": "QUARANTINE_REVIEW_REQUIRED",
+    "resolved_bible_target": null,
+    "auto_link_allowed": false
+  },
+  "model_findings": {
+    "v2": {
+      "proposed_text": "↗ 1 Co 15 45",
+      "result": "UNVERIFIED_COMPLETION_BEYOND_VISIBLE_TEXT",
+      "visibility": "UNSPECIFIED"
+    },
+    "v3": {
+      "proposed_text": "↗ 1 Co 15 45",
+      "result": "UNVERIFIED_COMPLETION_BEYOND_VISIBLE_TEXT",
+      "visibility": "UNSPECIFIED"
+    },
+    "v4": {
+      "proposed_text": "↗ 1 Co 15 2",
+      "result": "UNVERIFIED_COMPLETION_BEYOND_VISIBLE_TEXT",
+      "visibility": "UNSPECIFIED"
+    },
+    "v5": {
+      "proposed_text": "↗ 1 Co 15 4",
+      "result": "UNVERIFIED_COMPLETION_BEYOND_VISIBLE_TEXT",
+      "visibility": "CUT_OFF"
+    }
+  },
+  "policy": {
+    "complete_ocr_rows_are_not_scan_verified": true,
+    "truncated_rows_must_not_be_interpreted_as_complete_references": true,
+    "preserve_raw_ocr_for_audit": true,
+    "source_verse_verified": 0,
+    "sql_writes": false,
+    "additional_paid_ocr_needed_now": false
+  }
+}
