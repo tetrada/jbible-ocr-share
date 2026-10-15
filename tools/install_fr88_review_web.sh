@@ -10,6 +10,7 @@ BASE=/opt/jbible/review-web
 DATA=/var/lib/jbible-review
 SRC=https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main
 mkdir -p "$BASE"
+chmod 0755 "$BASE"
 if ! id -u jbible-review >/dev/null 2>&1; then
   useradd --system --user-group --home-dir "$DATA" --shell /usr/sbin/nologin jbible-review
 fi
@@ -43,6 +44,10 @@ from pathlib import Path
 p=Path(sys.argv[1])
 p.write_text(secrets.token_urlsafe(27)+"\n",encoding="utf-8")
 PY
+fi
+if ! runuser -u jbible-review -- test -r "$BASE/priority.json"; then
+  echo "Review service account cannot access $BASE. Check parent directory permissions." >&2
+  exit 1
 fi
 chown jbible-review:jbible-review "$BASE/password"
 chmod 0600 "$BASE/password"
