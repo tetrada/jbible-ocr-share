@@ -1,0 +1,19 @@
+{
+  "schema": "jbible.fr88.human-review.v1",
+  "source": "Authenticated human verification of French Bible reference scans",
+  "notice": "Text-only public GitHub data; original copyrighted scanned pages remain on VPS",
+  "reviews": {
+    "D003": {
+      "choice": "v3",
+      "corrected_lines": [
+        "1 1 - 2 4",
+        "Qo 3 20s;",
+        "12 7"
+      ],
+      "verified_against_scan": true,
+      "verification_status": "SCAN_CONFIRMED",
+      "notes": "",
+      "saved_at_utc": "2026-10-15T22:19:08.598878+00:00"
+    }
+  }
+}
