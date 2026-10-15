@@ -21,5 +21,16 @@ jobs:
         run: python -m py_compile tools/fr88_v2_normalize.py tools/fr88_v2_ocr.py
       - name: Validate shell launch scripts
         run: bash -n tools/run_fr88_v2.sh tools/start_fr88_v2_32_500.sh
+      - name: Compile embedded bootstrap Python
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          source = Path('tools/start_fr88_v2_32_500.sh').read_text()
+          marker = "python3 - \"$SYNC\" <<'PY'\\n"
+          start = source.index(marker) + len(marker)
+          end = source.index('\\nPY\\n', start)
+          compile(source[start:end], '<bootstrap-python>', 'exec')
+          print('Embedded Python: syntax OK')
+          PY
       - name: Verify user-provided notation examples
         run: python tools/fr88_v2_normalize.py --catalog catalog.csv --self-test
