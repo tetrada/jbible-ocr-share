@@ -153,6 +153,29 @@ def report(start, end, attempts_so_far, failures=None):
     if len(existing)==expected:
         for name in ("candidates","quarantine","excluded"):
             save(OUT/("staging_"+name+".json"), classified[name])
+        # Parsed target coordinates remain only *staging candidates*, never linked
+        # to a source verse or accepted automatically as canonical text.
+        allowed = ("type", "book_code", "book_printed", "chapter", "verse",
+                   "end_chapter", "end_verse", "verses", "suffix",
+                   "literal", "status", "original_parse_status")
+        stage_segments=[]
+        for row in all_rows:
+            status, reason=gate.classification(row)
+            if status!="CANDIDATE":
+                continue
+            for segment_number,ref in enumerate(row.get("references") or [],1):
+                stage_segments.append({
+                    "source_ocr_row_id":row["id"],
+                    "segment_index":segment_number,
+                    "image_page":row["image_page"],
+                    "side":row["side"],
+                    "printed_target":{k:ref.get(k) for k in allowed},
+                    "scan_verified":False,
+                    "source_verse_verified":False,
+                    "auto_link_allowed":False
+                })
+        save(OUT/"staging_candidate_segments.json",stage_segments)
+        results["staged_unverified_segments"]=len(stage_segments)
         save(OUT/"completion_summary.json", results)
         print("BATCH COMPLETE (NOT BIBLE VERIFICATION):",json.dumps(results,indent=2),flush=True)
     return results
