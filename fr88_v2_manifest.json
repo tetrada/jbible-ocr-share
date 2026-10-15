@@ -1,7 +1,7 @@
 {
   "edition": "FR1988-v2",
   "shard_page_span": 20,
-  "rows_total": 4631,
+  "rows_total": 4986,
   "chunks": [
     {
       "page_range": [
@@ -190,7 +190,25 @@
       ],
       "rows_file": "fr88_v2_shards/rows_p0421_0440.json",
       "interpreted_file": "fr88_v2_shards/interpreted_p0421_0440.json",
-      "row_count": 6
+      "row_count": 184
+    },
+    {
+      "page_range": [
+        441,
+        460
+      ],
+      "rows_file": "fr88_v2_shards/rows_p0441_0460.json",
+      "interpreted_file": "fr88_v2_shards/interpreted_p0441_0460.json",
+      "row_count": 145
+    },
+    {
+      "page_range": [
+        461,
+        480
+      ],
+      "rows_file": "fr88_v2_shards/rows_p0461_0480.json",
+      "interpreted_file": "fr88_v2_shards/interpreted_p0461_0480.json",
+      "row_count": 32
     }
   ],
   "verified": 0,

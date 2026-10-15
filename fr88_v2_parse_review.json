@@ -30833,5 +30833,2544 @@
         "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
       }
     ]
+  },
+  {
+    "id": "fr88v2:p0422:L:01",
+    "raw_line": "8 12+",
+    "image_page": 422,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 8,
+        "verse": 12,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "8 12+",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0422:R:01",
+    "raw_line": "II 2 Ch 27 1-4, 7-9",
+    "image_page": 422,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "27 1-4, 7-9",
+        "reason": "notation_not_covered",
+        "book_code": "2Chr",
+        "book_printed": "2 Ch",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0422:R:02",
+    "raw_line": "II 2 Ch 28",
+    "image_page": 422,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0423:L:01",
+    "raw_line": "Is 7-8",
+    "image_page": 423,
+    "side": "L",
+    "references": [
+      {
+        "type": "CHAPTER_RANGE",
+        "chapter": 7,
+        "end_chapter": 8,
+        "literal": "7-8",
+        "book_code": "Isa",
+        "book_printed": "Is",
+        "status": "NEEDS_RANGE_INTERPRETATION"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0423:L:02",
+    "raw_line": "Os 5 8 - 6 6",
+    "image_page": 423,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "5 8 - 6 6",
+        "reason": "notation_not_covered",
+        "book_code": "Hos",
+        "book_printed": "Os",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0423:R:05",
+    "raw_line": "18 9-11",
+    "image_page": 423,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 18,
+        "verse": 9,
+        "end_verse": 11,
+        "suffix": "",
+        "literal": "18 9-11",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0425:L:06",
+    "raw_line": "II 2 Ch 31 1",
+    "image_page": 425,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0425:R:02",
+    "raw_line": "= 17 1-6",
+    "image_page": 425,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 17,
+        "verse": 1,
+        "end_verse": 6,
+        "suffix": "",
+        "literal": "17 1-6",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0425:R:03",
+    "raw_line": "17 7-18",
+    "image_page": 425,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 17,
+        "verse": 7,
+        "end_verse": 18,
+        "suffix": "",
+        "literal": "17 7-18",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0426:L:01",
+    "raw_line": "II 2 Ch 32 1",
+    "image_page": 426,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0426:L:02",
+    "raw_line": "II Is 36 1",
+    "image_page": 426,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0426:L:04",
+    "raw_line": "II 2 Ch 32 9-19",
+    "image_page": 426,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0426:L:05",
+    "raw_line": "II Is 36 2-22",
+    "image_page": 426,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0426:L:10",
+    "raw_line": "31 1-3",
+    "image_page": 426,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 31,
+        "verse": 1,
+        "end_verse": 3,
+        "suffix": "",
+        "literal": "31 1-3",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0426:L:12",
+    "raw_line": "18 4",
+    "image_page": 426,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 18,
+        "verse": 4,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "18 4",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0427:L:01",
+    "raw_line": "17 5, 6, 24",
+    "image_page": 427,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE_LIST",
+        "chapter": 17,
+        "verses": [
+          5,
+          6,
+          24
+        ],
+        "suffix": "",
+        "literal": "17 5, 6, 24",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0427:L:02",
+    "raw_line": "|| Is 37 1-7",
+    "image_page": 427,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0427:L:06",
+    "raw_line": "|| Is 37 8-9",
+    "image_page": 427,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0427:R:01",
+    "raw_line": "II Is 37 9-20",
+    "image_page": 427,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0427:R:02",
+    "raw_line": "II 2 Ch 32 17",
+    "image_page": 427,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0427:R:03",
+    "raw_line": "17 6",
+    "image_page": 427,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 17,
+        "verse": 6,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "17 6",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0427:R:04",
+    "raw_line": "18 34",
+    "image_page": 427,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 18,
+        "verse": 34,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "18 34",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0427:R:05",
+    "raw_line": "II 2 Ch 32 20",
+    "image_page": 427,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0427:R:10",
+    "raw_line": "II Is 37 21-3",
+    "image_page": 427,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "37 21-3",
+        "reason": "reversed_verse_range",
+        "book_code": "Isa",
+        "book_printed": "Is",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0428:R:02",
+    "raw_line": "2 S 7 12-1",
+    "image_page": 428,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "7 12-1",
+        "reason": "reversed_verse_range",
+        "book_code": "2Sam",
+        "book_printed": "2 S",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0428:R:04",
+    "raw_line": "II 2 Ch 32",
+    "image_page": 428,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0428:R:05",
+    "raw_line": "21-22",
+    "image_page": 428,
+    "side": "R",
+    "references": [
+      {
+        "type": "CHAPTER_RANGE",
+        "chapter": 21,
+        "end_chapter": 22,
+        "literal": "21-22",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0428:R:06",
+    "raw_line": "II Is 37 36-",
+    "image_page": 428,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "37 36-",
+        "reason": "notation_not_covered",
+        "book_code": "Isa",
+        "book_printed": "Is",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0428:R:08",
+    "raw_line": "II 2 Ch 32",
+    "image_page": 428,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0428:R:09",
+    "raw_line": "II Is 38 1-6",
+    "image_page": 428,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0428:R:10",
+    "raw_line": "21-22, 7",
+    "image_page": 428,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "21-22, 7",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0429:L:02",
+    "raw_line": "|| Is 39",
+    "image_page": 429,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0429:L:03",
+    "raw_line": "|| 2 Ch 32 23",
+    "image_page": 429,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0429:L:05",
+    "raw_line": "|| 2 Ch 33 1-10",
+    "image_page": 429,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0429:R:01",
+    "raw_line": "|| 2 Ch 32 30",
+    "image_page": 429,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0429:R:03",
+    "raw_line": "18 4",
+    "image_page": 429,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 18,
+        "verse": 4,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "18 4",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0430:L:07",
+    "raw_line": "II 2 Ch 34 1-2",
+    "image_page": 430,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0430:R:01",
+    "raw_line": "II 2 Ch 33",
+    "image_page": 430,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0430:R:02",
+    "raw_line": "II 2 Ch 33 2",
+    "image_page": 430,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0430:R:03",
+    "raw_line": "II 2 Ch 34 8-",
+    "image_page": 430,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "34 8-",
+        "reason": "notation_not_covered",
+        "book_code": "2Chr",
+        "book_printed": "2 Ch",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0430:R:04",
+    "raw_line": "12 11-16",
+    "image_page": 430,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 12,
+        "verse": 11,
+        "end_verse": 16,
+        "suffix": "",
+        "literal": "12 11-16",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0431:R:01",
+    "raw_line": "|| 2 Ch 34 29-31",
+    "image_page": 431,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0431:R:02",
+    "raw_line": "|| 2 Ch 34 3-5",
+    "image_page": 431,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0431:R:03",
+    "raw_line": "21 3, 7",
+    "image_page": 431,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE_LIST",
+        "chapter": 21,
+        "verses": [
+          3,
+          7
+        ],
+        "suffix": "",
+        "literal": "21 3, 7",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0432:L:05",
+    "raw_line": "21 5",
+    "image_page": 432,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 21,
+        "verse": 5,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "21 5",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0432:R:01",
+    "raw_line": "1 R 12 33 - 1",
+    "image_page": 432,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "12 33 - 1",
+        "reason": "reversed_verse_range",
+        "book_code": "1Kgs",
+        "book_printed": "1 R",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0432:R:03",
+    "raw_line": "II 2 Ch 34 6-",
+    "image_page": 432,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "34 6-",
+        "reason": "notation_not_covered",
+        "book_code": "2Chr",
+        "book_printed": "2 Ch",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0432:R:04",
+    "raw_line": "II 2 Ch 35 1,",
+    "image_page": 432,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "35 1,",
+        "reason": "notation_not_covered",
+        "book_code": "2Chr",
+        "book_printed": "2 Ch",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0433:L:07",
+    "raw_line": "25 6",
+    "image_page": 433,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 25,
+        "verse": 6,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "25 6",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0433:R:01",
+    "raw_line": "II 2 Ch 35 26-27",
+    "image_page": 433,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0433:R:02",
+    "raw_line": "II 2 Ch 35 20-24",
+    "image_page": 433,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0433:R:03",
+    "raw_line": "II 2 Ch 36 1",
+    "image_page": 433,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0433:R:05",
+    "raw_line": "21 24",
+    "image_page": 433,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 21,
+        "verse": 24,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "21 24",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0433:R:06",
+    "raw_line": "II 2 Ch 36 5-7",
+    "image_page": 433,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0433:R:07",
+    "raw_line": "21 16",
+    "image_page": 433,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 21,
+        "verse": 16,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "21 16",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0434:L:01",
+    "raw_line": "II 2 Ch 36 8",
+    "image_page": 434,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0434:L:02",
+    "raw_line": "II 2 Ch 36 9",
+    "image_page": 434,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0434:L:03",
+    "raw_line": "II 2 Ch 36 10",
+    "image_page": 434,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0434:L:04",
+    "raw_line": "20 17",
+    "image_page": 434,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 20,
+        "verse": 17,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "20 17",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0434:R:03",
+    "raw_line": "22 17;",
+    "image_page": 434,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 22,
+        "verse": 17,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "22 17",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0434:R:04",
+    "raw_line": "23 26-27",
+    "image_page": 434,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 23,
+        "verse": 26,
+        "end_verse": 27,
+        "suffix": "",
+        "literal": "23 26-27",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0434:R:08",
+    "raw_line": "23 33",
+    "image_page": 434,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 23,
+        "verse": 33,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "23 33",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0434:R:10",
+    "raw_line": "Jr 52 12-2",
+    "image_page": 434,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "52 12-2",
+        "reason": "reversed_verse_range",
+        "book_code": "Jer",
+        "book_printed": "Jr",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0435:L:06",
+    "raw_line": "23 4",
+    "image_page": 435,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 23,
+        "verse": 4,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "23 4",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0435:R:01",
+    "raw_line": "Jr 40 5, 7 - 41 18",
+    "image_page": 435,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "40 5, 7 - 41 18",
+        "reason": "notation_not_covered",
+        "book_code": "Jer",
+        "book_printed": "Jr",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0435:R:02",
+    "raw_line": "|| Jr 52 31-34",
+    "image_page": 435,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0436:L:01",
+    "raw_line": "Jr 40,5.7-41,18",
+    "image_page": 436,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "40,5.7-41,18",
+        "reason": "notation_not_covered",
+        "book_code": "Jer",
+        "book_printed": "Jr",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0444:R:01",
+    "raw_line": "II Gn 36 40-43",
+    "image_page": 444,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0445:L:03",
+    "raw_line": "4 11s",
+    "image_page": 445,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 4,
+        "verse": 11,
+        "end_verse": null,
+        "suffix": "s",
+        "literal": "4 11s",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0445:L:04",
+    "raw_line": "II S 3 2-5",
+    "image_page": 445,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 3 2-5",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0445:L:05",
+    "raw_line": "= 14 3-7",
+    "image_page": 445,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 14,
+        "verse": 3,
+        "end_verse": 7,
+        "suffix": "",
+        "literal": "14 3-7",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0445:L:06",
+    "raw_line": "II S 5 14-16",
+    "image_page": 445,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 5 14-16",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0445:R:02",
+    "raw_line": "2 19; 4 1s",
+    "image_page": 445,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 2,
+        "verse": 19,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "2 19",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      {
+        "type": "VERSE",
+        "chapter": 4,
+        "verse": 1,
+        "end_verse": null,
+        "suffix": "s",
+        "literal": "4 1s",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0445:R:04",
+    "raw_line": "Nb 24 21+",
+    "image_page": 445,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 24,
+        "verse": 21,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "24 21+",
+        "book_code": "Num",
+        "book_printed": "Nb",
+        "status": "NEEDS_LAYOUT_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0446:L:02",
+    "raw_line": "2 3",
+    "image_page": 446,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 2,
+        "verse": 3,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "2 3",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0446:L:03",
+    "raw_line": "2 50+",
+    "image_page": 446,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 2,
+        "verse": 50,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "2 50+",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0446:L:04",
+    "raw_line": "2 55",
+    "image_page": 446,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 2,
+        "verse": 55,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "2 55",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0446:R:03",
+    "raw_line": "1 Ch 2 18s, 4",
+    "image_page": 446,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "2 18s, 4",
+        "reason": "notation_not_covered",
+        "book_code": "1Chr",
+        "book_printed": "1 Ch",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0446:R:04",
+    "raw_line": "2 9+",
+    "image_page": 446,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 2,
+        "verse": 9,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "2 9+",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0446:R:05",
+    "raw_line": "|| Jg 1 13",
+    "image_page": 446,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0446:R:07",
+    "raw_line": "|| Nb 13 6",
+    "image_page": 446,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0446:R:08",
+    "raw_line": "23",
+    "image_page": 446,
+    "side": "R",
+    "references": [
+      {
+        "type": "CHAPTER_ONLY",
+        "chapter": 23,
+        "suffix": "",
+        "literal": "23",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0447:L:01",
+    "raw_line": "|| Gn 46 10",
+    "image_page": 447,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0447:L:02",
+    "raw_line": "|| Nb 26 12s",
+    "image_page": 447,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0447:L:03",
+    "raw_line": "1 29-30",
+    "image_page": 447,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 1,
+        "verse": 29,
+        "end_verse": 30,
+        "suffix": "",
+        "literal": "1 29-30",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0447:L:05",
+    "raw_line": "|| Jos 19 1-8",
+    "image_page": 447,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0447:L:07",
+    "raw_line": "|| Gn 46 9",
+    "image_page": 447,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0447:L:08",
+    "raw_line": "|| Nb 26 5s",
+    "image_page": 447,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0448:L:07",
+    "raw_line": "II Gn 46 11",
+    "image_page": 448,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0448:L:09",
+    "raw_line": "II Nb 26 59-60",
+    "image_page": 448,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0448:R:01",
+    "raw_line": "II Nb 32 39",
+    "image_page": 448,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0448:R:02",
+    "raw_line": "II Nb 3 17-2",
+    "image_page": 448,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "3 17-2",
+        "reason": "reversed_verse_range",
+        "book_code": "Num",
+        "book_printed": "Nb",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0449:R:02",
+    "raw_line": "Jos 21 4, 10-19",
+    "image_page": 449,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "21 4, 10-19",
+        "reason": "notation_not_covered",
+        "book_code": "Josh",
+        "book_printed": "Jos",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0450:L:01",
+    "raw_line": "|| Gn 46 13",
+    "image_page": 450,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0450:L:02",
+    "raw_line": "|| Nb 26 23-24",
+    "image_page": 450,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0450:L:04",
+    "raw_line": "8 1s",
+    "image_page": 450,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 8,
+        "verse": 1,
+        "end_verse": null,
+        "suffix": "s",
+        "literal": "8 1s",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0450:L:05",
+    "raw_line": "|| Gn 46 21",
+    "image_page": 450,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0450:L:06",
+    "raw_line": "|| Nb 26 38",
+    "image_page": 450,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0450:R:01",
+    "raw_line": "II Nb 26 39",
+    "image_page": 450,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0450:R:02",
+    "raw_line": "II Gn 46 24",
+    "image_page": 450,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0450:R:03",
+    "raw_line": "II Nb 26 48-",
+    "image_page": 450,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "26 48-",
+        "reason": "notation_not_covered",
+        "book_code": "Num",
+        "book_printed": "Nb",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0451:L:01",
+    "raw_line": "8 13",
+    "image_page": 451,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 8,
+        "verse": 13,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "8 13",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0451:L:05",
+    "raw_line": "|| Gn 46 21",
+    "image_page": 451,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0451:R:01",
+    "raw_line": "|| Gn 46 17",
+    "image_page": 451,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0451:R:02",
+    "raw_line": "|| Nb 26 44s",
+    "image_page": 451,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0451:R:03",
+    "raw_line": "7 23+",
+    "image_page": 451,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 7,
+        "verse": 23,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "7 23+",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0452:L:01",
+    "raw_line": "= 9 34",
+    "image_page": 452,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 9,
+        "verse": 34,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "9 34",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0452:L:02",
+    "raw_line": "= 9 35-38",
+    "image_page": 452,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 9,
+        "verse": 35,
+        "end_verse": 38,
+        "suffix": "",
+        "literal": "9 35-38",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0452:L:03",
+    "raw_line": "|| 1 S 14 49-51",
+    "image_page": 452,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0452:L:04",
+    "raw_line": "= 1 Ch 9 39-43",
+    "image_page": 452,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0452:L:05",
+    "raw_line": "|| Ne 11 3-19",
+    "image_page": 452,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "||",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0453:L:01",
+    "raw_line": "= 8 29-38",
+    "image_page": 453,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 8,
+        "verse": 29,
+        "end_verse": 38,
+        "suffix": "",
+        "literal": "8 29-38",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0453:R:02",
+    "raw_line": "= 8 28",
+    "image_page": 453,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 8,
+        "verse": 28,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "8 28",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0454:L:05",
+    "raw_line": "II S 23 8-39",
+    "image_page": 454,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 23 8-39",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0455:L:01",
+    "raw_line": "8 40+",
+    "image_page": 455,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 8,
+        "verse": 40,
+        "end_verse": null,
+        "suffix": "+",
+        "literal": "8 40+",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0455:L:02",
+    "raw_line": "5",
+    "image_page": 455,
+    "side": "L",
+    "references": [
+      {
+        "type": "CHAPTER_ONLY",
+        "chapter": 5,
+        "suffix": "",
+        "literal": "5",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0456:R:02",
+    "raw_line": "2 S 6 2-",
+    "image_page": 456,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "6 2-",
+        "reason": "notation_not_covered",
+        "book_code": "2Sam",
+        "book_printed": "2 S",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0457:L:01",
+    "raw_line": "II S 5 11-16",
+    "image_page": 457,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 5 11-16",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0457:L:02",
+    "raw_line": "= 3 5-8",
+    "image_page": 457,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 3,
+        "verse": 5,
+        "end_verse": 8,
+        "suffix": "",
+        "literal": "3 5-8",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0457:L:03",
+    "raw_line": "II S 5 17-25",
+    "image_page": 457,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 5 17-25",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0458:L:01",
+    "raw_line": "II 2 S 6 12-19",
+    "image_page": 458,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0459:L:01",
+    "raw_line": "Ps 106 1, 47-48",
+    "image_page": 459,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "106 1, 47-48",
+        "reason": "notation_not_covered",
+        "book_code": "Ps",
+        "book_printed": "Ps",
+        "status": "NEEDS_NOTATION_REVIEW"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0459:R:01",
+    "raw_line": "II S 6 19-20",
+    "image_page": 459,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 6 19-20",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0459:R:02",
+    "raw_line": "II S 7 1-17",
+    "image_page": 459,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 7 1-17",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0460:R:01",
+    "raw_line": "II S 8 1-14",
+    "image_page": 460,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 8 1-14",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0460:R:02",
+    "raw_line": "22 3",
+    "image_page": 460,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 22,
+        "verse": 3,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "22 3",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0460:R:03",
+    "raw_line": "II S 8 1",
+    "image_page": 460,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 8 1",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0461:L:01",
+    "raw_line": "II S 10 1-5",
+    "image_page": 461,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 10 1-5",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0461:L:02",
+    "raw_line": "II S 10 6-14",
+    "image_page": 461,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 10 6-14",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0462:L:02",
+    "raw_line": "II S 24 1-9",
+    "image_page": 462,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 24 1-9",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0462:L:03",
+    "raw_line": "II S 24 10-17",
+    "image_page": 462,
+    "side": "L",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II S 24 10-17",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0462:R:01",
+    "raw_line": "II 2 S 24 18-25",
+    "image_page": 462,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0464:L:01",
+    "raw_line": "1 R 11-21",
+    "image_page": 464,
+    "side": "L",
+    "references": [
+      {
+        "type": "CHAPTER_RANGE",
+        "chapter": 11,
+        "end_chapter": 21,
+        "literal": "11-21",
+        "book_code": "1Kgs",
+        "book_printed": "1 R",
+        "status": "NEEDS_RANGE_INTERPRETATION"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0464:L:04",
+    "raw_line": "26 21s",
+    "image_page": 464,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 26,
+        "verse": 21,
+        "end_verse": null,
+        "suffix": "s",
+        "literal": "26 21s",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0464:L:05",
+    "raw_line": "24 20-30;",
+    "image_page": 464,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 24,
+        "verse": 20,
+        "end_verse": 30,
+        "suffix": "",
+        "literal": "24 20-30",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0464:L:06",
+    "raw_line": "26 24-25",
+    "image_page": 464,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 26,
+        "verse": 24,
+        "end_verse": 25,
+        "suffix": "",
+        "literal": "26 24-25",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0464:R:01",
+    "raw_line": "23 3, 24",
+    "image_page": 464,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE_LIST",
+        "chapter": 23,
+        "verses": [
+          3,
+          24
+        ],
+        "suffix": "",
+        "literal": "23 3, 24",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0464:R:02",
+    "raw_line": "Nb 28-29",
+    "image_page": 464,
+    "side": "R",
+    "references": [
+      {
+        "type": "CHAPTER_RANGE",
+        "chapter": 28,
+        "end_chapter": 29,
+        "literal": "28-29",
+        "book_code": "Num",
+        "book_printed": "Nb",
+        "status": "NEEDS_RANGE_INTERPRETATION"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0464:R:03",
+    "raw_line": "II Nb 3 2-4",
+    "image_page": 464,
+    "side": "R",
+    "references": [
+      {
+        "type": "UNRESOLVED_NUMERIC",
+        "literal": "II",
+        "reason": "notation_not_covered",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0465:L:01",
+    "raw_line": "23 16s",
+    "image_page": 465,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 23,
+        "verse": 16,
+        "end_verse": null,
+        "suffix": "s",
+        "literal": "23 16s",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0465:R:01",
+    "raw_line": "16 37-43",
+    "image_page": 465,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 16,
+        "verse": 37,
+        "end_verse": 43,
+        "suffix": "",
+        "literal": "16 37-43",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0466:L:01",
+    "raw_line": "9 17-27",
+    "image_page": 466,
+    "side": "L",
+    "references": [
+      {
+        "type": "VERSE_RANGE",
+        "chapter": 9,
+        "verse": 17,
+        "end_verse": 27,
+        "suffix": "",
+        "literal": "9 17-27",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0466:R:02",
+    "raw_line": "9 24",
+    "image_page": 466,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 9,
+        "verse": 24,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "9 24",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "fr88v2:p0466:R:03",
+    "raw_line": "18 11",
+    "image_page": 466,
+    "side": "R",
+    "references": [
+      {
+        "type": "VERSE",
+        "chapter": 18,
+        "verse": 11,
+        "end_verse": null,
+        "suffix": "",
+        "literal": "18 11",
+        "book_code": null,
+        "book_printed": null,
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      }
+    ]
   }
 ]
