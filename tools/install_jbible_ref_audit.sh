@@ -4,6 +4,12 @@
 set -euo pipefail
 DEST="/opt/jbible/importer"
 BASE_URL="https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main/tools"
+echo "Using: $(python3 --version 2>&1)"
+python3 - <<'PY'
+import sys
+if sys.version_info < (3, 6):
+    raise SystemExit("JBible reference audit requires Python 3.6 or newer")
+PY
 mkdir -p "$DEST"
 for name in jbible_ref_audit.py run_jbible_ref_audit.sh test_jbible_ref_audit.py README_jbible_ref_audit.md; do
   tmp="$(mktemp "$DEST/.audit_download_XXXXXXXX")"
