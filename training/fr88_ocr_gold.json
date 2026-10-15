@@ -48,9 +48,9 @@
         "↗ Sg 14 6-7",
         "↗ Mt 24 37sp"
       ],
-      "typography": "Do not duplicate a nearby marginal reference while reading another group. Keep the three confirmed printed references including the '37sp' suffix without changing it.",
+      "typography": "Do not duplicate a nearby marginal reference while reading another group. Keep the three confirmed printed references including the '37sp' suffix without changing it. The Si 16 7 reference printed elsewhere on this page remains valid and should still be transcribed at its actual position.",
       "inclusion": "prompt_example",
-      "note": "The user's scan review selected v3's three-row group; the earlier Si 16 7 entry elsewhere on the page is a separate matter."
+      "note": "The user's scan review selected v3's three-row group; the earlier Si 16 7 entry elsewhere on the page is a separate matter. The separate printed Si 16 7 earlier on page 37 must NOT be suppressed; only the duplicated row within this group is excluded."
     },
     {
       "id": "GOLD-0004",
@@ -92,11 +92,12 @@
       "image_page": 31,
       "side": "L",
       "row_id": "fr88v2:p0031:L:01",
-      "baseline_ocr_error": "Jb 38-39",
+      "baseline_ocr_error": "",
       "corrected_raw_line": "Jb 38-39",
       "typography": "Preserve chapter-only ranges: 'Jb 38-39' has Job and chapters 38 through 39; do not force a verse number.",
       "inclusion": "prompt_example",
-      "note": "Human verified the printed row against the original scan."
+      "note": "Human verified the printed row against the original scan. Baseline OCR already reproduced the same character sequence; this is a scan-confirmed example, NOT a measured correction.",
+      "baseline_observation": "Jb 38-39"
     },
     {
       "id": "GOLD-0007",
@@ -106,11 +107,12 @@
       "image_page": 31,
       "side": "L",
       "row_id": "fr88v2:p0031:L:09",
-      "baseline_ocr_error": "7 11+",
+      "baseline_ocr_error": "",
       "corrected_raw_line": "7 11+",
       "typography": "The standalone numeric row '7 11+' is legitimate; retain plus suffix and do not fabricate the target book.",
       "inclusion": "prompt_example",
-      "note": "Human verified the printed row against the original scan."
+      "note": "Human verified the printed row against the original scan. Baseline OCR already reproduced the same character sequence; this is a scan-confirmed example, NOT a measured correction.",
+      "baseline_observation": "7 11+"
     },
     {
       "id": "GOLD-0008",
@@ -120,11 +122,12 @@
       "image_page": 32,
       "side": "L",
       "row_id": "fr88v2:p0032:L:02",
-      "baseline_ocr_error": "5 1, 3; 9 6",
+      "baseline_ocr_error": "",
       "corrected_raw_line": "5 1, 3; 9 6",
       "typography": "The notation '5 1, 3; 9 6' belongs to one printed row; retain internal comma and semicolon without inventing a book.",
       "inclusion": "prompt_example",
-      "note": "Human verified the printed row against the original scan."
+      "note": "Human verified the printed row against the original scan. Baseline OCR already reproduced the same character sequence; this is a scan-confirmed example, NOT a measured correction.",
+      "baseline_observation": "5 1, 3; 9 6"
     },
     {
       "id": "GOLD-0009",
@@ -134,11 +137,12 @@
       "image_page": 32,
       "side": "L",
       "row_id": "fr88v2:p0032:L:09",
-      "baseline_ocr_error": "↗ Mt 19 4p",
+      "baseline_ocr_error": "",
       "corrected_raw_line": "↗ Mt 19 4p",
       "typography": "Printed 'Mt 19 4p' includes an editorial suffix 'p', not a digit; retain it exactly.",
       "inclusion": "prompt_example",
-      "note": "Human verified the printed row against the original scan."
+      "note": "Human verified the printed row against the original scan. Baseline OCR already reproduced the same character sequence; this is a scan-confirmed example, NOT a measured correction.",
+      "baseline_observation": "↗ Mt 19 4p"
     },
     {
       "id": "GOLD-0010",
@@ -148,11 +152,12 @@
       "image_page": 32,
       "side": "R",
       "row_id": "fr88v2:p0032:R:13",
-      "baseline_ocr_error": "↗ Sg 15 8,",
+      "baseline_ocr_error": "",
       "corrected_raw_line": "↗ Sg 15 8,",
       "typography": "Printed 'Sg 15 8,' ends in a comma. Keep the trailing comma; do not complete an unseen continuation.",
       "inclusion": "prompt_example",
-      "note": "Human verified the printed row against the original scan."
+      "note": "Human verified the printed row against the original scan. Baseline OCR already reproduced the same character sequence; this is a scan-confirmed example, NOT a measured correction.",
+      "baseline_observation": "↗ Sg 15 8,"
     },
     {
       "id": "GOLD-0011",
@@ -162,11 +167,12 @@
       "image_page": 36,
       "side": "R",
       "row_id": "fr88v2:p0036:R:06",
-      "baseline_ocr_error": "27",
+      "baseline_ocr_error": "",
       "corrected_raw_line": "2 7",
       "typography": "The user identified BOLD chapter 2 followed by regular verse 7; preserve the boundary '2 7', even when no book is written.",
       "inclusion": "prompt_example",
-      "note": "2 bold 7 regular"
+      "note": "2 bold 7 regular Baseline OCR already reproduced the same character sequence; this is a scan-confirmed example, NOT a measured correction.",
+      "baseline_observation": "27"
     },
     {
       "id": "GOLD-0012",
@@ -176,11 +182,12 @@
       "image_page": 44,
       "side": "R",
       "row_id": "fr88v2:p0044:R:07",
-      "baseline_ocr_error": "1 M 2 52",
+      "baseline_ocr_error": "",
       "corrected_raw_line": "1 M 2 52",
       "typography": "In '1 M 2 52', 1 M is the book ordinal + abbreviation (1 Maccabees), 2 is chapter, and 52 is verse; preserve spaces.",
       "inclusion": "prompt_example",
-      "note": "Human verified the printed row against the original scan."
+      "note": "Human verified the printed row against the original scan. Baseline OCR already reproduced the same character sequence; this is a scan-confirmed example, NOT a measured correction.",
+      "baseline_observation": "1 M 2 52"
     }
   ],
   "held_out_examples": [
