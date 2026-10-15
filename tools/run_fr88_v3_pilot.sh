@@ -8,6 +8,8 @@ for F in fr88_v3_pilot.py fr88_v3_typography_prompt.txt fr88_v2_ocr.py fr88_v2_n
 done
 [[ -s "$BASE/.env.deepseek" ]] || { echo "Missing .env.deepseek" >&2; exit 2; }
 [[ -s "$RAW/jbible_fr1988_v2/interpreted_rows.json" ]] || { echo "Missing v2 baseline" >&2; exit 2; }
+OUT="$RAW/jbible_fr1988_v3_pilot_31_50"
+mkdir -p "$OUT"
 command -v docker >/dev/null
 command -v flock >/dev/null
 DOCKER=(docker run --rm --memory=4g
@@ -17,7 +19,8 @@ DOCKER=(docker run --rm --memory=4g
   -v "$BASE/fr88_v3_typography_prompt.txt:/app/fr88_v3_typography_prompt.txt:ro"
   -v "$BASE/fr88_v2_ocr.py:/app/fr88_v2_ocr.py:ro"
   -v "$BASE/fr88_v2_normalize.py:/app/fr88_v2_normalize.py:ro"
-  -v "$RAW:/raw"
+  -v "$RAW:/raw:ro"
+  -v "$OUT:/raw/jbible_fr1988_v3_pilot_31_50:rw"
   jbible-ocr:1
   /app/fr88_v3_pilot.py
   "$@")
