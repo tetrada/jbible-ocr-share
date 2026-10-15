@@ -19,7 +19,7 @@ done
   echo 'Missing v2 baseline' >&2; exit 2;
 }
 mkdir -p "$OUT"
-for f in fr88_learning_prompt.py fr88_v4_learning_proxy.py; do
+for f in fr88_learning_prompt.py fr88_v4_learning_proxy.py fr88_v4_holdout_eval.py; do
   temp="$(mktemp "$BASE/.fr88_v4_download_XXXXXXXX")"
   curl -fsSL --retry 3 "$URL/$f" -o "$temp" || { rm -f "$temp"; exit 1; }
   mv "$temp" "$BASE/$f"
@@ -42,4 +42,23 @@ DOCKER=(docker run --rm --memory=4g --env-file "$BASE/.env.deepseek"
   -v "$RAW:/raw:ro"
   -v "$OUT:/raw/jbible_fr1988_v4_learning:rw"
   jbible-ocr:1 /app/fr88_v4_learning_proxy.py "$@")
-exec flock -n /run/jbible-fr88-v2.lock flock -n /run/jbible-fr88-v4.lock "${DOCKER[@]}"
+if [[ "${1:-}" == "--preflight" ]]; then
+  exec flock -n /run/jbible-fr88-v2.lock flock -n /run/jbible-fr88-v4.lock "${DOCKER[@]}"
+fi
+
+set +e
+flock -n /run/jbible-fr88-v2.lock flock -n /run/jbible-fr88-v4.lock "${DOCKER[@]}"
+RUN_STATUS=$?
+set -e
+if [[ -f "$OUT/comparison.json" ]]; then
+  echo "Running independent, read-only holdout regression check..."
+  docker run --rm --memory=4g --entrypoint python \
+    -v "$BASE/fr88_v4_holdout_eval.py:/app/fr88_v4_holdout_eval.py:ro" \
+    -v "$BASE/fr88_ocr_gold.json:/app/fr88_ocr_gold.json:ro" \
+    -v "$RAW:/raw:ro" \
+    -v "$OUT:/raw/jbible_fr1988_v4_learning:rw" \
+    jbible-ocr:1 /app/fr88_v4_holdout_eval.py || {
+      echo "WARNING: Holdout regression evaluation failed; OCR checkpoints remain saved." >&2
+    }
+fi
+exit "$RUN_STATUS"
