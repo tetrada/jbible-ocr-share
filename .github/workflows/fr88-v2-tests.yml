@@ -4,6 +4,8 @@ on:
     paths:
       - "tools/fr88_v2_normalize.py"
       - "tools/fr88_v2_ocr.py"
+      - "tools/fr88_v2_finalize.py"
+      - "tools/finalize_fr88_32_500.sh"
       - "tools/run_fr88_v2.sh"
       - "tools/start_fr88_v2_32_500.sh"
       - ".github/workflows/fr88-v2-tests.yml"
@@ -18,9 +20,9 @@ jobs:
         with:
           python-version: "3.11"
       - name: Compile new OCR and parser
-        run: python -m py_compile tools/fr88_v2_normalize.py tools/fr88_v2_ocr.py
+        run: python -m py_compile tools/fr88_v2_normalize.py tools/fr88_v2_ocr.py tools/fr88_v2_finalize.py
       - name: Validate shell launch scripts
-        run: bash -n tools/run_fr88_v2.sh tools/start_fr88_v2_32_500.sh
+        run: bash -n tools/run_fr88_v2.sh tools/start_fr88_v2_32_500.sh tools/finalize_fr88_32_500.sh
       - name: Compile embedded bootstrap Python
         run: |
           python - <<'PY'
