@@ -22,6 +22,8 @@
   }
 
   function caseY(c) {
+    if (typeof c.target_y_fraction === "number" && c.target_y_fraction >= 0 && c.target_y_fraction <= 1)
+      return c.target_y_fraction;
     const values = [...(c.v2 || []), ...(c.v3 || [])].map(x => x.y_fraction)
       .filter(x => typeof x === "number" && x >= 0 && x <= 1);
     return median(values);
@@ -83,7 +85,9 @@
     $("caseSubtitle").textContent = c.issue + " · exact typeface / printed rows matter";
     const agreement = c.matching_text_is_not_accuracy === true;
     $("v2Choice").querySelector(".top").firstChild.nodeValue =
-      agreement ? "Both OCR versions agree (not verified) " : "V2 original OCR ";
+      (c.left_label || (agreement ? "Both OCR versions agree (not verified)" : "V2 original OCR")) + " ";
+    $("v3Choice").querySelector(".top").firstChild.nodeValue =
+      (c.right_label || "V3 typography-aware OCR") + " ";
     $("v3Choice").style.display = agreement ? "none" : "";
     $("v2Text").textContent = textFor(c.v2) || "(no reference detected)";
     $("v3Text").textContent = textFor(c.v3) || "(no reference detected)";
