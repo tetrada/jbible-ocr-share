@@ -286,15 +286,35 @@ def anchor_status(anchor,margin_row,limits):
     return "PROPOSED_NEEDS_HUMAN_REVIEW"
 
 
-def target_status(r,segment,overrides):
+def target_status(r,segment,overrides,limits):
     if r["id"] in overrides:
         return "CUT_OFF_TARGET_FROM_HUMAN_REVIEW"
     if r.get("layout_uncertain") is True or r.get("typography_uncertain") is True:
         return "MARGIN_LAYOUT_OR_TYPOGRAPHY_UNCERTAIN"
     if segment.get("status")!="PARSED":
         return "TARGET_INTERPRETATION_UNRESOLVED"
-    if not segment.get("book_code"):
+    book=segment.get("book_code")
+    if not book:
         return "TARGET_BOOK_UNRESOLVED"
+    chapter=segment.get("chapter")
+    maximum=limits.get((book,chapter))
+    if maximum is None:
+        return "TARGET_CHAPTER_NOT_IN_CATALOG"
+    kind=segment.get("type")
+    if kind in ("CHAPTER_ONLY","CHAPTER_RANGE"):
+        return "TARGET_CHAPTER_SCOPE_REVIEW"
+    if kind in ("VERSE","VERSE_RANGE"):
+        start=segment.get("verse")
+        end=segment.get("end_verse") if kind=="VERSE_RANGE" else start
+        if type(start) is not int or type(end) is not int or not 1<=start<=end<=maximum:
+            return "TARGET_VERSE_OUTSIDE_CATALOG"
+    elif kind=="VERSE_LIST":
+        verses=segment.get("verses")
+        if not isinstance(verses,list) or not verses or any(
+                type(v) is not int or not 1<=v<=maximum for v in verses):
+            return "TARGET_LIST_OUTSIDE_CATALOG"
+    else:
+        return "TARGET_NOTATION_NEEDS_REVIEW"
     return "OCR_TARGET_NOT_SCAN_VERIFIED"
 
 
@@ -302,7 +322,7 @@ def safe_segments(row,anchor,overrides,limits):
     entries=[]
     geometry=anchor_status(anchor,row,limits)
     for n,segment in enumerate(row.get("references") or [],1):
-        target=target_status(row,segment,overrides)
+        target=target_status(row,segment,overrides,limits)
         if geometry=="PROPOSED_NEEDS_HUMAN_REVIEW" and target=="OCR_TARGET_NOT_SCAN_VERIFIED":
             state="PROPOSED_REVIEW_REQUIRED"
         else:
