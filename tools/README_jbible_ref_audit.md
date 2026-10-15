@@ -30,6 +30,7 @@ Inspect the timestamped report folder printed on completion:
 - review_queue.csv — records requiring further verification.
 - target_interpretation_queue.csv — ONLY syntax/catalog problems, independent of source-verse alignment (31 segments in the pages 31–40 pilot).
 - target_interpretation_context.json — each target problem with preceding/following two rows on the same page margin, for **visual review only**; never auto-inherit a book from those rows.
+- chapter_verse_split_candidates in the target queue — when OCR possibly merged a **bold chapter digit** and a verse digit, suggests catalog-valid splits. For example, printed **2 P [bold 2] 5** can be flattened to `2 P 25`; the auditor proposes `2Pet 2:5` but never auto-corrects or verifies it.
 - review_decisions_template.csv — blank evidence/correction ledger, never auto-imported.
 - sample_30_records.json — a stratified sample of 30 different printed rows.
 
