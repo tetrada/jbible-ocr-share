@@ -55,7 +55,12 @@ print("Review decisions prepared:",len(safe))
 PY
   git -C "$REPO" add -- "$TARGET"
   if git -C "$REPO" diff --cached --quiet; then
-    echo 'Human review Git publication already up to date'
+    if [[ "$(git -C "$REPO" rev-list --count origin/main..HEAD)" -gt 0 ]]; then
+      echo 'Retrying previous human-review Git push'
+      git -C "$REPO" push origin HEAD:main
+    else
+      echo 'Human review Git publication already up to date'
+    fi
     exit 0
   fi
   git -C "$REPO" commit -m 'Sync human-verified JBible OCR review decisions'
