@@ -106,14 +106,13 @@ def interpret_line(raw_line, csv_path, layout_uncertain=False):
             continue
         mark = next((m for m in marks if m.start() == a and m.end() == b), None)
         if mark:
-            if segment.strip():
+            if segment.strip(" \t\r\n=↗↖→←"):
                 ref = _parse_numbers(segment)
                 ref["book_code"] = current_book
                 ref["book_printed"] = current_alias
                 ref["status"] = ("PARSED" if current_book and
-                                 ref["type"] not in ("UNRESOLVED_NUMERIC", "CHAPTER_RANGE")
+                                 ref["type"] != "UNRESOLVED_NUMERIC"
                                  else SOURCE_BARE if not current_book
-                                 else "NEEDS_RANGE_INTERPRETATION" if ref["type"] == "CHAPTER_RANGE"
                                  else "NEEDS_NOTATION_REVIEW")
                 parts.append(ref)
                 segment = ""
@@ -121,27 +120,25 @@ def interpret_line(raw_line, csv_path, layout_uncertain=False):
             current_book = mapping.get(current_alias.casefold())
             continue
         if span == ";":
-            if segment.strip():
+            if segment.strip(" \t\r\n=↗↖→←"):
                 ref = _parse_numbers(segment)
                 ref["book_code"] = current_book
                 ref["book_printed"] = current_alias
                 ref["status"] = ("PARSED" if current_book and
-                                 ref["type"] not in ("UNRESOLVED_NUMERIC", "CHAPTER_RANGE")
+                                 ref["type"] != "UNRESOLVED_NUMERIC"
                                  else SOURCE_BARE if not current_book
-                                 else "NEEDS_RANGE_INTERPRETATION" if ref["type"] == "CHAPTER_RANGE"
                                  else "NEEDS_NOTATION_REVIEW")
                 parts.append(ref)
             segment = ""
         else:
             segment += span
-    if segment.strip():
+    if segment.strip(" \t\r\n=↗↖→←"):
         ref = _parse_numbers(segment)
         ref["book_code"] = current_book
         ref["book_printed"] = current_alias
         ref["status"] = ("PARSED" if current_book and
-                         ref["type"] not in ("UNRESOLVED_NUMERIC", "CHAPTER_RANGE")
+                         ref["type"] != "UNRESOLVED_NUMERIC"
                          else SOURCE_BARE if not current_book
-                         else "NEEDS_RANGE_INTERPRETATION" if ref["type"] == "CHAPTER_RANGE"
                          else "NEEDS_NOTATION_REVIEW")
         parts.append(ref)
     # If the line has multiple book markers, each part independently tracks
@@ -175,6 +172,10 @@ def self_test(catalog_path):
          [("Neh", "VERSE", 9, 18), ("Ps", "VERSE", 106, 19),
           ("1Kgs", "VERSE", 12, 28)]),
         ("Nb 3 17s", [("Num", "VERSE", 3, 17)]),
+        ("↗ 1 Co 11 7", [("1Cor", "VERSE", 11, 7)]),
+        ("↗ Ps 78 47s; 105 32", [("Ps", "VERSE", 78, 47),
+                                   ("Ps", "VERSE", 105, 32)]),
+        ("Sg 16-18", [("Wis", "CHAPTER_RANGE", 16, None)]),
         ("Sg 11 14-20", [("Wis", "VERSE_RANGE", 11, 14)]),
         ("Ps 78 47s; 105 32; Ap 16 21; 8 7",
          [("Ps", "VERSE", 78, 47), ("Ps", "VERSE", 105, 32),
@@ -192,6 +193,9 @@ def self_test(catalog_path):
     assert interpret_line("Sg 11 14-20", catalog_path)[0]["book_code"] == "Wis"
     assert interpret_line("16-18", catalog_path)[0]["book_code"] is None
     assert interpret_line("Ps 106 19s", catalog_path)[0]["suffix"] == "s"
+    assert interpret_line("Sg 16-18", catalog_path)[0]["end_chapter"] == 18
+    assert interpret_line("↗ 1 Co 11 7", catalog_path)[0]["status"] == "PARSED"
+    assert len(interpret_line("↗ Mt 19 4p", catalog_path)) == 1
     return "OK: multi-book, inherited same-row books, s, ranges, row reset"
 
 if __name__ == "__main__":
