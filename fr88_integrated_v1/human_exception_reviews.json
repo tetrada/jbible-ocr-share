@@ -390,6 +390,102 @@
       "sql_ready": false,
       "sql_writes": false,
       "reviewed_utc": "2026-10-16T09:28:04.721515+00:00"
+    },
+    "fr88i:p0033:L:001/target01": {
+      "edge_id": "fr88i:p0033:L:001/target01",
+      "image_page": 33,
+      "choice": "corrected",
+      "cause": "SOURCE_VERSE_BEFORE_FIRST_MARKER",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 2,
+        "verse": 9,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Prov",
+        "chapter": 3,
+        "verse": 18,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Pr 3 18",
+      "original_exception_reasons": [
+        "SOURCE_VERSE_UNRESOLVED"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "LOOK FOR LAST PAGE TO KNOW WHERE YOU ARE, you should have known its Genesis chapter 2.. then its verse 9",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:29:41.690280+00:00"
+    },
+    "fr88i:p0033:L:002/target01": {
+      "edge_id": "fr88i:p0033:L:002/target01",
+      "image_page": 33,
+      "choice": "corrected",
+      "cause": "SOURCE_VERSE_BEFORE_FIRST_MARKER",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 2,
+        "verse": 9,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Rev",
+        "chapter": 2,
+        "verse": 7,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Ap 2 7; 22 14",
+      "original_exception_reasons": [
+        "SOURCE_VERSE_UNRESOLVED"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:30:06.997637+00:00"
+    },
+    "fr88i:p0033:L:002/target02": {
+      "edge_id": "fr88i:p0033:L:002/target02",
+      "image_page": 33,
+      "choice": "corrected",
+      "cause": "SOURCE_VERSE_BEFORE_FIRST_MARKER",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 2,
+        "verse": 9,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Rev",
+        "chapter": 22,
+        "verse": 14,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Ap 2 7; 22 14",
+      "original_exception_reasons": [
+        "SOURCE_VERSE_UNRESOLVED"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:30:20.359178+00:00"
     }
   }
 }
