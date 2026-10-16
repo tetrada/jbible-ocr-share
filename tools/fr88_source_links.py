@@ -188,9 +188,8 @@ def validated(provider,rows):
     if not isinstance(assignments,list):
         raise ValueError("Missing assignments[] from DeepSeek")
     row_ids={r["id"] for r in rows}
-    if len(assignments)!=len(row_ids):
-        raise ValueError("Expected %d assignments; received %d"%
-                         (len(row_ids),len(assignments)))
+    if len(assignments)>len(row_ids):
+        raise ValueError("More source assignments than supplied marginal rows")
     decided={}
     for item in assignments:
         if not isinstance(item,dict):
@@ -235,11 +234,37 @@ def validated(provider,rows):
             "alignment_evidence":align,"confidence":confidence,
             "source_text_evidence":str(item.get("source_text_evidence") or "")[:70],
             "reason":str(item.get("reason") or "")[:240],
-            "source_verified_from_scan":False
+            "source_verified_from_scan":False,
+            "assignment_missing_from_provider":False
         }
+    missing=[r["id"] for r in rows if r["id"] not in decided]
+    for rid in missing:
+        # A missing source observation must stay UNKNOWN; preserve the paid
+        # provider reply and quarantine this row without guessing geometry.
+        decided[rid]={
+            "margin_row_id":rid,"scope":"UNKNOWN",
+            "source_book_printed":None,"source_book_code":None,
+            "source_book_evidence":"NOT_VISIBLE",
+            "source_chapter":None,"source_verse":None,
+            "source_end_chapter":None,"source_end_verse":None,
+            "source_marker_y_fraction":None,
+            "verse_marker_visible":False,"chapter_marker_visible":False,
+            "alignment_evidence":"UNKNOWN","confidence":"LOW",
+            "source_text_evidence":"","reason":"DeepSeek omitted this marginal row; human review required",
+            "source_verified_from_scan":False,
+            "assignment_missing_from_provider":True
+        }
+    provided_warnings=result.get("warnings") or []
+    if not isinstance(provided_warnings,list):
+        provided_warnings=[]
+    warnings=[str(x)[:300] for x in provided_warnings
+              if isinstance(x,str)][:20]
+    if missing:
+        warnings.append("DeepSeek omitted %d/%d input marginal IDs; placed in UNKNOWN review queue" %
+                        (len(missing),len(rows)))
     return {"assignments":[decided[r["id"]] for r in rows],
-            "warnings":[str(x)[:300] for x in result.get("warnings",[])
-                        if isinstance(x,str)][:20],
+            "warnings":warnings,
+            "missing_source_assignments":missing,
             "page_book_evidence":str(result.get("page_book_evidence") or "")[:120]}
 
 
@@ -256,6 +281,8 @@ def cutoff_overrides():
 
 
 def anchor_status(anchor,margin_row,limits):
+    if anchor.get("assignment_missing_from_provider"):
+        return "SOURCE_ASSIGNMENT_MISSING"
     if anchor.get("scope") not in ("VERSE","PASSAGE"):
         return "SOURCE_SCOPE_UNKNOWN"
     code,ch,verse=(anchor.get("source_book_code"),
@@ -342,7 +369,8 @@ def safe_segments(row,anchor,overrides,limits):
                  "source_chapter","source_verse","source_end_chapter",
                  "source_end_verse","scope","source_marker_y_fraction",
                  "verse_marker_visible","chapter_marker_visible",
-                 "alignment_evidence","source_text_evidence","confidence","reason")},
+                 "alignment_evidence","source_text_evidence","confidence","reason",
+                 "assignment_missing_from_provider")},
             "state":state,"source_reason":geometry,"target_reason":target,
             "source_verified":False,"target_verified":False,
             "source_to_target_link_verified":False,
@@ -357,6 +385,7 @@ def aggregate(start,end,groups,overrides,limits,paid_jobs=0):
     proposals=[]
     queue=[]
     completed_groups=[]
+    incomplete_assignments=0
     statuses=Counter()
     for page in range(start,end+1):
         for side in SIDES:
@@ -365,6 +394,7 @@ def aggregate(start,end,groups,overrides,limits,paid_jobs=0):
                 continue
             doc=json.loads(file.read_text(encoding="utf-8"))
             done+=1
+            incomplete_assignments+=len(doc.get("missing_source_assignments") or [])
             completed_groups.append({"page":page,"side":side,
                                      "assignments":doc["assignments"]})
             found={a["margin_row_id"]:a for a in doc["assignments"]}
@@ -388,6 +418,12 @@ def aggregate(start,end,groups,overrides,limits,paid_jobs=0):
         "candidate_links_needing_review":len(proposals),
         "other_items_needing_review":len(queue),
         "statuses":dict(statuses),
+        "margins_missing":[
+            "image_%04d_%s"%(p,s) for p in range(start,end+1)
+            for s in SIDES
+            if not (OUT/("image_%04d_%s.result.json"%(p,s))).is_file()
+        ],
+        "source_assignments_omitted_by_model":incomplete_assignments,
         "verified_links":0,"sql_writes":False,
         "source_anchor_estimates_not_verified":True,
         "updated_utc":utc()
