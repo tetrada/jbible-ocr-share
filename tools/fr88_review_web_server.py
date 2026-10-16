@@ -18,11 +18,13 @@ from socketserver import ThreadingMixIn
 from urllib.parse import urlsplit
 
 from fr88_link_edges import build_cases, validate_decision
+from fr88_integrated_exception_review import cases_from_report, validate_decision as validate_exception_decision
 
 APP = Path("/opt/jbible/review-web")
 STATE = Path("/var/lib/jbible-review/decisions.json")
 LINK_STATE = Path("/var/lib/jbible-review/link_decisions.json")  # Original row-based pilot reviews (untouched)
 LINK_EDGE_STATE = Path("/var/lib/jbible-review/link_edge_decisions.json")
+INTEGRATED_EXCEPTION_STATE = Path("/var/lib/jbible-review/integrated_exception_decisions.json")
 SCANS = Path("/opt/jbible/data/raw/fr_bible_1988")
 PASSFILE = Path("/opt/jbible/review-web/password")
 LOCK = threading.Lock()
@@ -298,6 +300,21 @@ class Handler(BaseHTTPRequestHandler):
             return self.file(APP / "link_review.html", "text/html; charset=utf-8")
         if path == "/links/link_review.js":
             return self.file(APP / "link_review.js", "text/javascript; charset=utf-8")
+        if path in ("/exceptions","/exceptions/","/exceptions/index.html"):
+            return self.file(APP / "integrated_exceptions.html", "text/html; charset=utf-8")
+        if path == "/exceptions/integrated_exceptions.js":
+            return self.file(APP / "integrated_exceptions.js", "text/javascript; charset=utf-8")
+        if path == "/api/integrated-exceptions":
+            try:
+                queue = cases_from_report(read_json(APP / "integrated_report.json",{}))
+                state = read_json(INTEGRATED_EXCEPTION_STATE,{"reviews":{}})
+                return self.send_json({
+                    "schema":"jbible.fr88.integrated-exception-review.v1",
+                    "cases":queue,"reviews":state.get("reviews",{}),
+                    "notice":"Review only the hard exceptions on the original scanned page"
+                })
+            except (ValueError,OSError,KeyError):
+                return self.send_json({"error":"Integrated exception queue unavailable"},500)
         if path == "/api/link-cases":
             try:
                 cases = build_cases(read_json(APP / "link_results.json", {}),
@@ -335,6 +352,12 @@ class Handler(BaseHTTPRequestHandler):
                     read_json(APP / "page_registry.json", {})))
             except (ValueError, OSError, KeyError):
                 pass
+            # Also authorize only original scans appearing in current exception queue.
+            try:
+                valid_pages.update(c["page"] for c in cases_from_report(
+                    read_json(APP / "integrated_report.json",{})))
+            except (ValueError,OSError,KeyError):
+                pass
             # Adjacent printed headers can be checked on neighboring scanned pages
             # within the same 31..40 linking pilot; never serve arbitrary files.
             link_pages = {p for p in valid_pages if 31 <= p <= 40}
@@ -357,7 +380,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         route = urlsplit(self.path).path
-        if route not in ("/api/review", "/api/link-review"):
+        if route not in ("/api/review", "/api/link-review", "/api/integrated-exception-review"):
             return self.send_json({"error": "Not found"}, 404)
         if not self.require_auth():
             return
@@ -375,7 +398,21 @@ class Handler(BaseHTTPRequestHandler):
             if not 1 <= size <= MAX_BODY:
                 raise ValueError("Invalid request size")
             data = json.loads(self.rfile.read(size).decode("utf-8"))
-            if route == "/api/link-review":
+            if route == "/api/integrated-exception-review":
+                case_list = cases_from_report(
+                    read_json(APP / "integrated_report.json",{}))
+                cases = {case["edge_id"]:case for case in case_list}
+                new_review = validate_exception_decision(data,cases)
+                with LOCK:
+                    state = read_json(INTEGRATED_EXCEPTION_STATE,{
+                        "schema":"jbible.fr88.integrated-exception-decisions.v1",
+                        "reviews":{}
+                    })
+                    state["schema"]="jbible.fr88.integrated-exception-decisions.v1"
+                    state.setdefault("reviews",{})
+                    state["reviews"][new_review["edge_id"]]=new_review
+                    save_atomic(INTEGRATED_EXCEPTION_STATE,state)
+            elif route == "/api/link-review":
                 link_cases = build_cases(
                     read_json(APP / "link_results.json", {}),
                     read_json(APP / "page_registry.json", {}))
