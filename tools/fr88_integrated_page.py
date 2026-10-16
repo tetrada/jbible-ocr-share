@@ -269,6 +269,66 @@ def choose_book(page,head,registry,previous=None):
     return None,issues,"UNKNOWN"
 
 
+def rejoin_prior_scanned_wrapped_rows(current_rows,earlier_rows,page):
+    """Rejoin adjacent OCR fragments only when a prior complete scan row
+    matches their combined text (ignoring symbol rendering differences).
+
+    This is not fuzzy rewriting: exact full normalized sequence required,
+    maximum 0.07 vertical separation and 2..4 consecutive fragments.
+    Original provider stage outputs and raw line values remain cached.
+    """
+    import re
+    def normalized(raw):
+        t=str(raw or "").casefold()
+        for mark in ("‖","||","∥","Ⅱ"):
+            t=t.replace(mark,"ii")
+        t=re.sub(r"[↗→↖←]","",t)
+        return re.sub(r"[^a-z0-9]+","",t)
+    result=[dict(row) for row in current_rows]
+    merged_ids=[]
+    earlier=[r for r in earlier_rows if r.get("image_page")==page and
+             r.get("kind")=="REFERENCE"]
+    for old in earlier:
+        expected=normalized(old.get("raw_line"))
+        if len(expected)<7:
+            continue
+        side=old.get("side")
+        for start in range(len(result)):
+            if result[start].get("side")!=side or result[start].get("kind")!="REFERENCE":
+                continue
+            if normalized(result[start].get("raw_line"))==expected:
+                break
+            found=False
+            for n in range(2,5):
+                group=result[start:start+n]
+                if len(group)!=n or any(
+                        r.get("side")!=side or r.get("kind")!="REFERENCE"
+                        for r in group):
+                    continue
+                ys=[r.get("y_fraction") for r in group]
+                if any(type(y) not in (float,int) for y in ys):
+                    continue
+                if max(ys)-min(ys)>0.07 or ys!=sorted(ys):
+                    continue
+                candidate=" ".join(str(r.get("raw_line") or "").strip() for r in group)
+                if normalized(candidate)!=expected:
+                    continue
+                first=dict(group[0])
+                first["raw_line"]=candidate
+                first["ocr_rejoined_fragments"]=[r.get("id") for r in group]
+                first["rejoined_prior_row_id"]=old.get("id")
+                first["layout_uncertain"]=True
+                first["typography_uncertain"]=any(
+                    r.get("typography_uncertain") for r in group)
+                result[start:start+n]=[first]
+                merged_ids.append(first["id"])
+                found=True
+                break
+            if found:
+                break
+    return result,merged_ids
+
+
 def collect_page(page,registry,limits):
     stages={}
     for task in TASKS:
@@ -330,13 +390,16 @@ def collect_page(page,registry,limits):
     # Normalize each saved PHYSICAL line into separately addressable targets.
     # The page book is known here, allowing bare target coordinates without
     # hallucinating a new or inherited book from other printed rows.
-    rows=[canonicalize(r,book,CATALOG) for r in
-          stages["margin_L"]["rows"]+stages["margin_R"]["rows"]]
     prior=RAW/"jbible_fr1988_v2"/"interpreted_rows.json"
+    earlier=read(prior) if prior.exists() else []
+    captured=stages["margin_L"]["rows"]+stages["margin_R"]["rows"]
+    captured,joined=rejoin_prior_scanned_wrapped_rows(captured,earlier,page)
+    rows=[canonicalize(r,book,CATALOG) for r in captured]
+    if joined:
+        issues.append("LEGACY_WRAPPED_REFERENCE_ROWS_REJOINED")
     recovered=[]
     if prior.exists():
         from difflib import SequenceMatcher
-        earlier=read(prior)
         def normalize_for_recovery(line):
             import re
             return re.sub(r"[^a-z0-9]+","",str(line or "").casefold())
@@ -391,6 +454,8 @@ def collect_page(page,registry,limits):
         audit=[]
         if link["row_id"] in recovered:
             audit.append("ROW_RECOVERED_FROM_PREVIOUS_OCR_PASS")
+        if link["row_id"] in joined:
+            audit.append("WRAPPED_REFERENCE_REJOINED_WITH_LEGACY_SCAN_EVIDENCE")
         if "VERSE_MARKER_Y_COORDINATES_NONMONOTONIC_"+str(link["column"]) in issues:
             audit.append("MAIN_TEXT_MARKERS_HAVE_INCONSISTENT_Y_COORDINATES")
         if "BODY_CHAPTER_OCR_SLIP_REPAIRED_BY_ADJACENT_PAGE" in issues:
@@ -481,6 +546,7 @@ def collect_page(page,registry,limits):
         "quality_flags":issues,
         "legacy_margin_comparison":compare,
         "legacy_recovered_row_ids":recovered,
+        "legacy_rejoined_row_ids":joined,
         "summary":counts,
         "sql_writes":False,"human_verified_links":counts["human_verified"],
         "created_utc":utc()
