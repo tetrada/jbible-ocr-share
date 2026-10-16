@@ -254,6 +254,56 @@ def canonical_source_book(book_code):
     return {"Ex":"Exod"}.get(book_code,book_code)
 
 
+def is_book_opening_title_only(transitions,book,header,markers,previous):
+    """Title above first 1:1 on a new-book page is not mixed-book text."""
+    if (len(transitions)!=1 or not previous or
+            previous.get("book_code")==book or
+            header.get("header_position")!="NONE"):
+        return False
+    event=transitions[0]
+    if event.get("column")!="L":
+        return False
+    left=sorted((m for m in markers if m.get("column")=="L" and
+                 type(m.get("y_fraction")) in (int,float)),
+                key=lambda m:m["y_fraction"])
+    y=event.get("y_fraction")
+    return bool(left and type(y) in (int,float) and
+                0<=y<left[0]["y_fraction"] and
+                left[0].get("chapter")==1 and left[0].get("verse")==1 and
+                event.get("book_code") in (None,book,"Ex"))
+
+
+def adjacent_verse(a,b,book,limits):
+    if not a or not b:
+        return False
+    ca,va=a.get("chapter"),a.get("verse")
+    cb,vb=b.get("chapter"),b.get("verse")
+    if any(type(n) is not int for n in (ca,va,cb,vb)):
+        return False
+    return (ca==cb and vb==va+1) or (
+        cb==ca+1 and vb==1 and limits.get((book,ca))==va)
+
+
+def adjacent_page_swap_detected(previous,two_before,current,book,limits):
+    """Require BOTH observed verse boundaries for a swap (actual pp86/87)."""
+    if (not previous or not two_before or
+            previous.get("page_book",{}).get("book_code")!=book or
+            two_before.get("page_book",{}).get("book_code")!=book):
+        return False
+    def observed(doc,side):
+        return sorted(doc.get("verse_markers_by_column",{}).get(side,[]),
+                      key=lambda m:m.get("y_fraction",0))
+    left=sorted((m for m in current if m.get("column")=="L"),
+                key=lambda m:m.get("y_fraction",0))
+    right=sorted((m for m in current if m.get("column")=="R"),
+                 key=lambda m:m.get("y_fraction",0))
+    prev_first=observed(previous,"L")
+    before_last=observed(two_before,"R")
+    return bool(left and right and prev_first and before_last and
+                adjacent_verse(before_last[-1],left[0],book,limits) and
+                adjacent_verse(right[-1],prev_first[0],book,limits))
+
+
 def choose_book(page,head,registry,previous=None):
     registry_book=canonical_source_book((registry.get(page) or {}).get("source_book_code"))
     printed=canonical_source_book(head.get("book_code"))
@@ -372,6 +422,8 @@ def collect_page(page,registry,limits):
             prev_last={"chapter":prevhead["chapter"],"verse":prevhead["verse"]}
     transitions=(stages["verses_L"].get("book_transitions") or [])+(
                  stages["verses_R"].get("book_transitions") or [])
+    opening_title_only=is_book_opening_title_only(
+        transitions,book,header,markers,previous)
     markers,chapter_repairs=repair_preceding_page_chapter_slip(
         markers,book,limits,prev_last)
     markers,same_page_repairs=repair_same_page_chapter_slips(
@@ -387,7 +439,14 @@ def collect_page(page,registry,limits):
     if (prev_last and previous and previous.get("book_code")==book and
             first_left and type(first_left[0].get("chapter")) is int and
             first_left[0]["chapter"]+1<prev_last["chapter"]):
-        issues.append("SOURCE_PAGE_SEQUENCE_IMPOSSIBLE_REWIND")
+        pprev=OUT/("image_%04d.bundle.json"%(page-2))
+        previous_full=read(prev) if prev.exists() else None
+        two_before=read(pprev) if pprev.exists() else None
+        if adjacent_page_swap_detected(previous_full,two_before,
+                                       markers,book,limits):
+            issues.append("ADJACENT_PHYSICAL_PAGE_ORDER_SWAP_PROVEN_BY_VERSES")
+        else:
+            issues.append("SOURCE_PAGE_SEQUENCE_IMPOSSIBLE_REWIND")
     if header.get("boundary_role_repaired"):
         issues.extend(header.get("header_audit_warnings") or [
             "RUNNING_HEADER_ROLE_REPAIRED_FROM_CORNER"])
@@ -408,7 +467,9 @@ def collect_page(page,registry,limits):
             for a,b in zip(marker_seq,marker_seq[1:]))
         if wrong_order:
             issues.append("VERSE_MARKER_Y_COORDINATES_NONMONOTONIC_"+task[-1])
-    if transitions:
+    if opening_title_only:
+        issues.append("BOOK_OPENING_TITLE_BEFORE_FIRST_VERSE")
+    elif transitions:
         issues.append("BOOK_TRANSITION_ON_PAGE")
     issues+=book_issues
     issues=sorted(set(issues))
