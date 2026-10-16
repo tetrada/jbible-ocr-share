@@ -679,6 +679,70 @@
       "sql_ready": false,
       "sql_writes": false,
       "reviewed_utc": "2026-10-16T09:35:19.875223+00:00"
+    },
+    "fr88i:p0037:L:001/target01": {
+      "edge_id": "fr88i:p0037:L:001/target01",
+      "image_page": 37,
+      "choice": "corrected",
+      "cause": "SOURCE_VERSE_BEFORE_FIRST_MARKER",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 6,
+        "verse": 4,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Sir",
+        "chapter": 16,
+        "verse": 7,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Si 16 7",
+      "original_exception_reasons": [
+        "SOURCE_VERSE_UNRESOLVED"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "SAME AS BEFORE - YOU MUST KNOW WITH WHAT VERSE PAGE STARTS, then its all easy",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:36:28.159952+00:00"
+    },
+    "fr88i:p0037:L:005/target01": {
+      "edge_id": "fr88i:p0037:L:005/target01",
+      "image_page": 37,
+      "choice": "corrected",
+      "cause": "CATALOG_REJECTED_VALID_REFERENCE",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 6,
+        "verse": 5,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Matt",
+        "chapter": 24,
+        "verse": 27,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": "sp"
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "↗ Mt 24 37sp",
+      "original_exception_reasons": [
+        "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "maybe you didnt see before sufix \"sp\"",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:37:29.700728+00:00"
     }
   }
 }
