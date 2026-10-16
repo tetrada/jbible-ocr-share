@@ -101,7 +101,7 @@ def link_cases_from_export(document):
             if not isinstance(item, dict) or not isinstance(item.get("row_id"), str):
                 continue
             rid = item["row_id"]
-            if not re.match(r"^fr88v2:p\\d{4}:[LR]:\\d{2,3}$", rid):
+            if not re.match(r"^fr88v2:p\d{4}:[LR]:\d{2,3}$", rid):
                 continue
             page, side = item.get("image_page"), item.get("side")
             if type(page) is not int or page < 1 or page > 3000 or side not in ("L", "R"):
