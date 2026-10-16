@@ -39,7 +39,7 @@ if curl -fsSL --retry 3 --connect-timeout 15 \
     fi
     nohup python3 -u "$STATUS_MONITOR" \
         --log /root/jbible_101_200.log --start 101 --end 200 \
-        >/root/jbible_101_200_status.log 2>&1 </dev/null &
+        >/root/jbible_101_200_status.log 2>&1 </dev/null 9>&- &
     echo "STATUS: observer started for jbible/importer (see /root/jbible_101_200_status.log)"
 else
     rm -f "$STATUS_TMP"
