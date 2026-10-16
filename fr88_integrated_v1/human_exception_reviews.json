@@ -614,6 +614,71 @@
       "sql_ready": false,
       "sql_writes": false,
       "reviewed_utc": "2026-10-16T09:33:42.706729+00:00"
+    },
+    "fr88i:p0034:R:011/target01": {
+      "edge_id": "fr88i:p0034:R:011/target01",
+      "image_page": 34,
+      "choice": "corrected",
+      "cause": "CATALOG_REJECTED_VALID_REFERENCE",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 3,
+        "verse": 24,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Rev",
+        "chapter": 1,
+        "verse": 1,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "↗ Ap 22 1s, 1",
+      "original_exception_reasons": [
+        "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG",
+        "MARGINAL_TEXT_NOT_FULLY_VISIBLE"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "make reference when you can, like this",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:34:48.334393+00:00"
+    },
+    "fr88i:p0035:R:002/target01": {
+      "edge_id": "fr88i:p0035:R:002/target01",
+      "image_page": 35,
+      "choice": "corrected",
+      "cause": "SOURCE_VERSE_POSITION_ERROR",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 4,
+        "verse": 26,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Exod",
+        "chapter": 3,
+        "verse": 14,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": "+"
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Ex 3 14+",
+      "original_exception_reasons": [
+        "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:35:19.875223+00:00"
     }
   }
 }
