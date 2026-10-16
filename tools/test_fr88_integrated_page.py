@@ -33,6 +33,19 @@ def test():
                 "confidence":"HIGH","book_code":"Gen","book_title":"LA GENÈSE",
                 "running_head_raw":"2 25"}),"header",33)
             assert h["boundary_role"]=="LAST_ON_PAGE"
+            # The saved paid page-47 header response may claim FIRST although
+            # the physical printed header is TOP_RIGHT / LAST.
+            bad_role=m.parse_task(response({
+                "printed_page_side":"RIGHT_BOOK_PAGE",
+                "header_position":"TOP_RIGHT","boundary_role":"FIRST_ON_PAGE",
+                "chapter":8,"verse":22,"visible":True,
+                "confidence":"HIGH","book_code":"Gen","book_title":"LA GENÈSE",
+                "running_head_raw":"8 22"
+            }),"header",47)
+            assert bad_role["boundary_role"]=="LAST_ON_PAGE"
+            assert bad_role["original_model_boundary_role"]=="FIRST_ON_PAGE"
+            assert bad_role["boundary_role_repaired"] is True
+            assert bad_role["chapter"]==8 and bad_role["verse"]==22
             vs=m.parse_task(response({"column":"L","markers":[
                 {"chapter":2,"verse":17,"y_fraction":.335,"confidence":"HIGH"},
                 {"chapter":2,"verse":18,"y_fraction":.50,"confidence":"HIGH"}
