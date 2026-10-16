@@ -9,16 +9,16 @@
     "pages_requested": 40,
     "percent": 100.0,
     "model": "deepseek-flash",
-    "new_paid_tasks_this_run": 100,
+    "new_paid_tasks_this_run": 0,
     "source_link_metrics": {
       "atomic_links": 448,
-      "accepted": 438,
-      "accepted_plain": 93,
-      "accepted_flagged": 25,
-      "accepted_estimated": 299,
+      "accepted": 446,
+      "accepted_plain": 87,
+      "accepted_flagged": 28,
+      "accepted_estimated": 310,
       "accepted_human_corrected": 21,
-      "exceptions": 10,
-      "acceptance_percent": 97.77,
+      "exceptions": 2,
+      "acceptance_percent": 99.55,
       "human_verified": 21,
       "sql_writes": false
     },
@@ -26,7 +26,7 @@
       "COLUMN_TOP_SOURCE_VERSE_RECOVERED": 40,
       "DISCONTINUOUS_VERSE_SEQUENCE": 37,
       "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R": 14,
-      "PAGE_TOP_SOURCE_VERSE_RECOVERED": 20,
+      "PAGE_TOP_SOURCE_VERSE_RECOVERED": 21,
       "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L": 12,
       "VERSE_MARKER_Y_COORDINATES_NONMONOTONIC_L": 4,
       "LEGACY_MARGIN_ROWS_AUTOMATICALLY_RECOVERED": 4,
@@ -37,7 +37,7 @@
       "PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER": 3,
       "RUNNING_HEADER_ROLE_REPAIRED_TOP_RIGHT_IS_PAGE_END": 5,
       "Header '20 8' likely denotes chapter 20 verse 8 (folio 49).": 1,
-      "VERSE_OUT_OF_CATALOG": 1,
+      "BODY_CHAPTER_OCR_SLIP_REPAIRED_BY_ADJACENT_PAGE": 1,
       "INVALID_MARKER_FIELDS": 3,
       "RUNNING_HEADER_ROLE_REPAIRED_TOP_LEFT_IS_PAGE_START": 2,
       "VERSE_MARKER_Y_COORDINATES_NONMONOTONIC_R": 2,
@@ -18812,9 +18812,12 @@
           "margin_y_fraction": 0.516,
           "printed_margin_line": "4 26+",
           "source_book_code": "Gen",
-          "source_chapter": null,
-          "source_verse": null,
-          "source_y_interval": null,
+          "source_chapter": 21,
+          "source_verse": 34,
+          "source_y_interval": [
+            0.515,
+            0.605
+          ],
           "target_segment_index": 1,
           "target_book_code": "Gen",
           "target_chapter": 4,
@@ -18825,19 +18828,35 @@
           "target_suffix": "+",
           "target_literal": "4 26+",
           "parse_status": "PARSED",
-          "status": "EXCEPTION",
+          "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
-            "NO_VERSE_INTERVAL_AT_MARGIN",
-            "SOURCE_VERSE_UNRESOLVED"
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
           ],
-          "accepted_automatically": false,
-          "human_review_required": true,
-          "hard_exceptions": [
-            "SOURCE_VERSE_UNRESOLVED"
+          "accepted_automatically": true,
+          "human_review_required": false,
+          "hard_exceptions": [],
+          "source_alignment_estimate_flags": [
+            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
+            "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
-          "source_alignment_estimate_flags": [],
-          "possible_adjacent_source_verses": [],
+          "possible_adjacent_source_verses": [
+            {
+              "chapter": 21,
+              "verse": 33,
+              "y_start": 0.475,
+              "source": "ADJACENT_PRINTED_VERSE_MARKER",
+              "human_verified": false
+            },
+            {
+              "chapter": 22,
+              "verse": 1,
+              "y_start": 0.605,
+              "source": "ADJACENT_PRINTED_VERSE_MARKER",
+              "human_verified": false
+            }
+          ],
           "editorial_relation_marker": "ORDINARY",
           "destination_interpretation_flags": [],
           "human_verified": false,
@@ -18852,9 +18871,12 @@
           "margin_y_fraction": 0.531,
           "printed_margin_line": "Is 40 28",
           "source_book_code": "Gen",
-          "source_chapter": null,
-          "source_verse": null,
-          "source_y_interval": null,
+          "source_chapter": 21,
+          "source_verse": 34,
+          "source_y_interval": [
+            0.515,
+            0.605
+          ],
           "target_segment_index": 1,
           "target_book_code": "Isa",
           "target_chapter": 40,
@@ -18865,19 +18887,35 @@
           "target_suffix": "",
           "target_literal": "40 28",
           "parse_status": "PARSED",
-          "status": "EXCEPTION",
+          "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
-            "NO_VERSE_INTERVAL_AT_MARGIN",
-            "SOURCE_VERSE_UNRESOLVED"
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
           ],
-          "accepted_automatically": false,
-          "human_review_required": true,
-          "hard_exceptions": [
-            "SOURCE_VERSE_UNRESOLVED"
+          "accepted_automatically": true,
+          "human_review_required": false,
+          "hard_exceptions": [],
+          "source_alignment_estimate_flags": [
+            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
+            "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
-          "source_alignment_estimate_flags": [],
-          "possible_adjacent_source_verses": [],
+          "possible_adjacent_source_verses": [
+            {
+              "chapter": 21,
+              "verse": 33,
+              "y_start": 0.475,
+              "source": "ADJACENT_PRINTED_VERSE_MARKER",
+              "human_verified": false
+            },
+            {
+              "chapter": 22,
+              "verse": 1,
+              "y_start": 0.605,
+              "source": "ADJACENT_PRINTED_VERSE_MARKER",
+              "human_verified": false
+            }
+          ],
           "editorial_relation_marker": "ORDINARY",
           "destination_interpretation_flags": [],
           "human_verified": false,
@@ -18909,11 +18947,14 @@
           "target_literal": "10 5",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -18962,12 +19003,16 @@
           "target_suffix": "",
           "target_literal": "44 20",
           "parse_status": "PARSED",
-          "status": "ACCEPTED",
-          "qa_reasons": [],
+          "status": "ACCEPTED_ESTIMATED",
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
-          "source_alignment_estimate_flags": [],
+          "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "SCRIPTURAL_QUOTATION",
           "destination_interpretation_flags": [],
@@ -18999,12 +19044,16 @@
           "target_suffix": "s",
           "target_literal": "11 17s",
           "parse_status": "PARSED",
-          "status": "ACCEPTED",
-          "qa_reasons": [],
+          "status": "ACCEPTED_ESTIMATED",
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
-          "source_alignment_estimate_flags": [],
+          "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "SCRIPTURAL_QUOTATION",
           "destination_interpretation_flags": [],
@@ -19036,12 +19085,16 @@
           "target_suffix": "",
           "target_literal": "2 21-22",
           "parse_status": "PARSED",
-          "status": "ACCEPTED",
-          "qa_reasons": [],
+          "status": "ACCEPTED_ESTIMATED",
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
-          "source_alignment_estimate_flags": [],
+          "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "SCRIPTURAL_QUOTATION",
           "destination_interpretation_flags": [],
@@ -19075,13 +19128,15 @@
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
-            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR"
+            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
           ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
-            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR"
+            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
           ],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "ORDINARY",
@@ -19116,13 +19171,15 @@
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
-            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR"
+            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
           ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
-            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR"
+            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
           ],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "ORDINARY",
@@ -19157,13 +19214,15 @@
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
-            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR"
+            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
           ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
-            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR"
+            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
           ],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "ORDINARY",
@@ -19198,13 +19257,15 @@
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
-            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR"
+            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
           ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
-            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR"
+            "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
           ],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "ORDINARY",
@@ -19237,12 +19298,16 @@
           "target_suffix": "",
           "target_literal": "19 17",
           "parse_status": "PARSED",
-          "status": "ACCEPTED",
-          "qa_reasons": [],
+          "status": "ACCEPTED_ESTIMATED",
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
-          "source_alignment_estimate_flags": [],
+          "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "ORDINARY",
           "destination_interpretation_flags": [],
@@ -19275,11 +19340,14 @@
           "target_literal": "2 21",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -19329,11 +19397,14 @@
           "target_literal": "20 20",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -19383,11 +19454,14 @@
           "target_literal": "6 2+",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -19437,12 +19511,15 @@
           "target_literal": "3 16",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "INCOMPLETE_VERSE_MARKER_SEQUENCE",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -19492,12 +19569,15 @@
           "target_literal": "4 9",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "INCOMPLETE_VERSE_MARKER_SEQUENCE",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -19547,12 +19627,15 @@
           "target_literal": "8 32",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
-            "INCOMPLETE_VERSE_MARKER_SEQUENCE"
+            "INCOMPLETE_VERSE_MARKER_SEQUENCE",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
           ],
           "possible_adjacent_source_verses": [
             {
@@ -19601,12 +19684,15 @@
           "target_literal": "11 17",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
-            "INCOMPLETE_VERSE_MARKER_SEQUENCE"
+            "INCOMPLETE_VERSE_MARKER_SEQUENCE",
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
           ],
           "possible_adjacent_source_verses": [
             {
@@ -19655,11 +19741,14 @@
           "target_literal": "12 2",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -19709,11 +19798,14 @@
           "target_literal": "15 5",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -19762,12 +19854,16 @@
           "target_suffix": "",
           "target_literal": "16 10",
           "parse_status": "PARSED",
-          "status": "ACCEPTED",
-          "qa_reasons": [],
+          "status": "ACCEPTED_ESTIMATED",
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
-          "source_alignment_estimate_flags": [],
+          "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "ORDINARY",
           "destination_interpretation_flags": [],
@@ -19799,12 +19895,16 @@
           "target_suffix": "",
           "target_literal": "32 13",
           "parse_status": "PARSED",
-          "status": "ACCEPTED",
-          "qa_reasons": [],
+          "status": "ACCEPTED_ESTIMATED",
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
-          "source_alignment_estimate_flags": [],
+          "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "ORDINARY",
           "destination_interpretation_flags": [],
@@ -19837,11 +19937,14 @@
           "target_literal": "24 60",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -19891,11 +19994,14 @@
           "target_literal": "14 12",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -19945,11 +20051,14 @@
           "target_literal": "12 3+",
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
-          "qa_reasons": [],
+          "qa_reasons": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY"
+          ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -19978,21 +20087,22 @@
       ],
       "summary": {
         "atomic_links": 25,
-        "accepted": 23,
-        "accepted_plain": 6,
+        "accepted": 25,
+        "accepted_plain": 0,
         "accepted_flagged": 0,
-        "accepted_estimated": 17,
+        "accepted_estimated": 25,
         "accepted_human_corrected": 0,
-        "exceptions": 2,
-        "acceptance_percent": 92.0,
+        "exceptions": 0,
+        "acceptance_percent": 100.0,
         "human_verified": 0,
         "sql_writes": false
       },
       "page_flags": [
+        "BODY_CHAPTER_OCR_SLIP_REPAIRED_BY_ADJACENT_PAGE",
         "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
         "DISCONTINUOUS_VERSE_SEQUENCE",
         "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
-        "VERSE_OUT_OF_CATALOG"
+        "PAGE_TOP_SOURCE_VERSE_RECOVERED"
       ],
       "legacy_margin_comparison": {
         "L": {
@@ -21951,50 +22061,6 @@
             0.237
           ],
           "target_segment_index": 1,
-          "target_book_code": null,
-          "target_chapter": null,
-          "target_verse": null,
-          "target_end_chapter": null,
-          "target_end_verse": null,
-          "target_type": "UNRESOLVED_NUMERIC",
-          "target_suffix": null,
-          "target_literal": "‖",
-          "parse_status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT",
-          "status": "EXCEPTION",
-          "qa_reasons": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
-          ],
-          "accepted_automatically": false,
-          "human_review_required": true,
-          "hard_exceptions": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
-          ],
-          "source_alignment_estimate_flags": [],
-          "possible_adjacent_source_verses": [],
-          "editorial_relation_marker": "ORDINARY",
-          "destination_interpretation_flags": [
-            "DESTINATION_BOOK_UNKNOWN",
-            "DESTINATION_NOT_YET_PARSED"
-          ],
-          "human_verified": false,
-          "human_review": null,
-          "original_automated_link": null,
-          "sql_ready": false
-        },
-        {
-          "edge_id": "fr88i:p0055:L:001/target02",
-          "margin_row_id": "fr88i:p0055:L:001",
-          "column": "L",
-          "margin_y_fraction": 0.178,
-          "printed_margin_line": "‖ 1 Ch 1 29-31",
-          "source_book_code": "Gen",
-          "source_chapter": 25,
-          "source_verse": 12,
-          "source_y_interval": [
-            0.157,
-            0.237
-          ],
-          "target_segment_index": 2,
           "target_book_code": "1Chr",
           "target_chapter": 1,
           "target_verse": 29,
@@ -22015,7 +22081,7 @@
             "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED"
           ],
           "possible_adjacent_source_verses": [],
-          "editorial_relation_marker": "ORDINARY",
+          "editorial_relation_marker": "CROSS_BOOK_PARALLEL",
           "destination_interpretation_flags": [],
           "human_verified": false,
           "human_review": null,
@@ -22715,14 +22781,14 @@
         }
       ],
       "summary": {
-        "atomic_links": 16,
+        "atomic_links": 15,
         "accepted": 15,
         "accepted_plain": 0,
         "accepted_flagged": 0,
         "accepted_estimated": 15,
         "accepted_human_corrected": 0,
-        "exceptions": 1,
-        "acceptance_percent": 93.75,
+        "exceptions": 0,
+        "acceptance_percent": 100.0,
         "human_verified": 0,
         "sql_writes": false
       },
@@ -24265,24 +24331,20 @@
             0.521
           ],
           "target_segment_index": 1,
-          "target_book_code": null,
-          "target_chapter": null,
-          "target_verse": null,
-          "target_end_chapter": null,
-          "target_end_verse": null,
-          "target_type": "UNRESOLVED_NUMERIC",
-          "target_suffix": null,
+          "target_book_code": "Gen",
+          "target_chapter": 27,
+          "target_verse": 46,
+          "target_end_chapter": 28,
+          "target_end_verse": 5,
+          "target_type": "VERSE_CROSS_CHAPTER_RANGE",
+          "target_suffix": "",
           "target_literal": "27 46-28 5",
-          "parse_status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT",
-          "status": "EXCEPTION",
-          "qa_reasons": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
-          ],
-          "accepted_automatically": false,
-          "human_review_required": true,
-          "hard_exceptions": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
-          ],
+          "parse_status": "PARSED",
+          "status": "ACCEPTED_ESTIMATED",
+          "qa_reasons": [],
+          "accepted_automatically": true,
+          "human_review_required": false,
+          "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
@@ -24303,10 +24365,7 @@
             }
           ],
           "editorial_relation_marker": "SAME_BOOK_DOUBLET",
-          "destination_interpretation_flags": [
-            "DESTINATION_BOOK_UNKNOWN",
-            "DESTINATION_NOT_YET_PARSED"
-          ],
+          "destination_interpretation_flags": [],
           "human_verified": false,
           "human_review": null,
           "original_automated_link": null,
@@ -24729,13 +24788,13 @@
       ],
       "summary": {
         "atomic_links": 9,
-        "accepted": 8,
+        "accepted": 9,
         "accepted_plain": 1,
         "accepted_flagged": 0,
-        "accepted_estimated": 7,
+        "accepted_estimated": 8,
         "accepted_human_corrected": 0,
-        "exceptions": 1,
-        "acceptance_percent": 88.89,
+        "exceptions": 0,
+        "acceptance_percent": 100.0,
         "human_verified": 0,
         "sql_writes": false
       },
@@ -25784,28 +25843,27 @@
             0.935
           ],
           "target_segment_index": 1,
-          "target_book_code": null,
-          "target_chapter": null,
+          "target_book_code": "Gen",
+          "target_chapter": 27,
           "target_verse": null,
           "target_end_chapter": null,
           "target_end_verse": null,
-          "target_type": "UNRESOLVED_NUMERIC",
-          "target_suffix": null,
-          "target_literal": "ch. 27.",
-          "parse_status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT",
-          "status": "EXCEPTION",
+          "target_type": "CHAPTER_ONLY",
+          "target_suffix": "",
+          "target_literal": "27",
+          "parse_status": "NEEDS_LAYOUT_REVIEW",
+          "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG",
-            "MARGINAL_TYPOGRAPHY_ASSUMED"
+            "MARGINAL_TYPOGRAPHY_ASSUMED",
+            "ROW_RECOVERED_FROM_PREVIOUS_OCR_PASS"
           ],
-          "accepted_automatically": false,
-          "human_review_required": true,
-          "hard_exceptions": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
-          ],
+          "accepted_automatically": true,
+          "human_review_required": false,
+          "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "MARGINAL_LAYOUT_ESTIMATED",
             "MARGIN_MAY_BE_SHIFTED_BELOW_ITS_SOURCE",
+            "ROW_RECOVERED_FROM_PREVIOUS_OCR_PASS",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -25826,8 +25884,9 @@
           ],
           "editorial_relation_marker": "ORDINARY",
           "destination_interpretation_flags": [
-            "DESTINATION_BOOK_UNKNOWN",
-            "DESTINATION_NOT_YET_PARSED"
+            "DESTINATION_NOT_YET_PARSED",
+            "EDITORIAL_CHAPTER_ONLY_SHORTHAND",
+            "REFERENCE_PARSE_STATUS_NEEDS_LAYOUT_REVIEW"
           ],
           "human_verified": false,
           "human_review": null,
@@ -26023,62 +26082,6 @@
             1.0
           ],
           "target_segment_index": 3,
-          "target_book_code": "Judg",
-          "target_chapter": null,
-          "target_verse": null,
-          "target_end_chapter": null,
-          "target_end_verse": null,
-          "target_type": "UNRESOLVED_NUMERIC",
-          "target_suffix": null,
-          "target_literal": "cf.",
-          "parse_status": "NEEDS_NOTATION_REVIEW",
-          "status": "EXCEPTION",
-          "qa_reasons": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG",
-            "MARGINAL_TYPOGRAPHY_ASSUMED"
-          ],
-          "accepted_automatically": false,
-          "human_review_required": true,
-          "hard_exceptions": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
-          ],
-          "source_alignment_estimate_flags": [
-            "MARGINAL_LAYOUT_ESTIMATED",
-            "MARGIN_MAY_BE_SHIFTED_BELOW_ITS_SOURCE",
-            "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
-          ],
-          "possible_adjacent_source_verses": [
-            {
-              "chapter": 29,
-              "verse": 26,
-              "y_start": 0.935,
-              "source": "ADJACENT_PRINTED_VERSE_MARKER",
-              "human_verified": false
-            }
-          ],
-          "editorial_relation_marker": "ORDINARY",
-          "destination_interpretation_flags": [
-            "DESTINATION_NOT_YET_PARSED"
-          ],
-          "human_verified": false,
-          "human_review": null,
-          "original_automated_link": null,
-          "sql_ready": false
-        },
-        {
-          "edge_id": "fr88i:p0059:R:004/target04",
-          "margin_row_id": "fr88i:p0059:R:004",
-          "column": "R",
-          "margin_y_fraction": 0.97,
-          "printed_margin_line": "Jg 14 12, 17; cf. Tb 8",
-          "source_book_code": "Gen",
-          "source_chapter": 29,
-          "source_verse": 27,
-          "source_y_interval": [
-            0.96,
-            1.0
-          ],
-          "target_segment_index": 4,
           "target_book_code": "Tob",
           "target_chapter": 8,
           "target_verse": null,
@@ -26179,14 +26182,14 @@
         }
       ],
       "summary": {
-        "atomic_links": 23,
-        "accepted": 21,
+        "atomic_links": 22,
+        "accepted": 22,
         "accepted_plain": 6,
         "accepted_flagged": 0,
-        "accepted_estimated": 15,
+        "accepted_estimated": 16,
         "accepted_human_corrected": 0,
-        "exceptions": 2,
-        "acceptance_percent": 91.3,
+        "exceptions": 0,
+        "acceptance_percent": 100.0,
         "human_verified": 0,
         "sql_writes": false
       },
@@ -27571,32 +27574,65 @@
             0.805
           ],
           "target_segment_index": 1,
-          "target_book_code": null,
-          "target_chapter": null,
-          "target_verse": null,
+          "target_book_code": "Gen",
+          "target_chapter": 31,
+          "target_verse": 24,
           "target_end_chapter": null,
           "target_end_verse": null,
-          "target_type": "UNRESOLVED_NUMERIC",
-          "target_suffix": null,
+          "target_type": "VERSE",
+          "target_suffix": "",
           "target_literal": "31 24.29",
-          "parse_status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT",
-          "status": "EXCEPTION",
+          "parse_status": "PARSED",
+          "status": "ACCEPTED_FLAGGED",
           "qa_reasons": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG",
             "PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER"
           ],
-          "accepted_automatically": false,
-          "human_review_required": true,
-          "hard_exceptions": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
-          ],
+          "accepted_automatically": true,
+          "human_review_required": false,
+          "hard_exceptions": [],
           "source_alignment_estimate_flags": [],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "ORDINARY",
-          "destination_interpretation_flags": [
-            "DESTINATION_BOOK_UNKNOWN",
-            "DESTINATION_NOT_YET_PARSED"
+          "destination_interpretation_flags": [],
+          "human_verified": false,
+          "human_review": null,
+          "original_automated_link": null,
+          "sql_ready": false
+        },
+        {
+          "edge_id": "fr88i:p0062:R:004/target02",
+          "margin_row_id": "fr88i:p0062:R:004",
+          "column": "R",
+          "margin_y_fraction": 0.786,
+          "printed_margin_line": "31 24.29",
+          "source_book_code": "Gen",
+          "source_chapter": 31,
+          "source_verse": 41,
+          "source_y_interval": [
+            0.74,
+            0.805
           ],
+          "target_segment_index": 2,
+          "target_book_code": "Gen",
+          "target_chapter": 31,
+          "target_verse": 29,
+          "target_end_chapter": null,
+          "target_end_verse": null,
+          "target_type": "VERSE",
+          "target_suffix": "",
+          "target_literal": "31 24.29",
+          "parse_status": "PARSED",
+          "status": "ACCEPTED_FLAGGED",
+          "qa_reasons": [
+            "PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER"
+          ],
+          "accepted_automatically": true,
+          "human_review_required": false,
+          "hard_exceptions": [],
+          "source_alignment_estimate_flags": [],
+          "possible_adjacent_source_verses": [],
+          "editorial_relation_marker": "ORDINARY",
+          "destination_interpretation_flags": [],
           "human_verified": false,
           "human_review": null,
           "original_automated_link": null,
@@ -27604,14 +27640,14 @@
         }
       ],
       "summary": {
-        "atomic_links": 8,
-        "accepted": 7,
+        "atomic_links": 9,
+        "accepted": 9,
         "accepted_plain": 0,
-        "accepted_flagged": 2,
+        "accepted_flagged": 4,
         "accepted_estimated": 5,
         "accepted_human_corrected": 0,
-        "exceptions": 1,
-        "acceptance_percent": 87.5,
+        "exceptions": 0,
+        "acceptance_percent": 100.0,
         "human_verified": 0,
         "sql_writes": false
       },
@@ -29725,35 +29761,28 @@
             0.635
           ],
           "target_segment_index": 1,
-          "target_book_code": null,
-          "target_chapter": null,
-          "target_verse": null,
-          "target_end_chapter": null,
-          "target_end_verse": null,
-          "target_type": "UNRESOLVED_NUMERIC",
-          "target_suffix": null,
+          "target_book_code": "Gen",
+          "target_chapter": 29,
+          "target_verse": 31,
+          "target_end_chapter": 30,
+          "target_end_verse": 24,
+          "target_type": "VERSE_CROSS_CHAPTER_RANGE",
+          "target_suffix": "",
           "target_literal": "29 31 - 30 24",
-          "parse_status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT",
-          "status": "EXCEPTION",
+          "parse_status": "PARSED",
+          "status": "ACCEPTED_FLAGGED",
           "qa_reasons": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG",
-            "MARGINAL_DESTINATION_UNREADABLE",
             "MARGINAL_TYPOGRAPHY_ASSUMED",
+            "MARGIN_TRUNCATED_BUT_THIS_TARGET_IS_READABLE",
             "NONPOSITIVE_VERSE_INTERVAL"
           ],
-          "accepted_automatically": false,
-          "human_review_required": true,
-          "hard_exceptions": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG",
-            "MARGINAL_DESTINATION_UNREADABLE"
-          ],
+          "accepted_automatically": true,
+          "human_review_required": false,
+          "hard_exceptions": [],
           "source_alignment_estimate_flags": [],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "ORDINARY",
-          "destination_interpretation_flags": [
-            "DESTINATION_BOOK_UNKNOWN",
-            "DESTINATION_NOT_YET_PARSED"
-          ],
+          "destination_interpretation_flags": [],
           "human_verified": false,
           "human_review": null,
           "original_automated_link": null,
@@ -29762,13 +29791,13 @@
       ],
       "summary": {
         "atomic_links": 11,
-        "accepted": 10,
+        "accepted": 11,
         "accepted_plain": 0,
-        "accepted_flagged": 3,
+        "accepted_flagged": 4,
         "accepted_estimated": 7,
         "accepted_human_corrected": 0,
-        "exceptions": 1,
-        "acceptance_percent": 90.91,
+        "exceptions": 0,
+        "acceptance_percent": 100.0,
         "human_verified": 0,
         "sql_writes": false
       },
@@ -30763,22 +30792,23 @@
           "target_segment_index": 1,
           "target_book_code": "Gen",
           "target_chapter": 37,
-          "target_verse": 23,
+          "target_verse": null,
           "target_end_chapter": null,
           "target_end_verse": null,
-          "target_type": "VERSE",
+          "target_type": "VERSE_MIXED_LIST",
           "target_suffix": "",
           "target_literal": "37 23, 31-33",
           "parse_status": "PARSED",
-          "status": "ACCEPTED_ESTIMATED",
+          "status": "EXCEPTION",
           "qa_reasons": [
-            "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED"
+            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
           ],
-          "accepted_automatically": true,
-          "human_review_required": false,
-          "hard_exceptions": [],
+          "accepted_automatically": false,
+          "human_review_required": true,
+          "hard_exceptions": [
+            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+          ],
           "source_alignment_estimate_flags": [
-            "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -30860,24 +30890,23 @@
           ],
           "target_segment_index": 1,
           "target_book_code": "Luke",
-          "target_chapter": null,
-          "target_verse": null,
+          "target_chapter": 2,
+          "target_verse": 19,
           "target_end_chapter": null,
           "target_end_verse": null,
-          "target_type": "UNRESOLVED_NUMERIC",
-          "target_suffix": null,
+          "target_type": "VERSE",
+          "target_suffix": "",
           "target_literal": "2 19.51",
-          "parse_status": "NEEDS_NOTATION_REVIEW",
-          "status": "EXCEPTION",
+          "parse_status": "PARSED",
+          "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+            "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED"
           ],
-          "accepted_automatically": false,
-          "human_review_required": true,
-          "hard_exceptions": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
-          ],
+          "accepted_automatically": true,
+          "human_review_required": false,
+          "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
@@ -30897,9 +30926,64 @@
             }
           ],
           "editorial_relation_marker": "ORDINARY",
-          "destination_interpretation_flags": [
-            "DESTINATION_NOT_YET_PARSED"
+          "destination_interpretation_flags": [],
+          "human_verified": false,
+          "human_review": null,
+          "original_automated_link": null,
+          "sql_ready": false
+        },
+        {
+          "edge_id": "fr88i:p0068:R:002/target02",
+          "margin_row_id": "fr88i:p0068:R:002",
+          "column": "R",
+          "margin_y_fraction": 0.435,
+          "printed_margin_line": "Lc 2 19.51",
+          "source_book_code": "Gen",
+          "source_chapter": 37,
+          "source_verse": 10,
+          "source_y_interval": [
+            0.362,
+            0.449
           ],
+          "target_segment_index": 2,
+          "target_book_code": "Luke",
+          "target_chapter": 2,
+          "target_verse": 51,
+          "target_end_chapter": null,
+          "target_end_verse": null,
+          "target_type": "VERSE",
+          "target_suffix": "",
+          "target_literal": "2 19.51",
+          "parse_status": "PARSED",
+          "status": "ACCEPTED_ESTIMATED",
+          "qa_reasons": [
+            "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED"
+          ],
+          "accepted_automatically": true,
+          "human_review_required": false,
+          "hard_exceptions": [],
+          "source_alignment_estimate_flags": [
+            "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED",
+            "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
+          ],
+          "possible_adjacent_source_verses": [
+            {
+              "chapter": 37,
+              "verse": 1,
+              "y_start": 0.208,
+              "source": "ADJACENT_PRINTED_VERSE_MARKER",
+              "human_verified": false
+            },
+            {
+              "chapter": 37,
+              "verse": 11,
+              "y_start": 0.449,
+              "source": "ADJACENT_PRINTED_VERSE_MARKER",
+              "human_verified": false
+            }
+          ],
+          "editorial_relation_marker": "ORDINARY",
+          "destination_interpretation_flags": [],
           "human_verified": false,
           "human_review": null,
           "original_automated_link": null,
@@ -30989,14 +31073,14 @@
         }
       ],
       "summary": {
-        "atomic_links": 6,
-        "accepted": 5,
+        "atomic_links": 7,
+        "accepted": 6,
         "accepted_plain": 0,
         "accepted_flagged": 0,
-        "accepted_estimated": 5,
+        "accepted_estimated": 6,
         "accepted_human_corrected": 0,
         "exceptions": 1,
-        "acceptance_percent": 83.33,
+        "acceptance_percent": 85.71,
         "human_verified": 0,
         "sql_writes": false
       },
