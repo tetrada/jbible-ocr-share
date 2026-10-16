@@ -121,6 +121,18 @@ def test():
                     ("Judg","VERSE",14,12),
                     ("Judg","VERSE",14,17),
                     ("Tob","CHAPTER_ONLY",8,None)]
+        # Real rejoined Genesis p0063 row: two bare destinations separated
+        # by an editorial plus suffix, without an actual printed semicolon.
+        plus=run("22 16-17+ 28 14")
+        assert plus["raw_line"]=="22 16-17+ 28 14"
+        assert [(r["book_code"],r["type"],r["chapter"],r["verse"],
+                 r["end_verse"],r["suffix"]) for r in plus["references"]]==[
+            ("Gen","VERSE_RANGE",22,16,17,"+"),
+            ("Gen","VERSE",28,14,None,"")]
+        assert all(r["status"]=="PARSED" for r in plus["references"])
+        explicit=run("Gn 22 16-17+ 28 14")
+        assert [r["book_code"] for r in explicit["references"]]==["Gen","Gen"]
+        assert [r["atomic_target_index"] for r in plus["references"]]==[1,2]
         mixed=run("25 26, 29-34")
         assert len(mixed["references"])==2
         assert [(r["book_code"],r["chapter"],r["verse"],r["end_verse"],r["type"])
