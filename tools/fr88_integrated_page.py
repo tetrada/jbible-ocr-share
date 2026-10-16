@@ -249,9 +249,14 @@ def parse_task(response,task,page):
             "warnings":list(data.get("warnings") or [])[:15]}
 
 
+def canonical_source_book(book_code):
+    """Map OCR display abbreviations to internal canonical source codes."""
+    return {"Ex":"Exod"}.get(book_code,book_code)
+
+
 def choose_book(page,head,registry,previous=None):
-    registry_book=(registry.get(page) or {}).get("source_book_code")
-    printed=head.get("book_code")
+    registry_book=canonical_source_book((registry.get(page) or {}).get("source_book_code"))
+    printed=canonical_source_book(head.get("book_code"))
     issues=[]
     if registry_book and printed and registry_book!=printed:
         issues.append("PAGE_BOOK_CONFLICT")
@@ -336,9 +341,18 @@ def collect_page(page,registry,limits):
         if not stage.is_file():
             return None
         stages[task]=read(stage)["data"]
-    header=stages["header"]
+    # Cached header results are immutable, so canonicalize their book identity
+    # here rather than relying on reparsing provider responses.
+    header=dict(stages["header"])
+    raw_book=header.get("book_code")
+    header["book_code"]=canonical_source_book(raw_book)
+    if header["book_code"]!=raw_book:
+        header["ocr_original_book_code"]=raw_book
     prev=OUT/("image_%04d.bundle.json"%(page-1))
     previous=read(prev).get("page_book") if prev.exists() else None
+    if previous:
+        previous=dict(previous)
+        previous["book_code"]=canonical_source_book(previous.get("book_code"))
     book,book_issues,book_evidence=choose_book(page,header,registry,previous)
     markers=stages["verses_L"]["markers"]+stages["verses_R"]["markers"]
     prev_last=None
@@ -365,6 +379,15 @@ def collect_page(page,registry,limits):
     intervals,issues=make_intervals(markers,header,book,limits,
                                    previous_page_last=prev_last)
     issues.extend(chapter_repairs+same_page_repairs)
+    # Quarantine a same-book page that jumps BACKWARD by multiple chapters.
+    # Genesis ends at 50:26 on p83; p84 strangely reports chapter 25.
+    first_left=sorted((m for m in markers if m.get("column")=="L" and
+                       type(m.get("y_fraction")) in (int,float)),
+                      key=lambda m:m["y_fraction"])
+    if (prev_last and previous and previous.get("book_code")==book and
+            first_left and type(first_left[0].get("chapter")) is int and
+            first_left[0]["chapter"]+1<prev_last["chapter"]):
+        issues.append("SOURCE_PAGE_SEQUENCE_IMPOSSIBLE_REWIND")
     if header.get("boundary_role_repaired"):
         issues.extend(header.get("header_audit_warnings") or [
             "RUNNING_HEADER_ROLE_REPAIRED_FROM_CORNER"])
@@ -462,6 +485,8 @@ def collect_page(page,registry,limits):
             audit.append("WRAPPED_REFERENCE_REJOINED_WITH_LEGACY_SCAN_EVIDENCE")
         if "VERSE_MARKER_Y_COORDINATES_NONMONOTONIC_"+str(link["column"]) in issues:
             audit.append("MAIN_TEXT_MARKERS_HAVE_INCONSISTENT_Y_COORDINATES")
+        if link["column"]=="L" and "LEFT_COLUMN_CHAPTER_REPAIRED_FROM_HEADER_AND_RIGHT" in issues:
+            audit.append("LEFT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED")
         if link["column"]=="R" and any(flag in issues for flag in (
                 "RIGHT_FIRST_MARKER_CHAPTER_REPAIRED_FROM_CHAPTER_END",
                 "RIGHT_COLUMN_CHAPTER_REPAIRED_FROM_LEFT_AND_HEADER")):
