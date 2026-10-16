@@ -48,12 +48,23 @@ def header_checked(head):
         raise ValueError("Invalid page running-head chapter")
     if verse is not None and not positive(verse):
         raise ValueError("Invalid page running-head verse")
-    # Do NOT convert a top-right last-verse header into a first-verse seed.
+    # The position is the actual printed-page convention. DeepSeek may
+    # mislabel an END header as FIRST; in that case refusing the JSON wastes
+    # a paid provider response and stops the whole batch. Recover the role
+    # from the physically observed corner, retain the disagreement and
+    # cross-check the verse number against the last printed body marker.
+    original_role=role
+    notes=list(head.get("warnings") or [])[:15]
     if position=="TOP_RIGHT" and role=="FIRST_ON_PAGE":
-        raise ValueError("Top-right end-of-page marker cannot silently be a start")
-    if position=="TOP_LEFT" and role=="LAST_ON_PAGE":
-        raise ValueError("Top-left page-start marker cannot silently be a page end")
+        role="LAST_ON_PAGE"
+        notes.append("RUNNING_HEADER_ROLE_REPAIRED_TOP_RIGHT_IS_PAGE_END")
+    elif position=="TOP_LEFT" and role=="LAST_ON_PAGE":
+        role="FIRST_ON_PAGE"
+        notes.append("RUNNING_HEADER_ROLE_REPAIRED_TOP_LEFT_IS_PAGE_START")
     return {"header_position":position,"boundary_role":role,
+            "original_model_boundary_role":original_role,
+            "boundary_role_repaired":role!=original_role,
+            "header_audit_warnings":notes,
             "chapter":chapter,"verse":verse,
             "book_code":head.get("book_code"),
             "book_title":head.get("book_title"),
