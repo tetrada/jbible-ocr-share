@@ -50,6 +50,10 @@ for fn in sorted(src.glob("image_????.bundle.json")):
             "target_literal":d.get("literal"),
             "parse_status":d.get("status"),
             "status":e["status"],"qa_reasons":e.get("qa_reasons",[]),
+            "source_alignment_estimate_flags":e.get("source_alignment_estimate_flags",[]),
+            "possible_adjacent_source_verses":e.get("possible_adjacent_source_verses",[]),
+            "editorial_relation_marker":e.get("editorial_relation_marker"),
+            "destination_interpretation_flags":e.get("destination_interpretation_flags",[]),
             "human_verified":False,"sql_ready":False
         })
     markers={side:[{
