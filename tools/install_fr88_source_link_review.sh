@@ -26,6 +26,8 @@ cp "$STAGE/server.py" "$STAGE/fr88_review_web_server.py"
 download tools/fr88_review_web_index.html index.html
 download tools/fr88_link_review_index.html link_review.html
 download tools/fr88_link_review_app.js link_review.js
+download tools/fr88_link_edges.py fr88_link_edges.py
+download training/fr88_page_book_registry.json page_registry.json
 download tools/test_fr88_link_review_web.py test_link_review.py
 download tools/fr88_link_review_publish.sh publish_link_review.sh
 download fr88_source_links_pilot/source_link_results.json link_results.json
@@ -44,12 +46,14 @@ assert progress.get("margins_complete")==20, "Incomplete pilot not accepted for 
 spec=importlib.util.spec_from_file_location("jbible_staged_review",str(base/"server.py"))
 mod=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
-cases=mod.link_cases_from_export(document)
-assert len(cases)>=20, "Not enough published margin rows"
-ids={c["row_id"] for c in cases}
-assert len(ids)==len(cases), "Duplicate margin row IDs"
+registry=json.loads((base/"page_registry.json").read_text(encoding="utf-8"))
+cases=mod.build_cases(document,registry)
+assert len(cases)==len(document["proposed_links"])+len(document["review_queue"]), "Not every target became an independent edge"
+ids={c["link_id"] for c in cases}
+assert len(ids)==len(cases), "Duplicate 1:1 edge IDs"
 assert all(31<=c["page"]<=40 for c in cases)
-print("VALID QUEUE:",len(cases),"unique printed margin rows")
+assert all(c["review_scope"]=="ONE_SOURCE_TO_ONE_TARGET" for c in cases)
+print("VALID QUEUE:",len(cases),"independent source -> target connections; page-level book registry applied")
 PY
 # The smoke tests need to be imported from this staging directory.
 (cd "$STAGE" && PYTHONPATH="$STAGE" python3 test_link_review.py)
@@ -66,7 +70,12 @@ done
 BACKUP="$(mktemp -d "$BASE/.link_review_backup_XXXXXXXX")"
 cp -p "$BASE/server.py" "$BACKUP/server.py"
 cp -p "$BASE/index.html" "$BACKUP/index.html"
-for file in server.py index.html link_review.html link_review.js link_results.json; do
+for existing in link_review.html link_review.js; do
+  if [[ -f "$BASE/$existing" ]]; then
+    cp -p "$BASE/$existing" "$BACKUP/$existing"
+  fi
+done
+for file in server.py index.html link_review.html link_review.js fr88_link_edges.py page_registry.json link_results.json; do
   install -m 0644 "$STAGE/$file" "$BASE/$file"
 done
 install -m 0750 "$STAGE/publish_link_review.sh" "$PUB"
@@ -76,6 +85,11 @@ if ! curl -fsS --max-time 12 http://127.0.0.1:8765/healthz | grep -q '"status": 
   echo "New review service failed health check; restoring original server and OCR index" >&2
   cp -p "$BACKUP/server.py" "$BASE/server.py"
   cp -p "$BACKUP/index.html" "$BASE/index.html"
+  for existing in link_review.html link_review.js; do
+    if [[ -f "$BACKUP/$existing" ]]; then
+      cp -p "$BACKUP/$existing" "$BASE/$existing"
+    fi
+  done
   systemctl restart jbible-fr88-review-web.service
   exit 1
 fi
@@ -85,6 +99,11 @@ if [[ "$code" != "401" ]]; then
   echo "Security check FAILED: unauthenticated source-link review returned HTTP $code" >&2
   cp -p "$BACKUP/server.py" "$BASE/server.py"
   cp -p "$BACKUP/index.html" "$BASE/index.html"
+  for existing in link_review.html link_review.js; do
+    if [[ -f "$BACKUP/$existing" ]]; then
+      cp -p "$BACKUP/$existing" "$BASE/$existing"
+    fi
+  done
   systemctl restart jbible-fr88-review-web.service
   exit 1
 fi
@@ -120,5 +139,6 @@ echo "=========================================================="
 echo "SOURCE-LINK REVIEW READY:"
 echo "https://status.tetrada.eu/jbible-review/links/"
 echo "Use the SAME reviewer login and password as the OCR review site."
-echo "Original OCR decisions, scan images and SQL remain untouched."
+echo "Old OCR and legacy row-based link decisions, scan images and SQL remain untouched."
+echo "One independently reviewable source -> target connection for each parsed destination."
 echo "=========================================================="
