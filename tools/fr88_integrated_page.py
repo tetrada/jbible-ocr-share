@@ -303,6 +303,19 @@ def collect_page(page,registry,limits):
         if "OCR_JSON_COLUMN_LABEL_OVERRIDDEN_FROM_IMAGE_TASK" in (
                 stages[task].get("warnings") or []):
             issues.append("MODEL_"+task.upper()+"_COLUMN_LABEL_OVERRIDDEN")
+        # Model may use the wrong crop's fractional-Y coordinate for a
+        # perfectly ordered verse-marker sequence (e.g. page35 L verse 15
+        # appears at .062 after verse14 at .916). Flag and retain the
+        # affected links as estimates, never silently call it exact.
+        marker_seq=stages[task].get("markers") or []
+        wrong_order=any(
+            type(a.get("y_fraction")) in (int,float) and
+            type(b.get("y_fraction")) in (int,float) and
+            a["y_fraction"]>b["y_fraction"]+.025 and
+            (a.get("chapter"),a.get("verse")) < (b.get("chapter"),b.get("verse"))
+            for a,b in zip(marker_seq,marker_seq[1:]))
+        if wrong_order:
+            issues.append("VERSE_MARKER_Y_COORDINATES_NONMONOTONIC_"+task[-1])
     if transitions:
         issues.append("BOOK_TRANSITION_ON_PAGE")
     issues+=book_issues
@@ -368,13 +381,16 @@ def collect_page(page,registry,limits):
             issues.append("LEGACY_MARGIN_ROWS_AUTOMATICALLY_RECOVERED")
     links=atomic_edges(page,book,rows,intervals,limits,issues)
     for link in links:
-        if link["row_id"] in recovered and link["accepted_automatically"]:
+        audit=[]
+        if link["row_id"] in recovered:
+            audit.append("ROW_RECOVERED_FROM_PREVIOUS_OCR_PASS")
+        if "VERSE_MARKER_Y_COORDINATES_NONMONOTONIC_"+str(link["column"]) in issues:
+            audit.append("MAIN_TEXT_MARKERS_HAVE_INCONSISTENT_Y_COORDINATES")
+        if audit and link["accepted_automatically"]:
             link["status"]="ACCEPTED_ESTIMATED"
             link["source_alignment_estimate_flags"]=sorted(set(
-                link.get("source_alignment_estimate_flags",[])+[
-                    "ROW_RECOVERED_FROM_PREVIOUS_OCR_PASS"]))
-            link["qa_reasons"]=sorted(set(link.get("qa_reasons",[])+[
-                    "LEGACY_OCR_ROW_RECOVERED_NOT_RESCANNED"]))
+                link.get("source_alignment_estimate_flags",[])+audit))
+            link["qa_reasons"]=sorted(set(link.get("qa_reasons",[])+audit))
     counts=edge_summary(links)
     drifted=set()
     if prior.exists():
