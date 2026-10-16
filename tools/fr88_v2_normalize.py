@@ -20,14 +20,14 @@ SOURCE_BARE = "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
 SIMPLE_VERSE = re.compile(
     r"^\s*(\d{1,3})\s*(?::\s*|,\s*|\s+)(\d{1,3})"
     r"(?:\s*[-–—]\s*(\d{1,3}))?"
-    r"(s{1,2}|p|\+)?\s*\.?\s*$", re.IGNORECASE
+    r"(s{1,2}|sp|p|\+)?\s*\.?\s*$", re.IGNORECASE
 )
 VERSE_LIST = re.compile(
     r"^\s*(\d{1,3})\s+(\d{1,3}(?:\s*,\s*\d{1,3})+)(s{1,2}|\+)?\s*$",
     re.IGNORECASE
 )
 CHAPTER_RANGE = re.compile(r"^\s*(\d{1,3})\s*[-–—]\s*(\d{1,3})\s*$")
-CHAPTER_ONLY = re.compile(r"^\s*(\d{1,3})(s{1,2}|\+)?\s*$", re.IGNORECASE)
+CHAPTER_ONLY = re.compile(r"^\s*(\d{1,3})(s{1,2}|sp|p|\+)?\s*$", re.IGNORECASE)
 
 @lru_cache(maxsize=8)
 def alias_index(csv_path):
@@ -81,6 +81,21 @@ def _parse_numbers(text):
     if m:
         return {"type": "CHAPTER_ONLY", "chapter": int(m.group(1)),
                 "suffix": m.group(2) or "", "literal": text}
+    # Some Bible cross-reference rows are genuinely cut off at the outer
+    # page edge. The leading book/chapter/verse can remain unequivocal even
+    # if a comma/semicolon continues into invisible text. Keep ONE usable
+    # destination from the visible prefix; never invent unseen citations.
+    prefix = re.match(
+        r"^\s*(\d{1,3})\s+(\d{1,3})(s{1,2}|sp|p|\+)?\s*[,;]\s*(.*)$",
+        text, re.IGNORECASE)
+    if prefix:
+        chapter,verse,suffix,remainder=prefix.groups()
+        return {"type":"VERSE","chapter":int(chapter),"verse":int(verse),
+                "end_verse":None,"suffix":suffix or "",
+                "literal":text,
+                "visible_coordinate_prefix":True,
+                "ignored_unreadable_or_following_tail":remainder[:100],
+                "reason":"visible_coordinate_prefix_retained"}
     return {"type": "UNRESOLVED_NUMERIC", "literal": text,
             "reason": "notation_not_covered"}
 
