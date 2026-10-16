@@ -12,7 +12,8 @@ def test():
           "record_type,book_code,bali_alias,chap_number,max_verse",
           "A,Gen,Gn,,","A,Ps,Ps,,","A,Sir,Si,,",
           "A,Rev,Ap,,","A,Isa,Is,,","A,1Chr,1 Ch,,","A,1Kgs,1 R,,",
-          "A,Wis,Sg,,","A,Matt,Mt,,",
+          "A,Wis,Sg,,","A,Matt,Mt,,","A,Luke,Lc,,",
+          "A,Judg,Jg,,","A,Tob,Tb,,",
           "C,Gen,,5,32","C,Gen,,9,29","C,Gen,,15,21",
           "C,Gen,,18,33","C,Ps,,78,72","C,Ps,,105,45","C,Ps,,8,9",
           "C,Ps,,104,35","C,Sir,,43,36","C,Rev,,16,21",
@@ -87,6 +88,45 @@ def test():
         assert trailing["references"][0]["verse"]==1
         assert trailing["references"][0]["suffix"]=="s"
         assert trailing["references"][0]["ignored_unreadable_or_following_tail"]=="1"
+        # New October 16 pilot cases: no manual review needed for notation.
+        parallel=run("‖ 1 Ch 1 29-31")
+        assert parallel["relation_marker"]=="CROSS_BOOK_PARALLEL"
+        assert len(parallel["references"])==1
+        assert parallel["references"][0]["book_code"]=="1Chr"
+        assert parallel["references"][0]["chapter"]==1
+        assert parallel["references"][0]["verse"]==29
+        assert parallel["references"][0]["end_verse"]==31
+
+        cross=run("= 27 46-28 5")
+        assert cross["relation_marker"]=="SAME_BOOK_DOUBLET"
+        assert len(cross["references"])==1
+        assert cross["references"][0]["book_code"]=="Gen"
+        assert cross["references"][0]["type"]=="VERSE_CROSS_CHAPTER_RANGE"
+        assert (cross["references"][0]["chapter"],cross["references"][0]["verse"],
+                cross["references"][0]["end_chapter"],cross["references"][0]["end_verse"])==(27,46,28,5)
+        other_cross=run("29 31 - 30 24")
+        assert other_cross["references"][0]["end_chapter"]==30
+        assert other_cross["references"][0]["end_verse"]==24
+
+        dots=run("31 24.29")
+        assert [(r["book_code"],r["chapter"],r["verse"])
+                for r in dots["references"]]==[("Gen",31,24),("Gen",31,29)]
+        dotted_book=run("Lc 2 19.51")
+        assert [(r["book_code"],r["chapter"],r["verse"])
+                for r in dotted_book["references"]]==[("Luke",2,19),("Luke",2,51)]
+        # An editorial 'cf.' must not generate a fictitious Judg target.
+        with_connector=run("Jg 14 12, 17; cf. Tb 8")
+        assert [(x.get("book_code"),x.get("type"),x.get("chapter"),x.get("verse"))
+                for x in with_connector["references"]]==[
+                    ("Judg","VERSE",14,12),
+                    ("Judg","VERSE",14,17),
+                    ("Tob","CHAPTER_ONLY",8,None)]
+        chnote=run("ch. 27.")
+        assert len(chnote["references"])==1
+        assert chnote["references"][0]["book_code"]=="Gen"
+        assert chnote["references"][0]["type"]=="CHAPTER_ONLY"
+        assert chnote["references"][0]["chapter"]==27
+        assert "EDITORIAL_CHAPTER_ONLY_SHORTHAND" in chnote["references"][0]["interpretation_flags"]
         print("PASS: same-page bare targets, inherited inline books, 2 comma edges, '=', '||', suffixes and flagged Ch/Is repairs")
 
 
