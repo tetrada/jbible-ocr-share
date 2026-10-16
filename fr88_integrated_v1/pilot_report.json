@@ -11,14 +11,14 @@
     "model": "deepseek-flash",
     "new_paid_tasks_this_run": 0,
     "source_link_metrics": {
-      "atomic_links": 818,
-      "accepted": 797,
+      "atomic_links": 819,
+      "accepted": 800,
       "accepted_plain": 157,
       "accepted_flagged": 36,
-      "accepted_estimated": 584,
+      "accepted_estimated": 587,
       "accepted_human_corrected": 20,
-      "exceptions": 21,
-      "acceptance_percent": 97.43,
+      "exceptions": 19,
+      "acceptance_percent": 97.68,
       "human_verified": 20,
       "sql_writes": false
     },
@@ -48,7 +48,9 @@
       "LEFT_COLUMN_CHAPTER_REPAIRED_FROM_HEADER_AND_RIGHT": 1,
       "SOURCE_PAGE_SEQUENCE_IMPOSSIBLE_REWIND": 1,
       "BOOK_OPENING_TITLE_BEFORE_FIRST_VERSE": 1,
-      "ADJACENT_PHYSICAL_PAGE_ORDER_SWAP_PROVEN_BY_VERSES": 1
+      "ADJACENT_PHYSICAL_PAGE_ORDER_SWAP_PROVEN_BY_VERSES": 1,
+      "RIGHT_COLUMN_CHAPTER_REPAIRED_FROM_ADJACENT_PAGE": 1,
+      "RIGHT_PREFIX_CHAPTER_REPAIRED_BEFORE_RESTART": 1
     },
     "verified": 20,
     "sql_writes": false
@@ -51446,124 +51448,124 @@
         ],
         "R": [
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 9,
             "y_fraction": 0.058,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 10,
             "y_fraction": 0.108,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 11,
             "y_fraction": 0.15,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 12,
             "y_fraction": 0.254,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 13,
             "y_fraction": 0.338,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 14,
             "y_fraction": 0.423,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 15,
             "y_fraction": 0.51,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 16,
             "y_fraction": 0.615,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 17,
             "y_fraction": 0.7,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 18,
             "y_fraction": 0.786,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 19,
             "y_fraction": 0.833,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 20,
             "y_fraction": 0.884,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 21,
             "y_fraction": 0.958,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 22,
             "y_fraction": 0.985,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           },
           {
-            "chapter": 9,
+            "chapter": 8,
             "verse": 23,
             "y_fraction": 1.0,
             "confidence": "LOW",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 9,
+            "chapter_ocr_repair_evidence": "LEFT_AND_NEXT_PAGE_CONTINUITY"
           }
         ]
       },
@@ -51754,7 +51756,7 @@
           "margin_y_fraction": 0.421,
           "printed_margin_line": "Ps 105 31",
           "source_book_code": "Exod",
-          "source_chapter": 9,
+          "source_chapter": 8,
           "source_verse": 13,
           "source_y_interval": [
             0.338,
@@ -51773,25 +51775,27 @@
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
-            "NONPOSITIVE_VERSE_INTERVAL"
+            "NONPOSITIVE_VERSE_INTERVAL",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED"
           ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
             {
-              "chapter": 9,
+              "chapter": 8,
               "verse": 12,
               "y_start": 0.254,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
               "human_verified": false
             },
             {
-              "chapter": 9,
+              "chapter": 8,
               "verse": 14,
               "y_start": 0.423,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
@@ -51812,7 +51816,7 @@
           "margin_y_fraction": 0.505,
           "printed_margin_line": "Lc 11 20",
           "source_book_code": "Exod",
-          "source_chapter": 9,
+          "source_chapter": 8,
           "source_verse": 14,
           "source_y_interval": [
             0.423,
@@ -51831,25 +51835,27 @@
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
-            "NONPOSITIVE_VERSE_INTERVAL"
+            "NONPOSITIVE_VERSE_INTERVAL",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED"
           ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
             {
-              "chapter": 9,
+              "chapter": 8,
               "verse": 13,
               "y_start": 0.338,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
               "human_verified": false
             },
             {
-              "chapter": 9,
+              "chapter": 8,
               "verse": 15,
               "y_start": 0.51,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
@@ -51870,7 +51876,7 @@
           "margin_y_fraction": 0.702,
           "printed_margin_line": "Ps 78 45",
           "source_book_code": "Exod",
-          "source_chapter": 9,
+          "source_chapter": 8,
           "source_verse": 17,
           "source_y_interval": [
             0.7,
@@ -51889,25 +51895,27 @@
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
-            "NONPOSITIVE_VERSE_INTERVAL"
+            "NONPOSITIVE_VERSE_INTERVAL",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED"
           ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
             {
-              "chapter": 9,
+              "chapter": 8,
               "verse": 16,
               "y_start": 0.615,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
               "human_verified": false
             },
             {
-              "chapter": 9,
+              "chapter": 8,
               "verse": 18,
               "y_start": 0.786,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
@@ -51928,7 +51936,7 @@
           "margin_y_fraction": 0.778,
           "printed_margin_line": "Gn 47 1s",
           "source_book_code": "Exod",
-          "source_chapter": 9,
+          "source_chapter": 8,
           "source_verse": 17,
           "source_y_interval": [
             0.7,
@@ -51947,25 +51955,27 @@
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
-            "NONPOSITIVE_VERSE_INTERVAL"
+            "NONPOSITIVE_VERSE_INTERVAL",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED"
           ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
             {
-              "chapter": 9,
+              "chapter": 8,
               "verse": 16,
               "y_start": 0.615,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
               "human_verified": false
             },
             {
-              "chapter": 9,
+              "chapter": 8,
               "verse": 18,
               "y_start": 0.786,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
@@ -51998,7 +52008,8 @@
         "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
         "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R",
         "NONPOSITIVE_VERSE_INTERVAL",
-        "PAGE_TOP_SOURCE_VERSE_RECOVERED"
+        "PAGE_TOP_SOURCE_VERSE_RECOVERED",
+        "RIGHT_COLUMN_CHAPTER_REPAIRED_FROM_ADJACENT_PAGE"
       ],
       "legacy_margin_comparison": {
         "L": {
@@ -53937,60 +53948,60 @@
         ],
         "R": [
           {
-            "chapter": 12,
+            "chapter": 11,
             "verse": 4,
             "y_fraction": 0.175,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 12,
+            "chapter_ocr_repair_evidence": "LEFT_CONTINUATION_AND_RIGHT_RESTART_AND_PAGE_HEAD"
           },
           {
-            "chapter": 12,
+            "chapter": 11,
             "verse": 5,
             "y_fraction": 0.215,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 12,
+            "chapter_ocr_repair_evidence": "LEFT_CONTINUATION_AND_RIGHT_RESTART_AND_PAGE_HEAD"
           },
           {
-            "chapter": 12,
+            "chapter": 11,
             "verse": 6,
             "y_fraction": 0.295,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 12,
+            "chapter_ocr_repair_evidence": "LEFT_CONTINUATION_AND_RIGHT_RESTART_AND_PAGE_HEAD"
           },
           {
-            "chapter": 12,
+            "chapter": 11,
             "verse": 7,
             "y_fraction": 0.355,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 12,
+            "chapter_ocr_repair_evidence": "LEFT_CONTINUATION_AND_RIGHT_RESTART_AND_PAGE_HEAD"
           },
           {
-            "chapter": 12,
+            "chapter": 11,
             "verse": 8,
             "y_fraction": 0.425,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 12,
+            "chapter_ocr_repair_evidence": "LEFT_CONTINUATION_AND_RIGHT_RESTART_AND_PAGE_HEAD"
           },
           {
-            "chapter": 12,
+            "chapter": 11,
             "verse": 9,
             "y_fraction": 0.565,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 12,
+            "chapter_ocr_repair_evidence": "LEFT_CONTINUATION_AND_RIGHT_RESTART_AND_PAGE_HEAD"
           },
           {
-            "chapter": 12,
+            "chapter": 11,
             "verse": 10,
             "y_fraction": 0.635,
             "confidence": "HIGH",
-            "ocr_original_chapter": null,
-            "chapter_ocr_repair_evidence": null
+            "ocr_original_chapter": 12,
+            "chapter_ocr_repair_evidence": "LEFT_CONTINUATION_AND_RIGHT_RESTART_AND_PAGE_HEAD"
           },
           {
             "chapter": 12,
@@ -54188,7 +54199,7 @@
           "margin_y_fraction": 0.463,
           "printed_margin_line": "34 18",
           "source_book_code": "Exod",
-          "source_chapter": 12,
+          "source_chapter": 11,
           "source_verse": 8,
           "source_y_interval": [
             0.425,
@@ -54207,6 +54218,7 @@
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "accepted_automatically": true,
@@ -54214,6 +54226,7 @@
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "possible_adjacent_source_verses": [],
@@ -54231,7 +54244,7 @@
           "margin_y_fraction": 0.477,
           "printed_margin_line": "Lv 23 5-8",
           "source_book_code": "Exod",
-          "source_chapter": 12,
+          "source_chapter": 11,
           "source_verse": 8,
           "source_y_interval": [
             0.425,
@@ -54250,6 +54263,7 @@
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "accepted_automatically": true,
@@ -54257,6 +54271,7 @@
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "possible_adjacent_source_verses": [],
@@ -54274,7 +54289,7 @@
           "margin_y_fraction": 0.491,
           "printed_margin_line": "Nb 28 16-25",
           "source_book_code": "Exod",
-          "source_chapter": 12,
+          "source_chapter": 11,
           "source_verse": 8,
           "source_y_interval": [
             0.425,
@@ -54293,6 +54308,7 @@
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "accepted_automatically": true,
@@ -54300,6 +54316,7 @@
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "possible_adjacent_source_verses": [],
@@ -54317,7 +54334,7 @@
           "margin_y_fraction": 0.505,
           "printed_margin_line": "Dt 16 1-8",
           "source_book_code": "Exod",
-          "source_chapter": 12,
+          "source_chapter": 11,
           "source_verse": 8,
           "source_y_interval": [
             0.425,
@@ -54336,6 +54353,7 @@
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "accepted_automatically": true,
@@ -54343,6 +54361,7 @@
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "possible_adjacent_source_verses": [],
@@ -54360,7 +54379,7 @@
           "margin_y_fraction": 0.519,
           "printed_margin_line": "Ez 45 21-24",
           "source_book_code": "Exod",
-          "source_chapter": 12,
+          "source_chapter": 11,
           "source_verse": 8,
           "source_y_interval": [
             0.425,
@@ -54379,6 +54398,7 @@
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "accepted_automatically": true,
@@ -54386,6 +54406,7 @@
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
             "MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR",
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "possible_adjacent_source_verses": [],
@@ -54403,7 +54424,7 @@
           "margin_y_fraction": 0.533,
           "printed_margin_line": "↗ Mt 26",
           "source_book_code": "Exod",
-          "source_chapter": 12,
+          "source_chapter": 11,
           "source_verse": 8,
           "source_y_interval": [
             0.425,
@@ -54421,12 +54442,14 @@
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "possible_adjacent_source_verses": [],
@@ -54444,7 +54467,7 @@
           "margin_y_fraction": 0.547,
           "printed_margin_line": "17s p",
           "source_book_code": "Exod",
-          "source_chapter": 12,
+          "source_chapter": 11,
           "source_verse": 8,
           "source_y_interval": [
             0.425,
@@ -54475,14 +54498,14 @@
           ],
           "possible_adjacent_source_verses": [
             {
-              "chapter": 12,
+              "chapter": 11,
               "verse": 7,
               "y_start": 0.355,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
               "human_verified": false
             },
             {
-              "chapter": 12,
+              "chapter": 11,
               "verse": 9,
               "y_start": 0.565,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
@@ -54506,7 +54529,7 @@
           "margin_y_fraction": 0.561,
           "printed_margin_line": "↗ Lc 22",
           "source_book_code": "Exod",
-          "source_chapter": 12,
+          "source_chapter": 11,
           "source_verse": 8,
           "source_y_interval": [
             0.425,
@@ -54524,25 +54547,27 @@
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
             {
-              "chapter": 12,
+              "chapter": 11,
               "verse": 7,
               "y_start": 0.355,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
               "human_verified": false
             },
             {
-              "chapter": 12,
+              "chapter": 11,
               "verse": 9,
               "y_start": 0.565,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
@@ -54563,7 +54588,7 @@
           "margin_y_fraction": 0.575,
           "printed_margin_line": "15-16",
           "source_book_code": "Exod",
-          "source_chapter": 12,
+          "source_chapter": 11,
           "source_verse": 9,
           "source_y_interval": [
             0.565,
@@ -54581,25 +54606,27 @@
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED",
             "SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY"
           ],
           "possible_adjacent_source_verses": [
             {
-              "chapter": 12,
+              "chapter": 11,
               "verse": 8,
               "y_start": 0.425,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
               "human_verified": false
             },
             {
-              "chapter": 12,
+              "chapter": 11,
               "verse": 10,
               "y_start": 0.635,
               "source": "ADJACENT_PRINTED_VERSE_MARKER",
@@ -54620,7 +54647,7 @@
           "margin_y_fraction": 0.589,
           "printed_margin_line": "↗ 1 Co 5 7",
           "source_book_code": "Exod",
-          "source_chapter": 12,
+          "source_chapter": 11,
           "source_verse": 9,
           "source_y_interval": [
             0.565,
@@ -54638,12 +54665,14 @@
           "parse_status": "PARSED",
           "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "accepted_automatically": true,
           "human_review_required": false,
           "hard_exceptions": [],
           "source_alignment_estimate_flags": [
+            "RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED",
             "SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED"
           ],
           "possible_adjacent_source_verses": [],
@@ -54673,7 +54702,8 @@
         "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
         "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R",
         "PAGE_START_HEADER_CONTRADICTS_BODY",
-        "PAGE_TOP_SOURCE_VERSE_RECOVERED"
+        "PAGE_TOP_SOURCE_VERSE_RECOVERED",
+        "RIGHT_PREFIX_CHAPTER_REPAIRED_BEFORE_RESTART"
       ],
       "legacy_margin_comparison": {
         "L": {
@@ -60222,27 +60252,29 @@
           ],
           "target_segment_index": 1,
           "target_book_code": "Obad",
-          "target_chapter": 18,
-          "target_verse": null,
+          "target_chapter": 1,
+          "target_verse": 18,
           "target_end_chapter": null,
           "target_end_verse": null,
-          "target_type": "CHAPTER_ONLY",
+          "target_type": "VERSE",
           "target_suffix": "",
           "target_literal": "18",
           "parse_status": "PARSED",
-          "status": "EXCEPTION",
+          "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+            "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED"
           ],
-          "accepted_automatically": false,
-          "human_review_required": true,
-          "hard_exceptions": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+          "accepted_automatically": true,
+          "human_review_required": false,
+          "hard_exceptions": [],
+          "source_alignment_estimate_flags": [
+            "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED"
           ],
-          "source_alignment_estimate_flags": [],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "ORDINARY",
-          "destination_interpretation_flags": [],
+          "destination_interpretation_flags": [
+            "SINGLE_CHAPTER_OBADIAH_VERSE_SHORTHAND"
+          ],
           "human_verified": false,
           "human_review": null,
           "original_automated_link": null,
@@ -60691,29 +60723,68 @@
           ],
           "target_segment_index": 1,
           "target_book_code": "Deut",
-          "target_chapter": null,
-          "target_verse": null,
+          "target_chapter": 2,
+          "target_verse": 1,
           "target_end_chapter": null,
-          "target_end_verse": null,
-          "target_type": "UNRESOLVED_NUMERIC",
-          "target_suffix": null,
+          "target_end_verse": 9,
+          "target_type": "VERSE_RANGE",
+          "target_suffix": "",
           "target_literal": "2 1-9, 18",
-          "parse_status": "NEEDS_NOTATION_REVIEW",
-          "status": "EXCEPTION",
+          "parse_status": "PARSED",
+          "status": "ACCEPTED_ESTIMATED",
           "qa_reasons": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+            "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED"
           ],
-          "accepted_automatically": false,
-          "human_review_required": true,
-          "hard_exceptions": [
-            "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+          "accepted_automatically": true,
+          "human_review_required": false,
+          "hard_exceptions": [],
+          "source_alignment_estimate_flags": [
+            "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED"
           ],
-          "source_alignment_estimate_flags": [],
           "possible_adjacent_source_verses": [],
           "editorial_relation_marker": "ORDINARY",
-          "destination_interpretation_flags": [
-            "DESTINATION_NOT_YET_PARSED"
+          "destination_interpretation_flags": [],
+          "human_verified": false,
+          "human_review": null,
+          "original_automated_link": null,
+          "sql_ready": false
+        },
+        {
+          "edge_id": "fr88i:p0100:R:006/target02",
+          "margin_row_id": "fr88i:p0100:R:006",
+          "column": "R",
+          "margin_y_fraction": 0.362,
+          "printed_margin_line": "Dt 2 1-9, 18",
+          "source_book_code": "Exod",
+          "source_chapter": 15,
+          "source_verse": 15,
+          "source_y_interval": [
+            0.34,
+            0.4
           ],
+          "target_segment_index": 2,
+          "target_book_code": "Deut",
+          "target_chapter": 2,
+          "target_verse": 18,
+          "target_end_chapter": null,
+          "target_end_verse": null,
+          "target_type": "VERSE",
+          "target_suffix": "",
+          "target_literal": "2 1-9, 18",
+          "parse_status": "PARSED",
+          "status": "ACCEPTED_ESTIMATED",
+          "qa_reasons": [
+            "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED"
+          ],
+          "accepted_automatically": true,
+          "human_review_required": false,
+          "hard_exceptions": [],
+          "source_alignment_estimate_flags": [
+            "CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED"
+          ],
+          "possible_adjacent_source_verses": [],
+          "editorial_relation_marker": "ORDINARY",
+          "destination_interpretation_flags": [],
           "human_verified": false,
           "human_review": null,
           "original_automated_link": null,
@@ -61187,14 +61258,14 @@
         }
       ],
       "summary": {
-        "atomic_links": 26,
-        "accepted": 24,
+        "atomic_links": 27,
+        "accepted": 27,
         "accepted_plain": 0,
         "accepted_flagged": 0,
-        "accepted_estimated": 24,
+        "accepted_estimated": 27,
         "accepted_human_corrected": 0,
-        "exceptions": 2,
-        "acceptance_percent": 92.31,
+        "exceptions": 0,
+        "acceptance_percent": 100.0,
         "human_verified": 0,
         "sql_writes": false
       },
