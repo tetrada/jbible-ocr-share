@@ -2,7 +2,7 @@
 """Offline edition-rule tests: user-confirmed shorthand, comma edges and markers."""
 import tempfile
 from pathlib import Path
-from fr88_integrated_reference_rules import canonicalize
+from fr88_integrated_reference_rules import canonicalize, canonicalize_contiguous_rows
 
 
 def test():
@@ -133,6 +133,32 @@ def test():
         explicit=run("Gn 22 16-17+ 28 14")
         assert [r["book_code"] for r in explicit["references"]]==["Gen","Gen"]
         assert [r["atomic_target_index"] for r in plus["references"]]==[1,2]
+        # Real semicolon-wrapped rows at pages 36,37,41,72,79,80:
+        # do NOT turn the next numeric target into a Genesis target.
+        def two_rows(before,after,y2=.214,side="R"):
+            raw=[
+              {"id":"prior","side":"R","kind":"REFERENCE","y_fraction":.20,
+               "raw_line":before},
+              {"id":"next","side":side,"kind":"REFERENCE","y_fraction":y2,
+               "raw_line":after}]
+            return canonicalize_contiguous_rows(raw,"Gen",cat)
+        for before,after,expected in [
+            ("Si 44 16;","49 14","Sir"),
+            ("Jr 18 10;","26 3","Jer"),
+            ("Jn 11 52;","10 16","John"),
+            ("Ex 7 11,22;","8 1-3","Exod"),
+            ("Ex 1 11;","12 37","Exod"),
+            ("Ps 23 1;","80 2-3","Ps")]:
+            normalized=two_rows(before,after)
+            assert normalized[1]["raw_line"]==after
+            assert normalized[1]["id"]=="next"
+            assert normalized[1]["references"][0]["book_code"]==expected
+            assert normalized[1]["references"][0]["book_resolution"]=="ADJACENT_SEMICOLON_ROW"
+            assert normalized[1]["wrapped_book_inheritance_from_row_id"]=="prior"
+        assert two_rows("Ps 23 1","80 2-3")[1]["references"][0]["book_code"]=="Gen"
+        assert two_rows("Ps 23 1;","80 2-3",y2=.26)[1]["references"][0]["book_code"]=="Gen"
+        assert two_rows("Ps 23 1;","80 2-3",side="L")[1]["references"][0]["book_code"]=="Gen"
+        assert two_rows("Ps 23 1;","Jn 8 1")[1]["references"][0]["book_code"]=="John"
         mixed=run("25 26, 29-34")
         assert len(mixed["references"])==2
         assert [(r["book_code"],r["chapter"],r["verse"],r["end_verse"],r["type"])
