@@ -180,6 +180,46 @@ def test():
     assert aggregate["accepted"]==3
     assert aggregate["exceptions"]==2
     assert aggregate["accepted_estimated"]==1
+    # Real published page39: OCR transcribed TOP_LEFT header Gen 1:22,
+    # while body main-text begins Gen 8:18 (previous page ends 8:17).
+    # Never create an accepted source in the unrelated chapter 1.
+    page39_header=g.header_checked({
+        "header_position":"TOP_LEFT","boundary_role":"FIRST_ON_PAGE",
+        "chapter":1,"verse":22,"visible":True,
+        "book_code":"Gen","confidence":"HIGH"
+    })
+    page39_markers=[
+        {"column":"L","chapter":8,"verse":18,"y_fraction":.14,"confidence":"HIGH"},
+        {"column":"L","chapter":8,"verse":19,"y_fraction":.17,"confidence":"HIGH"},
+        {"column":"R","chapter":9,"verse":7,"y_fraction":.25,"confidence":"HIGH"}
+    ]
+    page39_intervals,page39_issues=g.make_intervals(
+        page39_markers,page39_header,"Gen",{},
+        previous_page_last={"chapter":8,"verse":17})
+    assert "PAGE_START_HEADER_CONTRADICTS_BODY" in page39_issues
+    assert not any(i["chapter"]==1 and i["verse"]==22
+                   for col in page39_intervals.values() for i in col)
+    first,flags=g.choose_source({"side":"L","y_fraction":.08},
+                                page39_intervals)
+    assert first is not None and (first["chapter"],first["verse"])==(8,17)
+
+    # Real published page42: the second column starts in chapter 11 while
+    # the first column has already reached chapter 12. This is an OCR
+    # contradiction; accept plausible links only as visibly estimated.
+    page42_markers=[
+        {"column":"L","chapter":11,"verse":26,"y_fraction":.07,"confidence":"HIGH"},
+        {"column":"L","chapter":12,"verse":6,"y_fraction":.77,"confidence":"HIGH"},
+        {"column":"R","chapter":11,"verse":30,"y_fraction":.072,"confidence":"HIGH"},
+        {"column":"R","chapter":11,"verse":31,"y_fraction":.104,"confidence":"HIGH"}
+    ]
+    page42_header=g.header_checked({
+        "header_position":"TOP_LEFT","boundary_role":"FIRST_ON_PAGE",
+        "chapter":11,"verse":26,"visible":True,
+        "book_code":"Gen","confidence":"HIGH"
+    })
+    page42_intervals,page42_issues=g.make_intervals(
+        page42_markers,page42_header,"Gen",{})
+    assert "COLUMN_VERSE_SEQUENCE_REWINDS" in page42_issues
     print("PASS: +/-1, layout, abbreviations and page-header warnings accepted; "
           "only illegible/impossible/unknown-source links excepted")
 
