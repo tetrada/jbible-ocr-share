@@ -318,17 +318,26 @@ def collect_page(page,registry,limits):
         issues=sorted(set(issues))
     else:
         compare={}
-    # Do not silently claim QA success if the OCR missed a known margin row.
+    # Comparing V2 and current OCR is an AUDIT SIGNAL, not a veto of a
+    # perfectly usable source -> destination link. Missing rows are counted
+    # independently rather than incorrectly rejecting every present link.
     missing=any(x.get("possible_missing_rows",0) for x in compare.values())
     for link in links:
-        reasons=[]
+        notices=[]
         if missing:
-            reasons.append("POSSIBLE_MISSING_MARGIN_OCR")
+            notices.append("LEGACY_OCR_HAS_MORE_ROWS_ON_THIS_PAGE")
         if link["row_id"] in drifted:
-            reasons.append("MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR")
-        if reasons:
-            link["qa_reasons"]=sorted(set(link["qa_reasons"]+reasons))
-            link["status"]="REVIEW_REQUIRED"
+            notices.append("MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR")
+        if not notices:
+            continue
+        link["qa_reasons"]=sorted(set(link["qa_reasons"]+notices))
+        if link["accepted_automatically"]:
+            if link["row_id"] in drifted:
+                link["status"]="ACCEPTED_ESTIMATED"
+                link["source_alignment_estimate_flags"]=sorted(set(
+                    link["source_alignment_estimate_flags"]+notices))
+            elif link["status"]=="ACCEPTED":
+                link["status"]="ACCEPTED_FLAGGED"
     counts=edge_summary(links)
     result={
         "schema":"jbible.fr88.integrated-page.v1","image_page":page,
@@ -368,9 +377,11 @@ def status(start,end,new_calls):
        "page_issue_counts":dict(issues),
        "verified":0,"sql_writes":False}
     save(OUT/"progress.json",s)
-    print("PROGRESS pages=%d/%d (%.1f%%), %d atomic destinations, %d review-required"%
+    print("PROGRESS pages=%d/%d (%.1f%%), %d atomic destinations, "
+          "%d accepted (%d estimates), %d exceptions"%
           (total,end-start+1,s["percent"],metrics["atomic_links"],
-           metrics["needs_review"]),flush=True)
+           metrics["accepted"],metrics["accepted_estimated"],
+           metrics["exceptions"]),flush=True)
     return s
 
 
@@ -441,9 +452,11 @@ def run(args):
             raise RuntimeError("Page stages incomplete unexpectedly")
         save(OUT/("image_%04d.bundle.json"%page),bundled)
         q=bundled["summary"]
-        print("PAGE %d: %d separate targets, %d strong proposals, %d exceptions; %s"%
-              (page,q["atomic_links"],q["auto_proposed"],
-               q["needs_review"],",".join(bundled["quality_flags"])),flush=True)
+        print("PAGE %d: %d separate targets, %d automatically accepted "
+              "(%d estimated), %d genuinely unresolved; %s"%
+              (page,q["atomic_links"],q["accepted"],
+               q["accepted_estimated"],q["exceptions"],
+               ",".join(bundled["quality_flags"])),flush=True)
         status(args.start,args.end,new_calls)
     report=status(args.start,args.end,new_calls)
     return 0 if report["pages_bundled"]==report["pages_requested"] else 1
