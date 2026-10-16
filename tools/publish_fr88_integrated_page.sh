@@ -57,7 +57,10 @@ for fn in sorted(src.glob("image_????.bundle.json")):
             "possible_adjacent_source_verses":e.get("possible_adjacent_source_verses",[]),
             "editorial_relation_marker":e.get("editorial_relation_marker"),
             "destination_interpretation_flags":e.get("destination_interpretation_flags",[]),
-            "human_verified":False,"sql_ready":False
+            "human_verified":e.get("scan_human_verified",False),
+            "human_review":e.get("user_review"),
+            "original_automated_link":e.get("original_automated_link"),
+            "sql_ready":False
         })
     markers={side:[{
         "chapter":v.get("chapter"),"verse":v.get("verse"),
