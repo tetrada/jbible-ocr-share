@@ -63,6 +63,22 @@ def test():
         "boundary_role":"LAST_ON_PAGE","chapter":24,"verse":45,
         "book_code":"Gen","visible":True,"confidence":"HIGH"})
     assert end["boundary_role"]=="LAST_ON_PAGE"
+    # Page 47's observed top-right header was MISLABELED as FIRST
+    # in the provider JSON. Interpret according to printed position,
+    # retain the error and NEVER seed this as the page's first verse.
+    wrong_model=g.header_checked({"header_position":"TOP_RIGHT",
+        "boundary_role":"FIRST_ON_PAGE","chapter":24,"verse":45,
+        "book_code":"Gen","visible":True,"confidence":"HIGH",
+        "running_head_raw":"24 45"})
+    assert wrong_model["boundary_role"]=="LAST_ON_PAGE"
+    assert wrong_model["original_model_boundary_role"]=="FIRST_ON_PAGE"
+    assert wrong_model["boundary_role_repaired"] is True
+    assert "RUNNING_HEADER_ROLE_REPAIRED_TOP_RIGHT_IS_PAGE_END" in wrong_model["header_audit_warnings"]
+    left_role_wrong=g.header_checked({"header_position":"TOP_LEFT",
+        "boundary_role":"LAST_ON_PAGE","chapter":3,"verse":7,
+        "book_code":"Gen","visible":True,"confidence":"MEDIUM"})
+    assert left_role_wrong["boundary_role"]=="FIRST_ON_PAGE"
+    assert left_role_wrong["boundary_role_repaired"] is True
     endmarkers=[
        {"column":"L","chapter":24,"verse":42,"y_fraction":.4,"confidence":"HIGH"},
        {"column":"R","chapter":24,"verse":43,"y_fraction":.06,"confidence":"HIGH"},
@@ -70,6 +86,11 @@ def test():
        {"column":"R","chapter":24,"verse":45,"y_fraction":.81,"confidence":"HIGH"}]
     intervals,issues=g.make_intervals(endmarkers,end,"Gen",limits)
     assert not any(x["from_header_seed"] for side in ("L","R") for x in intervals[side])
+    corrected_intervals,role_issues=g.make_intervals(endmarkers,wrong_model,
+                                                     "Gen",limits)
+    assert "PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER" not in role_issues
+    assert not any(x["from_header_seed"] for side in ("L","R")
+                   for x in corrected_intervals[side])
     assert "PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER" not in issues
     wrong=dict(end,verse=44)
     _,issues=g.make_intervals(endmarkers,wrong,"Gen",limits)
