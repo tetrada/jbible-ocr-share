@@ -81,6 +81,24 @@ def test():
         pass
     else:
         raise AssertionError("Incorrect top-right FIRST role accepted")
+    # If the source is visibly near a verse boundary, do not make the
+    # user manually check thousands of 1-verse offsets. Keep one source
+    # estimate plus nearby printed alternatives and a machine-readable flag.
+    near=dict(row,id="fr88i:p0033:L:010",y_fraction=.506)
+    estimated=g.atomic_edges(33,"Gen",[near],intervals,limits)
+    assert len(estimated)==1
+    assert estimated[0]["status"]=="AUTO_PROPOSED_ADJACENT"
+    assert estimated[0]["source"]["verse"]==17
+    assert estimated[0]["possible_adjacent_source_verses"][0]["verse"]==16
+    assert estimated[0]["possible_adjacent_source_verses"][1]["verse"]==18
+    shifted=dict(row,id="fr88i:p0033:L:011",
+                 shifted_down_possible=True,layout_uncertain=True)
+    estimated=g.atomic_edges(33,"Gen",[shifted],intervals,limits)
+    assert estimated[0]["status"]=="AUTO_PROPOSED_ADJACENT"
+    assert "MARGIN_MAY_BE_SHIFTED_BELOW_ITS_SOURCE" in estimated[0]["source_alignment_estimate_flags"]
+    unstructured=dict(row,id="fr88i:p0033:L:012",layout_uncertain=True)
+    assert g.atomic_edges(33,"Gen",[unstructured],intervals,limits)[0]["status"]=="REVIEW_REQUIRED"
+
     # A marker gap MUST flag the candidate, not fill a guessed source.
     skip=[{"column":"L","chapter":2,"verse":17,"y_fraction":.3,"confidence":"HIGH"},
           {"column":"L","chapter":2,"verse":20,"y_fraction":.6,"confidence":"HIGH"}]
