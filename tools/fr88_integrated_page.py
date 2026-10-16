@@ -31,6 +31,7 @@ from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 from fr88_page_layout_core import (
     catalog_limits, header_checked, make_intervals,
+    repair_preceding_page_chapter_slip,
     atomic_edges, summary as edge_summary)
 from fr88_v2_normalize import interpret_ocr_row
 from fr88_link_edges import index_pages
@@ -297,8 +298,11 @@ def collect_page(page,registry,limits):
             prev_last={"chapter":prevhead["chapter"],"verse":prevhead["verse"]}
     transitions=(stages["verses_L"].get("book_transitions") or [])+(
                  stages["verses_R"].get("book_transitions") or [])
+    markers,chapter_repairs=repair_preceding_page_chapter_slip(
+        markers,book,limits,prev_last)
     intervals,issues=make_intervals(markers,header,book,limits,
                                    previous_page_last=prev_last)
+    issues.extend(chapter_repairs)
     if header.get("boundary_role_repaired"):
         issues.extend(header.get("header_audit_warnings") or [
             "RUNNING_HEADER_ROLE_REPAIRED_FROM_CORNER"])
@@ -389,6 +393,8 @@ def collect_page(page,registry,limits):
             audit.append("ROW_RECOVERED_FROM_PREVIOUS_OCR_PASS")
         if "VERSE_MARKER_Y_COORDINATES_NONMONOTONIC_"+str(link["column"]) in issues:
             audit.append("MAIN_TEXT_MARKERS_HAVE_INCONSISTENT_Y_COORDINATES")
+        if "BODY_CHAPTER_OCR_SLIP_REPAIRED_BY_ADJACENT_PAGE" in issues:
+            audit.append("SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY")
         if "PAGE_START_HEADER_CONTRADICTS_BODY" in issues:
             audit.append("SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED")
         if "COLUMN_VERSE_SEQUENCE_REWINDS" in issues:
