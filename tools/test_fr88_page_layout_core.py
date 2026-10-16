@@ -39,7 +39,9 @@ def test():
     assert edges[0]["source"]["chapter"]==2 and edges[0]["source"]["verse"]==17
     assert edges[0]["destination"]["book_code"]=="Rom"
     assert edges[0]["destination"]["verse"]==23
-    assert edges[0]["status"]=="AUTO_PROPOSED"
+    assert edges[0]["status"]=="ACCEPTED"
+    assert edges[0]["accepted_automatically"] is True
+    assert edges[0]["human_review_required"] is False
     assert edges[0]["scan_human_verified"] is False
     assert edges[0]["database_written"] is False
 
@@ -89,17 +91,21 @@ def test():
     near=dict(row,id="fr88i:p0033:L:010",y_fraction=.506)
     estimated=g.atomic_edges(33,"Gen",[near],intervals,limits)
     assert len(estimated)==1
-    assert estimated[0]["status"]=="AUTO_PROPOSED_ADJACENT"
+    assert estimated[0]["status"]=="ACCEPTED_ESTIMATED"
+    assert estimated[0]["accepted_automatically"] is True
+    assert estimated[0]["human_review_required"] is False
     assert estimated[0]["source"]["verse"]==17
     assert estimated[0]["possible_adjacent_source_verses"][0]["verse"]==16
     assert estimated[0]["possible_adjacent_source_verses"][1]["verse"]==18
     shifted=dict(row,id="fr88i:p0033:L:011",
                  shifted_down_possible=True,layout_uncertain=True)
     estimated=g.atomic_edges(33,"Gen",[shifted],intervals,limits)
-    assert estimated[0]["status"]=="AUTO_PROPOSED_ADJACENT"
+    assert estimated[0]["status"]=="ACCEPTED_ESTIMATED"
+    assert estimated[0]["accepted_automatically"] is True
+    assert estimated[0]["human_review_required"] is False
     assert "MARGIN_MAY_BE_SHIFTED_BELOW_ITS_SOURCE" in estimated[0]["source_alignment_estimate_flags"]
     unstructured=dict(row,id="fr88i:p0033:L:012",layout_uncertain=True)
-    assert g.atomic_edges(33,"Gen",[unstructured],intervals,limits)[0]["status"]=="REVIEW_REQUIRED"
+    assert g.atomic_edges(33,"Gen",[unstructured],intervals,limits)[0]["accepted_automatically"] is True
 
     # A marker gap MUST flag the candidate, not fill a guessed source.
     skip=[{"column":"L","chapter":2,"verse":17,"y_fraction":.3,"confidence":"HIGH"},
@@ -110,11 +116,24 @@ def test():
     src,flags=g.choose_source(row,intervals)
     assert src["verse"]==17
     assert "INCOMPLETE_VERSE_MARKER_SEQUENCE" in flags
-    assert g.atomic_edges(33,"Gen",[row],intervals,limits)[0]["status"]=="REVIEW_REQUIRED"
+    assert g.atomic_edges(33,"Gen",[row],intervals,limits)[0]["status"]=="ACCEPTED_ESTIMATED"
     cut=dict(row,id="fr88i:p0033:L:009",visibility_status="CUT_OFF",
              typography_uncertain=True)
-    assert g.atomic_edges(33,"Gen",[cut],intervals,limits)[0]["status"]=="REVIEW_REQUIRED"
-    print("PASS: Gen 2:17 → Rom 6:23, 3 atomic destinations, RIGHT header is LAST, gaps & cuts quarantined")
+    assert g.atomic_edges(33,"Gen",[cut],intervals,limits)[0]["status"]=="EXCEPTION"
+    assert g.atomic_edges(33,"Gen",[cut],intervals,limits)[0]["accepted_automatically"] is False
+    # Invalid target book/chapter is genuinely unusable, not a +/-1 estimate.
+    bad=dict(row,id="fr88i:p0033:L:020",references=[
+        dict(row["references"][0],chapter=1001)])
+    invalid=g.atomic_edges(33,"Gen",[bad],intervals,limits)[0]
+    assert invalid["status"]=="EXCEPTION"
+    assert "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG" in invalid["hard_exceptions"]
+    assert invalid["human_review_required"] is True
+    # Missing source book is a real blocker; a printed nearby verse is not.
+    no_book=g.atomic_edges(33,None,[row],intervals,limits)[0]
+    assert no_book["status"]=="EXCEPTION"
+    assert no_book["accepted_automatically"] is False
+    print("PASS: atomic links; +/-1, layout and marker gaps accepted automatically; "
+          "cut-offs/impossible links remain exceptions")
 
 
 if __name__=="__main__":
