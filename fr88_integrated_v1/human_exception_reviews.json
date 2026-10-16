@@ -228,6 +228,70 @@
       "sql_ready": false,
       "sql_writes": false,
       "reviewed_utc": "2026-10-16T09:24:02.424671+00:00"
+    },
+    "fr88i:p0032:R:013/target01": {
+      "edge_id": "fr88i:p0032:R:013/target01",
+      "image_page": 32,
+      "choice": "as_printed",
+      "cause": "SOURCE_VERSE_POSITION_ERROR",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 2,
+        "verse": 7,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Gen",
+        "chapter": 12,
+        "verse": 7,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "12 7",
+      "original_exception_reasons": [
+        "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:24:30.555036+00:00"
+    },
+    "fr88i:p0032:R:014/target01": {
+      "edge_id": "fr88i:p0032:R:014/target01",
+      "image_page": 32,
+      "choice": "unresolved",
+      "cause": "MARGIN_ACTUALLY_CUT_OFF",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 2,
+        "verse": 7,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Wis",
+        "chapter": 15,
+        "verse": 8,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "UNKNOWN",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "↗ Sg 15 8,",
+      "original_exception_reasons": [
+        "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+      ],
+      "human_review_status": "UNRESOLVED",
+      "notes": "Despite being cut off destination can be made, at least one",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:25:25.307547+00:00"
     }
   }
 }
