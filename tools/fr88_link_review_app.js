@@ -111,7 +111,7 @@
   }
   function sourceOf(c) {
     const s = c.source || {};
-    return [s.source_book_code || "?", s.source_chapter || "?",
+    return [c.book_for_review || s.source_book_code || "?", s.source_chapter || "?",
       s.source_verse || "?"].join(" / ");
   }
   function updateChoice() {
@@ -129,6 +129,7 @@
       " · segment #" + c.target_segment_index + " · " + c.state +
       " · margin y=" + toFixed(c.y_fraction);
     $("marginRaw").textContent = c.target_printed || "(unparsed destination)";
+    $("marginFull").textContent = c.margin_raw_line || "";
     $("targetTags").replaceChildren();
     const p = c.target || {};
     const coord = p.book_code ? p.book_code + " " + asText(p.chapter) + ":" +
