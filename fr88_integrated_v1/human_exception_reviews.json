@@ -743,6 +743,38 @@
       "sql_ready": false,
       "sql_writes": false,
       "reviewed_utc": "2026-10-16T09:37:29.700728+00:00"
+    },
+    "fr88i:p0037:R:001/target01": {
+      "edge_id": "fr88i:p0037:R:001/target01",
+      "image_page": 37,
+      "choice": "corrected",
+      "cause": "SOURCE_VERSE_BEFORE_FIRST_MARKER",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 6,
+        "verse": 4,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Deut",
+        "chapter": 1,
+        "verse": 28,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": "+"
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Dt 1 28+",
+      "original_exception_reasons": [
+        "SOURCE_VERSE_UNRESOLVED"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "get it from last page",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:39:16.070673+00:00"
     }
   }
 }
