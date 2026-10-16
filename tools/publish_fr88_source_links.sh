@@ -8,7 +8,7 @@ DEST=fr88_source_links_pilot
 [[ -d "$REPO/.git" && -s /root/.ssh/jbible_ocr_share ]] || {
   echo "Missing existing JBible Git checkout or deployment key" >&2; exit 2;
 }
-for f in progress.json proposed_links.json source_link_review_queue.json; do
+for f in progress.json proposed_links.json source_link_review_queue.json source_book_context_suggestions.json; do
   [[ -s "$SRC/$f" ]] || { echo "Missing $SRC/$f (run pilot first)" >&2; exit 2; }
 done
 export GIT_SSH_COMMAND='ssh -i /root/.ssh/jbible_ocr_share -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new'
@@ -34,17 +34,19 @@ safe={
     "schema":"jbible.fr88.source-link-review-public.v1",
     "progress":{},
     "proposed_links":[],
-    "review_queue":[]
+    "review_queue":[],
+    "source_book_context_suggestions":[]
 }
 progress=json.loads((src/"progress.json").read_text(encoding="utf-8"))
 proposals=json.loads((src/"proposed_links.json").read_text(encoding="utf-8"))
 queue=json.loads((src/"source_link_review_queue.json").read_text(encoding="utf-8"))
+context=json.loads((src/"source_book_context_suggestions.json").read_text(encoding="utf-8"))
 if not isinstance(proposals,list) or not isinstance(queue,list):
     raise ValueError("Invalid link proposal output")
 safe["progress"]={key:progress.get(key) for key in (
     "pages","model","margins_complete","margins_expected",
     "progress_percent","candidate_links_needing_review",
-    "other_items_needing_review","verified_links","sql_writes","updated_utc"
+    "other_items_needing_review","source_book_context_suggestions_count","verified_links","sql_writes","updated_utc"
 )}
 def limited(x):
     if not isinstance(x,dict):
@@ -57,6 +59,13 @@ def limited(x):
     )}
 safe["proposed_links"]=[limited(x) for x in proposals]
 safe["review_queue"]=[limited(x) for x in queue]
+if context.get("schema")!="jbible.fr88.source-book-context.suggestions.v1":
+    raise ValueError("Unexpected source-book context schema")
+safe["source_book_context_suggestions"]=[{k:item.get(k) for k in (
+     "margin_row_id","image_page","side","observed_chapter","observed_verse",
+     "suggested_source_book_code","evidence_pages","suggestion_status",
+     "review_required","link_authorized","warning"
+   )} for item in context.get("suggestions",[])]
 safe["copyrighted_page_scans_published"]=False
 safe["original_provider_bodies_published"]=False
 safe["automatic_source_to_target_verification"]=False
