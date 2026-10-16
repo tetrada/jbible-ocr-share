@@ -12,10 +12,12 @@ def test():
           "record_type,book_code,bali_alias,chap_number,max_verse",
           "A,Gen,Gn,,","A,Ps,Ps,,","A,Sir,Si,,",
           "A,Rev,Ap,,","A,Isa,Is,,","A,1Chr,1 Ch,,","A,1Kgs,1 R,,",
+          "A,Wis,Sg,,","A,Matt,Mt,,",
           "C,Gen,,5,32","C,Gen,,9,29","C,Gen,,15,21",
           "C,Gen,,18,33","C,Ps,,78,72","C,Ps,,105,45","C,Ps,,8,9",
           "C,Ps,,104,35","C,Sir,,43,36","C,Rev,,16,21",
-          "C,Isa,,14,32","C,1Chr,,1,54","C,1Kgs,,10,29"
+          "C,Isa,,14,32","C,1Chr,,1,54","C,1Kgs,,10,29",
+          "C,Wis,,15,19","C,Matt,,24,51"
         ])+"\n",encoding="utf-8")
         def run(t,book="Gen"):
             return canonicalize({"kind":"REFERENCE","raw_line":t,
@@ -66,6 +68,25 @@ def test():
         assert reset["references"][0]["suffix"]=="+"
         assert reset["references"][0]["book_resolution"]=="SOURCE_PAGE_BOOK"
         assert run("10 6",None)["references"][0]["status"]!="PARSED"
+        sp=run("↗ Mt 24 37sp")
+        assert len(sp["references"])==1
+        assert sp["references"][0]["book_code"]=="Matt"
+        assert sp["references"][0]["chapter"]==24
+        assert sp["references"][0]["verse"]==37
+        assert sp["references"][0]["suffix"]=="sp"
+        cutfirst=run("↗ Sg 15 8,")
+        assert len(cutfirst["references"])==1
+        assert cutfirst["references"][0]["book_code"]=="Wis"
+        assert cutfirst["references"][0]["chapter"]==15
+        assert cutfirst["references"][0]["verse"]==8
+        assert cutfirst["references"][0]["visible_coordinate_prefix"] is True
+        trailing=run("↗ Ap 22 1s, 1")
+        assert len(trailing["references"])==1
+        assert trailing["references"][0]["book_code"]=="Rev"
+        assert trailing["references"][0]["chapter"]==22
+        assert trailing["references"][0]["verse"]==1
+        assert trailing["references"][0]["suffix"]=="s"
+        assert trailing["references"][0]["ignored_unreadable_or_following_tail"]=="1"
         print("PASS: same-page bare targets, inherited inline books, 2 comma edges, '=', '||', suffixes and flagged Ch/Is repairs")
 
 
