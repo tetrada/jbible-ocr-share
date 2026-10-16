@@ -391,7 +391,7 @@ def collect_page(page,registry,limits):
         "quality_flags":issues,
         "legacy_margin_comparison":compare,
         "summary":counts,
-        "sql_writes":False,"human_verified_links":0,
+        "sql_writes":False,"human_verified_links":counts["human_verified"],
         "created_utc":utc()
     }
     return result
@@ -413,7 +413,7 @@ def status(start,end,new_calls):
        "model":MODEL,"new_paid_tasks_this_run":new_calls,
        "source_link_metrics":metrics,
        "page_issue_counts":dict(issues),
-       "verified":0,"sql_writes":False}
+       "verified":metrics["human_verified"],"sql_writes":False}
     save(OUT/"progress.json",s)
     print("PROGRESS pages=%d/%d (%.1f%%), %d atomic destinations, "
           "%d accepted (%d estimates), %d exceptions"%
