@@ -64,7 +64,9 @@ for fn in sorted(src.glob("image_????.bundle.json")):
         })
     markers={side:[{
         "chapter":v.get("chapter"),"verse":v.get("verse"),
-        "y_fraction":v.get("y_fraction"),"confidence":v.get("confidence")
+        "y_fraction":v.get("y_fraction"),"confidence":v.get("confidence"),
+        "ocr_original_chapter":v.get("ocr_original_chapter"),
+        "chapter_ocr_repair_evidence":v.get("chapter_ocr_repair_evidence")
     } for v in j.get("verse_markers_by_column",{}).get(side,[])]
       for side in ("L","R")}
     head=j.get("printed_running_head",{})
