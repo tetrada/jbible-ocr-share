@@ -195,6 +195,64 @@ def repair_preceding_page_chapter_slip(markers,book,limits,previous_page_last):
     return fixed,issues
 
 
+
+def repair_same_page_chapter_slips(markers,book,limits,header):
+    """Repair only chapter OCR slips constrained by column continuity and header.
+
+    Original provider observations are never mutated; the corrections are
+    explicitly marked for provenance and link-level estimated status.
+    """
+    fixed=[dict(m) for m in markers]
+    issues=[]
+    left=sorted([m for m in fixed if m.get("column")=="L" and
+                 type(m.get("y_fraction")) in (int,float)],
+                key=lambda m:m["y_fraction"])
+    right=sorted([m for m in fixed if m.get("column")=="R" and
+                  type(m.get("y_fraction")) in (int,float)],
+                 key=lambda m:m["y_fraction"])
+    if len(left)<3 or len(right)<3 or not book:
+        return fixed,issues
+    last_left=left[-1]
+    first,second=right[0],right[1]
+    # Real page73: L ends 41:54, R begins model 42:57 then 42:1.
+    # 41:57 exists, 42:57 is impossible, so repair ONLY first marker.
+    current_ch=first.get("chapter")
+    prev_cap=limits.get((book,current_ch-1)) if type(current_ch) is int else None
+    cur_cap=limits.get((book,current_ch)) if type(current_ch) is int else None
+    if (prev_cap is not None and cur_cap is not None and
+            type(first.get("verse")) is int and
+            first["verse"]==prev_cap and first["verse"]>cur_cap and
+            second.get("chapter")==current_ch and second.get("verse")==1 and
+            last_left.get("chapter")==current_ch-1 and
+            type(last_left.get("verse")) is int and
+            last_left["verse"]<first["verse"]):
+        first["ocr_original_chapter"]=current_ch
+        first["chapter"]=current_ch-1
+        first["chapter_ocr_repair_evidence"]="LEFT_COLUMN_AND_CHAPTER_END"
+        issues.append("RIGHT_FIRST_MARKER_CHAPTER_REPAIRED_FROM_CHAPTER_END")
+    # Real page75: L ends 43:18, all R verses are OCR-labeled chapter
+    # 42:19..34, but printed top-right page END is chapter 43:34.
+    ch=last_left.get("chapter")
+    cap=limits.get((book,ch)) if type(ch) is int else None
+    if (type(ch) is int and cap is not None and
+            header.get("boundary_role")=="LAST_ON_PAGE" and
+            header.get("visible") is True and
+            header.get("book_code") in (None,book) and
+            header.get("chapter")==ch and
+            header.get("verse")==right[-1].get("verse") and
+            type(last_left.get("verse")) is int and
+            all(m.get("chapter")==ch-1 and type(m.get("verse")) is int
+                and 1<=m["verse"]<=cap for m in right) and
+            right[0]["verse"]==last_left["verse"]+1 and
+            all(a["verse"]<b["verse"] for a,b in zip(right,right[1:]))):
+        for marker in right:
+            marker["ocr_original_chapter"]=ch-1
+            marker["chapter"]=ch
+            marker["chapter_ocr_repair_evidence"]="LEFT_COLUMN_CONTINUITY_AND_PAGE_END_HEADER"
+        issues.append("RIGHT_COLUMN_CHAPTER_REPAIRED_FROM_LEFT_AND_HEADER")
+    return fixed,issues
+
+
 def make_intervals(markers,header,book,limits,previous_page_last=None):
     """Read left column then right, recovering the verse at each column's top.
 
