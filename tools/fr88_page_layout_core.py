@@ -175,22 +175,37 @@ def make_intervals(markers,header,book,limits,previous_page_last=None):
             candidate=(ch,v-1,"BEFORE_FIRST_VISIBLE_VERSE_MARKER")
         return candidate
 
-    # FIRST_ON_PAGE belongs at upper-left and is an authoritative seed.
-    if (header["boundary_role"]=="FIRST_ON_PAGE" and header["visible"]
-            and positive(header["chapter"]) and positive(header["verse"])):
+    # A page-start running head is useful ONLY when it is compatible with
+    # the actual printed body sequence. Page 39's OCR reported Gen 1:22,
+    # but the previous page ends Gen 8:17 and the body begins Gen 8:18.
+    # Trusting that header produced an entirely wrong, accepted source link.
+    first=bycol["L"][0] if bycol["L"] else None
+    has_start=(header["boundary_role"]=="FIRST_ON_PAGE" and header["visible"]
+               and positive(header["chapter"]) and positive(header["verse"]))
+    header_agrees=False
+    if has_start:
+        pos=(header["chapter"],header["verse"])
+        if first:
+            for _ in range(5):
+                if pos==(first["chapter"],first["verse"]):
+                    header_agrees=True
+                    break
+                pos=next_verse(*pos)
+        else:
+            header_agrees=True
+        if not header_agrees:
+            issues.append("PAGE_START_HEADER_CONTRADICTS_BODY")
+    if has_start and header_agrees:
         ch,v=header["chapter"],header["verse"]
-        first=bycol["L"][0] if bycol["L"] else None
         if first and (first["chapter"],first["verse"])==(ch,v):
-            # Move the FIRST boundary to 0 rather than duplicating this verse,
-            # which previously created false DISCONTINUOUS warnings.
             first["y_fraction"]=0.0
             first["synthetic"]=True
             first["evidence"]="FIRST_ON_PAGE_HEADER_AND_VISIBLE_MARKER"
         else:
             bycol["L"].insert(0,seed("L",ch,v,"FIRST_ON_PAGE_RUNNING_HEAD",
                                      header["scan_confidence"]))
-    elif bycol["L"] and bycol["L"][0]["y_fraction"]>0.005:
-        top=preceding(bycol["L"][0],previous_page_last)
+    elif first and first["y_fraction"]>0.005:
+        top=preceding(first,previous_page_last)
         if top:
             ch,v,evidence=top
             bycol["L"].insert(0,seed("L",ch,v,evidence))
@@ -206,6 +221,17 @@ def make_intervals(markers,header,book,limits,previous_page_last=None):
             bycol["R"].insert(0,seed("R",ch,v,evidence))
             issues.append("COLUMN_TOP_SOURCE_VERSE_RECOVERED")
 
+    # Within one physical page, the R column must follow the L column
+    # in canonical book order. E.g. page 42 OCR L finishes 12:6 but R
+    # starts 11:30. This is a strong OCR geometry contradiction even when
+    # every isolated number looks plausible. Keep proposed links (per user
+    # acceptance policy) but tag them ESTIMATED for auditing.
+    if bycol["L"] and bycol["R"]:
+        left_last=bycol["L"][-1]
+        right_first=bycol["R"][0]
+        if (right_first["chapter"],right_first["verse"]) < (
+                left_last["chapter"],left_last["verse"]):
+            issues.append("COLUMN_VERSE_SEQUENCE_REWINDS")
     sequence=[(side,m) for side in ("L","R") for m in bycol[side]]
     intervals={"L":[],"R":[]}
     for i,(side,m) in enumerate(sequence):
