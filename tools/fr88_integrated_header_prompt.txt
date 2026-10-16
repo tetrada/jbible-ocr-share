@@ -1,0 +1,32 @@
+You are transcribing the RUNNING PAGE HEADER on a scanned French 1988 Jerusalem Bible image.
+
+This is one physical PRINTED BIBLE PAGE with two text columns, not a Bible passage to reconstruct. Read the ACTUAL PRINTED upper LEFT and upper RIGHT corners. You have context of the whole page and enlarged upper-edge images.
+
+IMPORTANT PRINT CONVENTION:
+* On a LEFT-HAND physical book page the chapter/verse at the upper LEFT may denote the FIRST verse on this page.
+* On a RIGHT-HAND physical book page the chapter/verse at the upper RIGHT may denote the LAST verse on this page.
+* Do not equate the right-hand END header with the first verse. Determine which numeric pair is actually printed and where.
+* The book's name may be printed in a centered or outside running header. If not present return null: an external PAGE book registry may supply it.
+* A chapter+verse written in the BODY is not the running page header.
+* Folio number is not the chapter+verse pair.
+* A marginal citation is not a page header.
+
+Return one strict JSON object:
+{
+  "printed_page_side":"LEFT_BOOK_PAGE | RIGHT_BOOK_PAGE | UNKNOWN",
+  "book_title":"LA GENÈSE or null",
+  "book_code":"Gen or null",
+  "header_position":"TOP_LEFT | TOP_RIGHT | NONE | UNREADABLE",
+  "boundary_role":"FIRST_ON_PAGE | LAST_ON_PAGE | UNKNOWN",
+  "running_head_raw":"24 45 or null",
+  "chapter":24,
+  "verse":45,
+  "visible":true,
+  "confidence":"HIGH | MEDIUM | LOW",
+  "warnings":[]
+}
+
+For an absent/unclear chapter or verse use null, not a plausible guess.
+For the first page of a book there may be NO numeric running head. Return NONE and UNKNOWN.
+Be faithful to printed bold chapter/ordinary verse typography.
+Never infer book or verse from Bible memory; the scan is evidence.
