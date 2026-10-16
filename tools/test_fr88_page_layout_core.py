@@ -96,14 +96,12 @@ def test():
     _,issues=g.make_intervals(endmarkers,wrong,"Gen",limits)
     assert "PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER" in issues
 
-    # Don't use a top-right LAST verse as a synthetic starting verse.
-    try:
-        g.header_checked({"header_position":"TOP_RIGHT","boundary_role":"FIRST_ON_PAGE",
-                          "chapter":24,"verse":45,"visible":True})
-    except ValueError:
-        pass
-    else:
-        raise AssertionError("Incorrect top-right FIRST role accepted")
+    # An inconsistent model role is REPAIRED, never used as a page start.
+    repaired=g.header_checked({
+        "header_position":"TOP_RIGHT","boundary_role":"FIRST_ON_PAGE",
+        "chapter":24,"verse":45,"visible":True})
+    assert repaired["boundary_role"]=="LAST_ON_PAGE"
+    assert repaired["boundary_role_repaired"] is True
     # Restore page 33's left-column verse geometry after testing page 24.
     intervals,_=g.make_intervals(left,head,"Gen",limits)
     # If the source is visibly near a verse boundary, do not make the
