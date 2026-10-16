@@ -299,6 +299,9 @@ def collect_page(page,registry,limits):
                  stages["verses_R"].get("book_transitions") or [])
     intervals,issues=make_intervals(markers,header,book,limits,
                                    previous_page_last=prev_last)
+    if header.get("boundary_role_repaired"):
+        issues.extend(header.get("header_audit_warnings") or [
+            "RUNNING_HEADER_ROLE_REPAIRED_FROM_CORNER"])
     for task in ("verses_L","verses_R"):
         if "OCR_JSON_COLUMN_LABEL_OVERRIDDEN_FROM_IMAGE_TASK" in (
                 stages[task].get("warnings") or []):
