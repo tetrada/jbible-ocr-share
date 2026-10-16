@@ -1,65 +1,39 @@
-# JBible FR88 — human verification of source→margin links
+# JBible FR88 — source-to-destination verification (corrected v2)
 
-The first source-to-target pilot has processed all scanned page margins 31–40 using DeepSeek Flash. It emitted 23 proposed source-target *segments* and 128 segments requiring further review, and 64 separate context suggestions. Those are **151 target segments across 140 unique printed marginal rows**. None has been human-verified or imported into SQL.
+The corrected review model is **one source verse/passage → one destination reference per record**. A SINGLE physically printed marginal line can contain several destination references separated by semicolons. Each parsed destination has its own distinct review ID; the original printed OCR row ID stays as provenance.
 
-## Activate the existing authenticated VPS review page
+The completed pages 31–40 pilot contains **151 target segments from 140 marginal OCR lines**. Therefore the protected reviewer displays **151 separate source→target review entries**, not 140. None is SQL-ready or canonically verified merely because the DeepSeek source match is plausible.
 
-Run as root on the existing VPS:
+See [corrected source anchoring and page-header plan](README_fr88_source_links_v2.md).
+
+## Upgrade existing private review page
+
+Run on VPS as root:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main/tools/install_fr88_source_link_review.sh | bash
 ```
 
-Open:
+Then use your existing reviewer password at:
 
-**https://status.tetrada.eu/jbible-review/links/**
+https://status.tetrada.eu/jbible-review/links/
 
-Use your EXISTING OCR review username/password. The original **https://status.tetrada.eu/jbible-review/** remains accessible and its decisions are never overwritten.
+The page displays an original scan, one specific target reference from the margin, the complete printed row it came from, a proposed source book/chapter/verse, and source-page context. It supports correct/confirm/reject/uncertain per individual destination with scan checks. A red marker indicates the marginal OCR row, a green marker the proposed source location. Both geometric positions must be checked visually.
 
-The installer downloads and validates the completed text-only source-link pilot, new HTML/JS, and enhanced protected Python server. It tests server logic before restarting the existing local-only 127.0.0.1 service, and checks that an anonymous request is rejected with HTTP 401. It reuses the existing Nginx HTTPS route. No new API calls or scanned Bible uploads.
+Existing OCR transcription decisions and any previous legacy row-based link decisions are retained unchanged:
+- `/var/lib/jbible-review/decisions.json`
+- `/var/lib/jbible-review/link_decisions.json`
 
-## How the review works
+New 1:1 edge decisions:
+- `/var/lib/jbible-review/link_edge_decisions.json`
+- `fr88_source_links_pilot/human_link_edge_reviews.json` on GitHub (text only)
 
-Each entry is ONE physical printed marginal row, even when it contains several target references separated by semicolons.
+## Source books and running-head chapter/verse
 
-The left pane shows the original scanned French 1988 Jerusalem Bible half-page, enlarged and centered on the reference; **red** shows the printed margin row position, **green** shows the model's proposed main-text source marker. Zoom, full page and navigation to adjacent scan pages are included (to inspect page headers and book transitions). Red and green lines are approximate OCR/DeepSeek coordinates, not human-verified anchors.
+Source BOOK identity belongs to the page; it is not supposed to appear beside each margin reference. The page book registry is `training/fr88_page_book_registry.json`. It currently assigns working Genesis context for scanned pilot pages 31–40 and records the user's explicit page-102 example: **Exodus 16:21 at the top of the page**.
 
-The right pane shows:
-- the exact saved marginal text and parsed candidate target references;
-- DeepSeek's proposed book, chapter, verse/passage, evidence and reason;
-- any **neighboring-page book suggestion**, clearly labeled UNVERIFIED;
-- editable source-book code, chapter, verse, passage range and target raw-line text;
-- book evidence: printed on this page, neighboring page, checked book continuation, or unknown;
-- separate scan checkboxes for source marker, marginal target print and their alignment;
-- Confirm / Corrected / Uncertain / Reject and Save (or Save & Next).
+The small numeric pair printed at the top-left, such as `24 45` next to `LA GENÈSE` in the sample, provides the **starting source chapter and verse on that page**. Subsequent bold main-text chapter changes and verse markers determine which verse each marginal row physically aligns with. We must NOT assume the source verse is the page-start verse.
 
-The server refuses to accept Confirm/Corrected unless all three scan checkboxes are checked, a source book/chapter/scope is specified, and a verse number is specified for verse links. Corrected text is never silently reinterpreted as a verified canonical target.
+An independent, optional DeepSeek Flash extractor to read these page-start header pairs ONCE PER PAGE (not per margin) is at `tools/fr88_page_header_scan.py`. Do not treat its unverified output as confirmed until sampled against source images.
 
-The queue offers proposed matches, uncertain matches, reviewed entries and outstanding-first views. These are **human visual decisions** only: `sql_ready=false`, `biblical_target_canonically_verified=false`.
-
-### Why page 40 is Genesis, even if other entries lack source book
-
-Page 40 right actually contains a printed `GENÈSE` header and DeepSeek proposed `Gen 10:8` for one margin row. The initial matching script deliberately demanded a **visible book name on each analyzed page half**, so it left other main-text verses with no visible book header as unresolved. **96 review entries** had `SOURCE_BOOK_NOT_PRINTED` under this deliberately strict rule; they represent link segments, not 96 different pages. There were **64 context suggestions** from nearby printed pages; they are possible aids, not independently verified main-text links.
-
-For human verification, a clearly checked running header, a neighboring printed book header, or an inspected continuation can be recorded explicitly. That is different from guessing an unsupported book by textual similarity or accepting a DeepSeek HIGH-confidence claim.
-
-## Results & safety
-
-Link decisions stay separate from the original OCR decisions:
-- Existing: `/var/lib/jbible-review/decisions.json`
-- New: `/var/lib/jbible-review/link_decisions.json`
-- GitHub text-only: `fr88_source_links_pilot/human_link_reviews.json`
-
-The installer enables `jbible-fr88-link-review-publish.timer` to sync the decisions approximately every two minutes using the existing SSH deploy key and Git lock, **only when the first new decision has been saved**.
-
-**No scanned images, passwords, API provider payloads, or copyright book pages are published**. The service binds only to localhost behind the existing HTTPS Nginx proxy with Basic auth.
-
-No DeepSeek calls, no change to original V2 OCR data, and **no SQL writes**. Source and target canonicals remain pending until separately validated against the catalog and corresponding physical scan evidence.
-
-### Files
-
-- `tools/fr88_link_review_index.html` and `tools/fr88_link_review_app.js`: authenticated user interface
-- `tools/fr88_review_web_server.py`: existing OCR-review server extended with isolated source-link API and state
-- `tools/test_fr88_link_review_web.py`: offline input validation and one-row/multi-segment tests
-- `tools/fr88_link_review_publish.sh`: publish only checked text-only decisions
-- `tools/install_fr88_source_link_review.sh`: no-API installation with backup and health/security checks
+No scanned images or provider responses go to GitHub. No SQL writes. No other AI models.
