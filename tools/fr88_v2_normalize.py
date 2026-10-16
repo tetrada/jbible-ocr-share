@@ -32,6 +32,9 @@ CROSS_CHAPTER_VERSES = re.compile(
 MIXED_VERSE_LIST = re.compile(
     r"^\s*(\d{1,3})\s+(\d{1,3})\s*,\s*(\d{1,3})\s*[-–—]\s*(\d{1,3})\s*$"
 )
+RANGE_THEN_VERSE_LIST = re.compile(
+    r"^\s*(\d{1,3})\s+(\d{1,3})\s*[-–—]\s*(\d{1,3})\s*,\s*(\d{1,3})\s*$"
+)
 DOTTED_VERSE_LIST = re.compile(
     r"^\s*(\d{1,3})\s+(\d{1,3}(?:\.\d{1,3})+)\s*$"
 )
@@ -74,6 +77,16 @@ def _parse_numbers(text):
                 "members":[{"type":"VERSE","verse":first,"end_verse":None},
                            {"type":"VERSE_RANGE","verse":range_start,
                             "end_verse":range_end}],
+                "literal":text,"suffix":""}
+    m = RANGE_THEN_VERSE_LIST.fullmatch(text)
+    if m:
+        ch,start,end,second=map(int,m.groups())
+        if end<start:
+            return {"type":"UNRESOLVED_NUMERIC","literal":text,
+                    "reason":"reversed_first_verse_range"}
+        return {"type":"VERSE_MIXED_LIST","chapter":ch,
+                "members":[{"type":"VERSE_RANGE","verse":start,"end_verse":end},
+                           {"type":"VERSE","verse":second,"end_verse":None}],
                 "literal":text,"suffix":""}
     m = CROSS_CHAPTER_VERSES.fullmatch(text)
     if m:
