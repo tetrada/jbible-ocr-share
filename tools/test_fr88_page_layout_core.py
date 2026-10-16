@@ -220,6 +220,43 @@ def test():
     page42_intervals,page42_issues=g.make_intervals(
         page42_markers,page42_header,"Gen",{})
     assert "COLUMN_VERSE_SEQUENCE_REWINDS" in page42_issues
+    # Actual page51: model incorrectly labeled eleven 21:24..34 body
+    # markers as 20:24..34, impossible because Genesis chapter20 ends 18.
+    # Previous page ends 21:23 and next printed chapter is 22:1.
+    from_pages=[
+        {"column":"L","chapter":20,"verse":v,"y_fraction":.07+(v-24)*.045,
+         "confidence":"HIGH"} for v in range(24,35)
+    ]+[{"column":"L","chapter":22,"verse":1,
+        "y_fraction":.60,"confidence":"HIGH"}]
+    localcaps={("Gen",20):18,("Gen",21):34,("Gen",22):24}
+    revised,repair_issues=g.repair_preceding_page_chapter_slip(
+        from_pages,"Gen",localcaps,{"chapter":21,"verse":23})
+    assert repair_issues==["BODY_CHAPTER_OCR_SLIP_REPAIRED_BY_ADJACENT_PAGE"]
+    assert all(x["chapter"]==21 and x["ocr_original_chapter"]==20
+               for x in revised[:11])
+    assert revised[-1]["chapter"]==22 and "ocr_original_chapter" not in revised[-1]
+    assert from_pages[0]["chapter"]==20 # Immutable model checkpoints.
+    intervals51,_=g.make_intervals(revised,{
+        "boundary_role":"LAST_ON_PAGE","visible":True,
+        "chapter":22,"verse":20,"scan_confidence":"HIGH"},
+        "Gen",localcaps)
+    src51,_=g.choose_source({"side":"L","y_fraction":.531},intervals51)
+    assert (src51["chapter"],src51["verse"])==(21,34),src51
+    # No adjacent-page anchor -> no speculative correction.
+    unchanged,unknown=g.repair_preceding_page_chapter_slip(
+        from_pages,"Gen",localcaps,None)
+    assert not unknown and unchanged[0]["chapter"]==20
+
+    for raw,expected in [
+        ({"book_code":"Gen","chapter":27,"verse":46,
+          "end_chapter":28,"end_verse":5,
+          "type":"VERSE_CROSS_CHAPTER_RANGE","status":"PARSED"},True),
+        ({"book_code":"Gen","chapter":27,"verse":46,
+          "end_chapter":28,"end_verse":999,
+          "type":"VERSE_CROSS_CHAPTER_RANGE","status":"PARSED"},False)
+    ]:
+        valid,_=g.reference_assessment(raw,{("Gen",27):46,("Gen",28):22})
+        assert valid==expected,(raw,valid)
     print("PASS: +/-1, layout, abbreviations and page-header warnings accepted; "
           "only illegible/impossible/unknown-source links excepted")
 
