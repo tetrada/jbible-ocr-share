@@ -30,13 +30,14 @@ get_file() {
   echo "Installed $destination"
 }
 get_file tools/fr88_review_web_server.py "$BASE/server.py"
+get_file tools/fr88_link_edges.py "$BASE/fr88_link_edges.py"
 get_file tools/fr88_review_web_index.html "$BASE/index.html"
 get_file tools/fr88_review_web_app.js "$BASE/app.js"
 get_file training/fr88_priority_review.json "$BASE/priority.json"
 get_file tools/fr88_review_publish.sh /usr/local/bin/jbible-review-publish
 get_file tools/fr88_review_nginx.py "$BASE/configure_nginx.py"
 chmod 0750 /usr/local/bin/jbible-review-publish
-python3 -m py_compile "$BASE/server.py" "$BASE/configure_nginx.py"
+python3 -m py_compile "$BASE/server.py" "$BASE/fr88_link_edges.py" "$BASE/configure_nginx.py"
 if [[ ! -s "$BASE/password" ]]; then
   python3 - "$BASE/password" <<'PY'
 import secrets,sys
