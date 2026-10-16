@@ -35,12 +35,14 @@ from fr88_page_layout_core import (
 from fr88_v2_normalize import interpret_ocr_row
 from fr88_link_edges import index_pages
 from fr88_integrated_reference_rules import canonicalize
+from fr88_integrated_human_replay import apply_reviews
 
 RAW=Path("/raw")
 IMAGES=RAW/"fr_bible_1988"
 CATALOG=RAW/"jbible_catalog.csv"
 OUT=RAW/"jbible_fr88_integrated_v1"
 PAGE_REGISTRY=Path("/app/fr88_page_book_registry.json")
+HUMAN_REVIEWS=Path("/app/fr88_human_exception_reviews.json")
 MODEL="deepseek-flash"
 API="https://api.deepseek.com/chat/completions"
 PIPELINE="JBIBLE-FR88-INTEGRATED-1"
@@ -170,16 +172,23 @@ def parse_task(response,task,page):
         return header_checked(data)
     if task.startswith("verses_"):
         side=task[-1]
-        if data.get("column")!=side:
-            raise ValueError("Verse-marker model gave wrong text column")
+        supplied_column=data.get("column")
+        if supplied_column not in (None,"L","R"):
+            raise ValueError("Unusable main-text column label")
+        # This task's input is physically cropped to the requested half.
+        # DeepSeek sometimes copies column='L' from the JSON example while
+        # actually describing R. Trust the immutable input TASK, not its label.
+        label_mismatch=supplied_column!=side
         markers=data.get("markers")
         if not isinstance(markers,list) or len(markers)>150:
             raise ValueError("Expected up to 150 visible verse markers")
         for marker in markers:
             if not isinstance(marker,dict):
                 raise ValueError("Malformed main-text verse marker")
+            if marker.get("column") not in (None,"L","R"):
+                raise ValueError("Unexpected main-text marker column label")
             if marker.get("column") not in (None,side):
-                raise ValueError("Main-text marker assigned to wrong half page")
+                label_mismatch=True
             marker["column"]=side
         # Every marker MUST retain its physical text-column identity;
         # the model is only required to specify column at JSON root.
@@ -187,12 +196,18 @@ def parse_task(response,task,page):
         if not isinstance(transitions,list) or len(transitions)>6:
             raise ValueError("Invalid Bible book transition list")
         for event in transitions:
-            if not isinstance(event,dict) or event.get("column") not in (None,side):
-                raise ValueError("Book transition associated with wrong column")
+            if not isinstance(event,dict) or event.get("column") not in (
+                    None,"L","R"):
+                raise ValueError("Bad book transition column label")
+            if event.get("column") not in (None,side):
+                label_mismatch=True
             event["column"]=side
+        warnings=list(data.get("warnings") or [])[:15]
+        if label_mismatch:
+            warnings.append("OCR_JSON_COLUMN_LABEL_OVERRIDDEN_FROM_IMAGE_TASK")
         return {"column":side,"markers":markers,
                 "book_transitions":transitions,
-                "warnings":list(data.get("warnings") or [])[:15]}
+                "warnings":warnings}
     if not task.startswith("margin_"):
         raise ValueError("Invalid task")
     side=task[-1]
@@ -265,9 +280,29 @@ def collect_page(page,registry,limits):
     previous=read(prev).get("page_book") if prev.exists() else None
     book,book_issues,book_evidence=choose_book(page,header,registry,previous)
     markers=stages["verses_L"]["markers"]+stages["verses_R"]["markers"]
+    prev_last=None
+    if previous and previous.get("book_code")==book and prev.exists():
+        prevdoc=read(prev)
+        for side in ("R","L"):
+            original_markers=prevdoc.get("verse_markers_by_column",{}).get(side,[])
+            if original_markers:
+                candidate=original_markers[-1]
+                if type(candidate.get("chapter")) is int and type(candidate.get("verse")) is int:
+                    prev_last={"chapter":candidate["chapter"],"verse":candidate["verse"]}
+                    break
+        prevhead=prevdoc.get("printed_running_head",{})
+        if (prevhead.get("boundary_role")=="LAST_ON_PAGE" and
+                type(prevhead.get("chapter")) is int and
+                type(prevhead.get("verse")) is int):
+            prev_last={"chapter":prevhead["chapter"],"verse":prevhead["verse"]}
     transitions=(stages["verses_L"].get("book_transitions") or [])+(
                  stages["verses_R"].get("book_transitions") or [])
-    intervals,issues=make_intervals(markers,header,book,limits)
+    intervals,issues=make_intervals(markers,header,book,limits,
+                                   previous_page_last=prev_last)
+    for task in ("verses_L","verses_R"):
+        if "OCR_JSON_COLUMN_LABEL_OVERRIDDEN_FROM_IMAGE_TASK" in (
+                stages[task].get("warnings") or []):
+            issues.append("MODEL_"+task.upper()+"_COLUMN_LABEL_OVERRIDDEN")
     if transitions:
         issues.append("BOOK_TRANSITION_ON_PAGE")
     issues+=book_issues
@@ -338,6 +373,9 @@ def collect_page(page,registry,limits):
                     link["source_alignment_estimate_flags"]+notices))
             elif link["status"]=="ACCEPTED":
                 link["status"]="ACCEPTED_FLAGGED"
+    if HUMAN_REVIEWS.is_file():
+        reviews_document=read(HUMAN_REVIEWS)
+        links=apply_reviews(links,reviews_document,limits)
     counts=edge_summary(links)
     result={
         "schema":"jbible.fr88.integrated-page.v1","image_page":page,
@@ -409,6 +447,23 @@ def run(args):
           (args.end-args.start+1),flush=True)
     if args.preflight:
         return 0
+    if args.rebuild_bundles:
+        count=0
+        for page in range(args.start,args.end+1):
+            bundle=collect_page(page,registry,limits)
+            if bundle is None:
+                print("SKIP page %d: missing one or more cached page stages"%page,
+                      flush=True)
+                continue
+            save(OUT/("image_%04d.bundle.json"%page),bundle)
+            count+=1
+            print("REBUILT PAGE %d: %d accepted, %d true exceptions "
+                  "(no paid API call)"%
+                  (page,bundle["summary"]["accepted"],
+                   bundle["summary"]["exceptions"]),flush=True)
+        print("REBUILT %d complete cached pages"%count,flush=True)
+        status(args.start,args.end,0)
+        return 0
     key=os.environ.get("DEEPSEEK_API_KEY","").strip()
     if not key:
         raise RuntimeError("Missing DEEPSEEK_API_KEY in existing Docker env")
@@ -468,6 +523,9 @@ def main():
     parser.add_argument("--end",type=int,default=33)
     parser.add_argument("--max-new-calls",type=int,default=5)
     parser.add_argument("--preflight",action="store_true")
+    parser.add_argument("--rebuild-bundles",action="store_true",
+        help="Rerun geometry, parser, catalog and reviewer corrections on cached "
+             "stage results without any DeepSeek API requests")
     parser.add_argument("--report-only",action="store_true")
     args=parser.parse_args()
     try:
