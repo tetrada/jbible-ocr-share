@@ -4,6 +4,9 @@ on:
     paths:
       - 'tools/fr88_integrated_page.py'
       - 'tools/fr88_page_layout_core.py'
+      - 'tools/fr88_integrated_reference_rules.py'
+      - 'tools/test_fr88_integrated_reference_rules.py'
+      - 'training/fr88_integrated_editorial_rules.json'
       - 'tools/fr88_integrated_header_prompt.txt'
       - 'tools/fr88_integrated_verse_prompt.txt'
       - 'tools/fr88_integrated_margin_prompt.txt'
@@ -23,9 +26,11 @@ jobs:
       - name: Install local Pillow dependency
         run: python -m pip install pillow
       - name: Check all Python script syntax
-        run: python -m py_compile tools/fr88_integrated_page.py tools/fr88_page_layout_core.py tools/test_fr88_page_layout_core.py tools/test_fr88_integrated_page.py tools/fr88_v2_normalize.py tools/fr88_link_edges.py
+        run: python -m py_compile tools/fr88_integrated_page.py tools/fr88_page_layout_core.py tools/test_fr88_page_layout_core.py tools/test_fr88_integrated_page.py tools/fr88_v2_normalize.py tools/fr88_link_edges.py tools/fr88_integrated_reference_rules.py tools/test_fr88_integrated_reference_rules.py
       - name: Verify physical verse interval mapping and page header direction
         run: cd tools && python test_fr88_page_layout_core.py
+      - name: Test editorial conventions and independent comma-separated destinations
+        run: cd tools && python test_fr88_integrated_reference_rules.py
       - name: Verify independent destination splitting and scanner JSON
         run: cd tools && python test_fr88_integrated_page.py
       - name: Verify VPS runner shell syntax
