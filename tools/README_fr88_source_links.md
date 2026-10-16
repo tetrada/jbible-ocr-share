@@ -16,6 +16,27 @@ For the initial pages 31–40 pilot, this pipeline:
 
 **Current limit: pilot pages 31–40 (20 margin halves).** Once the proposals have been inspected we can safely expand the same stage across the rest of the already-scanned pages 31–500.
 
+## First real run: four margins, 20% complete
+
+GitHub already contains `fr88_source_links_pilot/source_link_results.json` with **4/20 complete margins**, **10 unverified proposed links**, **41 review items**. Of the 51 total staged segments, **33 have no book printed on their own scanned half**, so the initial conservative gate correctly left those unresolved. That does not necessarily mean the source verse is unknown: a printed header on an adjacent page may supply *context*, but not independent verification.
+
+An **offline source-book context pass** now cross-references only explicit printed book headings within one neighboring scanned page, checks plausible chapter continuity and catalog validity, rejects conflicting headers, and writes **separate context suggestions**. It does not rewrite the original DeepSeek assignments or assert verified links.
+
+To refresh existing saved checkpoints and publish new context suggestions without paid OCR:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main/tools/run_fr88_source_links.sh | bash -s -- --report-only
+curl -fsSL https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main/tools/publish_fr88_source_links.sh | bash
+```
+
+Then finish the remaining **16 scanned page halves** (no rerun of completed cached halves):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main/tools/run_fr88_source_links.sh | bash -s -- --max-new-jobs 20
+```
+
+The status will update to 20/20 if all remaining completed successfully. Actual DeepSeek calls can retry on transient failures. Publication to Git is a separate step. No source-to-target pair is declared human-verified by either action.
+
 ## Run on your existing Ubuntu VPS as root
 
 **Step 1 — preflight, no paid API calls:**
