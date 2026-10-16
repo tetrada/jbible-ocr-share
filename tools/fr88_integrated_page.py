@@ -312,12 +312,73 @@ def collect_page(page,registry,limits):
     # hallucinating a new or inherited book from other printed rows.
     rows=[canonicalize(r,book,CATALOG) for r in
           stages["margin_L"]["rows"]+stages["margin_R"]["rows"]]
-    links=atomic_edges(page,book,rows,intervals,limits,issues)
-    counts=edge_summary(links)
     prior=RAW/"jbible_fr1988_v2"/"interpreted_rows.json"
+    recovered=[]
+    if prior.exists():
+        from difflib import SequenceMatcher
+        earlier=read(prior)
+        def normalize_for_recovery(line):
+            import re
+            return re.sub(r"[^a-z0-9]+","",str(line or "").casefold())
+        for side in ("L","R"):
+            previous=[r for r in earlier if r.get("image_page")==page
+                      and r.get("side")==side and r.get("kind")=="REFERENCE"]
+            current=[r for r in rows if r.get("side")==side and r.get("kind")=="REFERENCE"]
+            if len(current)>=len(previous):
+                continue
+            used_current=set()
+            for prior_row in previous:
+                normalized=normalize_for_recovery(prior_row.get("raw_line"))
+                closest=None
+                best=0
+                for i,r in enumerate(current):
+                    if i in used_current:
+                        continue
+                    score=SequenceMatcher(
+                        None,normalized,normalize_for_recovery(r.get("raw_line"))).ratio()
+                    if score>best:
+                        best,closest=score,i
+                if best>=.72 and closest is not None:
+                    used_current.add(closest)
+                    continue
+                # The old reading is not represented by this pass at all.
+                # Preserve it as an additional, individually identifiable
+                # margin row rather than silently drop a potentially valid
+                # citation. Its typography and geometry remain estimated.
+                ordinal=len([r for r in rows if r.get("side")==side])+1
+                legacy_row={
+                    "id":"fr88i:p%04d:%s:%03d"%(page,side,ordinal),
+                    "image_page":page,"side":side,"kind":"REFERENCE",
+                    "raw_line":prior_row.get("raw_line",""),
+                    "y_fraction":prior_row.get("y_fraction"),
+                    "visibility_status":"COMPLETE",
+                    "layout_uncertain":True,
+                    "typography_uncertain":True,
+                    "shifted_down_possible":True,
+                    "ocr_legacy_recovered":True,
+                    "legacy_row_id":prior_row.get("id"),
+                    "kind_reason":"VISIBLE_IN_V2_BUT_MISSED_BY_NEW_OCR"
+                }
+                recovered_row=canonicalize(legacy_row,book,CATALOG)
+                rows.append(recovered_row)
+                current.append(recovered_row)
+                used_current.add(len(current)-1)
+                recovered.append(recovered_row["id"])
+        if recovered:
+            issues.append("LEGACY_MARGIN_ROWS_AUTOMATICALLY_RECOVERED")
+    links=atomic_edges(page,book,rows,intervals,limits,issues)
+    for link in links:
+        if link["row_id"] in recovered and link["accepted_automatically"]:
+            link["status"]="ACCEPTED_ESTIMATED"
+            link["source_alignment_estimate_flags"]=sorted(set(
+                link.get("source_alignment_estimate_flags",[])+[
+                    "ROW_RECOVERED_FROM_PREVIOUS_OCR_PASS"]))
+            link["qa_reasons"]=sorted(set(link.get("qa_reasons",[])+[
+                    "LEGACY_OCR_ROW_RECOVERED_NOT_RESCANNED"]))
+    counts=edge_summary(links)
     drifted=set()
     if prior.exists():
-        old=read(prior)
+        old=earlier
         compare={}
         def normalize_raw(row):
             import re
@@ -390,6 +451,7 @@ def collect_page(page,registry,limits):
         "atomic_source_to_destination_links":links,
         "quality_flags":issues,
         "legacy_margin_comparison":compare,
+        "legacy_recovered_row_ids":recovered,
         "summary":counts,
         "sql_writes":False,"human_verified_links":counts["human_verified"],
         "created_utc":utc()
