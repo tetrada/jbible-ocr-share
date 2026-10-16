@@ -247,17 +247,26 @@ def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None
                 reasons.append("MARGINAL_TYPOGRAPHY_UNCERTAIN")
             if row["id"] in overrides:
                 reasons.append("HUMAN_CONFIRMED_CUT_OFF")
+            if ref.get("status") == "PARSED" and not target_valid(ref,limits):
+                reasons.append("CITATION_OUTSIDE_BIBLE_CATALOG")
+            # A short OCR book abbreviation may be reasonably repaired without
+            # asking the user to check every instance. Preserve the assumption
+            # separately, and DO NOT count it as independently confirmed.
+            warnings=list(ref.get("interpretation_flags") or [])
             if any(q in pages for q in ("PAGE_BOOK_CONFLICT",
                                         "BOOK_TRANSITION_ON_PAGE",
                                         "PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER",
                                         "NONPOSITIVE_VERSE_INTERVAL")):
                 reasons.append("PAGE_LAYOUT_CONFLICT")
-            status="REVIEW_REQUIRED" if reasons else "AUTO_PROPOSED"
+            status=("REVIEW_REQUIRED" if reasons else
+                    "AUTO_PROPOSED_FLAGGED" if warnings else "AUTO_PROPOSED")
             output.append({
                 "edge_id":eid,"image_page":page,"column":row.get("side"),
                 "row_id":row["id"],"margin_y_fraction":row.get("y_fraction"),
                 "printed_margin_line":row.get("raw_line"),
                 "target_segment_index":idx,"destination":ref,
+                "editorial_relation_marker":ref.get("relation_marker") or row.get("relation_marker","ORDINARY"),
+                "destination_interpretation_flags":warnings,
                 "source":{"book_code":book,
                           "chapter":source["chapter"] if source else None,
                           "verse":source["verse"] if source else None,
@@ -271,5 +280,6 @@ def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None
 def summary(links):
     c=Counter(x["status"] for x in links)
     return {"atomic_links":len(links),"auto_proposed":c["AUTO_PROPOSED"],
+            "auto_proposed_flagged":c["AUTO_PROPOSED_FLAGGED"],
             "needs_review":c["REVIEW_REQUIRED"],
             "human_verified":0,"sql_writes":False}
