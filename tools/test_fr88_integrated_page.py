@@ -63,7 +63,6 @@ def test():
                 "Gen",limits)
             edges=m.atomic_edges(33,"Gen",many["rows"],intervals,limits,flags)
             assert len(edges)==3
-            print("DEBUG_INTERVALS", intervals, "DEBUG_ROWS",many["rows"],"DEBUG_EDGES",edges, flush=True)
             assert all(x["source"]["verse"]==17 for x in edges)
             assert all(x["scan_human_verified"] is False for x in edges)
             cut=m.parse_task(response({"items":[{
