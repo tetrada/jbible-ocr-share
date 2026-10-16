@@ -26,6 +26,12 @@ VERSE_LIST = re.compile(
     r"^\s*(\d{1,3})\s+(\d{1,3}(?:\s*,\s*\d{1,3})+)(s{1,2}|\+)?\s*$",
     re.IGNORECASE
 )
+CROSS_CHAPTER_VERSES = re.compile(
+    r"^\s*(\d{1,3})\s+(\d{1,3})\s*[-–—]\s*(\d{1,3})\s+(\d{1,3})\s*$"
+)
+DOTTED_VERSE_LIST = re.compile(
+    r"^\s*(\d{1,3})\s+(\d{1,3}(?:\.\d{1,3})+)\s*$"
+)
 CHAPTER_RANGE = re.compile(r"^\s*(\d{1,3})\s*[-–—]\s*(\d{1,3})\s*$")
 CHAPTER_ONLY = re.compile(r"^\s*(\d{1,3})(s{1,2}|sp|p|\+)?\s*$", re.IGNORECASE)
 
@@ -55,6 +61,22 @@ def alias_regex(csv_path):
 
 def _parse_numbers(text):
     text = text.strip(" \t\r\n=↗↖→←")
+    m = CROSS_CHAPTER_VERSES.fullmatch(text)
+    if m:
+        ch,verse,end_ch,end_verse=map(int,m.groups())
+        if (end_ch,end_verse)<(ch,verse):
+            return {"type":"UNRESOLVED_NUMERIC","literal":text,
+                    "reason":"reversed_cross_chapter_range"}
+        return {"type":"VERSE_CROSS_CHAPTER_RANGE",
+                "chapter":ch,"verse":verse,
+                "end_chapter":end_ch,"end_verse":end_verse,
+                "literal":text,"suffix":""}
+    m = DOTTED_VERSE_LIST.fullmatch(text)
+    if m:
+        return {"type":"VERSE_LIST","chapter":int(m.group(1)),
+                "verses":[int(v) for v in m.group(2).split(".")],
+                "literal":text,"suffix":"",
+                "notation":"PRINTED_DOTTED_VERSE_LIST"}
     m = SIMPLE_VERSE.fullmatch(text)
     if m:
         ch, v, end, suffix = m.groups()
