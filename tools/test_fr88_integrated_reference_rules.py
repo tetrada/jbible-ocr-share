@@ -122,6 +122,14 @@ def test():
                     ("Judg","VERSE",14,12),
                     ("Judg","VERSE",14,17),
                     ("Tob","CHAPTER_ONLY",8,None)]
+        # Exodus p89 commentary: recover real numeric references, not "cf".
+        deja=run("cf. déjà 3 18,", "Exod")
+        assert [(x["book_code"],x["chapter"],x["verse"]) for x in deja["references"]]==[("Exod",3,18)]
+        many_cf=run("cf. 7 16, 26; 8 4, 16, 23; 9 1, 13; 10 3, 24.", "Exod")
+        assert [(x["chapter"],x["verse"]) for x in many_cf["references"]]==[
+            (7,16),(7,26),(8,4),(8,16),(8,23),(9,1),(9,13),(10,3),(10,24)]
+        final_cf=run("cf. 12 1+.", "Exod")
+        assert [(x["book_code"],x["chapter"],x["verse"]) for x in final_cf["references"]]==[("Exod",12,1)]
         # Real rejoined Genesis p0063 row: two bare destinations separated
         # by an editorial plus suffix, without an actual printed semicolon.
         plus=run("22 16-17+ 28 14")
