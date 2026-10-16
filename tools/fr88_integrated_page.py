@@ -31,7 +31,7 @@ from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 from fr88_page_layout_core import (
     catalog_limits, header_checked, make_intervals,
-    repair_preceding_page_chapter_slip,
+    repair_preceding_page_chapter_slip, repair_same_page_chapter_slips,
     atomic_edges, summary as edge_summary)
 from fr88_v2_normalize import interpret_ocr_row
 from fr88_link_edges import index_pages
@@ -360,9 +360,11 @@ def collect_page(page,registry,limits):
                  stages["verses_R"].get("book_transitions") or [])
     markers,chapter_repairs=repair_preceding_page_chapter_slip(
         markers,book,limits,prev_last)
+    markers,same_page_repairs=repair_same_page_chapter_slips(
+        markers,book,limits,header)
     intervals,issues=make_intervals(markers,header,book,limits,
                                    previous_page_last=prev_last)
-    issues.extend(chapter_repairs)
+    issues.extend(chapter_repairs+same_page_repairs)
     if header.get("boundary_role_repaired"):
         issues.extend(header.get("header_audit_warnings") or [
             "RUNNING_HEADER_ROLE_REPAIRED_FROM_CORNER"])
@@ -460,6 +462,10 @@ def collect_page(page,registry,limits):
             audit.append("WRAPPED_REFERENCE_REJOINED_WITH_LEGACY_SCAN_EVIDENCE")
         if "VERSE_MARKER_Y_COORDINATES_NONMONOTONIC_"+str(link["column"]) in issues:
             audit.append("MAIN_TEXT_MARKERS_HAVE_INCONSISTENT_Y_COORDINATES")
+        if link["column"]=="R" and any(flag in issues for flag in (
+                "RIGHT_FIRST_MARKER_CHAPTER_REPAIRED_FROM_CHAPTER_END",
+                "RIGHT_COLUMN_CHAPTER_REPAIRED_FROM_LEFT_AND_HEADER")):
+            audit.append("RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED")
         if "BODY_CHAPTER_OCR_SLIP_REPAIRED_BY_ADJACENT_PAGE" in issues:
             audit.append("SOURCE_CHAPTER_CORRECTED_FROM_PAGE_CONTINUITY")
         if "PAGE_START_HEADER_CONTRADICTS_BODY" in issues:
@@ -540,7 +546,8 @@ def collect_page(page,registry,limits):
         "page_book":{"book_code":book,"basis":book_evidence},
         "printed_running_head":header,
         "verse_markers_by_column":{
-            "L":stages["verses_L"]["markers"],"R":stages["verses_R"]["markers"]},
+            "L":[m for m in markers if m.get("column")=="L"],
+            "R":[m for m in markers if m.get("column")=="R"]},
         "verse_intervals_by_column":intervals,
         "in_page_book_transitions":transitions,
         "marginal_ocr_rows":rows,
