@@ -272,27 +272,55 @@ def collect_page(page,registry,limits):
     links=atomic_edges(page,book,rows,intervals,limits,issues)
     counts=edge_summary(links)
     prior=RAW/"jbible_fr1988_v2"/"interpreted_rows.json"
+    drifted=set()
     if prior.exists():
         old=read(prior)
         compare={}
+        def normalize_raw(row):
+            import re
+            txt=str(row.get("raw_line") or "").casefold()
+            txt=re.sub(r"^[↗→↖←]\\s*","",txt)
+            return " ".join(txt.split())
         for side in ("L","R"):
-            old_count=sum(r.get("image_page")==page and r.get("side")==side
-                          and r.get("kind")=="REFERENCE" for r in old)
-            new_count=sum(r.get("side")==side and r.get("kind")=="REFERENCE" for r in rows)
+            originals=[r for r in old if r.get("image_page")==page and
+                       r.get("side")==side and r.get("kind")=="REFERENCE"]
+            current=[r for r in rows if r.get("side")==side and r.get("kind")=="REFERENCE"]
+            old_count,new_count=len(originals),len(current)
+            by_text={}
+            for r in originals:
+                by_text.setdefault(normalize_raw(r),[]).append(r)
+            changed=[]
+            for r in current:
+                possible=by_text.get(normalize_raw(r),[])
+                if len(possible)!=1:
+                    continue
+                oldy,newy=possible[0].get("y_fraction"),r.get("y_fraction")
+                if (type(oldy) in (int,float) and type(newy) in (int,float)
+                        and abs(oldy-newy)>0.10):
+                    drifted.add(r["id"])
+                    changed.append({"row_id":r["id"],"old_y":oldy,"new_y":newy})
             compare[side]={"legacy_reference_rows":old_count,
                            "new_reference_rows":new_count,
-                           "possible_missing_rows":max(0,old_count-new_count)}
+                           "possible_missing_rows":max(0,old_count-new_count),
+                           "large_y_position_differences":changed}
+            if changed:
+                issues.append("LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_"+side)
             if new_count<old_count:
                 issues.append("NEW_OCR_HAS_FEWER_ROWS_THAN_LEGACY_"+side)
         issues=sorted(set(issues))
     else:
         compare={}
     # Do not silently claim QA success if the OCR missed a known margin row.
-    if any(x.get("possible_missing_rows",0) for x in compare.values()):
-        for link in links:
-            if link["status"]=="AUTO_PROPOSED":
-                link["status"]="REVIEW_REQUIRED"
-                link["qa_reasons"].append("POSSIBLE_MISSING_MARGIN_OCR")
+    missing=any(x.get("possible_missing_rows",0) for x in compare.values())
+    for link in links:
+        reasons=[]
+        if missing:
+            reasons.append("POSSIBLE_MISSING_MARGIN_OCR")
+        if link["row_id"] in drifted:
+            reasons.append("MARGIN_Y_POSITION_DISAGREES_WITH_LEGACY_OCR")
+        if reasons:
+            link["qa_reasons"]=sorted(set(link["qa_reasons"]+reasons))
+            link["status"]="REVIEW_REQUIRED"
     counts=edge_summary(links)
     result={
         "schema":"jbible.fr88.integrated-page.v1","image_page":page,
