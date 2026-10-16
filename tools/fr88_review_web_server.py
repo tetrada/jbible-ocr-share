@@ -19,11 +19,15 @@ from urllib.parse import urlsplit
 
 APP = Path("/opt/jbible/review-web")
 STATE = Path("/var/lib/jbible-review/decisions.json")
+LINK_STATE = Path("/var/lib/jbible-review/link_decisions.json")
 SCANS = Path("/opt/jbible/data/raw/fr_bible_1988")
 PASSFILE = Path("/opt/jbible/review-web/password")
 LOCK = threading.Lock()
 CHOICES = ("v2", "v3", "neither", "uncertain")
 MAX_BODY = 16000
+LINK_CHOICES = ("confirm", "correct", "uncertain", "reject")
+LINK_BOOK_BASIS = ("PRINTED_THIS_PAGE", "NEIGHBORING_PAGE", "VISUALLY_CHECKED_CONTINUATION", "UNKNOWN")
+LINK_SCOPES = ("VERSE", "PASSAGE", "CHAPTER", "UNKNOWN")
 
 
 def json_bytes(value):
@@ -79,6 +83,145 @@ def validate_review(body, cases):
         "corrected_lines": [s.strip() for s in lines],
         "verified_against_scan": verified,
         "verification_status": "SCAN_CONFIRMED" if verified else "PENDING",
+        "notes": notes.strip(),
+        "saved_at_utc": datetime.now(timezone.utc).isoformat()
+    }
+
+
+def link_cases_from_export(document):
+    """One human review item per printed margin ROW, not per parsed segment."""
+    if not isinstance(document, dict) or not isinstance(document.get("progress"), dict):
+        raise ValueError("Invalid source-link pilot data")
+    grouped = {}
+    for field in ("proposed_links", "review_queue"):
+        data = document.get(field, [])
+        if not isinstance(data, list):
+            raise ValueError("Invalid source-link entries")
+        for item in data:
+            if not isinstance(item, dict) or not isinstance(item.get("row_id"), str):
+                continue
+            rid = item["row_id"]
+            if not re.match(r"^fr88v2:p\\d{4}:[LR]:\\d{2,3}$", rid):
+                continue
+            page, side = item.get("image_page"), item.get("side")
+            if type(page) is not int or page < 1 or page > 3000 or side not in ("L", "R"):
+                continue
+            if rid not in grouped:
+                grouped[rid] = {
+                    "row_id": rid, "page": page, "side": side,
+                    "y_fraction": item.get("margin_y_fraction"),
+                    "margin_raw_line": str(item.get("margin_raw_line") or "")[:250],
+                    "source": item.get("source") or {},
+                    "source_reason": item.get("source_reason") or "",
+                    "target_reason": item.get("target_reason") or "",
+                    "state": item.get("state") or "NEEDS_REVIEW",
+                    "targets": []
+                }
+            case = grouped[rid]
+            if case["page"] != page or case["side"] != side:
+                raise ValueError("Conflicting OCR row identity: " + rid)
+            # Multisegment rows share one source verse; target notations differ.
+            case["targets"].append({
+                "segment_index": item.get("target_segment_index"),
+                "target": item.get("target") or {},
+                "target_reason": item.get("target_reason") or ""
+            })
+    context = {}
+    for suggestion in document.get("source_book_context_suggestions") or []:
+        if isinstance(suggestion, dict) and isinstance(suggestion.get("margin_row_id"), str):
+            context[suggestion["margin_row_id"]] = suggestion
+    for case in grouped.values():
+        case["book_context"] = context.get(case["row_id"])
+        case["targets"].sort(key=lambda x: (
+            x["segment_index"] if type(x["segment_index"]) is int else 999))
+    return sorted(grouped.values(), key=lambda c: (
+        0 if c["state"] == "PROPOSED_REVIEW_REQUIRED" else 1,
+        c["page"], c["side"], c["y_fraction"] if isinstance(c["y_fraction"], (int, float)) else 2,
+        c["row_id"]
+    ))
+
+
+def validate_link_review(body, cases):
+    """Saving a human visual decision NEVER imports or verifies a SQL edge."""
+    if not isinstance(body, dict):
+        raise ValueError("Invalid link review document")
+    rid = body.get("row_id")
+    if not isinstance(rid, str) or rid not in cases:
+        raise ValueError("Unknown source-link row ID")
+    choice = body.get("choice")
+    if choice not in LINK_CHOICES:
+        raise ValueError("Choose confirm, correct, uncertain or reject")
+    source = body.get("source")
+    if not isinstance(source, dict):
+        raise ValueError("Missing source fields")
+    scope = source.get("scope", "UNKNOWN")
+    if scope not in LINK_SCOPES:
+        raise ValueError("Unknown source scope")
+    basis = source.get("source_book_basis", "UNKNOWN")
+    if basis not in LINK_BOOK_BASIS:
+        raise ValueError("Invalid source-book evidence")
+    code = str(source.get("book_code") or "").strip()
+    if code and not re.match(r"^[A-Za-z0-9]{1,12}$", code):
+        raise ValueError("Invalid book code")
+    numbers = {}
+    for key in ("chapter", "verse", "end_chapter", "end_verse"):
+        val = source.get(key)
+        if val in (None, ""):
+            numbers[key] = None
+        elif type(val) is int and 1 <= val <= 2000:
+            numbers[key] = val
+        else:
+            raise ValueError("Invalid source " + key)
+    target_raw = body.get("target_raw_line")
+    if not isinstance(target_raw, str) or not target_raw.strip() or len(target_raw) > 400:
+        raise ValueError("Enter the visible printed marginal reference")
+    notes = body.get("notes") or ""
+    if not isinstance(notes, str) or len(notes) > 1600:
+        raise ValueError("Notes too long")
+    checked = body.get("checked")
+    if not isinstance(checked, dict):
+        raise ValueError("Missing scan evidence checks")
+    source_checked = checked.get("source_verse") is True
+    target_checked = checked.get("target_print") is True
+    alignment_checked = checked.get("alignment") is True
+    # Only explicit source/target/alignment review can be called confirmed;
+    # unseen context, unknown source book, and illegible target remain pending.
+    if choice in ("confirm", "correct"):
+        if not (source_checked and target_checked and alignment_checked):
+            raise ValueError("Confirm the source marker, target text AND alignment on the scan")
+        if not code or basis == "UNKNOWN" or numbers["chapter"] is None:
+            raise ValueError("A confirmed link needs a source book and chapter")
+        if scope == "VERSE" and numbers["verse"] is None:
+            raise ValueError("A verse-level link needs the printed source verse")
+        if scope == "UNKNOWN":
+            raise ValueError("Unknown source scope cannot be confirmed")
+        if scope == "PASSAGE" and (
+                numbers["verse"] is None or numbers["end_verse"] is None):
+            raise ValueError("A passage-level link needs start and end verse")
+    if choice == "uncertain":
+        checked = {"source_verse": source_checked, "target_print": target_checked,
+                   "alignment": False}
+    return {
+        "row_id": rid,
+        "choice": choice,
+        "source": {
+            "book_code": code or None, "source_book_basis": basis, "scope": scope,
+            **numbers
+        },
+        "target_raw_line": target_raw.strip(),
+        "checked": {
+            "source_verse": source_checked,
+            "target_print": target_checked,
+            "alignment": alignment_checked if choice != "uncertain" else False
+        },
+        "scan_review_status": (
+            "VISUAL_LINK_REVIEW_CONFIRMED" if choice in ("confirm","correct")
+            else "PENDING_REVIEW" if choice == "uncertain"
+            else "VISUAL_LINK_REJECTED"
+        ),
+        "biblical_target_canonically_verified": False,
+        "sql_ready": False,
+        "sql_writes": False,
         "notes": notes.strip(),
         "saved_at_utc": datetime.now(timezone.utc).isoformat()
     }
@@ -148,6 +291,23 @@ class Handler(BaseHTTPRequestHandler):
             return self.file(APP / "index.html", "text/html; charset=utf-8")
         if path == "/app.js":
             return self.file(APP / "app.js", "text/javascript; charset=utf-8")
+        if path in ("/links", "/links/", "/links/index.html"):
+            return self.file(APP / "link_review.html", "text/html; charset=utf-8")
+        if path == "/links/link_review.js":
+            return self.file(APP / "link_review.js", "text/javascript; charset=utf-8")
+        if path == "/api/link-cases":
+            try:
+                cases = link_cases_from_export(read_json(APP / "link_results.json", {}))
+                state = read_json(LINK_STATE, {"reviews": {}})
+                return self.send_json({
+                    "schema": "jbible.fr88.source-link-human-review.v1",
+                    "cases": cases,
+                    "reviews": state.get("reviews", {}),
+                    "source": "Read the original scanned page, not a guessed verse match"
+                })
+            except (ValueError, OSError, KeyError):
+                return self.send_json({"error": "Source-link review queue is unavailable"}, 500)
+
         if path == "/api/cases":
             data = read_json(APP / "priority.json", {})
             if data.get("schema") != "jbible.fr88.v3.prioritized-review.v1":
@@ -165,6 +325,16 @@ class Handler(BaseHTTPRequestHandler):
             page = int(m.group(1))
             priority = read_json(APP / "priority.json", {})
             valid_pages = {int(c["page"]) for c in priority.get("priorities", [])}
+            try:
+                valid_pages.update(c["page"] for c in link_cases_from_export(
+                    read_json(APP / "link_results.json", {})))
+            except (ValueError, OSError, KeyError):
+                pass
+            # Adjacent printed headers can be checked on neighboring scanned pages
+            # within the same 31..40 linking pilot; never serve arbitrary files.
+            link_pages = {p for p in valid_pages if 31 <= p <= 40}
+            valid_pages.update(q for p in link_pages for q in (p-1, p+1)
+                               if 31 <= q <= 40)
             if page not in valid_pages:
                 return self.send_json({"error": "Page not in review queue"}, 404)
             scan = SCANS / ("image_%04d.jpg" % page)
@@ -181,7 +351,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_data(body, content_type)
 
     def do_POST(self):
-        if urlsplit(self.path).path != "/api/review":
+        route = urlsplit(self.path).path
+        if route not in ("/api/review", "/api/link-review"):
             return self.send_json({"error": "Not found"}, 404)
         if not self.require_auth():
             return
@@ -199,15 +370,28 @@ class Handler(BaseHTTPRequestHandler):
             if not 1 <= size <= MAX_BODY:
                 raise ValueError("Invalid request size")
             data = json.loads(self.rfile.read(size).decode("utf-8"))
-            cases_doc = read_json(APP / "priority.json", {})
-            cases = {c["case_id"]: c for c in cases_doc.get("priorities", [])}
-            new_review = validate_review(data, cases)
-            with LOCK:
-                state = read_json(STATE, {"schema": "jbible.fr88.review.v1", "reviews": {}})
-                state["schema"] = "jbible.fr88.review.v1"
-                state.setdefault("reviews", {})
-                state["reviews"][new_review["case_id"]] = new_review
-                save_atomic(STATE, state)
+            if route == "/api/link-review":
+                link_cases = link_cases_from_export(read_json(APP / "link_results.json", {}))
+                cases = {case["row_id"]: case for case in link_cases}
+                new_review = validate_link_review(data, cases)
+                with LOCK:
+                    state = read_json(LINK_STATE, {
+                        "schema": "jbible.fr88.source-link-decisions.v1", "reviews": {}
+                    })
+                    state["schema"] = "jbible.fr88.source-link-decisions.v1"
+                    state.setdefault("reviews", {})
+                    state["reviews"][new_review["row_id"]] = new_review
+                    save_atomic(LINK_STATE, state)
+            else:
+                cases_doc = read_json(APP / "priority.json", {})
+                cases = {c["case_id"]: c for c in cases_doc.get("priorities", [])}
+                new_review = validate_review(data, cases)
+                with LOCK:
+                    state = read_json(STATE, {"schema": "jbible.fr88.review.v1", "reviews": {}})
+                    state["schema"] = "jbible.fr88.review.v1"
+                    state.setdefault("reviews", {})
+                    state["reviews"][new_review["case_id"]] = new_review
+                    save_atomic(STATE, state)
             self.send_json({"ok": True, "review": new_review})
         except (ValueError, UnicodeError, TypeError) as exc:
             self.send_json({"error": str(exc)}, 400)
