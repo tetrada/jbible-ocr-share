@@ -464,13 +464,16 @@ def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None
 def summary(links):
     c=Counter(x["status"] for x in links)
     accepted=sum(c[status] for status in (
-        "ACCEPTED","ACCEPTED_FLAGGED","ACCEPTED_ESTIMATED"))
+        "ACCEPTED","ACCEPTED_FLAGGED","ACCEPTED_ESTIMATED",
+        "ACCEPTED_HUMAN_CORRECTED"))
+    human=sum(1 for e in links if e.get("scan_human_verified") is True)
     return {"atomic_links":len(links),
             "accepted":accepted,
             "accepted_plain":c["ACCEPTED"],
             "accepted_flagged":c["ACCEPTED_FLAGGED"],
             "accepted_estimated":c["ACCEPTED_ESTIMATED"],
+            "accepted_human_corrected":c["ACCEPTED_HUMAN_CORRECTED"],
             "exceptions":c["EXCEPTION"],
             "acceptance_percent":round(100.0*accepted/len(links),2)
                                   if links else 0.0,
-            "human_verified":0,"sql_writes":False}
+            "human_verified":human,"sql_writes":False}
