@@ -322,11 +322,9 @@ CANONICAL_CHAPTERS = {
 
 
 def reference_assessment(ref,limits):
-    """Validate real coordinates; distinguish sparse catalog from nonsense.
-
-    A verse absent from the *local chapter lookup* is only provisionally
-    checked against known book chapter limits + global verse 1..176.
-    Do not mistake this for fully verified verse limits.
+    """Validate parsed Biblical coordinates without treating a sparse catalog
+    as a complete Bible. Dotted verse lists are expanded earlier, while
+    cross-chapter ranges preserve both precise printed endpoints.
     """
     book=ref.get("book_code")
     ch=ref.get("chapter")
@@ -336,39 +334,51 @@ def reference_assessment(ref,limits):
     if not positive(ch) or ch>CANONICAL_CHAPTERS[book]:
         return False,["INVALID_BIBLE_CHAPTER"]
     if typ not in ("VERSE","VERSE_RANGE","VERSE_LIST",
-                   "CHAPTER_ONLY","CHAPTER_RANGE"):
+                   "CHAPTER_ONLY","CHAPTER_RANGE","VERSE_CROSS_CHAPTER_RANGE"):
         return False,["UNPARSED_DESTINATION"]
-    last_ch=ref.get("end_chapter") if typ=="CHAPTER_RANGE" else ch
-    if not positive(last_ch) or last_ch<ch or last_ch>CANONICAL_CHAPTERS[book]:
+    end_ch=ref.get("end_chapter") if typ in (
+        "CHAPTER_RANGE","VERSE_CROSS_CHAPTER_RANGE") else ch
+    if not positive(end_ch) or end_ch<ch or end_ch>CANONICAL_CHAPTERS[book]:
         return False,["INVALID_END_CHAPTER"]
-    values=[]
-    if typ in ("VERSE","VERSE_RANGE"):
-        values=[ref.get("verse")]
-        if typ=="VERSE_RANGE":
-            values.append(ref.get("end_verse"))
-        if len(values)==2 and all(positive(v) for v in values) and values[0]>values[1]:
-            return False,["REVERSED_VERSE_RANGE"]
+    per_chapter={}
+    if typ in ("VERSE","VERSE_RANGE","VERSE_CROSS_CHAPTER_RANGE"):
+        verse=ref.get("verse")
+        if not positive(verse) or verse>176:
+            return False,["IMPOSSIBLE_VERSE_NUMBER"]
+        per_chapter[ch]=[verse]
+        if typ in ("VERSE_RANGE","VERSE_CROSS_CHAPTER_RANGE"):
+            end_verse=ref.get("end_verse")
+            if not positive(end_verse) or end_verse>176:
+                return False,["IMPOSSIBLE_END_VERSE_NUMBER"]
+            if typ=="VERSE_RANGE" and end_verse<verse:
+                return False,["REVERSED_VERSE_RANGE"]
+            if typ=="VERSE_CROSS_CHAPTER_RANGE":
+                if (end_ch,end_verse)<(ch,verse):
+                    return False,["REVERSED_CROSS_CHAPTER_VERSE_RANGE"]
+                per_chapter.setdefault(end_ch,[]).append(end_verse)
+            else:
+                per_chapter[ch].append(end_verse)
     elif typ=="VERSE_LIST":
-        values=ref.get("verses")
-        if not isinstance(values,list) or not values:
+        verses=ref.get("verses")
+        if not isinstance(verses,list) or not verses:
             return False,["INVALID_VERSE_LIST"]
-    if any(not positive(verse) or verse>176 for verse in values):
-        return False,["IMPOSSIBLE_VERSE_NUMBER"]
+        if any(not positive(v) or v>176 for v in verses):
+            return False,["IMPOSSIBLE_VERSE_NUMBER"]
+        per_chapter[ch]=verses
     warnings=[]
-    if typ=="CHAPTER_RANGE":
-        checked_chapters=range(ch,last_ch+1)
-    else:
-        checked_chapters=(ch,)
+    checked_chapters=(range(ch,end_ch+1) if typ=="CHAPTER_RANGE"
+                      else sorted(set([ch,end_ch])))
     for chapter in checked_chapters:
-        cap=limits.get((book,chapter))
-        if cap is None:
+        max_verse=limits.get((book,chapter))
+        if max_verse is None:
             warnings.append("CHAPTER_VERSE_LIMIT_UNAVAILABLE_IN_LOCAL_CATALOG")
             continue
-        if chapter==ch and any(v>cap for v in values):
+        if any(v>max_verse for v in per_chapter.get(chapter,[])):
             return False,["VERSE_OUTSIDE_KNOWN_CHAPTER"]
     if ref.get("status")!="PARSED":
         warnings.append("REFERENCE_PARSE_STATUS_"+str(ref.get("status")))
     return True,sorted(set(warnings))
+
 
 
 def target_valid(ref,limits):
