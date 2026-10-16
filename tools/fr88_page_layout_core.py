@@ -248,6 +248,7 @@ def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None
             if row["id"] in overrides:
                 reasons.append("HUMAN_CONFIRMED_CUT_OFF")
             if any(q in pages for q in ("PAGE_BOOK_CONFLICT",
+                                        "BOOK_TRANSITION_ON_PAGE",
                                         "PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER",
                                         "NONPOSITIVE_VERSE_INTERVAL")):
                 reasons.append("PAGE_LAYOUT_CONFLICT")
