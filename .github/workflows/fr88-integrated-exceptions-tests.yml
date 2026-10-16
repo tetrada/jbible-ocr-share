@@ -1,0 +1,45 @@
+name: JBible integrated OCR exception reviewer
+on:
+  push:
+    paths:
+      - 'tools/fr88_integrated_exception_review.py'
+      - 'tools/fr88_integrated_exceptions_index.html'
+      - 'tools/fr88_integrated_exceptions_app.js'
+      - 'tools/fr88_review_web_server.py'
+      - 'tools/test_fr88_integrated_exception_review.py'
+      - 'tools/fr88_integrated_exception_publish.sh'
+      - 'tools/install_fr88_integrated_exception_review.sh'
+      - '.github/workflows/fr88-integrated-exceptions-tests.yml'
+  workflow_dispatch:
+jobs:
+  secure-reviewed-edges:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check Python syntax
+        run: python -m py_compile tools/fr88_integrated_exception_review.py tools/fr88_review_web_server.py tools/test_fr88_integrated_exception_review.py
+      - name: Confirm one-target-per-exception and corrections
+        run: cd tools && python test_fr88_integrated_exception_review.py
+      - name: Confirm screenshot review UI JavaScript syntax
+        run: node --check tools/fr88_integrated_exceptions_app.js
+      - name: Check VPS installation shell syntax
+        run: bash -n tools/install_fr88_integrated_exception_review.sh tools/fr88_integrated_exception_publish.sh
+      - name: Verify actual published pilot has 24 separate exceptions
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+          sys.path.insert(0,'tools')
+          from fr88_integrated_exception_review import cases_from_report
+          data=json.loads(Path('fr88_integrated_v1/pilot_report.json').read_text(encoding='utf8'))
+          cases=cases_from_report(data)
+          assert len(cases)==24,len(cases)
+          assert len({c['edge_id'] for c in cases})==len(cases)
+          assert all(c['reason_codes'] for c in cases)
+          assert all(31<=c['page']<=37 for c in cases)
+          print('PASS: 24 distinct protected scan-review cases')
+          PY
