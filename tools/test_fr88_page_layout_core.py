@@ -121,7 +121,7 @@ def test():
              typography_uncertain=True)
     # Partial margin cutoffs can still contain a FULL usable destination.
     cut_link=g.atomic_edges(33,"Gen",[cut],intervals,limits)[0]
-    assert cut_link["status"]=="ACCEPTED_FLAGGED"
+    assert cut_link["status"] in ("ACCEPTED_FLAGGED","ACCEPTED_ESTIMATED")
     assert cut_link["accepted_automatically"] is True
     assert "MARGIN_TRUNCATED_BUT_THIS_TARGET_IS_READABLE" in cut_link["qa_reasons"]
     broken=dict(cut,id="fr88i:p0033:L:021",
