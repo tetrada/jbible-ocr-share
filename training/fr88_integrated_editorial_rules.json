@@ -1,0 +1,74 @@
+{
+  "schema": "jbible.fr88.integrated-editorial-rules.v1",
+  "status": "CONFIRMED_BY_USER_AND_PRINTED_EDITION_EXPLANATORY_PAGES",
+  "source": "User photographed Croatian edition Notes pages XV/XVI and confirmed answers in chat, 2026-10-16. Photographs remain private; only derived rules saved in GitHub.",
+  "rules": {
+    "bare_destination": "When a separately printed marginal row omits a book abbreviation, use the source page's Bible book as destination book. Inside one semicolon-separated physical row, an omitted book after an explicit book abbreviation inherits the most recent explicit destination book on that row, not the source book. Never inherit a target book from a different physical row.",
+    "equals_marker": "Printed '=' preceding a cross-reference denotes a literary doublet or parallel in the SAME biblical book (edition explanation paragraph 2). It is a relation marker, not a destination verse or a missing book abbreviation. Preserve it separately; resolve bare coordinate to source page book.",
+    "double_bar_marker": "Printed '||' denotes parallel corresponding passages in DIFFERENT books. Preserve as relation marker; do not use it to determine source chapter or verse.",
+    "arrow_marker": "Printed arrow ↗ denotes scriptural quotation, especially older scripture cited by a newer book, per explanation paragraph 3. Store marker as metadata, independent of destination coordinates.",
+    "no_prefix_marker": "Printed citation without a preceding relation marker is an ordinary helpful reference.",
+    "comma_verses": "Comma-separated distinct verse numbers under a chapter are independent destination link records, e.g. Si 43 6,7 -> Sir 43:6 and Sir 43:7.",
+    "semicolon_chapters": "Each semicolon-separated chapter or chapter/verse is an independent link record; e.g. Ps 8; 104 -> one chapter-level link to Ps 8 and one to Ps 104.",
+    "suffix_s": "Edition paragraph 5: 's' applies to the named line and the following lines/verses. Preserve literally; do not fabricate an end verse.",
+    "suffix_p": "Edition paragraph 5: 'p' points to a parallel passage. Preserve literally; do not fabricate an end verse.",
+    "suffix_plus": "Edition paragraph 4: '+' indicates a useful further reference or explanatory note, often at the referenced place. Preserve literally; do not create another destination solely because of '+'.",
+    "missing_book_ocr": "When OCR reads incomplete abbreviations, e.g. 'Ch 1 1-4' or 's 14 14+', make tentative corrections (1 Ch -> 1Chr, Is -> Isa) if consistent with visible context and catalog. Keep original print, record assumption and quality flag. No need to ask human to check every occurrence.",
+    "layout_groups": "Edition paragraph 7: a printed marginal note may appear BELOW its actual source line when the margin is occupied; blank lines ordinarily separate groups of notes that refer to distinct main-text lines. Therefore a strict nearest-y verse matcher alone is not safe. Capture original reference grouping, separator/gap positions, and reconcile with main-text verse spans.",
+    "book_page": "Source book is established for the scanned page, not redetected for each marginal note.",
+    "running_header": "On left book pages upper-left chapter/verse may indicate FIRST verse; on right book pages upper-right may indicate LAST verse. Verify physical page side and role.",
+    "review_policy": "Do not ask for thousands of manual checks. Flag assumptions in machine-readable metadata and quantify accuracy against independent human-verified scan samples; isolate only genuine layout/cut-off exceptions."
+  },
+  "examples": [
+    {
+      "raw": "5 1, 3; 9 6",
+      "source_book": "Gen",
+      "destinations": [
+        "Gen 5:1",
+        "Gen 5:3",
+        "Gen 9:6"
+      ]
+    },
+    {
+      "raw": "Ps 78 47s; 105 32; Ap 16 21",
+      "source_book": "Gen",
+      "destinations": [
+        "Ps 78:47s",
+        "Ps 105:32",
+        "Rev 16:21"
+      ]
+    },
+    {
+      "raw": "Si 43 6,7",
+      "destinations": [
+        "Sir 43:6",
+        "Sir 43:7"
+      ]
+    },
+    {
+      "raw": "Ps 8; 104",
+      "destinations": [
+        "Ps chapter 8",
+        "Ps chapter 104"
+      ]
+    },
+    {
+      "raw": "= 18 9-15",
+      "source_book": "Gen",
+      "marker": "=",
+      "destination": "Gen 18:9-15"
+    },
+    {
+      "raw": "Ch 1 1-4",
+      "assumed_print": "1 Ch 1 1-4",
+      "assumption_flag": true
+    },
+    {
+      "raw": "s 14 14+",
+      "assumed_print": "Is 14 14+",
+      "assumption_flag": true
+    }
+  ],
+  "confirmed_versus_estimated_accuracy": "Rules confirmed; 99%+ whole-pipeline performance NOT YET demonstrated.",
+  "sql_writes": false
+}
