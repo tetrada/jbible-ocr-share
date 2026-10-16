@@ -54,6 +54,12 @@ def canonicalize(row,page_book,catalog_path):
     # Preserve original typography in raw_line, normalize only the parser view.
     parse_text=re.sub(r"^\s*(?:\|\||∥|Ⅱ|‖)\s*", "",corrected)
     parse_text=re.sub(r"(?i)\bcf\s*\.\s*(?=[A-Za-z])","",parse_text)
+    # An editorial + suffix can end one bare reference followed by a new
+    # chapter/verse in the SAME physical printed row. Keep the original raw
+    # line unchanged; only insert a parser-view separator at that boundary.
+    # Real scan p0063: "22 16-17+ 28 14" -> Gen 22:16-17+; Gen 28:14.
+    parse_text=re.sub(r"(?<=\+)\s+(?=\d{1,3}\s+\d{1,3}(?:\b|[-–—]))",
+                      "; ",parse_text)
     # Chapter-only editorial shorthand: 'ch. 27.' means the whole chapter,
     # not a malformed target. Never treat bare 'ch.' as a book code.
     chapter_note=bool(re.fullmatch(r"(?i)\s*ch(?:ap)?\.\s*\d{1,3}\.?\s*",parse_text))
