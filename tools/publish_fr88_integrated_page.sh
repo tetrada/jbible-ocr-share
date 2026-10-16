@@ -50,6 +50,9 @@ for fn in sorted(src.glob("image_????.bundle.json")):
             "target_literal":d.get("literal"),
             "parse_status":d.get("status"),
             "status":e["status"],"qa_reasons":e.get("qa_reasons",[]),
+            "accepted_automatically":e.get("accepted_automatically",False),
+            "human_review_required":e.get("human_review_required",True),
+            "hard_exceptions":e.get("hard_exceptions",[]),
             "source_alignment_estimate_flags":e.get("source_alignment_estimate_flags",[]),
             "possible_adjacent_source_verses":e.get("possible_adjacent_source_verses",[]),
             "editorial_relation_marker":e.get("editorial_relation_marker"),
@@ -76,7 +79,7 @@ output={
  "schema":"jbible.fr88.integrated-page-git-report.v1",
  "progress":summary,
  "pages":pages,
- "notice":"Text-only geometry and cross-reference proposals. Images and provider responses remain on authenticated private VPS.",
+ "notice":"Text-only automatically accepted source-to-target links and rare hard exceptions. Acceptance is operational, not an independently measured correctness claim; no SQL writes. Images and provider responses remain on private VPS.",
  "canonical_links_verified":0,"sql_writes":False
 }
 target=dest/"pilot_report.json"
