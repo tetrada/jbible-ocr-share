@@ -21,6 +21,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from PIL import Image, ImageOps, ImageEnhance, ImageFilter
+from fr88_source_book_context import suggest_unknown_book
 
 ROOT = Path("/raw")
 SCANS = ROOT/"fr_bible_1988"
@@ -355,6 +356,7 @@ def aggregate(start,end,groups,overrides,limits,paid_jobs=0):
     done=0
     proposals=[]
     queue=[]
+    completed_groups=[]
     statuses=Counter()
     for page in range(start,end+1):
         for side in SIDES:
@@ -363,6 +365,8 @@ def aggregate(start,end,groups,overrides,limits,paid_jobs=0):
                 continue
             doc=json.loads(file.read_text(encoding="utf-8"))
             done+=1
+            completed_groups.append({"page":page,"side":side,
+                                     "assignments":doc["assignments"]})
             found={a["margin_row_id"]:a for a in doc["assignments"]}
             for row in groups[page,side]:
                 anchor=found[row["id"]]
@@ -372,7 +376,10 @@ def aggregate(start,end,groups,overrides,limits,paid_jobs=0):
                 for item in items:
                     statuses[item["state"]]+=1
                     (proposals if item["state"]=="PROPOSED_REVIEW_REQUIRED" else queue).append(item)
+    book_context=suggest_unknown_book(completed_groups,limits)
+    save(OUT/"source_book_context_suggestions.json",book_context)
     summary={
+        "source_book_context_suggestions_count":len(book_context["suggestions"]),
         "schema":"jbible.fr88.source-links-pilot.summary.v1",
         "pages":[start,end],"model":MODEL,
         "margins_complete":done,"margins_expected":2*(end-start+1),
