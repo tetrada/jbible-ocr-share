@@ -1,0 +1,27 @@
+name: JBible protected source-link visual review tests
+on:
+  push:
+    paths:
+      - 'tools/fr88_review_web_server.py'
+      - 'tools/fr88_link_review_index.html'
+      - 'tools/fr88_link_review_app.js'
+      - 'tools/fr88_review_web_index.html'
+      - 'tools/test_fr88_link_review_web.py'
+      - 'tools/fr88_link_review_publish.sh'
+      - 'tools/install_fr88_source_link_review.sh'
+      - '.github/workflows/fr88-link-review-web-tests.yml'
+  workflow_dispatch:
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check server and reviewed-decision parser syntax
+        run: python -m py_compile tools/fr88_review_web_server.py tools/test_fr88_link_review_web.py
+      - name: Offline visual decision validation; no API or SQL
+        run: cd tools && python test_fr88_link_review_web.py
+      - name: Shell syntax and existing log-in unchanged
+        run: bash -n tools/install_fr88_source_link_review.sh tools/fr88_link_review_publish.sh
