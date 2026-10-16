@@ -27,7 +27,7 @@ jobs:
         run: node --check tools/fr88_review_web_app.js
       - name: Offline secured API regression
         run: cd tools && python test_fr88_review_web.py
-      - name: Guard test: scans are never published to Git
+      - name: "Guard test: scans are never published to Git"
         run: |
           python - <<'PY'
           from pathlib import Path
