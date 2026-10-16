@@ -32,6 +32,7 @@ from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 from fr88_page_layout_core import (
     catalog_limits, header_checked, make_intervals,
     repair_preceding_page_chapter_slip, repair_same_page_chapter_slips,
+    repair_right_column_chapter_from_next_page,
     atomic_edges, summary as edge_summary)
 from fr88_v2_normalize import interpret_ocr_row
 from fr88_link_edges import index_pages
@@ -428,9 +429,22 @@ def collect_page(page,registry,limits):
         markers,book,limits,prev_last)
     markers,same_page_repairs=repair_same_page_chapter_slips(
         markers,book,limits,header)
+    # Future-stage OCR is available from the cache even before its bundle.
+    # Only a full, matching L->R->next-L verse sequence can repair R.
+    next_stage=OUT/("image_%04d.verses_L.result.json"%(page+1))
+    next_header_stage=OUT/("image_%04d.header.result.json"%(page+1))
+    future_repairs=[]
+    if next_stage.is_file() and next_header_stage.is_file():
+        future_head=read(next_header_stage)["data"]
+        future_book=canonical_source_book(future_head.get("book_code"))
+        future_trans=read(next_stage)["data"].get("book_transitions") or []
+        if future_book in (None,book) and not future_trans:
+            future_left=read(next_stage)["data"].get("markers") or []
+            markers,future_repairs=repair_right_column_chapter_from_next_page(
+                markers,future_left,book)
     intervals,issues=make_intervals(markers,header,book,limits,
                                    previous_page_last=prev_last)
-    issues.extend(chapter_repairs+same_page_repairs)
+    issues.extend(chapter_repairs+same_page_repairs+future_repairs)
     # Quarantine a same-book page that jumps BACKWARD by multiple chapters.
     # Genesis ends at 50:26 on p83; p84 strangely reports chapter 25.
     first_left=sorted((m for m in markers if m.get("column")=="L" and
@@ -548,6 +562,10 @@ def collect_page(page,registry,limits):
             audit.append("MAIN_TEXT_MARKERS_HAVE_INCONSISTENT_Y_COORDINATES")
         if link["column"]=="L" and "LEFT_COLUMN_CHAPTER_REPAIRED_FROM_HEADER_AND_RIGHT" in issues:
             audit.append("LEFT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED")
+        if link["column"]=="R" and any(flag in issues for flag in (
+                "RIGHT_COLUMN_CHAPTER_REPAIRED_FROM_ADJACENT_PAGE",
+                "RIGHT_PREFIX_CHAPTER_REPAIRED_BEFORE_RESTART")):
+            audit.append("RIGHT_COLUMN_CHAPTER_OCR_REPAIR_AUDITED")
         if link["column"]=="R" and any(flag in issues for flag in (
                 "RIGHT_FIRST_MARKER_CHAPTER_REPAIRED_FROM_CHAPTER_END",
                 "RIGHT_COLUMN_CHAPTER_REPAIRED_FROM_LEFT_AND_HEADER")):
