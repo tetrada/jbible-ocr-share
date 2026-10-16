@@ -486,6 +486,70 @@
       "sql_ready": false,
       "sql_writes": false,
       "reviewed_utc": "2026-10-16T09:30:20.359178+00:00"
+    },
+    "fr88i:p0033:L:003/target01": {
+      "edge_id": "fr88i:p0033:L:003/target01",
+      "image_page": 33,
+      "choice": "corrected",
+      "cause": "SOURCE_VERSE_BEFORE_FIRST_MARKER",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 2,
+        "verse": 9,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Ezek",
+        "chapter": 47,
+        "verse": 1,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": "+"
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Ez 47 1+",
+      "original_exception_reasons": [
+        "SOURCE_VERSE_UNRESOLVED"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:30:32.023668+00:00"
+    },
+    "fr88i:p0034:R:001/target01": {
+      "edge_id": "fr88i:p0034:R:001/target01",
+      "image_page": 34,
+      "choice": "corrected",
+      "cause": "SOURCE_VERSE_BEFORE_FIRST_MARKER",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 3,
+        "verse": 16,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Gen",
+        "chapter": 2,
+        "verse": 22,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": "+"
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "2 22+",
+      "original_exception_reasons": [
+        "SOURCE_VERSE_UNRESOLVED"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "you said you know what is first verse on page reference. And it says in header left. From there you know chapter.even if you dont know its on verse 16 you see next one is 17.. so -1",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:32:20.314364+00:00"
     }
   }
 }
