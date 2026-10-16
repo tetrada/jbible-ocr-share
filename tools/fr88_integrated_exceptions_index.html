@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>JBible · Integrated OCR Exceptions</title>
+<style>
+:root{--page:#f4f5f1;--surface:#fff;--ink:#1a3026;--muted:#67786f;--line:#dce5dd;--green:#16794f;--green2:#ebf6ee;--orange:#935819}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:#fff;border-bottom:1px solid var(--line);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+header h1{font-size:18px;margin:0}a{color:var(--green)}.muted{color:var(--muted)}small,.small{font-size:12px}
+main{max-width:1680px;margin:16px auto;padding:0 15px;display:grid;grid-template-columns:260px minmax(360px,1.15fr) minmax(350px,.85fr);gap:13px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 6px 26px #2230240c;overflow:hidden}
+h2{margin:0;font-size:15px}.panelhead{padding:13px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.pad{padding:15px}.sidebar{position:sticky;top:12px;align-self:start;max-height:calc(100vh - 25px);display:flex;flex-direction:column}.sidebar .pad{padding:11px 12px}
+#queue{overflow:auto;min-height:250px}.qitem{width:100%;border:0;background:white;display:grid;grid-template-columns:53px 1fr 17px;gap:7px;align-items:center;text-align:left;padding:10px;border-bottom:1px solid #edf2ee;cursor:pointer;color:inherit}
+.qitem:hover,.qitem.active{background:var(--green2)}.qitem.done{color:var(--green)}.qtitle{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.qpage{font-weight:700;font-size:12px}.tag{display:inline-block;background:#f1f4f0;color:#4a6355;border-radius:8px;padding:4px 8px;font-size:11px;margin:2px}.tag.bad{color:var(--orange);background:#fff0dc}
+button,select,input,textarea{font:inherit}button{cursor:pointer;padding:8px 12px;border:1px solid #c8d7cc;border-radius:8px;color:var(--ink);background:#fff}
+button:hover{border-color:#8bb79b}button:disabled{opacity:.45}button.primary{color:#fff;background:var(--green);border-color:var(--green)}
+button.selected{background:var(--green2);border-color:var(--green);font-weight:700}
+input,textarea,select{width:100%;min-width:0;padding:8px 9px;border:1px solid #becdc2;border-radius:8px;background:#fff;color:var(--ink)}
+label.field{display:grid;gap:4px;font-size:12px;font-weight:650;color:#62786a;margin-bottom:9px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.section{border-top:1px solid var(--line);padding-top:13px;margin-top:13px}
+.sectiontitle{font-weight:750;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+#scan{display:block;width:100%;height:auto;background:#e6ded0}.viewport{background:#eee6d7;border:1px solid #dfd6ca;border-radius:9px;overflow:hidden}
+.toolbar{display:flex;justify-content:space-between;gap:6px;align-items:center;padding:8px;flex-wrap:wrap}
+.coord{font-family:ui-monospace,Consolas,monospace;font-size:14px;font-weight:650}
+.rblock{border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin:9px 0}
+.rblock .big{font-size:19px;font-weight:800}.pick{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.selectcheck{display:flex;gap:10px;align-items:flex-start;margin:12px 0;padding:9px;background:#f3f8f4;border-radius:7px}
+.selectcheck input{width:17px;min-width:17px;margin-top:4px;accent-color:var(--green)}.selectcheck label{font-size:12px}
+#feedback{min-height:18px;color:#137448;font-size:12px;font-weight:650}.hint{color:var(--orange);background:#fff7e8;padding:9px;border-radius:7px;font-size:12px}
+.stats{font-size:12px;font-weight:700;color:var(--green)}
+dialog{width:min(96vw,1150px);max-height:95vh;padding:12px;border:0;border-radius:12px}dialog::backdrop{background:#102a1ccc}dialog img{width:100%;height:auto;display:block}
+@media(max-width:1250px){main{grid-template-columns:220px minmax(350px,1fr)}.formcol{grid-column:2}.sidebar{grid-row:span 2}}
+@media(max-width:760px){main{grid-template-columns:1fr}.sidebar{grid-row:auto;max-height:250px;position:static}.formcol{grid-column:auto}.grid.four{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header><div><h1>✝ JBible · OCR Exceptions</h1><div class="muted small">Inspect only genuinely unresolved source → destination links · original French scans</div></div><nav><a href="../">Reference reviews</a> &nbsp; <a href="../links/">Link reviews</a></nav><span class="stats" id="progress">Loading…</span></header>
+<main>
+<aside class="panel sidebar">
+  <div class="pad">
+    <h2>Unresolved references</h2>
+    <p class="small muted">One entry = one destination. Each saved decision helps diagnose the importer.</p>
+    <select id="filter" aria-label="Filter exceptions"><option value="pending">Not yet classified</option><option value="all">All exceptions</option><option value="done">Already classified</option></select>
+  </div>
+  <nav id="queue" aria-label="Unresolved OCR references"></nav>
+</aside>
+<section class="panel">
+ <div class="panelhead"><div><h2 id="title">Original scan</h2><div class="small muted" id="caseId"></div></div><div><button type="button" id="prev">←</button> <button type="button" id="next">→</button></div></div>
+ <div class="pad">
+  <div class="rblock"><div class="sectiontitle">Printed marginal line</div><div class="big coord" id="marginLine">—</div><div class="small muted" id="targetNum"></div></div>
+  <div class="viewport">
+    <canvas id="scan" width="980" height="1120" aria-label="Protected scanned Bible page at original margin-reference position"></canvas>
+    <div class="toolbar">
+      <div><button type="button" id="minus">−</button> <strong id="zoomLabel">1.4×</strong> <button type="button" id="plus">+</button> <button type="button" id="full">Full page</button></div>
+      <label class="small muted" style="display:flex;align-items:center;gap:5px">Scroll vertically <input id="ySlider" type="range" min="0" max="1000" value="500" style="width:130px"/></label>
+    </div>
+  </div>
+  <div class="small muted" style="margin-top:9px">Red = margin OCR vertical location. Green = proposed source verse interval (if known). Coordinates are approximate; inspect the printed text.</div>
+ </div>
+</section>
+<section class="panel formcol">
+ <div class="panelhead"><h2>Confirm or correct this exception</h2><span class="tag bad" id="problemCount">—</span></div>
+ <div class="pad">
+  <div class="sectiontitle">Why the importer rejected it</div><div id="reasons"></div>
+  <div class="rblock"><div class="sectiontitle">Proposed source → destination</div>
+    <div class="coord" id="proposal">—</div>
+    <div class="small muted" id="pageContext"></div>
+  </div>
+  <div class="sectiontitle">What actually caused this exception?</div>
+  <label class="field">Diagnosis
+    <select id="cause">
+      <option value="OTHER_OR_UNKNOWN">Other / not yet sure</option>
+      <option value="CATALOG_REJECTED_VALID_REFERENCE">Valid reference rejected by catalog/parser</option>
+      <option value="SOURCE_VERSE_BEFORE_FIRST_MARKER">Source verse is at the top of page/column</option>
+      <option value="MARGINAL_OCR_ERROR">Margin reference was OCRed incorrectly</option>
+      <option value="MARGIN_ACTUALLY_CUT_OFF">Reference really is cut off at page edge</option>
+      <option value="SOURCE_VERSE_POSITION_ERROR">Incorrect source verse alignment</option>
+      <option value="BOOK_ABBREVIATION_ERROR">Wrong/missing destination book abbreviation</option>
+      <option value="UNUSUAL_PRINTED_NOTATION">Unusual printed notation</option>
+    </select>
+  </label>
+  <div class="section"><div class="sectiontitle">Correct SOURCE (verse in main text)</div>
+  <div class="grid">
+    <label class="field">Book<input id="srcBook" maxlength="12" placeholder="Gen"/></label>
+    <label class="field">Chapter<input id="srcChapter" type="number" min="1" max="2000"/></label>
+    <label class="field">Verse<input id="srcVerse" type="number" min="1" max="2000"/></label>
+  </div></div>
+  <div class="section"><div class="sectiontitle">Correct DESTINATION (this one margin reference)</div>
+    <div class="grid">
+      <label class="field">Book<input id="dstBook" maxlength="12" placeholder="Exod"/></label>
+      <label class="field">Chapter<input id="dstChapter" type="number" min="1" max="2000"/></label>
+      <label class="field">Verse<input id="dstVerse" type="number" min="1" max="2000"/></label>
+      <label class="field">End chapter<input id="dstEndChapter" type="number" min="1" max="2000"/></label>
+      <label class="field">End verse<input id="dstEndVerse" type="number" min="1" max="2000"/></label>
+      <label class="field">Suffix<input id="dstSuffix" maxlength="30" placeholder="s, p, +"/></label>
+    </div>
+    <label class="field">Type
+      <select id="dstType"><option value="VERSE">Verse</option><option value="VERSE_RANGE">Verse range</option><option value="CHAPTER_ONLY">Whole chapter</option><option value="CHAPTER_RANGE">Chapter range</option><option value="UNKNOWN">Unknown</option></select>
+    </label>
+  </div>
+  <div class="section"><div class="sectiontitle">Your decision</div>
+    <div class="pick">
+      <button type="button" data-choice="as_printed">✓ Correct as shown</button>
+      <button type="button" data-choice="corrected">✎ Corrected reference</button>
+      <button type="button" data-choice="cut_off">✂ Truly cut off</button>
+      <button type="button" data-choice="unresolved">? Still unclear</button>
+    </div>
+    <div class="selectcheck"><input id="checked" type="checkbox"><label for="checked">I inspected the original scanned page. Required for accepting/correcting or marking a cut-off.</label></div>
+    <label class="field">Optional note<textarea id="notes" rows="2" placeholder="What was wrong and how it should be handled automatically next time"></textarea></label>
+    <div class="hint">This only saves your observation. It does not overwrite existing OCR results or import SQL records.</div>
+    <div style="display:flex;gap:8px;margin-top:12px"><button type="button" class="primary" id="saveNext">Save & next →</button><button type="button" id="save">Save</button></div>
+    <div id="feedback" role="status"></div>
+  </div>
+ </div>
+</section>
+</main>
+<dialog id="dialog"><div style="display:flex;justify-content:space-between;padding:5px 0 9px"><strong id="dialogTitle">Full scanned page</strong><button type="button" id="close">Close</button></div><img id="fullImg" alt="Protected full scanned Bible page"/></dialog>
+<script src="integrated_exceptions.js" defer></script>
+</body></html>
