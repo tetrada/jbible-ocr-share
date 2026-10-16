@@ -135,3 +135,41 @@ def canonicalize(row,page_book,catalog_path):
     output["ocr_book_repair_proposal"]=corrected if assumption else None
     output["ocr_book_assumption"]=assumption
     return output
+
+def canonicalize_contiguous_rows(rows,page_book,catalog_path):
+    """Resolve book shorthand when the OCR split one semicolon group into rows.
+
+    Only a same-side, <=2.5%-page-height next line with a bare numeric
+    citation after a trailing semicolon can inherit the previous line's
+    final destination book. Preserve both printed rows and their stable IDs.
+    Ordinary new rows still reset the target book to this page's source book.
+    """
+    output=[]
+    for raw in rows:
+        current=canonicalize(raw,page_book,catalog_path)
+        previous=output[-1] if output else None
+        if previous and previous.get("kind")=="REFERENCE" and \
+                current.get("kind")=="REFERENCE" and \
+                previous.get("side") in ("L","R") and \
+                previous.get("side")==current.get("side") and \
+                str(previous.get("raw_line") or "").rstrip().endswith(";") and \
+                re.match(r"^\s*(?:[=↗↖→←]\s*)?\d{1,3}\s+\d{1,3}",
+                         str(current.get("raw_line") or "")):
+            y1,y2=previous.get("y_fraction"),current.get("y_fraction")
+            if (type(y1) in (float,int) and type(y2) in (float,int) and
+                    0 <= y2-y1 <= 0.025 and previous.get("references")):
+                inherited=previous["references"][-1].get("book_code")
+                # Only fill references that otherwise default to PAGE_BOOK.
+                if inherited and any(r.get("book_resolution")=="SOURCE_PAGE_BOOK"
+                                     for r in current.get("references",[])):
+                    current=canonicalize(raw,inherited,catalog_path)
+                    for ref in current.get("references",[]):
+                        if ref.get("book_resolution")=="SOURCE_PAGE_BOOK":
+                            ref["book_resolution"]="ADJACENT_SEMICOLON_ROW"
+                            ref["book_inheritance_source_row_id"]=previous.get("id")
+                            ref["interpretation_flags"]=sorted(set(
+                                ref.get("interpretation_flags",[])+[
+                                    "TARGET_BOOK_INHERITED_FROM_ADJACENT_SEMICOLON_ROW"]))
+                    current["wrapped_book_inheritance_from_row_id"]=previous.get("id")
+        output.append(current)
+    return output
