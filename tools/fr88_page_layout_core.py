@@ -118,52 +118,102 @@ def follows(previous,next_,limits,book):
     return False
 
 
-def make_intervals(markers,header,book,limits):
-    """Read left column top-to-bottom, followed by right column top-to-bottom."""
+def make_intervals(markers,header,book,limits,previous_page_last=None):
+    """Read left column then right, recovering the verse at each column's top.
+
+    The previous printed verse can legitimately occupy the top of a new
+    page/column without reprinting its number. It is NOT an exception.
+    A right-hand TOP RIGHT running header is the LAST verse, never the start.
+    """
     bycol,issues=normalize_markers(markers,limits,book)
-    sequence=[(s,m) for s in ("L","R") for m in bycol[s]]
-    # The left-hand-page running head gives the starting verse even if its
-    # small main-text verse marker isn't reprinted at y=0.
+    if not any(bycol.values()):
+        return {"L":[],"R":[]},issues+["NO_MAIN_TEXT_VERSE_MARKERS"]
+
+    def seed(side,chapter,verse,evidence,confidence="MEDIUM"):
+        return {
+            "column":side,"chapter":chapter,"verse":verse,
+            "y_fraction":0.0,"confidence":confidence,
+            "printed_marker":"","marker_type":"INFERRED_CONTINUATION",
+            "evidence":evidence,"synthetic":True
+        }
+
+    def next_verse(ch,verse):
+        cap=limits.get((book,ch))
+        if cap is not None and verse==cap:
+            return (ch+1,1)
+        return (ch,verse+1)
+
+    def preceding(first,prior):
+        """Prefer observed preceding-column/page boundary, otherwise -1."""
+        ch,v=first["chapter"],first["verse"]
+        candidate=None
+        if prior and positive(prior.get("chapter")) and positive(prior.get("verse")):
+            pch,pv=prior["chapter"],prior["verse"]
+            if (ch,v)==next_verse(pch,pv):
+                candidate=(pch,pv,"CONTINUES_PREVIOUS_BOUNDARY_VERSE")
+            elif (ch,v)==next_verse(*next_verse(pch,pv)):
+                ch2,v2=next_verse(pch,pv)
+                candidate=(ch2,v2,"FIRST_UNPRINTED_VERSE_AFTER_PREVIOUS_BOUNDARY")
+        if candidate is None and v>1:
+            candidate=(ch,v-1,"BEFORE_FIRST_VISIBLE_VERSE_MARKER")
+        return candidate
+
+    # FIRST_ON_PAGE belongs at upper-left and is an authoritative seed.
     if (header["boundary_role"]=="FIRST_ON_PAGE" and header["visible"]
             and positive(header["chapter"]) and positive(header["verse"])):
-        seed={"column":"L","chapter":header["chapter"],"verse":header["verse"],
-              "y_fraction":0.0,"confidence":header["scan_confidence"],
-              "printed_marker":str(header.get("raw") or ""),
-              "marker_type":"RUNNING_START","evidence":"top-left first verse",
-              "synthetic":True}
-        if bycol["L"] and bycol["L"][0]["y_fraction"]<=0.055 and (
-             bycol["L"][0]["chapter"],bycol["L"][0]["verse"])==(
-             seed["chapter"],seed["verse"]):
-            # A genuinely printed first verse marker is stronger evidence.
-            pass
+        ch,v=header["chapter"],header["verse"]
+        first=bycol["L"][0] if bycol["L"] else None
+        if first and (first["chapter"],first["verse"])==(ch,v):
+            # Move the FIRST boundary to 0 rather than duplicating this verse,
+            # which previously created false DISCONTINUOUS warnings.
+            first["y_fraction"]=0.0
+            first["synthetic"]=True
+            first["evidence"]="FIRST_ON_PAGE_HEADER_AND_VISIBLE_MARKER"
         else:
-            sequence.insert(0,("L",seed))
-    if not sequence:
-        return {"L":[],"R":[]},issues+["NO_MAIN_TEXT_VERSE_MARKERS"]
+            bycol["L"].insert(0,seed("L",ch,v,"FIRST_ON_PAGE_RUNNING_HEAD",
+                                     header["scan_confidence"]))
+    elif bycol["L"] and bycol["L"][0]["y_fraction"]>0.005:
+        top=preceding(bycol["L"][0],previous_page_last)
+        if top:
+            ch,v,evidence=top
+            bycol["L"].insert(0,seed("L",ch,v,evidence))
+            issues.append("PAGE_TOP_SOURCE_VERSE_RECOVERED")
+
+    # Source verse at TOP OF RIGHT COLUMN is often the end of the left
+    # column; do not default to the first numeral printed on the right.
+    if bycol["R"] and bycol["R"][0]["y_fraction"]>0.005:
+        left_last=bycol["L"][-1] if bycol["L"] else None
+        top=preceding(bycol["R"][0],left_last)
+        if top:
+            ch,v,evidence=top
+            bycol["R"].insert(0,seed("R",ch,v,evidence))
+            issues.append("COLUMN_TOP_SOURCE_VERSE_RECOVERED")
+
+    sequence=[(side,m) for side in ("L","R") for m in bycol[side]]
     intervals={"L":[],"R":[]}
     for i,(side,m) in enumerate(sequence):
-        # End is next printed verse start in the SAME column; a column
-        # transition ends at image bottom and resumes at top of next column.
         following=sequence[i+1][1] if i+1<len(sequence) else None
-        next_in_side=following if i+1<len(sequence) and sequence[i+1][0]==side else None
+        next_in_side=(following if i+1<len(sequence)
+                      and sequence[i+1][0]==side else None)
         y_end=next_in_side["y_fraction"] if next_in_side else 1.0
         if y_end<=m["y_fraction"]:
             issues.append("NONPOSITIVE_VERSE_INTERVAL")
             continue
         contiguous=follows(m,following,limits,book) if following else True
-        item={"column":side,"chapter":m["chapter"],"verse":m["verse"],
-              "y_start":m["y_fraction"],"y_end":y_end,
-              "start_marker_confidence":m["confidence"],
-              "from_header_seed":m["synthetic"],
-              "next_marker_contiguous":contiguous,
-              "next_marker_chapter":following["chapter"] if following else None,
-              "next_marker_verse":following["verse"] if following else None}
+        item={
+            "column":side,"chapter":m["chapter"],"verse":m["verse"],
+            "y_start":m["y_fraction"],"y_end":y_end,
+            "start_marker_confidence":m["confidence"],
+            "from_header_seed":m["synthetic"],
+            "source_seed_evidence":m.get("evidence",""),
+            "next_marker_contiguous":contiguous,
+            "next_marker_chapter":following["chapter"] if following else None,
+            "next_marker_verse":following["verse"] if following else None
+        }
         intervals[side].append(item)
         if following and not contiguous:
             issues.append("DISCONTINUOUS_VERSE_SEQUENCE")
-    # On a right-hand book page the printed top-right header describes the
-    # LAST verse, not the first. Validate the boundary; never use it to
-    # anchor the first verse at the top of the page.
+
     if (header["boundary_role"]=="LAST_ON_PAGE" and header["visible"]
             and positive(header["chapter"]) and positive(header["verse"])):
         last=sequence[-1][1]
@@ -171,6 +221,7 @@ def make_intervals(markers,header,book,limits):
                 last["chapter"],last["verse"]):
             issues.append("PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER")
     return intervals,sorted(set(issues))
+
 
 
 def choose_source(row,intervals):
