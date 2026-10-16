@@ -125,7 +125,7 @@ class BatchLog:
             self.errors+=1
             self.record("JBible batch error; see private VPS batch log","error")
             self.update("Batch error detected")
-            if s.startswith(("INCOMPLETE:","ERROR:")):
+            if s.startswith(("INCOMPLETE:","ERROR:","Traceback")) or "INTEGRATED OCR ERROR" in s:
                 self.finish(False)
             return
         if s.startswith("SUCCESS: PAGES 31..200 COMPLETE"):
