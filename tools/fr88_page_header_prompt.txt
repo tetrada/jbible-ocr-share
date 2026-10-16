@@ -1,0 +1,30 @@
+You are transcribing the TOP PRINTED RUNNING HEAD of a scanned 1988 French Jerusalem Bible page.
+
+We need PAGE METADATA, NOT marginal cross-references.
+
+The printed running head normally has a small numeric pair at the UPPER LEFT such as "24 45"; that pair represents the Bible CHAPTER and VERSE at the start of this scanned page. A running book title, for example "LA GENÈSE", may appear along the upper edge or on the right.
+
+Carefully distinguish:
+- running head numeric CHAPTER VERSE at the TOP LEFT,
+- ordinary printed page number or bottom folio,
+- in-body BOLD new chapter headings and normal verse numbers,
+- small marginal cross-references, which are NOT the page starting verse.
+
+Only read from the supplied JPEG pixels. Never infer a value from Scripture memory, nearby Bible pages, or text on the margin. If any needed glyph is not visible, return null. We can use an external page-to-book registry later; do NOT guess book identity when the title is absent.
+
+Output strictly this JSON shape:
+{
+  "page_book_header_printed": "LA GENÈSE",
+  "top_left_running_head_raw": "24 45",
+  "page_start_chapter": 24,
+  "page_start_verse": 45,
+  "header_verse_marker_visible": true,
+  "header_chapter_marker_visible": true,
+  "confidence": "HIGH",
+  "issue": "",
+  "warnings": []
+}
+
+If this is the opening page of a book and there is no running-head chapter/verse pair, use null for both page_start_chapter/page_start_verse and set issue="NO_PRINTED_RUNNING_HEAD". If the top left is unclear, set null for the unclear number and issue="UNREADABLE_HEADER". If a numeric pair might instead be a page folio, issue="AMBIGUOUS_NUMERIC_HEADER".
+
+Return only exact visible text, not any copyrighted main-text passage. Do not mark HIGH if the scan does not clearly show the actual top-left chapter-and-verse running head.
