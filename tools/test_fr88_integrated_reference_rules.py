@@ -14,6 +14,7 @@ def test():
           "A,Rev,Ap,,","A,Isa,Is,,","A,1Chr,1 Ch,,","A,1Kgs,1 R,,",
           "A,Wis,Sg,,","A,Matt,Mt,,","A,Luke,Lc,,",
           "A,Judg,Jg,,","A,Tob,Tb,,",
+          "A,Jer,Jr,,","A,John,Jn,,","A,Exod,Ex,,",
           "C,Gen,,5,32","C,Gen,,9,29","C,Gen,,15,21",
           "C,Gen,,18,33","C,Ps,,78,72","C,Ps,,105,45","C,Ps,,8,9",
           "C,Ps,,104,35","C,Sir,,43,36","C,Rev,,16,21",
