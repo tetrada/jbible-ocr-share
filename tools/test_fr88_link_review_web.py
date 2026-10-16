@@ -1,83 +1,99 @@
 #!/usr/bin/env python3
-"""Offline tests for shared authenticated review server's source-link extension.
+"""Offline test: every destination is its OWN reviewable source-to-target edge.
 
-Does not access scans, passwords, running HTTP server, Git or SQL.
+Does not access scanned pages, passwords, DeepSeek, SQL, or the live server.
 """
-import json
-from fr88_review_web_server import link_cases_from_export, validate_link_review
+from fr88_link_edges import build_cases, validate_decision, index_pages
+from fr88_review_web_server import Handler
 
 
 def test():
-    target=lambda ix,book,v: {
-        "row_id":"fr88v2:p0032:R:%02d"%ix,
-        "image_page":32,"side":"R","margin_y_fraction":0.25,
-        "margin_raw_line":"Qo 3 11; 7 2" if ix==3 else "Ps 104 24",
-        "target_segment_index":v,
-        "target":{"book_code":book,"chapter":3,"verse":11,"status":"PARSED"},
-        "source":{"source_book_code":"Gen","source_chapter":1,
-                  "source_verse":31,"source_marker_y_fraction":0.22,
-                  "scope":"VERSE","source_book_evidence":"HEADER_VISIBLE"},
-        "state":"PROPOSED_REVIEW_REQUIRED","source_reason":"PROPOSED_NEEDS_HUMAN_REVIEW",
-        "target_reason":"OCR_TARGET_NOT_SCAN_VERIFIED",
+    rid="fr88v2:p0032:R:03"
+    def entry(ix,vers):
+        return {
+            "row_id":rid,"image_page":32,"side":"R","margin_y_fraction":0.19,
+            "margin_raw_line":"Ps 78 47s; 105 32; Ap 16 21",
+            "target_segment_index":ix,
+            "target":{"book_code":"Ps" if ix<3 else "Rev","book_printed":"Ps" if ix<3 else "Ap",
+                      "chapter":78 if ix==1 else 105 if ix==2 else 16,
+                      "verse":vers,"literal":"78 47s" if ix==1 else "105 32" if ix==2 else "16 21",
+                      "status":"PARSED"},
+            "source":{"scope":"VERSE","source_chapter":1,"source_verse":3,
+                      "source_book_code":None,"source_book_evidence":"NOT_VISIBLE",
+                      "source_marker_y_fraction":0.17,"verse_marker_visible":True},
+            "state":"NEEDS_REVIEW","source_reason":"SOURCE_BOOK_NOT_PRINTED",
+            "target_reason":"OCR_TARGET_NOT_SCAN_VERIFIED"
+        }
+    export={
+        "progress":{"pages":[31,40],"margins_complete":20},
+        "proposed_links":[],
+        "review_queue":[entry(1,47),entry(2,32),entry(3,21)]
     }
-    doc={
-        "progress":{"margins_complete":20},
-        "proposed_links":[target(3,"Eccl",1),target(3,"Eccl",2),target(2,"Ps",1)],
-        "review_queue":[{
-           **target(4,"1Cor",1),
-           "state":"NEEDS_REVIEW","source_reason":"SOURCE_BOOK_NOT_PRINTED"
-        }],
-        "source_book_context_suggestions":[{
-           "margin_row_id":"fr88v2:p0032:R:04",
-           "suggested_source_book_code":"Gen",
-           "evidence_pages":[{"near_page":32,"book_code":"Gen"}]
-        }]
+    reg={
+        "schema":"jbible.fr88.page-book-registry.v1",
+        "page_ranges":[{"first_page":31,"last_page":40,"book_code":"Gen"}],
+        "single_pages":[{"page":102,"book_code":"Exod",
+                         "page_start_chapter":16,"page_start_verse":21}]
     }
-    grouped=link_cases_from_export(doc)
-    assert len(grouped)==3
-    assert grouped[0]["row_id"]=="fr88v2:p0032:R:02"
-    pair=next(c for c in grouped if c["row_id"]=="fr88v2:p0032:R:03")
-    assert len(pair["targets"])==2
-    cases={c["row_id"]:c for c in grouped}
-    request={
-        "row_id":pair["row_id"],
-        "choice":"correct",
-        "source":{"book_code":"Gen","source_book_basis":"PRINTED_THIS_PAGE",
-                  "scope":"VERSE","chapter":1,"verse":31,
+    index=index_pages(reg)
+    assert index[40]["source_book_code"]=="Gen"
+    assert index[102]["source_book_code"]=="Exod"
+    assert index[102]["page_start_chapter"]==16 and index[102]["page_start_verse"]==21
+    edges=build_cases(export,reg)
+    assert len(edges)==3, "One physical line with 3 references must create 3 edges"
+    assert len({e["link_id"] for e in edges})==3
+    assert len({e["row_id"] for e in edges})==1
+    assert all(e["book_for_review"]=="Gen" for e in edges)
+    assert [e["target_printed"] for e in edges]==["Ps 78 47s","Ps 105 32","Ap 16 21"]
+    assert all(e["verified"] is False and e["sql_ready"] is False for e in edges)
+    cases={e["link_id"]:e for e in edges}
+    first=edges[0]
+    payload={
+        "link_id":first["link_id"],"row_id":rid,
+        "target_segment_index":1,"choice":"confirm",
+        "source":{"book_code":"Gen","source_book_basis":"PAGE_REGISTRY",
+                  "scope":"VERSE","chapter":1,"verse":3,
                   "end_chapter":None,"end_verse":None},
-        "target_raw_line":"Qo 3 11; 7 2",
-        "checked":{"source_verse":True,"target_print":True,"alignment":True},
-        "notes":"Both main-text 31 and marginal reference visually checked"
+        "target_printed":"Ps 78 47s",
+        "checked":{"page_book":True,"source_marker":True,
+                   "target_print":True,"alignment":True},
+        "notes":"Checked printed source and printed destination"
     }
-    accepted=validate_link_review(request,cases)
-    assert accepted["scan_review_status"]=="VISUAL_LINK_REVIEW_CONFIRMED"
-    assert accepted["sql_ready"] is False
-    assert accepted["biblical_target_canonically_verified"] is False
-    for change in (
-        {"checked":{"source_verse":False,"target_print":True,"alignment":True}},
-        {"source":dict(request["source"],book_code="")},
-        {"source":dict(request["source"],source_book_basis="UNKNOWN")},
-        {"source":dict(request["source"],chapter=None)},
-        {"row_id":"fr88v2:p0099:L:01"},
-        {"source":dict(request["source"],verse=None)},
+    decision=validate_decision(payload,cases)
+    assert decision["scan_review_status"]=="VISUAL_EDGE_CONFIRMED"
+    assert decision["canonical_target_verified"] is False
+    assert decision["sql_ready"] is False
+    assert decision["target_segment_index"]==1
+    assert decision["target_printed"]=="Ps 78 47s"
+    for altered in (
+        {"checked":dict(payload["checked"],alignment=False)},
+        {"checked":dict(payload["checked"],page_book=False)},
+        {"source":dict(payload["source"],book_code="")},
+        {"source":dict(payload["source"],verse=None)},
+        {"target_segment_index":2},
+        {"link_id":"fr88v2:p9999:R:01/target01"}
     ):
-        bad=dict(request,**change)
         try:
-            validate_link_review(bad,cases)
+            validate_decision(dict(payload,**altered),cases)
         except ValueError:
             pass
         else:
-            raise AssertionError("Accepted invalid link review: "+str(change))
-    unknown=dict(request,choice="uncertain",checked={
-        "source_verse":False,"target_print":True,"alignment":False})
-    u=validate_link_review(unknown,cases)
-    assert u["scan_review_status"]=="PENDING_REVIEW"
-    assert u["checked"]["alignment"] is False
-    reject=dict(request,choice="reject")
-    r=validate_link_review(reject,cases)
-    assert r["scan_review_status"]=="VISUAL_LINK_REJECTED"
-    assert r["sql_writes"] is False
-    print("PASS: one row per margin, multi-segment targets, separate decisions, scan checks, no SQL")
+            raise AssertionError("Allowed invalid link decision: "+str(altered))
+    uncertain=dict(payload,choice="uncertain",checked={
+        "page_book":False,"source_marker":False,
+        "target_print":True,"alignment":False})
+    assert validate_decision(uncertain,cases)["scan_review_status"]=="PENDING"
+    clipped=dict(entry(1,47),target_reason="CUT_OFF_TARGET_FROM_HUMAN_REVIEW")
+    export["review_queue"]=[clipped]
+    clipped_cases={c["link_id"]:c for c in build_cases(export,reg)}
+    try:
+        validate_decision(payload,clipped_cases)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Confirmed an incomplete cut-off target")
+    assert hasattr(Handler,"do_GET") and hasattr(Handler,"do_POST")
+    print("PASS: 1 printed line => 3 independent 1:1 edge reviews; Genesis page map, page 102 Exodus, no SQL")
 
 
 if __name__=="__main__":
