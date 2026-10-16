@@ -9,7 +9,7 @@
     "pages_requested": 70,
     "percent": 100.0,
     "model": "deepseek-flash",
-    "new_paid_tasks_this_run": 50,
+    "new_paid_tasks_this_run": 0,
     "source_link_metrics": {
       "atomic_links": 818,
       "accepted": 797,
