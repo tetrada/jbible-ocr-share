@@ -775,6 +775,70 @@
       "sql_ready": false,
       "sql_writes": false,
       "reviewed_utc": "2026-10-16T09:39:16.070673+00:00"
+    },
+    "fr88i:p0159:R:002/target01": {
+      "edge_id": "fr88i:p0159:R:002/target01",
+      "image_page": 159,
+      "choice": "unresolved",
+      "cause": "OTHER_OR_UNKNOWN",
+      "source": {
+        "book_code": "Lev",
+        "chapter": 27,
+        "verse": 31,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Mal",
+        "chapter": 1,
+        "verse": 8,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": false,
+      "original_margin_text": "Ml 1 8",
+      "original_exception_reasons": [
+        "SOURCE_PAGE_SEQUENCE_IMPOSSIBLE_REWIND"
+      ],
+      "human_review_status": "UNRESOLVED",
+      "notes": "",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T17:08:42.442924+00:00"
+    },
+    "fr88i:p0159:R:003/target01": {
+      "edge_id": "fr88i:p0159:R:003/target01",
+      "image_page": 159,
+      "choice": "as_printed",
+      "cause": "OTHER_OR_UNKNOWN",
+      "source": {
+        "book_code": "Lev",
+        "chapter": 27,
+        "verse": 32,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Lev",
+        "chapter": 26,
+        "verse": 46,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "26 46",
+      "original_exception_reasons": [
+        "SOURCE_PAGE_SEQUENCE_IMPOSSIBLE_REWIND"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T17:08:52.169305+00:00"
     }
   }
 }
