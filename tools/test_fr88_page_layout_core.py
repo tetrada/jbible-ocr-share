@@ -81,6 +81,8 @@ def test():
         pass
     else:
         raise AssertionError("Incorrect top-right FIRST role accepted")
+    # Restore page 33's left-column verse geometry after testing page 24.
+    intervals,_=g.make_intervals(left,head,"Gen",limits)
     # If the source is visibly near a verse boundary, do not make the
     # user manually check thousands of 1-verse offsets. Keep one source
     # estimate plus nearby printed alternatives and a machine-readable flag.
