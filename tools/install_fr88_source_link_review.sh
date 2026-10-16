@@ -33,12 +33,13 @@ download tools/fr88_link_review_publish.sh publish_link_review.sh
 download fr88_source_links_pilot/source_link_results.json link_results.json
 
 # Validate the queue and all server endpoints before touching the live service.
-python3 -m py_compile "$STAGE/server.py" "$STAGE/test_link_review.py"
+python3 -m py_compile "$STAGE/server.py" "$STAGE/fr88_link_edges.py" "$STAGE/test_link_review.py"
 python3 - "$STAGE" <<'PY'
 import json,sys
 from pathlib import Path
 import importlib.util
 base=Path(sys.argv[1])
+sys.path.insert(0,str(base))
 document=json.loads((base/"link_results.json").read_text(encoding="utf-8"))
 progress=document.get("progress",{})
 assert progress.get("pages")==[31,40], "Review data must be pages 31-40"
