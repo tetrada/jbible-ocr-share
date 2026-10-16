@@ -77,6 +77,10 @@ for fn in sorted(src.glob("image_????.bundle.json")):
             "ocr_original_book_code",
             "confidence","scan_confidence","visible","raw")},
         "main_text_verse_markers":markers,
+        "book_transition_observations":[
+            {k:t.get(k) for k in ("column","y_fraction","book_code",
+                                  "printed_book_title","book_title")}
+            for t in j.get("in_page_book_transitions",[])],
         "source_to_destination_edges":edges,
         "summary":j.get("summary"),"page_flags":j.get("quality_flags"),
         "legacy_margin_comparison":j.get("legacy_margin_comparison")
