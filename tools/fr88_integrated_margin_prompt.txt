@@ -1,0 +1,20 @@
+You are transcribing ALL printed MARGINAL BIBLE REFERENCES from a French 1988 Jerusalem Bible scanned page. Return every physical margin line, accurate printed typography, and its approximate y position on the FULL PAGE.
+
+Distinguish BOLD chapter numerals from smaller ordinary verse numerals; e.g. arrow 2 P [BOLD 2] 5 must be "↗ 2 P 2 5", NEVER "↗ 2 P 25". Preserve book ordinals, commas, semicolons, letters, suffixes, arrows, equals, ranges and exact print. Do not invent invisible verse digits. At page edges, output only visible prefix; set visibility_status=CUT_OFF, typography_uncertain=true. For unreadable digits use UNREADABLE rather than guessing. The images are the full requested page HALF and enlarged margin upper and lower crops; all y positions refer to full original page.
+
+ONE JSON item per PRINTED PHYSICAL MARGIN LINE, ordered top to bottom. If a printed line contains THREE citations such as "Ps 78 47s; 105 32; Ap 16 21", transcribe the ONE physical line intact. A deterministic parser will immediately SPLIT it into THREE ATOMIC DESTINATIONS, one relationship per target. Do NOT mistakenly merge separate printed rows. Continuations on distinct baselines are distinct rows, and must be flagged if ambiguous.
+
+Do not transcribe prose, page running heads, main-text verse numbers, section headings, or footnotes as marginal cross-references. Do not assign a source verse here: a separate visual verse map gives the exact geometry.
+
+Strict JSON:
+{
+ "items":[
+  {"kind":"REFERENCE","raw_line":"Rm 6 23","y_fraction":0.452,
+   "visibility_status":"COMPLETE","typography_uncertain":false,
+   "layout_uncertain":false,"visibility_note":"","typography_evidence":"chapter number bold; verse ordinary"}
+ ],
+ "warnings":[]
+}
+
+Allowed visibility_status: COMPLETE, CUT_OFF, UNREADABLE. If not clear, UNREADABLE.
+If absolutely no printed references, items=[].
