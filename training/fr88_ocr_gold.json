@@ -167,11 +167,11 @@
       "image_page": 36,
       "side": "R",
       "row_id": "fr88v2:p0036:R:06",
-      "baseline_ocr_error": "",
+      "baseline_ocr_error": "27 (both v2 and v3); chapter 2 and verse 7 were visually merged",
       "corrected_raw_line": "2 7",
       "typography": "The user identified BOLD chapter 2 followed by regular verse 7; preserve the boundary '2 7', even when no book is written.",
       "inclusion": "prompt_example",
-      "note": "2 bold 7 regular Baseline OCR already reproduced the same character sequence; this is a scan-confirmed example, NOT a measured correction.",
+      "note": "Human verified printed bold 2 (chapter) and ordinary 7 (verse). Both v2 and v3 incorrectly read '27'; this IS a measured baseline OCR error, not a correct original reading.",
       "baseline_observation": "27"
     },
     {
