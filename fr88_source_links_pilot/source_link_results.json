@@ -6,15 +6,15 @@
       40
     ],
     "model": "deepseek-flash",
-    "margins_complete": 17,
+    "margins_complete": 20,
     "margins_expected": 20,
-    "progress_percent": 85.0,
-    "candidate_links_needing_review": 20,
-    "other_items_needing_review": 121,
-    "source_book_context_suggestions_count": 63,
+    "progress_percent": 100.0,
+    "candidate_links_needing_review": 23,
+    "other_items_needing_review": 128,
+    "source_book_context_suggestions_count": 64,
     "verified_links": 0,
     "sql_writes": false,
-    "updated_utc": "2026-10-16T05:34:24.759852+00:00"
+    "updated_utc": "2026-10-16T05:40:14.482001+00:00"
   },
   "proposed_links": [
     {
@@ -52,7 +52,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "29 Dieu dit : « Je vous donne toutes les herbes",
         "confidence": "HIGH",
-        "reason": "Printed verse 29 in chapter 1 aligns with this margin row on the same line."
+        "reason": "Printed verse 29 in chapter 1 aligns with this margin row on the same line.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -98,7 +99,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "31 Dieu vit tout ce qu’il avait fait",
         "confidence": "HIGH",
-        "reason": "Printed verse 31 marker is beside the margin row."
+        "reason": "Printed verse 31 marker is beside the margin row.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -144,7 +146,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "31 Dieu vit tout ce qu’il avait fait",
         "confidence": "MEDIUM",
-        "reason": "Grouped with Ps 104 24 next to verse 31."
+        "reason": "Grouped with Ps 104 24 next to verse 31.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -190,7 +193,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "31 Dieu vit tout ce qu’il avait fait",
         "confidence": "MEDIUM",
-        "reason": "Grouped with Ps 104 24 next to verse 31."
+        "reason": "Grouped with Ps 104 24 next to verse 31.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -239,7 +243,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "31 Dieu vit tout ce qu’il avait fait",
         "confidence": "MEDIUM",
-        "reason": "Grouped with the verse 31 margin cluster."
+        "reason": "Grouped with the verse 31 margin cluster.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -285,7 +290,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "31 Dieu vit tout ce qu’il avait fait",
         "confidence": "MEDIUM",
-        "reason": "Grouped with verse 31 margin references."
+        "reason": "Grouped with verse 31 margin references.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -331,7 +337,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "2 1 Ainsi furent achevés le ciel et la terre",
         "confidence": "HIGH",
-        "reason": "Printed chapter 2 verse 1 is beside the margin cluster Ex 20 8+."
+        "reason": "Printed chapter 2 verse 1 is beside the margin cluster Ex 20 8+.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -377,7 +384,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "2 Dieu conclut au septième jour l’ouvrage",
         "confidence": "HIGH",
-        "reason": "Printed verse 2 is beside this margin row."
+        "reason": "Printed verse 2 is beside this margin row.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -423,7 +431,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "2 Dieu conclut au septième jour l’ouvrage",
         "confidence": "MEDIUM",
-        "reason": "Grouped with the verse 2 margin cluster."
+        "reason": "Grouped with the verse 2 margin cluster.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -469,7 +478,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "4a Telle fut l’histoire du ciel et de la terre",
         "confidence": "HIGH",
-        "reason": "Printed verse 4a is beside Jr 10 11s."
+        "reason": "Printed verse 4a is beside Jr 10 11s.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -515,7 +525,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "L'homme appela sa femme « Ève », parce qu'elle fut la mère de tous les",
         "confidence": "HIGH",
-        "reason": "Ref 'Rm 5 12' refers to the common interpretation of Eve as the mother of the living in relation to human solidarity."
+        "reason": "Ref 'Rm 5 12' refers to the common interpretation of Eve as the mother of the living in relation to human solidarity.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -561,7 +572,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "22 Hénok marcha avec Dieu.",
         "confidence": "MEDIUM",
-        "reason": "Marginal notes Si 44 16; 49 14 align with the Hénok verses 21-24; source verse 22 where Hénok marche avec Dieu is visibly printed."
+        "reason": "Marginal notes Si 44 16; 49 14 align with the Hénok verses 21-24; source verse 22 where Hénok marche avec Dieu is visibly printed.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -607,7 +619,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "24 Hénok marcha avec Dieu, puis il disparut",
         "confidence": "MEDIUM",
-        "reason": "Reference 2 R 2 11 (Élie taken up) corresponds to verse 24 where Hénok disappears because God took him."
+        "reason": "Reference 2 R 2 11 (Élie taken up) corresponds to verse 24 where Hénok disappears because God took him.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -653,7 +666,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "24 Hénok marcha avec Dieu, puis il disparut",
         "confidence": "MEDIUM",
-        "reason": "Reference He 11 5 aligns with verse 24, Hénok's disappearance by faith."
+        "reason": "Reference He 11 5 aligns with verse 24, Hénok's disappearance by faith.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -699,7 +713,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "24 Hénok marcha avec Dieu, puis il disparut",
         "confidence": "MEDIUM",
-        "reason": "Reference Sg 4 10-11 aligns with verse 24 on Hénok's pleasing God."
+        "reason": "Reference Sg 4 10-11 aligns with verse 24 on Hénok's pleasing God.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -745,7 +760,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "3 Yahvé dit : « Que mon esprit ne soit pas indéfiniment responsable",
         "confidence": "HIGH",
-        "reason": "Reference Jn 3 5-6 aligns with verse 3 concerning Spirit and flesh."
+        "reason": "Reference Jn 3 5-6 aligns with verse 3 concerning Spirit and flesh.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -791,7 +807,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "3 Yahvé dit : « Que mon esprit ne soit pas indéfiniment responsable",
         "confidence": "HIGH",
-        "reason": "Reference Si 17 2 aligns with verse 3 about the number of man's days."
+        "reason": "Reference Si 17 2 aligns with verse 3 about the number of man's days.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -837,7 +854,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "3 Tout ce qui se meut et possède la vie vous servira",
         "confidence": "HIGH",
-        "reason": "Aligned with the printed verse 3 in the main text."
+        "reason": "Aligned with the printed verse 3 in the main text.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -883,7 +901,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "3 Tout ce qui se meut et possède la vie vous servira",
         "confidence": "HIGH",
-        "reason": "Aligned with printed verse 3, which discusses food."
+        "reason": "Aligned with printed verse 3, which discusses food.",
+        "assignment_missing_from_provider": null
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -929,7 +948,149 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "4 Seulement, vous ne mangerez pas la chair avec son âme",
         "confidence": "HIGH",
-        "reason": "Aligned with printed verse 4, which discusses blood."
+        "reason": "Aligned with printed verse 4, which discusses blood.",
+        "assignment_missing_from_provider": null
+      },
+      "state": "PROPOSED_REVIEW_REQUIRED",
+      "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
+      "target_reason": "OCR_TARGET_NOT_SCAN_VERIFIED",
+      "source_verified": false,
+      "target_verified": false,
+      "source_to_target_link_verified": false,
+      "sql_ready": false,
+      "reason": null
+    },
+    {
+      "row_id": "fr88v2:p0039:R:01",
+      "image_page": 39,
+      "side": "R",
+      "margin_y_fraction": 0.09,
+      "margin_raw_line": "Ex 20 13+",
+      "target_segment_index": 1,
+      "target": {
+        "book_code": "Exod",
+        "book_printed": "Ex",
+        "chapter": 20,
+        "verse": 13,
+        "end_chapter": null,
+        "end_verse": null,
+        "verses": null,
+        "type": "VERSE",
+        "suffix": "+",
+        "literal": "20 13+",
+        "status": "PARSED"
+      },
+      "source": {
+        "source_book_code": "Gen",
+        "source_book_printed": "Gn",
+        "source_book_evidence": "HEADER_VISIBLE",
+        "source_chapter": 9,
+        "source_verse": 5,
+        "source_end_chapter": 9,
+        "source_end_verse": 6,
+        "scope": "PASSAGE",
+        "source_marker_y_fraction": 0.09,
+        "verse_marker_visible": true,
+        "chapter_marker_visible": true,
+        "alignment_evidence": "VERSE_MARKER_AND_TEXT",
+        "source_text_evidence": "Qui verse le sang de l'homme, par l'homme aura son sang versé.",
+        "confidence": "MEDIUM",
+        "reason": "Main text verse markers 5 and 6 visible beside the marginal reference",
+        "assignment_missing_from_provider": false
+      },
+      "state": "PROPOSED_REVIEW_REQUIRED",
+      "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
+      "target_reason": "OCR_TARGET_NOT_SCAN_VERIFIED",
+      "source_verified": false,
+      "target_verified": false,
+      "source_to_target_link_verified": false,
+      "sql_ready": false,
+      "reason": null
+    },
+    {
+      "row_id": "fr88v2:p0039:R:04",
+      "image_page": 39,
+      "side": "R",
+      "margin_y_fraction": 0.3,
+      "margin_raw_line": "Si 44 18",
+      "target_segment_index": 1,
+      "target": {
+        "book_code": "Sir",
+        "book_printed": "Si",
+        "chapter": 44,
+        "verse": 18,
+        "end_chapter": null,
+        "end_verse": null,
+        "verses": null,
+        "type": "VERSE",
+        "suffix": "",
+        "literal": "44 18",
+        "status": "PARSED"
+      },
+      "source": {
+        "source_book_code": "Gen",
+        "source_book_printed": "Gn",
+        "source_book_evidence": "HEADER_VISIBLE",
+        "source_chapter": 9,
+        "source_verse": 11,
+        "source_end_chapter": 9,
+        "source_end_verse": 11,
+        "scope": "PASSAGE",
+        "source_marker_y_fraction": 0.32,
+        "verse_marker_visible": true,
+        "chapter_marker_visible": true,
+        "alignment_evidence": "VERSE_MARKER_AND_TEXT",
+        "source_text_evidence": "J'établis mon alliance avec vous : tout ce qui est",
+        "confidence": "MEDIUM",
+        "reason": "Main text verse marker 11 visible beside the marginal reference",
+        "assignment_missing_from_provider": false
+      },
+      "state": "PROPOSED_REVIEW_REQUIRED",
+      "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
+      "target_reason": "OCR_TARGET_NOT_SCAN_VERIFIED",
+      "source_verified": false,
+      "target_verified": false,
+      "source_to_target_link_verified": false,
+      "sql_ready": false,
+      "reason": null
+    },
+    {
+      "row_id": "fr88v2:p0040:R:02",
+      "image_page": 40,
+      "side": "R",
+      "margin_y_fraction": 0.43,
+      "margin_raw_line": "1 R 10 1+",
+      "target_segment_index": 1,
+      "target": {
+        "book_code": "1Kgs",
+        "book_printed": "1 R",
+        "chapter": 10,
+        "verse": 1,
+        "end_chapter": null,
+        "end_verse": null,
+        "verses": null,
+        "type": "VERSE",
+        "suffix": "+",
+        "literal": "10 1+",
+        "status": "PARSED"
+      },
+      "source": {
+        "source_book_code": "Gen",
+        "source_book_printed": "GENÈSE",
+        "source_book_evidence": "HEADER_VISIBLE",
+        "source_chapter": 10,
+        "source_verse": 8,
+        "source_end_chapter": null,
+        "source_end_verse": null,
+        "scope": "VERSE",
+        "source_marker_y_fraction": 0.43,
+        "verse_marker_visible": true,
+        "chapter_marker_visible": true,
+        "alignment_evidence": "VERSE_MARKER_AND_TEXT",
+        "source_text_evidence": "8 Kush engendra Nemrod i, qui fut le premier",
+        "confidence": "HIGH",
+        "reason": "The margin reference 1 R 10 1+ aligns with verse 8 of Genesis chapter 10, where the verse marker 8 is visible.",
+        "assignment_missing_from_provider": false
       },
       "state": "PROPOSED_REVIEW_REQUIRED",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -977,7 +1138,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "1 Au commencement, Dieu créa le ciel et la",
         "confidence": "MEDIUM",
-        "reason": "Margin row sits beside the first creation account's opening verse; bold chapter number 1 and verse marker 1 are printed."
+        "reason": "Margin row sits beside the first creation account's opening verse; bold chapter number 1 and verse marker 1 are printed.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1023,7 +1185,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "1 Au commencement, Dieu créa le ciel et la",
         "confidence": "MEDIUM",
-        "reason": "Bracket group aligned with the opening verse 1."
+        "reason": "Bracket group aligned with the opening verse 1.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1069,7 +1232,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "1 Au commencement, Dieu créa le ciel et la",
         "confidence": "MEDIUM",
-        "reason": "Bracket group aligned with the opening verse 1."
+        "reason": "Bracket group aligned with the opening verse 1.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1115,7 +1279,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "1 Au commencement, Dieu créa le ciel et la",
         "confidence": "MEDIUM",
-        "reason": "Bracket group aligned with verse 1 of creation account."
+        "reason": "Bracket group aligned with verse 1 of creation account.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1161,7 +1326,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "1 Au commencement, Dieu créa le ciel et la",
         "confidence": "MEDIUM",
-        "reason": "Bracket group aligned with verse 1."
+        "reason": "Bracket group aligned with verse 1.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1207,7 +1373,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "1 Au commencement, Dieu créa le ciel et la",
         "confidence": "MEDIUM",
-        "reason": "Bracket group aligned with verse 1."
+        "reason": "Bracket group aligned with verse 1.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1253,7 +1420,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "1 Au commencement, Dieu créa le ciel et la",
         "confidence": "MEDIUM",
-        "reason": "Bracket group aligned with verse 1."
+        "reason": "Bracket group aligned with verse 1.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1299,7 +1467,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "3 Dieu dit : « Que la lumière soit » et la",
         "confidence": "MEDIUM",
-        "reason": "Margin row aligns with printed verse marker 3 (God said let there be light)."
+        "reason": "Margin row aligns with printed verse marker 3 (God said let there be light).",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1345,7 +1514,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "3 Dieu dit : « Que la lumière soit » et la",
         "confidence": "MEDIUM",
-        "reason": "Aligned with verse 3."
+        "reason": "Aligned with verse 3.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1391,7 +1561,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "7 Dieu fit le firmament, qui sépara les eaux",
         "confidence": "MEDIUM",
-        "reason": "Margin row aligns with printed verse marker 7 about the firmament."
+        "reason": "Margin row aligns with printed verse marker 7 about the firmament.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1437,7 +1608,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "7 Dieu fit le firmament, qui sépara les eaux",
         "confidence": "MEDIUM",
-        "reason": "Aligned with verse 7."
+        "reason": "Aligned with verse 7.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1483,7 +1655,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "14 Dieu dit : « Qu'il y ait des luminaires au",
         "confidence": "MEDIUM",
-        "reason": "Row aligns with verse 14 of the creation account (chapter not printed on this half; chapter number inferred from context only, so chapter/verse proposal is approximate)."
+        "reason": "Row aligns with verse 14 of the creation account (chapter not printed on this half; chapter number inferred from context only, so chapter/verse proposal is approximate).",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1529,7 +1702,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "14 Dieu dit : « Qu'il y ait des luminaires au",
         "confidence": "MEDIUM",
-        "reason": "Same verse 14 block as row 01; marker visible but chapter not printed."
+        "reason": "Same verse 14 block as row 01; marker visible but chapter not printed.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1575,7 +1749,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "14 Dieu dit : « Qu'il y ait des luminaires au",
         "confidence": "MEDIUM",
-        "reason": "Same verse 14 block as row 01; marker visible but chapter not printed."
+        "reason": "Same verse 14 block as row 01; marker visible but chapter not printed.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1624,7 +1799,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "14 Dieu dit : « Qu'il y ait des luminaires au",
         "confidence": "MEDIUM",
-        "reason": "Same verse 14 block as row 01; marker visible but chapter not printed."
+        "reason": "Same verse 14 block as row 01; marker visible but chapter not printed.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1670,7 +1846,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "le grand luminaire comme puissance du",
         "confidence": "MEDIUM",
-        "reason": "Row aligns with verse 16 (two great luminaries); verse marker 16 visible but chapter number not printed."
+        "reason": "Row aligns with verse 16 (two great luminaries); verse marker 16 visible but chapter number not printed.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1716,7 +1893,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu dit : « Que les eaux grouillent",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 20 visible on the same line as the marginal reference."
+        "reason": "Verse marker 20 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1765,7 +1943,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu dit : « Faisons l'homme",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 26 visible on the same line as the marginal reference."
+        "reason": "Verse marker 26 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1811,7 +1990,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu dit : « Faisons l'homme",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 26 visible on the same line as the marginal reference."
+        "reason": "Verse marker 26 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1860,7 +2040,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu dit : « Faisons l'homme",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 26 visible on the same line as the marginal reference."
+        "reason": "Verse marker 26 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1906,7 +2087,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu dit : « Faisons l'homme",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 26 visible on the same line as the marginal reference."
+        "reason": "Verse marker 26 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1952,7 +2134,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu dit : « Faisons l'homme",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 26 visible on the same line as the marginal reference."
+        "reason": "Verse marker 26 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -1998,7 +2181,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu créa l'homme à son image",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 27 visible on the same line as the marginal reference."
+        "reason": "Verse marker 27 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2044,7 +2228,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu créa l'homme à son image",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 27 visible on the same line as the marginal reference."
+        "reason": "Verse marker 27 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2090,7 +2275,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu créa l'homme à son image",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 27 visible on the same line as the marginal reference."
+        "reason": "Verse marker 27 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2136,7 +2322,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu créa l'homme à son image",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 27 visible on the same line as the marginal reference."
+        "reason": "Verse marker 27 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2182,7 +2369,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu les bénit et leur dit : « Soyez féconds",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 28 visible on the same line as the marginal reference."
+        "reason": "Verse marker 28 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2228,7 +2416,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu les bénit et leur dit : « Soyez féconds",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 28 visible on the same line as the marginal reference."
+        "reason": "Verse marker 28 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2274,7 +2463,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu les bénit et leur dit : « Soyez féconds",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 28 visible on the same line as the marginal reference."
+        "reason": "Verse marker 28 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2320,7 +2510,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu les bénit et leur dit : « Soyez féconds",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 28 visible on the same line as the marginal reference."
+        "reason": "Verse marker 28 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2366,7 +2557,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu les bénit et leur dit : « Soyez féconds",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 28 visible on the same line as the marginal reference."
+        "reason": "Verse marker 28 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2412,7 +2604,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu les bénit et leur dit : « Soyez féconds",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 28 visible on the same line as the marginal reference."
+        "reason": "Verse marker 28 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2458,7 +2651,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Dieu les bénit et leur dit : « Soyez féconds",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 28 visible on the same line as the marginal reference."
+        "reason": "Verse marker 28 visible on the same line as the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2504,7 +2698,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "2 Dieu conclut au septième jour l’ouvrage",
         "confidence": "MEDIUM",
-        "reason": "Grouped with the verse 2 margin reference Ex 20 11s."
+        "reason": "Grouped with the verse 2 margin reference Ex 20 11s.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -2550,7 +2745,8 @@
         "alignment_evidence": "VISIBLE_PASSAGE_BOUNDARY",
         "source_text_evidence": "L’épreuve de la liberté. Le paradis",
         "confidence": "MEDIUM",
-        "reason": "The 11–24 reference sits beside the section heading spanning 2 4b–24, bounded by visible verse markers."
+        "reason": "The 11–24 reference sits beside the section heading spanning 2 4b–24, bounded by visible verse markers.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "POSITION_DISAGREEMENT_NEEDS_REVIEW",
@@ -2596,7 +2792,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "7 Alors Yahvé Dieu modela l’homme avec la glaise",
         "confidence": "HIGH",
-        "reason": "Printed verse 7 is beside the Qo 3 20s margin cluster."
+        "reason": "Printed verse 7 is beside the Qo 3 20s margin cluster.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "POSITION_DISAGREEMENT_NEEDS_REVIEW",
@@ -2642,7 +2839,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "7 Alors Yahvé Dieu modela l’homme avec la glaise",
         "confidence": "HIGH",
-        "reason": "Printed verse 7 is beside the Qo 3 20s margin cluster."
+        "reason": "Printed verse 7 is beside the Qo 3 20s margin cluster.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "POSITION_DISAGREEMENT_NEEDS_REVIEW",
@@ -2688,7 +2886,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "7 Alors Yahvé Dieu modela l’homme avec la glaise",
         "confidence": "MEDIUM",
-        "reason": "Grouped with the verse 7 margin references."
+        "reason": "Grouped with the verse 7 margin references.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "POSITION_DISAGREEMENT_NEEDS_REVIEW",
@@ -2734,7 +2933,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "7 Alors Yahvé Dieu modela l’homme avec la glaise",
         "confidence": "MEDIUM",
-        "reason": "Grouped with the verse 7 margin references."
+        "reason": "Grouped with the verse 7 margin references.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "POSITION_DISAGREEMENT_NEEDS_REVIEW",
@@ -2780,7 +2980,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "7 Alors Yahvé Dieu modela l’homme avec la glaise",
         "confidence": "MEDIUM",
-        "reason": "Grouped with the verse 7 margin references."
+        "reason": "Grouped with the verse 7 margin references.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "POSITION_DISAGREEMENT_NEEDS_REVIEW",
@@ -2826,7 +3027,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "7 Alors Yahvé Dieu modela l’homme avec la glaise",
         "confidence": "MEDIUM",
-        "reason": "Grouped with the verse 7 margin references."
+        "reason": "Grouped with the verse 7 margin references.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "POSITION_DISAGREEMENT_NEEDS_REVIEW",
@@ -2872,7 +3074,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "bres séduisants à voir et bons à manger, et l'arbre",
         "confidence": "LOW",
-        "reason": "No explicit verse marker alongside the row; the context belongs to chapter 2 but the precise source verse is not printed at this alignment."
+        "reason": "No explicit verse marker alongside the row; the context belongs to chapter 2 but the precise source verse is not printed at this alignment.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2918,7 +3121,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "de vie au milieu du jardin, et l'arbre de la",
         "confidence": "LOW",
-        "reason": "Row aligns with the tree-of-life phrase but no printed verse number is visible."
+        "reason": "Row aligns with the tree-of-life phrase but no printed verse number is visible.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -2964,7 +3168,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "de vie au milieu du jardin, et l'arbre de la",
         "confidence": "LOW",
-        "reason": "Row aligns with the tree-of-life phrase but no printed verse number is visible."
+        "reason": "Row aligns with the tree-of-life phrase but no printed verse number is visible.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3010,7 +3215,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "connaissance du bien et du mal. 10 Un fleuve sortait",
         "confidence": "MEDIUM",
-        "reason": "Printed verse marker 10 is visible beside the margin reference row."
+        "reason": "Printed verse marker 10 is visible beside the margin reference row.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3056,7 +3262,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "d'Éden pour arroser le jardin et de là il se divisait",
         "confidence": "MEDIUM",
-        "reason": "Printed verse marker 10 is visible beside the margin reference row."
+        "reason": "Printed verse marker 10 is visible beside the margin reference row.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3102,7 +3309,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "pour former quatre bras b. 11 Le premier s'appelle",
         "confidence": "MEDIUM",
-        "reason": "Printed verse marker 10 is visible beside the margin reference row."
+        "reason": "Printed verse marker 10 is visible beside the margin reference row.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3148,7 +3356,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "sance du bien et du mal d tu ne mangeras pas, car,",
         "confidence": "MEDIUM",
-        "reason": "Printed verse marker 17 is visible beside the margin reference row."
+        "reason": "Printed verse marker 17 is visible beside the margin reference row.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3194,7 +3403,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "encore du sol toutes les bêtes sauvages et tous les",
         "confidence": "MEDIUM",
-        "reason": "Printed verse marker 19 is visible above the margin reference row."
+        "reason": "Printed verse marker 19 is visible above the margin reference row.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3240,7 +3450,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Puis, de la côte qu'il avait tirée de l'homme",
         "confidence": "MEDIUM",
-        "reason": "Printed verse marker 22 is visible at the start of the line aligned with the marginal reference."
+        "reason": "Printed verse marker 22 is visible at the start of the line aligned with the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3286,7 +3497,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Yahvé Dieu façonna une femme",
         "confidence": "MEDIUM",
-        "reason": "Aligned with the same line as the previous row, verse 22."
+        "reason": "Aligned with the same line as the previous row, verse 22.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3332,7 +3544,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "C'est pourquoi l'homme quitte son père",
         "confidence": "MEDIUM",
-        "reason": "Printed verse marker 24 is visible beside the marginal reference."
+        "reason": "Printed verse marker 24 is visible beside the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3378,7 +3591,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "et s'attache à sa femme",
         "confidence": "MEDIUM",
-        "reason": "Aligned with verse 24, continuing the text."
+        "reason": "Aligned with verse 24, continuing the text.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3424,7 +3638,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "et ils deviennent une seule chair",
         "confidence": "MEDIUM",
-        "reason": "Aligned with the line containing the end of verse 24."
+        "reason": "Aligned with the line containing the end of verse 24.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3470,7 +3685,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Le serpent était le plus rusé de tous les ani-",
         "confidence": "MEDIUM",
-        "reason": "Chapter 3 and verse marker 1 are visible at the start of the section."
+        "reason": "Chapter 3 and verse marker 1 are visible at the start of the section.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3516,7 +3732,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "maux des champs que Yahvé Dieu avait faits",
         "confidence": "MEDIUM",
-        "reason": "Aligned with the continuation of verse 1."
+        "reason": "Aligned with the continuation of verse 1.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3562,7 +3779,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Il dit à la femme : « Alors, Dieu a dit",
         "confidence": "MEDIUM",
-        "reason": "Aligned with the line containing the end of verse 1."
+        "reason": "Aligned with the line containing the end of verse 1.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3608,7 +3826,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Il dit à la femme : « Alors, Dieu a dit",
         "confidence": "MEDIUM",
-        "reason": "Aligned with the line containing the end of verse 1."
+        "reason": "Aligned with the line containing the end of verse 1.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3654,7 +3873,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Vous ne mangerez pas de tous les arbres",
         "confidence": "MEDIUM",
-        "reason": "Aligned with the line containing text from verse 1."
+        "reason": "Aligned with the line containing text from verse 1.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3700,7 +3920,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Mais Dieu sait que, le jour où vous en mangerez",
         "confidence": "MEDIUM",
-        "reason": "Printed verse marker 5 is visible beside the marginal reference."
+        "reason": "Printed verse marker 5 is visible beside the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3746,7 +3967,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Mais Dieu sait que, le jour où vous en mangerez",
         "confidence": "MEDIUM",
-        "reason": "Printed verse marker 5 is visible beside the marginal reference."
+        "reason": "Printed verse marker 5 is visible beside the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3792,7 +4014,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "vos yeux s'ouvriront et vous serez comme des",
         "confidence": "MEDIUM",
-        "reason": "Aligned with the continuation of verse 5."
+        "reason": "Aligned with the continuation of verse 5.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3838,7 +4061,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "acquerir le discernement. Elle prit de son fruit",
         "confidence": "LOW",
-        "reason": "No book name, chapter number, or verse marker is visible in this half; only an unnumbered paragraph, so the source cannot be identified from printed evidence."
+        "reason": "No book name, chapter number, or verse marker is visible in this half; only an unnumbered paragraph, so the source cannot be identified from printed evidence.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3884,7 +4108,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "des pages. 8 Ils entendirent le pas de Yahve",
         "confidence": "LOW",
-        "reason": "Aligned to an unnumbered paragraph; no printed book/chapter context visible in this half to establish a source."
+        "reason": "Aligned to an unnumbered paragraph; no printed book/chapter context visible in this half to establish a source.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3930,7 +4155,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "13 Yahve Dieu dit a la femme",
         "confidence": "MEDIUM",
-        "reason": "Verse marker 13 is visible beside the margin row, but no book name is printed in this half, so book remains null."
+        "reason": "Verse marker 13 is visible beside the margin row, but no book name is printed in this half, so book remains null.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -3976,7 +4202,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "14 Alors Yahve Dieu dit au serpent : Parce qu",
         "confidence": "MEDIUM",
-        "reason": "Aligned to the block introduced by printed verse marker 14; book name not visible."
+        "reason": "Aligned to the block introduced by printed verse marker 14; book name not visible.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -4022,7 +4249,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "16 A la femme, il dit : Je multiplierai les peines",
         "confidence": "MEDIUM",
-        "reason": "Aligned to the verse introduced by printed marker 16; book name not visible in this half."
+        "reason": "Aligned to the verse introduced by printed marker 16; book name not visible in this half.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -4068,7 +4296,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "A l'homme, il dit : « Parce que tu as écouté la voix de ta femme",
         "confidence": "HIGH",
-        "reason": "The marginal reference '2 22+' aligns with the passage starting at verse 17 ('A l'homme, il dit...') where the curse and punishment of man is described."
+        "reason": "The marginal reference '2 22+' aligns with the passage starting at verse 17 ('A l'homme, il dit...') where the curse and punishment of man is described.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -4114,7 +4343,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "maudit soit le sol à cause de toi!",
         "confidence": "MEDIUM",
-        "reason": "Ref 'Rm 8 20' aligns with the verse 17 passage about the ground being cursed."
+        "reason": "Ref 'Rm 8 20' aligns with the verse 17 passage about the ground being cursed.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_ALIGNMENT_UNCONFIRMED",
@@ -4160,7 +4390,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "Il produira pour toi épines et chardons",
         "confidence": "MEDIUM",
-        "reason": "Ref 'Os 4 3+' aligns with verse 18 which describes the earth producing thorns and thistles."
+        "reason": "Ref 'Os 4 3+' aligns with verse 18 which describes the earth producing thorns and thistles.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_ALIGNMENT_UNCONFIRMED",
@@ -4206,7 +4437,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "mangeras l'herbe des champs.",
         "confidence": "MEDIUM",
-        "reason": "Ref 'Is 11 6+' aligns with the section regarding the food of the cursed ground."
+        "reason": "Ref 'Is 11 6+' aligns with the section regarding the food of the cursed ground.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_ALIGNMENT_UNCONFIRMED",
@@ -4252,7 +4484,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "A la sueur de ton visage",
         "confidence": "MEDIUM",
-        "reason": "Ref '2 7' aligns with the verse detail about the sweat of the face."
+        "reason": "Ref '2 7' aligns with the verse detail about the sweat of the face.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_ALIGNMENT_UNCONFIRMED",
@@ -4298,7 +4531,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "jusqu'à ce que tu retournes au sol,",
         "confidence": "MEDIUM",
-        "reason": "Ref 'Jb 34 15' aligns with the verse returning to the soil."
+        "reason": "Ref 'Jb 34 15' aligns with the verse returning to the soil.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_ALIGNMENT_UNCONFIRMED",
@@ -4344,7 +4578,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "puisque tu en fus tiré.",
         "confidence": "MEDIUM",
-        "reason": "Ref 'Ps 90 3; 104' aligns with the creation/return of man to dust."
+        "reason": "Ref 'Ps 90 3; 104' aligns with the creation/return of man to dust.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_ALIGNMENT_UNCONFIRMED",
@@ -4390,7 +4625,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "puisque tu en fus tiré.",
         "confidence": "MEDIUM",
-        "reason": "Ref 'Ps 90 3; 104' aligns with the creation/return of man to dust."
+        "reason": "Ref 'Ps 90 3; 104' aligns with the creation/return of man to dust.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_ALIGNMENT_UNCONFIRMED",
@@ -4436,7 +4672,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "Car tu es glaise et tu retourneras à la glaise.",
         "confidence": "MEDIUM",
-        "reason": "Ref 'Qo 3 20; 12 7' aligns with the phrase about returning to the clay."
+        "reason": "Ref 'Qo 3 20; 12 7' aligns with the phrase about returning to the clay.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_ALIGNMENT_UNCONFIRMED",
@@ -4482,7 +4719,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "Car tu es glaise et tu retourneras à la glaise.",
         "confidence": "MEDIUM",
-        "reason": "Ref 'Qo 3 20; 12 7' aligns with the phrase about returning to the clay."
+        "reason": "Ref 'Qo 3 20; 12 7' aligns with the phrase about returning to the clay.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_ALIGNMENT_UNCONFIRMED",
@@ -4528,7 +4766,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Puis Yähvé Dieu dit : « Voilà que l'homme est devenu comme l'un de nou",
         "confidence": "HIGH",
-        "reason": "Ref '2 17+' aligns with the verse about man becoming like God by knowing good and evil."
+        "reason": "Ref '2 17+' aligns with the verse about man becoming like God by knowing good and evil.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -4574,7 +4813,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Il bannit l'homme et il posta devant le jardin d'Éden les chérubins",
         "confidence": "HIGH",
-        "reason": "Ref 'Ap 22 1s,' aligns with the guarding of the tree of life."
+        "reason": "Ref 'Ap 22 1s,' aligns with the guarding of the tree of life.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -4620,7 +4860,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Le temps passa",
         "confidence": "MEDIUM",
-        "reason": "Margin row aligns with main text containing printed verse marker 3, but the chapter is not printed on this page."
+        "reason": "Margin row aligns with main text containing printed verse marker 3, but the chapter is not printed on this page.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -4666,7 +4907,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "et qu'Abel, de son côté",
         "confidence": "MEDIUM",
-        "reason": "Margin row aligns with main text containing printed verse marker 4."
+        "reason": "Margin row aligns with main text containing printed verse marker 4.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -4712,7 +4954,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Mais il n'agréa pas Caïn",
         "confidence": "MEDIUM",
-        "reason": "Margin row aligns with main text containing printed verse marker 5."
+        "reason": "Margin row aligns with main text containing printed verse marker 5.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -4758,7 +5001,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Si tu es bien disposé",
         "confidence": "MEDIUM",
-        "reason": "Margin row aligns with main text containing printed verse marker 7."
+        "reason": "Margin row aligns with main text containing printed verse marker 7.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -4804,7 +5048,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Cependant Caïn dit à son frère Abel",
         "confidence": "MEDIUM",
-        "reason": "Margin row aligns with main text containing printed verse marker 8."
+        "reason": "Margin row aligns with main text containing printed verse marker 8.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -4850,7 +5095,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Cependant Caïn dit à son frère Abel",
         "confidence": "MEDIUM",
-        "reason": "Margin row aligns with main text containing printed verse marker 8."
+        "reason": "Margin row aligns with main text containing printed verse marker 8.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -4896,7 +5142,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Écoute le sang de ton frère crier",
         "confidence": "MEDIUM",
-        "reason": "Margin row aligns with main text containing printed verse marker 10."
+        "reason": "Margin row aligns with main text containing printed verse marker 10.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -4942,7 +5189,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Écoute le sang de ton frère crier",
         "confidence": "MEDIUM",
-        "reason": "Margin row aligns with main text containing printed verse marker 10."
+        "reason": "Margin row aligns with main text containing printed verse marker 10.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -4988,7 +5236,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Écoute le sang de ton frère crier",
         "confidence": "MEDIUM",
-        "reason": "Margin row aligns with main text containing printed verse marker 10."
+        "reason": "Margin row aligns with main text containing printed verse marker 10.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5034,7 +5283,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "mais Lamek, septante-sept fois",
         "confidence": "LOW",
-        "reason": "The marginal reference Mt 18 22p is aligned beside the end of the Lamek song. The main-text verse numbers for this block are not visible in the scanned half (they are cut off at the left edge), so no printed verse marker can be confirmed fo"
+        "reason": "The marginal reference Mt 18 22p is aligned beside the end of the Lamek song. The main-text verse numbers for this block are not visible in the scanned half (they are cut off at the left edge), so no printed verse marker can be confirmed fo",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5080,7 +5330,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "premier à invoquer le nom de Yahvé",
         "confidence": "LOW",
-        "reason": "The marginal reference Ex 3 14+ is aligned beside the line 'premier à invoquer le nom de Yahvé'. The preceding verse number 26 is visible in the upper enlargement, but the verse marker for the line beside the marginal row (which belongs to "
+        "reason": "The marginal reference Ex 3 14+ is aligned beside the line 'premier à invoquer le nom de Yahvé'. The preceding verse number 26 is visible in the upper enlargement, but the verse marker for the line beside the marginal row (which belongs to ",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5126,7 +5377,8 @@
         "alignment_evidence": "CHAPTER_HEADING",
         "source_text_evidence": "Les Patriarches d'avant le déluge",
         "confidence": "HIGH",
-        "reason": "The marginal row 'Ch 1 1-4' sits on the line of the section heading 'Les Patriarches d'avant le déluge' which directly follows the large printed chapter numeral 5; no book name is printed in the visible portion of the left half."
+        "reason": "The marginal row 'Ch 1 1-4' sits on the line of the section heading 'Les Patriarches d'avant le déluge' which directly follows the large printed chapter numeral 5; no book name is printed in the visible portion of the left half.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_SCOPE_UNKNOWN",
@@ -5172,7 +5424,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "1 Voici le livret de la descendance d'Adam :",
         "confidence": "HIGH",
-        "reason": "The marginal row '1 26+' aligns vertically with the printed verse marker '1' attached to 'Voici le livret de la descendance d'Adam'."
+        "reason": "The marginal row '1 26+' aligns vertically with the printed verse marker '1' attached to 'Voici le livret de la descendance d'Adam'.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5218,7 +5471,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "12 Quand Qénân eut soixante-dix ans, il engendra",
         "confidence": "HIGH",
-        "reason": "The marginal row '4 17+' aligns vertically with the printed verse marker '12' starting the Qénân paragraph."
+        "reason": "The marginal row '4 17+' aligns vertically with the printed verse marker '12' starting the Qénân paragraph.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5264,7 +5518,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "22 Hénok marcha avec Dieu.",
         "confidence": "MEDIUM",
-        "reason": "Same marginal block as row 01, aligned with Hénok walking with God, verse 22."
+        "reason": "Same marginal block as row 01, aligned with Hénok walking with God, verse 22.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -5310,7 +5565,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "3 Yahvé dit : « Que mon esprit ne soit pas indéfiniment responsable",
         "confidence": "HIGH",
-        "reason": "Marginal row 27 aligns with verse 3 in chapter 6 where God says man's days will be 120 years."
+        "reason": "Marginal row 27 aligns with verse 3 in chapter 6 where God says man's days will be 120 years.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -5356,7 +5612,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "Nephilim étaient sur la terre en ces jours-là",
         "confidence": "LOW",
-        "reason": "Margin reference aligned with the opening verse of the chapter about the Nephilim; no printed verse number visible in the scanned line."
+        "reason": "Margin reference aligned with the opening verse of the chapter about the Nephilim; no printed verse number visible in the scanned line.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5402,7 +5659,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "5 Yahvé vit que la méchanceté de l'homme était",
         "confidence": "MEDIUM",
-        "reason": "Printed verse number 5 is visible beside the marginal reference."
+        "reason": "Printed verse number 5 is visible beside the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5448,7 +5706,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "5 Yahvé vit que la méchanceté de l'homme était",
         "confidence": "MEDIUM",
-        "reason": "Aligned near printed verse 5."
+        "reason": "Aligned near printed verse 5.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5494,7 +5753,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "5 Yahvé vit que la méchanceté de l'homme était",
         "confidence": "MEDIUM",
-        "reason": "Aligned near printed verse 5."
+        "reason": "Aligned near printed verse 5.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5540,7 +5800,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "5 Yahvé vit que la méchanceté de l'homme était",
         "confidence": "MEDIUM",
-        "reason": "Aligned near printed verse 5."
+        "reason": "Aligned near printed verse 5.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5586,7 +5847,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "5 Yahvé vit que la méchanceté de l'homme était",
         "confidence": "MEDIUM",
-        "reason": "Aligned near printed verse 5."
+        "reason": "Aligned near printed verse 5.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5632,7 +5894,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "6 Yahvé se repentit d'avoir fait l'homme sur la terre",
         "confidence": "MEDIUM",
-        "reason": "Printed verse number 6 visible beside the marginal reference."
+        "reason": "Printed verse number 6 visible beside the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5681,7 +5944,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "7 Et Yahvé dit : « Je vais effacer de la surface",
         "confidence": "MEDIUM",
-        "reason": "Printed verse number 7 is visible beside the marginal reference."
+        "reason": "Printed verse number 7 is visible beside the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5727,7 +5991,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "7 Et Yahvé dit : « Je vais effacer de la surface",
         "confidence": "MEDIUM",
-        "reason": "Aligned near printed verse 7."
+        "reason": "Aligned near printed verse 7.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5773,7 +6038,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "7 Et Yahvé dit : « Je vais effacer de la surface",
         "confidence": "MEDIUM",
-        "reason": "Aligned near printed verse 7."
+        "reason": "Aligned near printed verse 7.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5819,7 +6085,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "8 Mais Noé avait trouvé grâce aux yeux de Yahvé",
         "confidence": "MEDIUM",
-        "reason": "Printed verse number 8 is visible beside the marginal reference."
+        "reason": "Printed verse number 8 is visible beside the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5865,7 +6132,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "9 Voici l'histoire de Noé : Noé était un homme juste",
         "confidence": "MEDIUM",
-        "reason": "Printed verse number 9 is visible beside the marginal reference."
+        "reason": "Printed verse number 9 is visible beside the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5911,7 +6179,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "11 La terre se pervertit au regard de Dieu",
         "confidence": "MEDIUM",
-        "reason": "Printed verse number 11 is visible beside the marginal reference."
+        "reason": "Printed verse number 11 is visible beside the marginal reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -5957,7 +6226,8 @@
         "alignment_evidence": "APPROXIMATE_POSITION_ONLY",
         "source_text_evidence": "ce sont les héros du temps jadis",
         "confidence": "LOW",
-        "reason": "The marginal row aligns with the end of a section (last lines of the preceding column/catchword) without a printed verse marker visible."
+        "reason": "The marginal row aligns with the end of a section (last lines of the preceding column/catchword) without a printed verse marker visible.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -6003,7 +6273,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "« Pour moi, je vais amener le déluge",
         "confidence": "MEDIUM",
-        "reason": "The marginal row aligns with the verse marked 17 at the start of the paragraph."
+        "reason": "The marginal row aligns with the verse marked 17 at the start of the paragraph.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -6049,7 +6320,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Mais j’établirai mon alliance",
         "confidence": "MEDIUM",
-        "reason": "The marginal row aligns with the verse marked 18."
+        "reason": "The marginal row aligns with the verse marked 18.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -6095,7 +6367,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Yahvé dit à Noé : « Entre dans l’arche",
         "confidence": "MEDIUM",
-        "reason": "The marginal row aligns with the first verse of chapter 7."
+        "reason": "The marginal row aligns with the first verse of chapter 7.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -6141,7 +6414,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "Yahvé dit à Noé : « Entre dans l’arche",
         "confidence": "MEDIUM",
-        "reason": "The marginal row aligns with the first verse of chapter 7."
+        "reason": "The marginal row aligns with the first verse of chapter 7.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -6187,7 +6461,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "De tous les animaux purs, tu prendras sept paires",
         "confidence": "MEDIUM",
-        "reason": "The marginal row aligns with verse 2 of chapter 7."
+        "reason": "The marginal row aligns with verse 2 of chapter 7.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -6233,7 +6508,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "11 En l'an six cent de la vie de Noé, le second",
         "confidence": "LOW",
-        "reason": "Margin row aligns with the line beginning the printed verse 11 ('En l'an six cent...'). No running header or book title is visible on this half, so chapter/book cannot be verified from the page itself."
+        "reason": "Margin row aligns with the line beginning the printed verse 11 ('En l'an six cent...'). No running header or book title is visible on this half, so chapter/book cannot be verified from the page itself.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -6279,7 +6555,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "rent toutes les sources du grand abîme et les éclus",
         "confidence": "LOW",
-        "reason": "Row sits within the verse 11 passage that immediately follows the verse marker 11 above; book/chapter not printed on this half."
+        "reason": "Row sits within the verse 11 passage that immediately follows the verse marker 11 above; book/chapter not printed on this half.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -6325,7 +6602,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "du ciel s'ouvrirent b. 12 La pluie tomba sur la ter",
         "confidence": "LOW",
-        "reason": "Row aligns with the continuation of verse 11 and start of verse 12; no book/chapter header visible."
+        "reason": "Row aligns with the continuation of verse 11 and start of verse 12; no book/chapter header visible.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -6371,7 +6649,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "pendant quarante jours et quarante nuits.",
         "confidence": "LOW",
-        "reason": "Row aligns with the printed verse 12 line 'pendant quarante jours et quarante nuits'; book/chapter not visible on this half."
+        "reason": "Row aligns with the printed verse 12 line 'pendant quarante jours et quarante nuits'; book/chapter not visible on this half.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "SOURCE_BOOK_NOT_PRINTED",
@@ -6417,7 +6696,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "22 Tant que durera la terre, semailles et moisson",
         "confidence": "HIGH",
-        "reason": "Printed verse number 22 is visible beside the margin reference row."
+        "reason": "Printed verse number 22 is visible beside the margin reference row.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "POSITION_DISAGREEMENT_NEEDS_REVIEW",
@@ -6463,7 +6743,8 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "9 1 Dieu bénit Noé et ses fils et il leur dit :",
         "confidence": "HIGH",
-        "reason": "Printed chapter 9 and verse 1 are visible beside the margin reference."
+        "reason": "Printed chapter 9 and verse 1 are visible beside the margin reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
@@ -6509,11 +6790,341 @@
         "alignment_evidence": "VERSE_MARKER_AND_TEXT",
         "source_text_evidence": "3 Tout ce qui se meut et possède la vie vous servira",
         "confidence": "HIGH",
-        "reason": "Printed verse number 3 is visible beside the margin reference."
+        "reason": "Printed verse number 3 is visible beside the margin reference.",
+        "assignment_missing_from_provider": null
       },
       "state": "NEEDS_REVIEW",
       "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
       "target_reason": "TARGET_INTERPRETATION_UNRESOLVED",
+      "source_verified": false,
+      "target_verified": false,
+      "source_to_target_link_verified": false,
+      "sql_ready": false,
+      "reason": null
+    },
+    {
+      "row_id": "fr88v2:p0039:R:02",
+      "image_page": 39,
+      "side": "R",
+      "margin_y_fraction": 0.16,
+      "margin_raw_line": "1 26+",
+      "target_segment_index": 1,
+      "target": {
+        "book_code": null,
+        "book_printed": null,
+        "chapter": 1,
+        "verse": 26,
+        "end_chapter": null,
+        "end_verse": null,
+        "verses": null,
+        "type": "VERSE",
+        "suffix": "+",
+        "literal": "1 26+",
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      "source": {
+        "source_book_code": "Gen",
+        "source_book_printed": "Gn",
+        "source_book_evidence": "HEADER_VISIBLE",
+        "source_chapter": 9,
+        "source_verse": 7,
+        "source_end_chapter": null,
+        "source_end_verse": null,
+        "scope": "VERSE",
+        "source_marker_y_fraction": 0.17,
+        "verse_marker_visible": true,
+        "chapter_marker_visible": true,
+        "alignment_evidence": "VERSE_MARKER_AND_TEXT",
+        "source_text_evidence": "Pour vous, soyez féconds, multipliez, pullulez",
+        "confidence": "MEDIUM",
+        "reason": "Main text verse marker 7 visible beside the marginal reference",
+        "assignment_missing_from_provider": false
+      },
+      "state": "NEEDS_REVIEW",
+      "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
+      "target_reason": "TARGET_INTERPRETATION_UNRESOLVED",
+      "source_verified": false,
+      "target_verified": false,
+      "source_to_target_link_verified": false,
+      "sql_ready": false,
+      "reason": null
+    },
+    {
+      "row_id": "fr88v2:p0039:R:03",
+      "image_page": 39,
+      "side": "R",
+      "margin_y_fraction": 0.22,
+      "margin_raw_line": "6 18+",
+      "target_segment_index": 1,
+      "target": {
+        "book_code": null,
+        "book_printed": null,
+        "chapter": 6,
+        "verse": 18,
+        "end_chapter": null,
+        "end_verse": null,
+        "verses": null,
+        "type": "VERSE",
+        "suffix": "+",
+        "literal": "6 18+",
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      "source": {
+        "source_book_code": "Gen",
+        "source_book_printed": "Gn",
+        "source_book_evidence": "HEADER_VISIBLE",
+        "source_chapter": 9,
+        "source_verse": 9,
+        "source_end_chapter": null,
+        "source_end_verse": null,
+        "scope": "VERSE",
+        "source_marker_y_fraction": 0.24,
+        "verse_marker_visible": true,
+        "chapter_marker_visible": true,
+        "alignment_evidence": "VERSE_MARKER_AND_TEXT",
+        "source_text_evidence": "Voici que j'établis mon alliance avec vous",
+        "confidence": "MEDIUM",
+        "reason": "Main text verse marker 9 visible beside the marginal reference",
+        "assignment_missing_from_provider": false
+      },
+      "state": "NEEDS_REVIEW",
+      "source_reason": "PROPOSED_NEEDS_HUMAN_REVIEW",
+      "target_reason": "TARGET_INTERPRETATION_UNRESOLVED",
+      "source_verified": false,
+      "target_verified": false,
+      "source_to_target_link_verified": false,
+      "sql_ready": false,
+      "reason": null
+    },
+    {
+      "row_id": "fr88v2:p0039:R:05",
+      "image_page": 39,
+      "side": "R",
+      "margin_y_fraction": 0.31,
+      "margin_raw_line": "Is 54 9-10",
+      "target_segment_index": 1,
+      "target": {
+        "book_code": "Isa",
+        "book_printed": "Is",
+        "chapter": 54,
+        "verse": 9,
+        "end_chapter": null,
+        "end_verse": 10,
+        "verses": null,
+        "type": "VERSE_RANGE",
+        "suffix": "",
+        "literal": "54 9-10",
+        "status": "PARSED"
+      },
+      "source": {
+        "source_book_code": null,
+        "source_book_printed": null,
+        "source_book_evidence": "NOT_VISIBLE",
+        "source_chapter": null,
+        "source_verse": null,
+        "source_end_chapter": null,
+        "source_end_verse": null,
+        "scope": "UNKNOWN",
+        "source_marker_y_fraction": null,
+        "verse_marker_visible": false,
+        "chapter_marker_visible": false,
+        "alignment_evidence": "UNKNOWN",
+        "source_text_evidence": "",
+        "confidence": "LOW",
+        "reason": "DeepSeek omitted this marginal row; human review required",
+        "assignment_missing_from_provider": true
+      },
+      "state": "NEEDS_REVIEW",
+      "source_reason": "SOURCE_ASSIGNMENT_MISSING",
+      "target_reason": "OCR_TARGET_NOT_SCAN_VERIFIED",
+      "source_verified": false,
+      "target_verified": false,
+      "source_to_target_link_verified": false,
+      "sql_ready": false,
+      "reason": null
+    },
+    {
+      "row_id": "fr88v2:p0039:R:06",
+      "image_page": 39,
+      "side": "R",
+      "margin_y_fraction": 0.38,
+      "margin_raw_line": "Ez 1 28",
+      "target_segment_index": 1,
+      "target": {
+        "book_code": "Ezek",
+        "book_printed": "Ez",
+        "chapter": 1,
+        "verse": 28,
+        "end_chapter": null,
+        "end_verse": null,
+        "verses": null,
+        "type": "VERSE",
+        "suffix": "",
+        "literal": "1 28",
+        "status": "PARSED"
+      },
+      "source": {
+        "source_book_code": null,
+        "source_book_printed": null,
+        "source_book_evidence": "NOT_VISIBLE",
+        "source_chapter": null,
+        "source_verse": null,
+        "source_end_chapter": null,
+        "source_end_verse": null,
+        "scope": "UNKNOWN",
+        "source_marker_y_fraction": null,
+        "verse_marker_visible": false,
+        "chapter_marker_visible": false,
+        "alignment_evidence": "UNKNOWN",
+        "source_text_evidence": "",
+        "confidence": "LOW",
+        "reason": "DeepSeek omitted this marginal row; human review required",
+        "assignment_missing_from_provider": true
+      },
+      "state": "NEEDS_REVIEW",
+      "source_reason": "SOURCE_ASSIGNMENT_MISSING",
+      "target_reason": "OCR_TARGET_NOT_SCAN_VERIFIED",
+      "source_verified": false,
+      "target_verified": false,
+      "source_to_target_link_verified": false,
+      "sql_ready": false,
+      "reason": null
+    },
+    {
+      "row_id": "fr88v2:p0039:R:07",
+      "image_page": 39,
+      "side": "R",
+      "margin_y_fraction": 0.39,
+      "margin_raw_line": "Ap 4 3",
+      "target_segment_index": 1,
+      "target": {
+        "book_code": "Rev",
+        "book_printed": "Ap",
+        "chapter": 4,
+        "verse": 3,
+        "end_chapter": null,
+        "end_verse": null,
+        "verses": null,
+        "type": "VERSE",
+        "suffix": "",
+        "literal": "4 3",
+        "status": "PARSED"
+      },
+      "source": {
+        "source_book_code": null,
+        "source_book_printed": null,
+        "source_book_evidence": "NOT_VISIBLE",
+        "source_chapter": null,
+        "source_verse": null,
+        "source_end_chapter": null,
+        "source_end_verse": null,
+        "scope": "UNKNOWN",
+        "source_marker_y_fraction": null,
+        "verse_marker_visible": false,
+        "chapter_marker_visible": false,
+        "alignment_evidence": "UNKNOWN",
+        "source_text_evidence": "",
+        "confidence": "LOW",
+        "reason": "DeepSeek omitted this marginal row; human review required",
+        "assignment_missing_from_provider": true
+      },
+      "state": "NEEDS_REVIEW",
+      "source_reason": "SOURCE_ASSIGNMENT_MISSING",
+      "target_reason": "OCR_TARGET_NOT_SCAN_VERIFIED",
+      "source_verified": false,
+      "target_verified": false,
+      "source_to_target_link_verified": false,
+      "sql_ready": false,
+      "reason": null
+    },
+    {
+      "row_id": "fr88v2:p0040:L:01",
+      "image_page": 40,
+      "side": "L",
+      "margin_y_fraction": 0.27,
+      "margin_raw_line": "10 6",
+      "target_segment_index": 1,
+      "target": {
+        "book_code": null,
+        "book_printed": null,
+        "chapter": 10,
+        "verse": 6,
+        "end_chapter": null,
+        "end_verse": null,
+        "verses": null,
+        "type": "VERSE",
+        "suffix": "",
+        "literal": "10 6",
+        "status": "NEEDS_BOOK_OR_LAYOUT_CONTEXT"
+      },
+      "source": {
+        "source_book_code": null,
+        "source_book_printed": null,
+        "source_book_evidence": "NOT_VISIBLE",
+        "source_chapter": 9,
+        "source_verse": 18,
+        "source_end_chapter": null,
+        "source_end_verse": null,
+        "scope": "VERSE",
+        "source_marker_y_fraction": 0.24,
+        "verse_marker_visible": true,
+        "chapter_marker_visible": true,
+        "alignment_evidence": "VERSE_MARKER_AND_TEXT",
+        "source_text_evidence": "Sem, Cham et Japhet; Cham est le père de Canaan",
+        "confidence": "MEDIUM",
+        "reason": "The marginal row '10 6' is vertically aligned with the line of main text containing the beginning of verse 18 ('Sem, Cham et Japhet...'). A visible chapter number '9' and verse number '18' are printed in the main text. However, no book name",
+        "assignment_missing_from_provider": false
+      },
+      "state": "NEEDS_REVIEW",
+      "source_reason": "SOURCE_BOOK_NOT_PRINTED",
+      "target_reason": "TARGET_INTERPRETATION_UNRESOLVED",
+      "source_verified": false,
+      "target_verified": false,
+      "source_to_target_link_verified": false,
+      "sql_ready": false,
+      "reason": null
+    },
+    {
+      "row_id": "fr88v2:p0040:R:01",
+      "image_page": 40,
+      "side": "R",
+      "margin_y_fraction": 0.17,
+      "margin_raw_line": "1 Ch 1 5-23",
+      "target_segment_index": 1,
+      "target": {
+        "book_code": "1Chr",
+        "book_printed": "1 Ch",
+        "chapter": 1,
+        "verse": 5,
+        "end_chapter": null,
+        "end_verse": 23,
+        "verses": null,
+        "type": "VERSE_RANGE",
+        "suffix": "",
+        "literal": "1 5-23",
+        "status": "PARSED"
+      },
+      "source": {
+        "source_book_code": "Gen",
+        "source_book_printed": "GENÈSE",
+        "source_book_evidence": "HEADER_VISIBLE",
+        "source_chapter": 10,
+        "source_verse": 1,
+        "source_end_chapter": null,
+        "source_end_verse": null,
+        "scope": "CHAPTER",
+        "source_marker_y_fraction": 0.17,
+        "verse_marker_visible": true,
+        "chapter_marker_visible": true,
+        "alignment_evidence": "VERSE_MARKER_AND_TEXT",
+        "source_text_evidence": "10 1 Voici la descendance des fils de Noé, Sem,",
+        "confidence": "HIGH",
+        "reason": "The margin reference 1 Ch 1 5-23 aligns with the beginning of Genesis chapter 10, where the bold chapter number 10 and verse marker 1 are visible.",
+        "assignment_missing_from_provider": false
+      },
+      "state": "NEEDS_REVIEW",
+      "source_reason": "SOURCE_SCOPE_UNKNOWN",
+      "target_reason": "OCR_TARGET_NOT_SCAN_VERIFIED",
       "source_verified": false,
       "target_verified": false,
       "source_to_target_link_verified": false,
@@ -8162,6 +8773,39 @@
       "observed_verse": 12,
       "suggested_source_book_code": "Gen",
       "evidence_pages": [
+        {
+          "near_page": 39,
+          "book_code": "Gen",
+          "printed_header_evidence": true,
+          "distance_pages": 1,
+          "neighbor_visible_chapters": [
+            8,
+            9
+          ]
+        }
+      ],
+      "suggestion_status": "ADJACENT_PRINTED_HEADER_CONTEXT_UNVERIFIED",
+      "review_required": true,
+      "link_authorized": false,
+      "warning": "A nearby page's visible header may describe a different book; manually verify the transition."
+    },
+    {
+      "margin_row_id": "fr88v2:p0040:L:01",
+      "image_page": 40,
+      "side": "L",
+      "observed_chapter": 9,
+      "observed_verse": 18,
+      "suggested_source_book_code": "Gen",
+      "evidence_pages": [
+        {
+          "near_page": 40,
+          "book_code": "Gen",
+          "printed_header_evidence": true,
+          "distance_pages": 0,
+          "neighbor_visible_chapters": [
+            10
+          ]
+        },
         {
           "near_page": 39,
           "book_code": "Gen",
