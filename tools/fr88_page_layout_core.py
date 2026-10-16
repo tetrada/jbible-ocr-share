@@ -135,6 +135,66 @@ def follows(previous,next_,limits,book):
     return False
 
 
+def repair_preceding_page_chapter_slip(markers,book,limits,previous_page_last):
+    """Repair a well-constrained whole-prefix OCR CHAPTER typo.
+
+    Example actual page 51: preceding page ends Gen 21:23; next page's
+    LEFT body has 20:24..20:34 (impossible: Gen20 has 18 verses), followed
+    by 22:1. The only locally valid, continuous reading is Gen 21:24..34.
+
+    Require BOTH neighboring chapter anchors and chapter-specific caps.
+    Never infer from a lone suspect number, and keep original OCR checkpoint.
+    """
+    fixed=[dict(m) for m in markers]
+    issues=[]
+    if not book or not previous_page_last:
+        return fixed,issues
+    first_col=sorted((m for m in fixed if m.get("column")=="L" and
+                       isinstance(m.get("y_fraction"),(int,float))),
+                     key=lambda m:m["y_fraction"])
+    if len(first_col)<4:
+        return fixed,issues
+    first=first_col[0]
+    ch=first.get("chapter")
+    verse=first.get("verse")
+    pch=previous_page_last.get("chapter")
+    pv=previous_page_last.get("verse")
+    if (type(ch) is not int or type(verse) is not int or
+            type(pch) is not int or type(pv) is not int or
+            ch+1!=pch or verse!=pv+1):
+        return fixed,issues
+    group=[]
+    for marker in first_col:
+        if marker.get("chapter")!=ch:
+            break
+        group.append(marker)
+    if len(group)<3 or len(group)>=len(first_col):
+        return fixed,issues
+    following=first_col[len(group)]
+    if following.get("chapter")!=pch+1 or following.get("verse")!=1:
+        return fixed,issues
+    erroneous_cap=limits.get((book,ch))
+    corrected_cap=limits.get((book,pch))
+    if erroneous_cap is None or corrected_cap is None:
+        return fixed,issues
+    verses=[m.get("verse") for m in group]
+    if (any(type(v) is not int or not 1<=v<=corrected_cap for v in verses)
+            or not any(v>erroneous_cap for v in verses)
+            or verses!=sorted(verses)):
+        return fixed,issues
+    ids=set(id(m) for m in group)
+    # Work with the originals' chronological identity via their column/y/verse
+    # because first_col references the copied fixed dict objects.
+    for marker in fixed:
+        if id(marker) in ids:
+            marker["ocr_original_chapter"]=ch
+            marker["chapter"]=pch
+            marker["chapter_ocr_repair_evidence"]=(
+                "PRECEDING_PAGE_LAST_VERSE_AND_NEXT_CHAPTER_FIRST_VERSE")
+    issues.append("BODY_CHAPTER_OCR_SLIP_REPAIRED_BY_ADJACENT_PAGE")
+    return fixed,issues
+
+
 def make_intervals(markers,header,book,limits,previous_page_last=None):
     """Read left column then right, recovering the verse at each column's top.
 
