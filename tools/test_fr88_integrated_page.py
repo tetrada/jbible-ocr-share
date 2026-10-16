@@ -105,6 +105,24 @@ def test():
                 {"book_code":None,"book_title":None,"scan_confidence":"LOW"},
                 {},{"book_code":"Exod"})
             assert next_book=="Exod"
+            assert m.is_book_opening_title_only(
+                [{"column":"L","y_fraction":.1,"book_code":None}],
+                "Exod",{"header_position":"NONE"},
+                [{"column":"L","chapter":1,"verse":1,"y_fraction":.27}],
+                {"book_code":"Gen"})
+            assert not m.is_book_opening_title_only(
+                [{"column":"L","y_fraction":.35,"book_code":None}],
+                "Exod",{"header_position":"NONE"},
+                [{"column":"L","chapter":1,"verse":1,"y_fraction":.27}],
+                {"book_code":"Gen"})
+            p85={"page_book":{"book_code":"Exod"},
+                 "verse_markers_by_column":{"R":[{"chapter":1,"verse":21,"y_fraction":.9}]}}
+            p86={"page_book":{"book_code":"Exod"},
+                 "verse_markers_by_column":{"L":[{"chapter":2,"verse":20,"y_fraction":.04}]}}
+            p87=[{"column":"L","chapter":1,"verse":22,"y_fraction":.12},
+                 {"column":"R","chapter":2,"verse":19,"y_fraction":.56}]
+            assert m.adjacent_page_swap_detected(p86,p85,p87,"Exod",{})
+            assert not m.adjacent_page_swap_detected(p85,p86,p87,"Exod",{})
             # Test a COMPLETE NO-API page rebundle with an actual pattern from
             # page36: V2 saw 'Ch 1 1-4', while the integrated pass omitted it.
             previous=(m.RAW,m.OUT,m.HUMAN_REVIEWS)
