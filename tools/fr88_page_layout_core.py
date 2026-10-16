@@ -223,6 +223,28 @@ def target_valid(ref,limits):
     return False
 
 
+def adjacent_verse_candidates(row,intervals,source):
+    """Offer nearby PRINTED verse markers as uncertainty metadata, not new edges."""
+    if source is None:
+        return []
+    side=row.get("side")
+    found=intervals.get(side,[])
+    original=next((i for i,x in enumerate(found)
+                   if x["chapter"]==source["chapter"] and x["verse"]==source["verse"]
+                   and x["y_start"]==source["source_verse_interval"][0]),None)
+    if original is None:
+        return []
+    output=[]
+    for j in (original-1,original+1):
+        if 0<=j<len(found):
+            candidate=found[j]
+            output.append({"chapter":candidate["chapter"],"verse":candidate["verse"],
+                           "y_start":candidate["y_start"],
+                           "source":"ADJACENT_PRINTED_VERSE_MARKER",
+                           "human_verified":False})
+    return output
+
+
 def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None):
     """Flatten one margin printed ROW into N independent destination edges."""
     pages=set(page_issues or [])
@@ -243,8 +265,16 @@ def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None
             if not target_valid(ref,limits): reasons.append("DESTINATION_UNRESOLVED")
             if row.get("visibility_status") in ("CUT_OFF","UNREADABLE"):
                 reasons.append("MARGINAL_TEXT_NOT_FULLY_VISIBLE")
-            if row.get("layout_uncertain") or row.get("typography_uncertain"):
+            if row.get("typography_uncertain"):
                 reasons.append("MARGINAL_TYPOGRAPHY_UNCERTAIN")
+            if row.get("layout_uncertain") and not row.get("shifted_down_possible"):
+                reasons.append("MARGINAL_LAYOUT_AMBIGUOUS")
+            soft=[]
+            if row.get("shifted_down_possible"):
+                soft.append("MARGIN_MAY_BE_SHIFTED_BELOW_ITS_SOURCE")
+            if "NEAR_VERSE_BOUNDARY" in reasons:
+                reasons.remove("NEAR_VERSE_BOUNDARY")
+                soft.append("SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY")
             if row["id"] in overrides:
                 reasons.append("HUMAN_CONFIRMED_CUT_OFF")
             if ref.get("status") == "PARSED" and not target_valid(ref,limits):
@@ -259,6 +289,7 @@ def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None
                                         "NONPOSITIVE_VERSE_INTERVAL")):
                 reasons.append("PAGE_LAYOUT_CONFLICT")
             status=("REVIEW_REQUIRED" if reasons else
+                    "AUTO_PROPOSED_ADJACENT" if soft else
                     "AUTO_PROPOSED_FLAGGED" if warnings else "AUTO_PROPOSED")
             output.append({
                 "edge_id":eid,"image_page":page,"column":row.get("side"),
@@ -267,6 +298,9 @@ def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None
                 "target_segment_index":idx,"destination":ref,
                 "editorial_relation_marker":ref.get("relation_marker") or row.get("relation_marker","ORDINARY"),
                 "destination_interpretation_flags":warnings,
+                "source_alignment_estimate_flags":soft,
+                "possible_adjacent_source_verses":(
+                    adjacent_verse_candidates(row,intervals,source) if soft else []),
                 "source":{"book_code":book,
                           "chapter":source["chapter"] if source else None,
                           "verse":source["verse"] if source else None,
@@ -281,5 +315,6 @@ def summary(links):
     c=Counter(x["status"] for x in links)
     return {"atomic_links":len(links),"auto_proposed":c["AUTO_PROPOSED"],
             "auto_proposed_flagged":c["AUTO_PROPOSED_FLAGGED"],
+            "auto_proposed_adjacent":c["AUTO_PROPOSED_ADJACENT"],
             "needs_review":c["REVIEW_REQUIRED"],
             "human_verified":0,"sql_writes":False}
