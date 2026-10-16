@@ -82,8 +82,14 @@ def normalize_markers(markers,limits,book):
             issues.append("VERSE_OUT_OF_CATALOG")
             continue
         if book and (book,ch) not in limits:
-            issues.append("CHAPTER_OUT_OF_CATALOG")
-            continue
+            # The local CSV covers only some book/chapter limits. Do not
+            # throw away an actually printed source verse solely because
+            # that chapter is missing from a SPARSE lookup file.
+            max_chapters=CANONICAL_CHAPTERS.get(book,0)
+            if not max_chapters or ch>max_chapters or v>176:
+                issues.append("IMPOSSIBLE_SOURCE_CHAPTER_OR_VERSE")
+                continue
+            issues.append("SOURCE_CHAPTER_MISSING_FROM_LOCAL_CATALOG")
         clean[side].append({
             "column":side,"chapter":ch,"verse":v,"y_fraction":y,
             "confidence":original.get("confidence","LOW"),
