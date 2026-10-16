@@ -389,6 +389,10 @@ def collect_page(page,registry,limits):
             audit.append("ROW_RECOVERED_FROM_PREVIOUS_OCR_PASS")
         if "VERSE_MARKER_Y_COORDINATES_NONMONOTONIC_"+str(link["column"]) in issues:
             audit.append("MAIN_TEXT_MARKERS_HAVE_INCONSISTENT_Y_COORDINATES")
+        if "PAGE_START_HEADER_CONTRADICTS_BODY" in issues:
+            audit.append("SOURCE_START_HEADER_CONFLICT_MARKED_ESTIMATED")
+        if "COLUMN_VERSE_SEQUENCE_REWINDS" in issues:
+            audit.append("CROSS_COLUMN_VERSE_SEQUENCE_CONFLICT_MARKED_ESTIMATED")
         if audit and link["accepted_automatically"]:
             link["status"]="ACCEPTED_ESTIMATED"
             link["source_alignment_estimate_flags"]=sorted(set(
