@@ -21,6 +21,25 @@ flock -n 9 || { echo "ERROR: JBible 101..200 job is already running"; exit 3; }
     exit 3
 }
 
+# Status is deliberately a separate best-effort observer, not part of OCR.
+# If this script is already running, attach the watcher manually using
+# the command in tools/README_jbible_status_watch.md.
+STATUS_MONITOR=/opt/jbible/importer/jbible_status_logwatch.py
+STATUS_TMP=$(mktemp /opt/jbible/importer/.status_monitor_XXXXXXXX)
+if curl -fsSL --retry 3 --connect-timeout 15 \
+      "$ROOT/tools/jbible_status_logwatch.py" -o "$STATUS_TMP" && \
+      python3 -m py_compile "$STATUS_TMP"; then
+    mv -f "$STATUS_TMP" "$STATUS_MONITOR"
+    chmod 0644 "$STATUS_MONITOR"
+    nohup python3 -u "$STATUS_MONITOR" \
+        --log /root/jbible_101_200.log --start 101 --end 200 \
+        >/root/jbible_101_200_status.log 2>&1 </dev/null &
+    echo "STATUS: observer started for jbible/importer (see /root/jbible_101_200_status.log)"
+else
+    rm -f "$STATUS_TMP"
+    echo "STATUS WARNING: monitoring could not start; OCR will continue" >&2
+fi
+
 echo "JBIBLE 100 NEW PAGES: 101..200. Reporting cumulative 31..200."
 echo "RUNNING INDEPENDENT OF SSH; 5 passes x at most 100 paid calls = at most 500 new tasks."
 echo "Previous OCR stages and SQL are untouched."
