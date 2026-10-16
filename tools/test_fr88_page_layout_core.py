@@ -121,6 +121,21 @@ def test():
              typography_uncertain=True)
     assert g.atomic_edges(33,"Gen",[cut],intervals,limits)[0]["status"]=="EXCEPTION"
     assert g.atomic_edges(33,"Gen",[cut],intervals,limits)[0]["accepted_automatically"] is False
+    # A plausible repaired book abbreviation is ACCEPTED, with audit flags.
+    fixed=dict(row,id="fr88i:p0033:L:013",references=[
+        dict(row["references"][0],
+             interpretation_flags=["PROVISIONAL_MISSING_BOOK_INITIAL_ISA"])],
+         typography_uncertain=True)
+    fixed_link=g.atomic_edges(33,"Gen",[fixed],intervals,limits)[0]
+    assert fixed_link["status"]=="ACCEPTED_FLAGGED"
+    assert fixed_link["accepted_automatically"] is True
+    assert fixed_link["human_review_required"] is False
+    # Pure warning on a running page header is not a veto of valid verses.
+    head_notice=g.atomic_edges(33,"Gen",[row],intervals,limits,
+        ["PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER"])[0]
+    assert head_notice["status"]=="ACCEPTED_FLAGGED"
+    assert head_notice["accepted_automatically"] is True
+
     # Invalid target book/chapter is genuinely unusable, not a +/-1 estimate.
     bad=dict(row,id="fr88i:p0033:L:020",references=[
         dict(row["references"][0],chapter=1001)])
@@ -132,8 +147,13 @@ def test():
     no_book=g.atomic_edges(33,None,[row],intervals,limits)[0]
     assert no_book["status"]=="EXCEPTION"
     assert no_book["accepted_automatically"] is False
-    print("PASS: atomic links; +/-1, layout and marker gaps accepted automatically; "
-          "cut-offs/impossible links remain exceptions")
+    aggregate=g.summary([fixed_link,head_notice,invalid,no_book,
+                         g.atomic_edges(33,"Gen",[shifted],intervals,limits)[0]])
+    assert aggregate["accepted"]==3
+    assert aggregate["exceptions"]==2
+    assert aggregate["accepted_estimated"]==1
+    print("PASS: +/-1, layout, abbreviations and page-header warnings accepted; "
+          "only illegible/impossible/unknown-source links excepted")
 
 
 if __name__=="__main__":
