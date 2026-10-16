@@ -182,7 +182,15 @@ def parse_task(response,task,page):
             marker["column"]=side
         # Every marker MUST retain its physical text-column identity;
         # the model is only required to specify column at JSON root.
+        transitions=data.get("book_transitions") or []
+        if not isinstance(transitions,list) or len(transitions)>6:
+            raise ValueError("Invalid Bible book transition list")
+        for event in transitions:
+            if not isinstance(event,dict) or event.get("column") not in (None,side):
+                raise ValueError("Book transition associated with wrong column")
+            event["column"]=side
         return {"column":side,"markers":markers,
+                "book_transitions":transitions,
                 "warnings":list(data.get("warnings") or [])[:15]}
     if not task.startswith("margin_"):
         raise ValueError("Invalid task")
@@ -253,7 +261,11 @@ def collect_page(page,registry,limits):
     previous=read(prev).get("page_book") if prev.exists() else None
     book,book_issues,book_evidence=choose_book(page,header,registry,previous)
     markers=stages["verses_L"]["markers"]+stages["verses_R"]["markers"]
+    transitions=(stages["verses_L"].get("book_transitions") or [])+(
+                 stages["verses_R"].get("book_transitions") or [])
     intervals,issues=make_intervals(markers,header,book,limits)
+    if transitions:
+        issues.append("BOOK_TRANSITION_ON_PAGE")
     issues+=book_issues
     issues=sorted(set(issues))
     rows=stages["margin_L"]["rows"]+stages["margin_R"]["rows"]
@@ -290,6 +302,7 @@ def collect_page(page,registry,limits):
         "verse_markers_by_column":{
             "L":stages["verses_L"]["markers"],"R":stages["verses_R"]["markers"]},
         "verse_intervals_by_column":intervals,
+        "in_page_book_transitions":transitions,
         "marginal_ocr_rows":rows,
         "atomic_source_to_destination_links":links,
         "quality_flags":issues,
