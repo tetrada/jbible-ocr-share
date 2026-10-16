@@ -65,12 +65,22 @@ def test():
     broken=json.loads(json.dumps(answer))
     broken["choices"][0]["message"]["content"]=json.dumps({
         "assignments":[{"margin_row_id":"ref-A"}]})
+    missing=m.validated(broken,[valid,clipped])
+    assert missing["missing_source_assignments"]==["ref-B"]
+    assert len(missing["assignments"])==2
+    assert missing["assignments"][1]["scope"]=="UNKNOWN"
+    assert missing["assignments"][1]["source_chapter"] is None
+    assert missing["assignments"][1]["assignment_missing_from_provider"] is True
+    assert m.anchor_status(missing["assignments"][1],clipped,limits)=="SOURCE_ASSIGNMENT_MISSING"
+    # Do not accept unknown or duplicated IDs; those can corrupt matching.
+    broken["choices"][0]["message"]["content"]=json.dumps({
+        "assignments":[{"margin_row_id":"ref-A"},{"margin_row_id":"ref-A"}]})
     try:
         m.validated(broken,[valid,clipped])
     except ValueError:
         pass
     else:
-        raise AssertionError("Missing per-row source assignment allowed")
+        raise AssertionError("Duplicated provider assignment accepted")
     with tempfile.TemporaryDirectory() as temp:
         path=Path(temp)/"checkpoint.json"
         m.save(path,assigned)
