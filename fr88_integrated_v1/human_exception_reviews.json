@@ -550,6 +550,70 @@
       "sql_ready": false,
       "sql_writes": false,
       "reviewed_utc": "2026-10-16T09:32:20.314364+00:00"
+    },
+    "fr88i:p0034:R:003/target01": {
+      "edge_id": "fr88i:p0034:R:003/target01",
+      "image_page": 34,
+      "choice": "as_printed",
+      "cause": "CATALOG_REJECTED_VALID_REFERENCE",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 3,
+        "verse": 17,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Hos",
+        "chapter": 4,
+        "verse": 3,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": "+"
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Os 4 3+",
+      "original_exception_reasons": [
+        "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:33:18.442920+00:00"
+    },
+    "fr88i:p0034:R:004/target01": {
+      "edge_id": "fr88i:p0034:R:004/target01",
+      "image_page": 34,
+      "choice": "corrected",
+      "cause": "CATALOG_REJECTED_VALID_REFERENCE",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 3,
+        "verse": 17,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Isa",
+        "chapter": 11,
+        "verse": 6,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": "+"
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Is 11 6+",
+      "original_exception_reasons": [
+        "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:33:42.706729+00:00"
     }
   }
 }
