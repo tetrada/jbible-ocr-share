@@ -121,6 +121,8 @@ def test():
              typography_uncertain=True)
     assert g.atomic_edges(33,"Gen",[cut],intervals,limits)[0]["status"]=="EXCEPTION"
     assert g.atomic_edges(33,"Gen",[cut],intervals,limits)[0]["accepted_automatically"] is False
+    # Restore the normal full marker map after the deliberate missing-marker test.
+    intervals,_=g.make_intervals(left,head,"Gen",limits)
     # A plausible repaired book abbreviation is ACCEPTED, with audit flags.
     fixed=dict(row,id="fr88i:p0033:L:013",references=[
         dict(row["references"][0],
