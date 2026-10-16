@@ -304,6 +304,43 @@ def test():
         p82,"Gen",{("Gen",49):33},dict(hd82,verse=17))
     assert not no_flags82 and no_fix82[0]["chapter"]==5
 
+    # Real Exodus page95: L 11:3, initial R 12:4..10 is 11:4..10;
+    # later R returns to 12:1..3, supported by printed 12:3 head.
+    p95=[{"column":"L","chapter":11,"verse":v,
+          "y_fraction":.1+(v-1)*.1} for v in (1,2,3)]
+    p95 += [{"column":"R","chapter":12,"verse":v,
+             "y_fraction":.1+(v-4)*.06} for v in range(4,11)]
+    p95 += [{"column":"R","chapter":12,"verse":v,
+             "y_fraction":.75+(v-1)*.05} for v in range(1,4)]
+    hd95={"visible":True,"book_code":"Exod","chapter":12,
+          "verse":3,"header_position":"TOP_LEFT","boundary_role":"FIRST_ON_PAGE"}
+    fixed95,flag95=g.repair_same_page_chapter_slips(
+        p95,"Exod",{},hd95)
+    assert "RIGHT_PREFIX_CHAPTER_REPAIRED_BEFORE_RESTART" in flag95,flag95
+    assert all(m["chapter"]==11 and m["ocr_original_chapter"]==12
+               for m in fixed95[3:10]),fixed95
+    assert all(m["chapter"]==12 for m in fixed95[10:])
+    assert p95[3]["chapter"]==12
+    bad95,no95=g.repair_same_page_chapter_slips(
+        p95,"Exod",{},dict(hd95,verse=4))
+    assert "RIGHT_PREFIX_CHAPTER_REPAIRED_BEFORE_RESTART" not in no95
+
+    # Real Exodus page92 L 8:8 -> R misread 9:9..23 -> p93 L 8:24.
+    p92=[{"column":"L","chapter":8,"verse":v,
+          "y_fraction":.12+(v-5)*.14} for v in (5,6,7,8)]
+    p92 += [{"column":"R","chapter":9,"verse":v,
+             "y_fraction":.05+(v-9)*.06} for v in range(9,24)]
+    p93=[{"column":"L","chapter":8,"verse":24,"y_fraction":.12}]
+    fixed92,flag92=g.repair_right_column_chapter_from_next_page(
+        p92,p93,"Exod")
+    assert flag92==["RIGHT_COLUMN_CHAPTER_REPAIRED_FROM_ADJACENT_PAGE"]
+    assert all(x["chapter"]==8 and x["ocr_original_chapter"]==9
+               for x in fixed92[4:]),fixed92
+    assert p92[4]["chapter"]==9
+    bad92,no92=g.repair_right_column_chapter_from_next_page(
+        p92,[dict(p93[0],verse=25)],"Exod")
+    assert not no92 and bad92[4]["chapter"]==9
+
     for raw,expected in [
         ({"book_code":"Gen","chapter":27,"verse":46,
           "end_chapter":28,"end_verse":5,
