@@ -158,6 +158,47 @@ def test():
             finally:
                 m.RAW,m.OUT,m.HUMAN_REVIEWS=previous
 
+            # Genuine V2 evidence rescues reference lines split into
+            # multiple new OCR rows. These examples were observed in the
+            # published pages 54, 57, 59 and 63.
+            fixtures=[
+                (54,"R","II 1 Ch 1 32-33",
+                 ["|| 1 Ch 1","32-33"],[.468,.485]),
+                (57,"R","25 26, 29-34",
+                 ["25 26,","29-34"],[.834,.852]),
+                (59,"L","2s; 13 14s; 5 5s; 18 18; 22 17s; 26 4",
+                 ["2s; 13 14s;","5 5s; 18 18;","22 17s; 26 4"],
+                 [.073,.090,.107]),
+                (63,"R","22 16-17+ 28 14",
+                 ["22 16-17+","28 14"],[.352,.362]),
+            ]
+            for p,side,old_text,parts,positions in fixtures:
+                fragments=[
+                    {"id":"fr88i:p%04d:%s:%03d"%(p,side,i+1),
+                     "image_page":p,"side":side,"kind":"REFERENCE",
+                     "y_fraction":y,"raw_line":line}
+                    for i,(line,y) in enumerate(zip(parts,positions))]
+                old=[{"id":"fr88v2:p%04d:%s:01"%(p,side),
+                      "image_page":p,"side":side,"kind":"REFERENCE",
+                      "raw_line":old_text}]
+                joined,ids=m.rejoin_prior_scanned_wrapped_rows(
+                    fragments,old,p)
+                assert len(joined)==1 and len(ids)==1,(p,joined)
+                assert joined[0]["ocr_rejoined_fragments"]==[
+                    item["id"] for item in fragments]
+                assert [item["raw_line"] for item in fragments]==parts
+            # Never combine unrelated close-by printed rows.
+            fragments=[
+               {"id":"a","image_page":55,"side":"L",
+                "kind":"REFERENCE","y_fraction":.3,"raw_line":"Ps 19 1"},
+               {"id":"b","image_page":55,"side":"L",
+                "kind":"REFERENCE","y_fraction":.32,"raw_line":"Rm 8 1"}
+            ]
+            intact,nothing=m.rejoin_prior_scanned_wrapped_rows(
+                fragments,[{"image_page":55,"side":"L","kind":"REFERENCE",
+                            "raw_line":"Ps 19 2 Rm 8 1"}],55)
+            assert len(intact)==2 and not nothing
+
             print("PASS: page geometry, wrong-column JSON label recovered, "
                   "legacy missed row restored and atomized, no DeepSeek or SQL")
         finally:
