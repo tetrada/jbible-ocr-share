@@ -198,29 +198,84 @@ def choose_source(row,intervals):
             "source_evidence":"PRINTED_VERSE_POSITION_INTERVAL"},issues
 
 
-def target_valid(ref,limits):
-    if ref.get("status")!="PARSED":
-        return False
+# Canonical BOOK chapter ceilings prevent nonsense even if the local
+# verse-limit CSV lacks an entire chapter. The original CSV is sparse in the
+# OCR pilot; missing rows in that CSV must not reject Exodus/Hebrews/etc.
+# Verse limits remain enforced strictly whenever a CSV row is available.
+CANONICAL_CHAPTERS = {
+    "Gen":50,"Exod":40,"Lev":27,"Num":36,"Deut":34,
+    "Josh":24,"Judg":21,"Ruth":4,"1Sam":31,"2Sam":24,
+    "1Kgs":22,"2Kgs":25,"1Chr":29,"2Chr":36,
+    "Ezra":10,"Neh":13,"Tob":14,"Jdt":16,
+    "Esth":16,"1Macc":16,"2Macc":15,"Job":42,
+    "Ps":150,"Prov":31,"Eccl":12,"Song":8,
+    "Wis":19,"Sir":51,"Isa":66,"Jer":52,"Lam":5,
+    "Bar":6,"Ezek":48,"Dan":14,"Hos":14,
+    "Joel":4,"Amos":9,"Obad":1,"Jonah":4,
+    "Mic":7,"Nah":3,"Hab":3,"Zeph":3,
+    "Hag":2,"Zech":14,"Mal":4,"Matt":28,
+    "Mark":16,"Luke":24,"John":21,"Acts":28,
+    "Rom":16,"1Cor":16,"2Cor":13,"Gal":6,
+    "Eph":6,"Phil":4,"Col":4,"1Thess":5,
+    "2Thess":3,"1Tim":6,"2Tim":4,"Titus":3,
+    "Phlm":1,"Heb":13,"Jas":5,"1Pet":5,
+    "2Pet":3,"1John":5,"2John":1,"3John":1,
+    "Jude":1,"Rev":22
+}
+
+
+def reference_assessment(ref,limits):
+    """Validate real coordinates; distinguish sparse catalog from nonsense.
+
+    A verse absent from the *local chapter lookup* is only provisionally
+    checked against known book chapter limits + global verse 1..176.
+    Do not mistake this for fully verified verse limits.
+    """
     book=ref.get("book_code")
     ch=ref.get("chapter")
-    if not book or (book,ch) not in limits:
-        return False
     typ=ref.get("type")
+    if not book or book not in CANONICAL_CHAPTERS:
+        return False,["UNKNOWN_CANONICAL_BOOK"]
+    if not positive(ch) or ch>CANONICAL_CHAPTERS[book]:
+        return False,["INVALID_BIBLE_CHAPTER"]
+    if typ not in ("VERSE","VERSE_RANGE","VERSE_LIST",
+                   "CHAPTER_ONLY","CHAPTER_RANGE"):
+        return False,["UNPARSED_DESTINATION"]
+    last_ch=ref.get("end_chapter") if typ=="CHAPTER_RANGE" else ch
+    if not positive(last_ch) or last_ch<ch or last_ch>CANONICAL_CHAPTERS[book]:
+        return False,["INVALID_END_CHAPTER"]
+    values=[]
     if typ in ("VERSE","VERSE_RANGE"):
-        a=ref.get("verse")
-        b=ref.get("end_verse") if typ=="VERSE_RANGE" else a
-        return positive(a) and positive(b) and a<=b<=limits[book,ch]
-    if typ=="VERSE_LIST":
-        verses=ref.get("verses")
-        return isinstance(verses,list) and bool(verses) and all(
-            positive(x) and x<=limits[book,ch] for x in verses)
-    if typ=="CHAPTER_ONLY":
-        return True
+        values=[ref.get("verse")]
+        if typ=="VERSE_RANGE":
+            values.append(ref.get("end_verse"))
+        if len(values)==2 and all(positive(v) for v in values) and values[0]>values[1]:
+            return False,["REVERSED_VERSE_RANGE"]
+    elif typ=="VERSE_LIST":
+        values=ref.get("verses")
+        if not isinstance(values,list) or not values:
+            return False,["INVALID_VERSE_LIST"]
+    if any(not positive(verse) or verse>176 for verse in values):
+        return False,["IMPOSSIBLE_VERSE_NUMBER"]
+    warnings=[]
     if typ=="CHAPTER_RANGE":
-        b=ref.get("end_chapter")
-        return positive(b) and b>=ch and all(
-            (book,k) in limits for k in range(ch,b+1))
-    return False
+        checked_chapters=range(ch,last_ch+1)
+    else:
+        checked_chapters=(ch,)
+    for chapter in checked_chapters:
+        cap=limits.get((book,chapter))
+        if cap is None:
+            warnings.append("CHAPTER_VERSE_LIMIT_UNAVAILABLE_IN_LOCAL_CATALOG")
+            continue
+        if chapter==ch and any(v>cap for v in values):
+            return False,["VERSE_OUTSIDE_KNOWN_CHAPTER"]
+    if ref.get("status")!="PARSED":
+        warnings.append("REFERENCE_PARSE_STATUS_"+str(ref.get("status")))
+    return True,sorted(set(warnings))
+
+
+def target_valid(ref,limits):
+    return reference_assessment(ref,limits)[0]
 
 
 def adjacent_verse_candidates(row,intervals,source):
@@ -278,10 +333,17 @@ def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None
             elif book and source is not None and source["verse"]>limits.get(
                     (book,source["chapter"]),0):
                 blockers.append("SOURCE_VERSE_OUTSIDE_CATALOG")
-            if not target_valid(ref,limits):
+            destination_ok,destination_assessment=reference_assessment(ref,limits)
+            if not destination_ok:
                 blockers.append("DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG")
+            # A cut-off at the margin edge may truncate a *later* citation,
+            # while this individual destination is fully readable. Accept the
+            # usable target and record the typography/visibility caveat.
             if row.get("visibility_status") in ("CUT_OFF","UNREADABLE"):
-                blockers.append("MARGINAL_TEXT_NOT_FULLY_VISIBLE")
+                if not destination_ok:
+                    blockers.append("MARGINAL_DESTINATION_UNREADABLE")
+                else:
+                    notices.append("MARGIN_TRUNCATED_BUT_THIS_TARGET_IS_READABLE")
             if row["id"] in overrides:
                 blockers.append("HUMAN_CONFIRMED_CUT_OFF")
             if "BOOK_TRANSITION_ON_PAGE" in pages:
@@ -304,7 +366,8 @@ def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None
                 if marker in notices:
                     notices.remove(marker)
                     estimate_flags.append(marker)
-            warnings=list(ref.get("interpretation_flags") or [])
+            warnings=sorted(set(list(ref.get("interpretation_flags") or [])+
+                                (destination_assessment if destination_ok else [])))
             for issue in sorted(pages):
                 if issue in ("PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER",
                              "NONPOSITIVE_VERSE_INTERVAL",
