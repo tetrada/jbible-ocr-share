@@ -93,6 +93,18 @@ def test():
             assert mislabeled["markers"][0]["column"]=="R"
             assert "OCR_JSON_COLUMN_LABEL_OVERRIDDEN_FROM_IMAGE_TASK" in mislabeled["warnings"]
 
+            # Cached Exodus header emits OCR abbreviation Ex; canonical source
+            # code must remain Exod for catalog and verse interval logic.
+            assert m.canonical_source_book("Ex")=="Exod"
+            assert m.canonical_source_book("Gen")=="Gen"
+            chosen,issues,evidence=m.choose_book(85,
+                {"book_code":"Ex","book_title":"L'EXODE",
+                 "scan_confidence":"HIGH"}, {},{"book_code":"Gen"})
+            assert chosen=="Exod" and not issues and evidence=="PRINTED_PAGE_HEADER"
+            next_book,_,_=m.choose_book(86,
+                {"book_code":None,"book_title":None,"scan_confidence":"LOW"},
+                {},{"book_code":"Exod"})
+            assert next_book=="Exod"
             # Test a COMPLETE NO-API page rebundle with an actual pattern from
             # page36: V2 saw 'Ch 1 1-4', while the integrated pass omitted it.
             previous=(m.RAW,m.OUT,m.HUMAN_REVIEWS)
