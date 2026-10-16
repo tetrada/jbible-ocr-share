@@ -26,6 +26,21 @@ Example target to demonstrate on REAL scan page 33:
 Example supplied by user (page 102):
 `Exod 16:31 → Num 11:7`, with right/left physical page's appropriate running-head boundary considered. Page 102's stated running-head pair is `16 21`. The source is verse 31, **not** necessarily the header's verse 21.
 
+### Confirmed edition notation and practical ±1-verse tolerance
+
+The user provided photographs of the printed **Napomene / Rubne naznake ili referencije** explanations and confirmed all five editorial questions. Machine-readable rules are in [training/fr88_integrated_editorial_rules.json](../training/fr88_integrated_editorial_rules.json). In particular:
+
+- Bare destination without a book refers to this **page's source book**, unless it follows an explicitly named destination book within that same physical row, in which case it inherits that named book.
+- `=` identifies a literary parallel in the **same book**; `||` denotes a parallel in another book; `↗` marks a scriptural quotation. Treat as relation metadata, NOT target verses.
+- `Si 43 6,7` means **two atomic destination records**; `Ps 8; 104` means **two distinct chapter-level destinations**.
+- Keep `s`, `ss`, `p`, `+` literally and do not create invented target ranges.
+- OCR-only book restorations such as `Ch` → `1 Ch` or `s` → `Is` are **assumed and flagged**, not routinely escalated to user review.
+- Edition paragraph 7: a margin reference may be shifted **below** the line it belongs to when the margin is crowded. A blank margin line ordinarily divides groups aligned with different source lines.
+
+The user explicitly accepts occasional source-verse estimates **off by one verse**. Therefore a margin close to a source-verse boundary or marked as possibly shifted down is assigned **one provisional source** with separately recorded adjacent printed-verse alternatives and status `AUTO_PROPOSED_ADJACENT`, rather than being automatically sent to manual review. Real failures—missing book/chapter, unreadable target, nonsequential markers, and genuine layout contradictions—still need a review/error bucket. *An estimated ±1 match is not silently marked visually confirmed or SQL-imported.*
+
+For evaluation, report **exact source-verse agreement and agreement within ±1 verse separately**. Neither score has been established on real integrated-page scans yet; 99% remains a target, not a measured claim.
+
 ### Auto QA to avoid thousands of human reviews
 
 Clear links are marked `AUTO_PROPOSED`; unusual cases are `REVIEW_REQUIRED` with actionable reasons:
