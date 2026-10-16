@@ -14,7 +14,7 @@ def test():
           "A,Rev,Ap,,","A,Isa,Is,,","A,1Chr,1 Ch,,","A,1Kgs,1 R,,",
           "A,Wis,Sg,,","A,Matt,Mt,,","A,Luke,Lc,,",
           "A,Judg,Jg,,","A,Tob,Tb,,",
-          "A,Jer,Jr,,","A,John,Jn,,","A,Exod,Ex,,",
+          "A,Jer,Jr,,","A,John,Jn,,","A,Exod,Ex,,","A,Obad,Ab,,",
           "C,Gen,,5,32","C,Gen,,9,29","C,Gen,,15,21",
           "C,Gen,,18,33","C,Ps,,78,72","C,Ps,,105,45","C,Ps,,8,9",
           "C,Ps,,104,35","C,Sir,,43,36","C,Rev,,16,21",
@@ -130,6 +130,24 @@ def test():
             (7,16),(7,26),(8,4),(8,16),(8,23),(9,1),(9,13),(10,3),(10,24)]
         final_cf=run("cf. 12 1+.", "Exod")
         assert [(x["book_code"],x["chapter"],x["verse"]) for x in final_cf["references"]]==[("Exod",12,1)]
+        # Exodus p100: a verse range followed by a separate single verse.
+        mixed_order=run("Dt 2 1-9, 18", "Exod")
+        assert [(x.get("book_code"),x.get("chapter"),x.get("type"),
+                 x.get("verse"),x.get("end_verse")) for x in
+                 mixed_order["references"]]==[
+            ("Deut",2,"VERSE_RANGE",1,9),
+            ("Deut",2,"VERSE",18,None)]
+        # Single-chapter Abdias: explicit 'Ab 18' is verse 18.
+        obad=run("Ab 18","Exod")
+        assert len(obad["references"])==1
+        assert (obad["references"][0]["book_code"],
+                obad["references"][0]["chapter"],
+                obad["references"][0]["verse"],
+                obad["references"][0]["type"])==("Obad",1,18,"VERSE")
+        assert "SINGLE_CHAPTER_OBADIAH_VERSE_SHORTHAND" in (
+                obad["references"][0]["interpretation_flags"])
+        assert obad["raw_line"]=="Ab 18"
+        assert run("Ab 1", "Exod")["references"][0]["type"]=="CHAPTER_ONLY"
         # Real rejoined Genesis p0063 row: two bare destinations separated
         # by an editorial plus suffix, without an actual printed semicolon.
         plus=run("22 16-17+ 28 14")
