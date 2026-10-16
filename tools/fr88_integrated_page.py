@@ -35,7 +35,7 @@ from fr88_page_layout_core import (
     atomic_edges, summary as edge_summary)
 from fr88_v2_normalize import interpret_ocr_row
 from fr88_link_edges import index_pages
-from fr88_integrated_reference_rules import canonicalize
+from fr88_integrated_reference_rules import canonicalize, canonicalize_contiguous_rows
 from fr88_integrated_human_replay import apply_reviews
 
 RAW=Path("/raw")
@@ -394,7 +394,7 @@ def collect_page(page,registry,limits):
     earlier=read(prior) if prior.exists() else []
     captured=stages["margin_L"]["rows"]+stages["margin_R"]["rows"]
     captured,joined=rejoin_prior_scanned_wrapped_rows(captured,earlier,page)
-    rows=[canonicalize(r,book,CATALOG) for r in captured]
+    rows=canonicalize_contiguous_rows(captured,book,CATALOG)
     if joined:
         issues.append("LEGACY_WRAPPED_REFERENCE_ROWS_REJOINED")
     recovered=[]
@@ -452,6 +452,8 @@ def collect_page(page,registry,limits):
     links=atomic_edges(page,book,rows,intervals,limits,issues)
     for link in links:
         audit=[]
+        if "TARGET_BOOK_INHERITED_FROM_ADJACENT_SEMICOLON_ROW" in link.get("destination_interpretation_flags",[]):
+            audit.append("TARGET_BOOK_INHERITED_FROM_ADJACENT_SEMICOLON_ROW")
         if link["row_id"] in recovered:
             audit.append("ROW_RECOVERED_FROM_PREVIOUS_OCR_PASS")
         if link["row_id"] in joined:
