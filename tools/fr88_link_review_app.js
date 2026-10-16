@@ -27,28 +27,28 @@
   function filtered() {
     const mode = $("filter").value;
     let list = cases.filter(c =>
-      mode === "all" || (mode === "pending" && !reviewed(reviews[c.row_id])) ||
-      (mode === "done" && reviewed(reviews[c.row_id])) ||
+      mode === "all" || (mode === "pending" && !reviewed(reviews[c.link_id])) ||
+      (mode === "done" && reviewed(reviews[c.link_id])) ||
       (mode === "candidates" && c.state === "PROPOSED_REVIEW_REQUIRED") ||
       (mode === "reviews" && c.state !== "PROPOSED_REVIEW_REQUIRED")
     );
-    if (mode === "pending") list = list.concat(cases.filter(c => reviewed(reviews[c.row_id])));
+    if (mode === "pending") list = list.concat(cases.filter(c => reviewed(reviews[c.link_id])));
     return list;
   }
   function nav() {
     visible = filtered();
     $("queue").replaceChildren();
     for (const c of visible) {
-      const b = elem("button", (current && current.row_id === c.row_id ? "active " : "") +
-        (reviewed(reviews[c.row_id]) ? "complete" : ""));
+      const b = elem("button", (current && current.link_id === c.link_id ? "active " : "") +
+        (reviewed(reviews[c.link_id]) ? "complete" : ""));
       b.type = "button";
       b.appendChild(elem("span", "qpage", "P" + c.page + " " + c.side));
-      b.appendChild(elem("span", "qtext", c.margin_raw_line));
-      b.appendChild(elem("span", "qmark", reviewed(reviews[c.row_id]) ? "✓" : "○"));
+      b.appendChild(elem("span", "qtext", c.target_printed));
+      b.appendChild(elem("span", "qmark", reviewed(reviews[c.link_id]) ? "✓" : "○"));
       b.onclick = () => show(c);
       $("queue").appendChild(b);
     }
-    const done = cases.filter(c => reviewed(reviews[c.row_id])).length;
+    const done = cases.filter(c => reviewed(reviews[c.link_id])).length;
     $("progress").textContent = done + " reviewed / " + cases.length + " source rows";
   }
   function imageUrl(page) {
@@ -125,17 +125,20 @@
     $("loading").hidden = true;
     $("caseTitle").textContent = "Page " + c.page + " · " +
       (c.side === "L" ? "left" : "right") + " · " + c.row_id;
-    $("caseDetail").textContent = c.state + " · " + c.source_reason +
+    $("caseDetail").textContent = "One source → one destination · " + c.row_id +
+      " · segment #" + c.target_segment_index + " · " + c.state +
       " · margin y=" + toFixed(c.y_fraction);
-    $("marginRaw").textContent = c.margin_raw_line;
+    $("marginRaw").textContent = c.target_printed || "(unparsed destination)";
     $("targetTags").replaceChildren();
-    for (const t of c.targets) {
-      const p = t.target || {};
-      const coord = p.book_code ? p.book_code + " " + asText(p.chapter) + ":" +
-        (p.verse != null ? p.verse : p.verses ? p.verses.join(",") : "chapter") : "Unresolved target book";
-      tag($("targetTags"), coord, !p.book_code || t.target_reason !== "OCR_TARGET_NOT_SCAN_VERIFIED");
-    }
-    $("targetDetails").textContent = c.targets.map(t => t.target_reason).filter((v,i,a) => a.indexOf(v) === i).join(" · ");
+    const p = c.target || {};
+    const coord = p.book_code ? p.book_code + " " + asText(p.chapter) + ":" +
+      (p.verse != null ? p.verse : p.verses ? p.verses.join(",") :
+       p.type === "CHAPTER_ONLY" ? "(chapter)" : p.type === "CHAPTER_RANGE" ? "(chapters)" : "—")
+      : "Unresolved target book";
+    tag($("targetTags"), coord, !p.book_code || c.target_reason !== "OCR_TARGET_NOT_SCAN_VERIFIED");
+    $("targetDetails").textContent = "Destination " + c.target_segment_index +
+      " of " + cases.filter(x => x.row_id === c.row_id).length +
+      " from printed margin row · " + c.target_reason;
     const s = c.source || {};
     $("sourceSummary").textContent = sourceOf(c) + " · " + asText(s.scope || "UNKNOWN");
     $("sourceTags").replaceChildren();
@@ -144,28 +147,33 @@
     tag($("sourceTags"), "Confidence: " + asText(s.confidence || "unknown"), true);
     $("sourceEvidence").textContent = "Visible text: " + asText(s.source_text_evidence || "(not recorded)") +
       " · " + asText(s.reason || "");
-    const ctxt = c.book_context || null;
+    const ctxt = c.page_context || null;
+    const pageStart = ctxt && ctxt.page_start_chapter != null ?
+      " · starts " + ctxt.page_start_chapter + ":" + ctxt.page_start_verse : "";
     $("contextHint").textContent = ctxt ?
-      "Source book SUGGESTED by nearby printed page: " + ctxt.suggested_source_book_code +
-      " (not verified; check original scans)." : "No neighboring-page book suggestion recorded.";
-    const r = reviews[c.row_id] || {};
+      "Page book: " + ctxt.source_book_code + pageStart +
+      " (from page registry; check this page or book boundary)." +
+      (c.page_model_book_conflict ? " WARNING: model and registry disagree." : "") :
+      "No page-level source book registered. Check the printed header.";
+    const r = reviews[c.link_id] || {};
     const saved = r.source || {};
-    $("book").value = saved.book_code || s.source_book_code ||
-      (ctxt ? ctxt.suggested_source_book_code : "") || "";
+    $("book").value = saved.book_code || c.book_for_review || "";
     $("chapter").value = saved.chapter != null ? saved.chapter : (s.source_chapter || "");
     $("verse").value = saved.verse != null ? saved.verse : (s.source_verse || "");
     $("endChapter").value = saved.end_chapter != null ? saved.end_chapter : (s.source_end_chapter || "");
     $("endVerse").value = saved.end_verse != null ? saved.end_verse : (s.source_end_verse || "");
     $("scope").value = saved.scope || s.scope || "UNKNOWN";
     $("bookBasis").value = saved.source_book_basis || (
+      ctxt ? "PAGE_REGISTRY" :
       s.source_book_evidence === "HEADER_VISIBLE" || s.source_book_evidence === "CHAPTER_TITLE_VISIBLE"
-        ? "PRINTED_THIS_PAGE" : ctxt ? "NEIGHBORING_PAGE" : "UNKNOWN");
-    $("targetText").value = r.target_raw_line || c.margin_raw_line;
+        ? "PRINTED_THIS_PAGE" : "UNKNOWN");
+    $("targetText").value = r.target_printed || c.target_printed;
     $("notes").value = r.notes || "";
     const ch = r.checked || {};
-    $("sourceChecked").checked = ch.source_verse === true;
+    $("sourceChecked").checked = ch.source_marker === true;
     $("targetChecked").checked = ch.target_print === true;
     $("alignmentChecked").checked = ch.alignment === true;
+    $("pageChecked").checked = ch.page_book === true;
     choice = r.choice || "uncertain";
     updateChoice();
     $("feedback").textContent = "";
@@ -178,24 +186,27 @@
   }
   function adjacent(delta) {
     if (!current) return;
-    const at = visible.findIndex(c => c.row_id === current.row_id);
+    const at = visible.findIndex(c => c.link_id === current.link_id);
     if (at < 0 || !visible.length) return;
     show(visible[clamp(at + delta, 0, visible.length - 1)]);
   }
   async function save(next) {
     if (!current || loading) return;
     const payload = {
-      row_id: current.row_id, choice,
+      link_id: current.link_id,
+      row_id: current.row_id, target_segment_index: current.target_segment_index,
+      choice,
       source: {
         book_code: $("book").value.trim(),
         chapter: readNumber("chapter"), verse: readNumber("verse"),
         end_chapter: readNumber("endChapter"), end_verse: readNumber("endVerse"),
         scope: $("scope").value, source_book_basis: $("bookBasis").value
       },
-      target_raw_line: $("targetText").value,
-      checked: {source_verse:$("sourceChecked").checked,
+      target_printed: $("targetText").value,
+      checked: {source_marker:$("sourceChecked").checked,
                 target_print:$("targetChecked").checked,
-                alignment:$("alignmentChecked").checked},
+                alignment:$("alignmentChecked").checked,
+                page_book:$("pageChecked").checked},
       notes: $("notes").value
     };
     $("feedback").textContent = "Saving…";
@@ -208,17 +219,17 @@
       });
       const data = await response.json();
       if (!response.ok || !data.ok) throw Error(data.error || "Save failed");
-      reviews[current.row_id] = data.review;
-      const old = current.row_id;
+      reviews[current.link_id] = data.review;
+      const old = current.link_id;
       nav();
       $("feedback").textContent = "Saved securely. No SQL or automatic Bible link import.";
       if (next) {
         // Continue to next *unreviewed* row, not repeatedly to the same case.
-        const pos = visible.findIndex(x => x.row_id === old);
-        const unreviewed = visible.slice(pos+1).find(x => !reviewed(reviews[x.row_id])) ||
-          visible.slice(0,pos).find(x => !reviewed(reviews[x.row_id]));
+        const pos = visible.findIndex(x => x.link_id === old);
+        const unreviewed = visible.slice(pos+1).find(x => !reviewed(reviews[x.link_id])) ||
+          visible.slice(0,pos).find(x => !reviewed(reviews[x.link_id]));
         const target = unreviewed || visible[Math.min(pos+1, visible.length-1)];
-        if (target && target.row_id !== old) show(target);
+        if (target && target.link_id !== old) show(target);
       }
     } catch (e) {
       $("feedback").textContent = "Could not save: " + asText(e.message);
@@ -253,7 +264,7 @@
       cases = data.cases; reviews = data.reviews || {};
       if (!cases.length) throw Error("No source-link results yet. Publish and install the pilot first.");
       nav();
-      show(cases.find(c => !reviewed(reviews[c.row_id])) || cases[0]);
+      show(cases.find(c => !reviewed(reviews[c.link_id])) || cases[0]);
     } catch(e) {
       $("loading").textContent = "Review queue unavailable: " + asText(e.message);
       $("progress").textContent = "Unavailable";
