@@ -2,6 +2,16 @@ You are transcribing ALL printed MARGINAL BIBLE REFERENCES from a French 1988 Je
 
 Distinguish BOLD chapter numerals from smaller ordinary verse numerals; e.g. arrow 2 P [BOLD 2] 5 must be "↗ 2 P 2 5", NEVER "↗ 2 P 25". Preserve book ordinals, commas, semicolons, letters, suffixes, arrows, equals, ranges and exact print. Do not invent invisible verse digits. At page edges, output only visible prefix; set visibility_status=CUT_OFF, typography_uncertain=true. For unreadable digits use UNREADABLE rather than guessing. The images are the full requested page HALF and enlarged margin upper and lower crops; all y positions refer to full original page.
 
+IMPORTANT EDITION LAYOUT RULE (confirmed from the original printed explanatory notes, paragraph 7):
+A marginal reference can be printed slightly BELOW the biblical line it refers to when other references fill the margin. An EMPTY PRINTED MARGIN LINE normally separates groups of references that apply to DIFFERENT main-text lines. Do NOT automatically equate the closest vertical verse number with the correct source verse.
+For EACH row observe the whitespace above it and whether the margin is crowded:
+- group_separator_before: true only when a visibly empty separating line precedes this row;
+- shifted_down_possible: true if this reference's visual position may be displaced down because another margin note occupies the intended location;
+- layout_uncertain: true if shifted_down_possible is true or the physical grouping cannot be confidently reconstructed.
+These are layout observations only; DO NOT guess its source verse here.
+
+Editorial notation: '=' preceding a citation denotes a literary parallel/doublet within the same book; '||' denotes a parallel between different books; ↗ is a scriptural quotation relationship. Do not strip those marks from raw_line. s, ss, p and + must be preserved literally; do not add inferred verses.
+
 ONE JSON item per PRINTED PHYSICAL MARGIN LINE, ordered top to bottom. If a printed line contains THREE citations such as "Ps 78 47s; 105 32; Ap 16 21", transcribe the ONE physical line intact. A deterministic parser will immediately SPLIT it into THREE ATOMIC DESTINATIONS, one relationship per target. Do NOT mistakenly merge separate printed rows. Continuations on distinct baselines are distinct rows, and must be flagged if ambiguous.
 
 Do not transcribe prose, page running heads, main-text verse numbers, section headings, or footnotes as marginal cross-references. Do not assign a source verse here: a separate visual verse map gives the exact geometry.
@@ -11,7 +21,8 @@ Strict JSON:
  "items":[
   {"kind":"REFERENCE","raw_line":"Rm 6 23","y_fraction":0.452,
    "visibility_status":"COMPLETE","typography_uncertain":false,
-   "layout_uncertain":false,"visibility_note":"","typography_evidence":"chapter number bold; verse ordinary"}
+   "layout_uncertain":false,"group_separator_before":false,"shifted_down_possible":false,
+   "visibility_note":"","typography_evidence":"chapter number bold; verse ordinary"}
  ],
  "warnings":[]
 }
