@@ -214,6 +214,28 @@ def repair_same_page_chapter_slips(markers,book,limits,header):
         return fixed,issues
     last_left=left[-1]
     first,second=right[0],right[1]
+    # Real page82: L model says Genesis 5:16..28; printed page-start
+    # header is 49:16 and RIGHT begins 49:29. Exact two-sided verse
+    # continuity independently proves every L marker belongs to 49.
+    target_ch=header.get("chapter")
+    if (header.get("boundary_role")=="FIRST_ON_PAGE" and
+            header.get("header_position")=="TOP_LEFT" and
+            header.get("visible") is True and
+            header.get("book_code") in (None,book) and
+            type(target_ch) is int and
+            first.get("chapter")==target_ch and
+            left[0].get("verse")==header.get("verse") and
+            all(m.get("chapter")==left[0].get("chapter") for m in left) and
+            left[0].get("chapter")!=target_ch and
+            len(left)>=4 and
+            all(type(m.get("verse")) is int for m in left) and
+            all(a["verse"]+1==b["verse"] for a,b in zip(left,left[1:])) and
+            last_left["verse"]+1==first.get("verse")):
+        for marker in left:
+            marker["ocr_original_chapter"]=marker["chapter"]
+            marker["chapter"]=target_ch
+            marker["chapter_ocr_repair_evidence"]="PAGE_START_HEADER_AND_RIGHT_COLUMN_CONTINUITY"
+        issues.append("LEFT_COLUMN_CHAPTER_REPAIRED_FROM_HEADER_AND_RIGHT")
     # Real page73: L ends 41:54, R begins model 42:57 then 42:1.
     # 41:57 exists, 42:57 is impossible, so repair ONLY first marker.
     current_ch=first.get("chapter")
@@ -573,6 +595,8 @@ def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None
                 blockers.append("HUMAN_CONFIRMED_CUT_OFF")
             if "BOOK_TRANSITION_ON_PAGE" in pages:
                 blockers.append("SOURCE_BOOK_CHANGES_WITHIN_PAGE")
+            if "SOURCE_PAGE_SEQUENCE_IMPOSSIBLE_REWIND" in pages:
+                blockers.append("SOURCE_PAGE_SEQUENCE_IMPOSSIBLE_REWIND")
             if "PAGE_BOOK_CONFLICT" in pages:
                 blockers.append("CONFLICTING_SOURCE_BOOK_EVIDENCE")
 
