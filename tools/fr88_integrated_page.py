@@ -34,6 +34,7 @@ from fr88_page_layout_core import (
     atomic_edges, summary as edge_summary)
 from fr88_v2_normalize import interpret_ocr_row
 from fr88_link_edges import index_pages
+from fr88_integrated_reference_rules import canonicalize
 
 RAW=Path("/raw")
 IMAGES=RAW/"fr_bible_1988"
@@ -268,7 +269,11 @@ def collect_page(page,registry,limits):
         issues.append("BOOK_TRANSITION_ON_PAGE")
     issues+=book_issues
     issues=sorted(set(issues))
-    rows=stages["margin_L"]["rows"]+stages["margin_R"]["rows"]
+    # Normalize each saved PHYSICAL line into separately addressable targets.
+    # The page book is known here, allowing bare target coordinates without
+    # hallucinating a new or inherited book from other printed rows.
+    rows=[canonicalize(r,book,CATALOG) for r in
+          stages["margin_L"]["rows"]+stages["margin_R"]["rows"]]
     links=atomic_edges(page,book,rows,intervals,limits,issues)
     counts=edge_summary(links)
     prior=RAW/"jbible_fr1988_v2"/"interpreted_rows.json"
