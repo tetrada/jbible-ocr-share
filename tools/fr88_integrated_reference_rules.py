@@ -21,7 +21,7 @@ from fr88_v2_normalize import interpret_line, SOURCE_BARE
 
 def marker_of(line):
     s=(line or "").lstrip()
-    if s.startswith("||") or s.startswith("∥") or s.startswith("Ⅱ"):
+    if s.startswith(("||","∥","Ⅱ","‖")):
         return "CROSS_BOOK_PARALLEL"
     if s.startswith("="):
         return "SAME_BOOK_DOUBLET"
@@ -50,8 +50,16 @@ def canonicalize(row,page_book,catalog_path):
     elif re.match(r"^\s*s\s+\d",original):
         corrected=re.sub(r"^(\s*)s(?=\s+\d)",r"\g<1>Is",original,count=1)
         assumption="PROVISIONAL_MISSING_BOOK_INITIAL_ISA"
-    # A printed '||' must not contaminate the numeric parser.
-    parse_text=re.sub(r"^\s*(?:\|\||∥|Ⅱ)\s*", "",corrected)
+    # Parallel markers and editorial "cf." are not destination coordinates.
+    # Preserve original typography in raw_line, normalize only the parser view.
+    parse_text=re.sub(r"^\s*(?:\|\||∥|Ⅱ|‖)\s*", "",corrected)
+    parse_text=re.sub(r"(?i)\bcf\s*\.\s*(?=[A-Za-z])","",parse_text)
+    # Chapter-only editorial shorthand: 'ch. 27.' means the whole chapter,
+    # not a malformed target. Never treat bare 'ch.' as a book code.
+    chapter_note=bool(re.fullmatch(r"(?i)\s*ch(?:ap)?\.\s*\d{1,3}\.?\s*",parse_text))
+    if chapter_note:
+        parse_text=re.sub(r"(?i)^\s*ch(?:ap)?\.\s*(\d{1,3})\.?\s*$",
+                          r"\1",parse_text)
     parsed=interpret_line(parse_text,str(catalog_path),
                           layout_uncertain=bool(row.get("layout_uncertain")))
     atomic=[]
@@ -72,6 +80,8 @@ def canonicalize(row,page_book,catalog_path):
             item["book_resolution"]="UNRESOLVED"
         if assumption:
             flags.append(assumption)
+        if chapter_note:
+            flags.append("EDITORIAL_CHAPTER_ONLY_SHORTHAND")
         if item.get("status")!="PARSED":
             flags.append("DESTINATION_NOT_YET_PARSED")
         if item.get("book_code") is None:
