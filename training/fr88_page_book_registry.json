@@ -1,0 +1,30 @@
+{
+  "schema": "jbible.fr88.page-book-registry.v1",
+  "purpose": "Source-book identity is page-level metadata, NOT something required to be visibly repeated beside each printed marginal row.",
+  "page_ranges": [
+    {
+      "first_page": 31,
+      "last_page": 40,
+      "book_code": "Gen",
+      "book_printed": "LA GENÈSE",
+      "basis": "FR88 scanned opening Genesis pages, existing page-header OCR and user confirmation that page 40 is Genesis",
+      "human_checked_page_range": false,
+      "page_start_chapter": null,
+      "page_start_verse": null
+    }
+  ],
+  "single_pages": [
+    {
+      "page": 102,
+      "book_code": "Exod",
+      "book_printed": "EXODE",
+      "page_start_chapter": 16,
+      "page_start_verse": 21,
+      "basis": "User explicitly provided page 102 as Exodus, starting at 16:21",
+      "human_checked_header": true
+    }
+  ],
+  "warning": "Page book ranges are provisional until every page's book boundary is checked. Do not extrapolate Genesis past page 40 or the Exodus example to adjacent pages. A page may cross a book/chapter boundary.",
+  "auto_verified_verse_links": 0,
+  "sql_writes": false
+}
