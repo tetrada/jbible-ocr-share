@@ -1,0 +1,76 @@
+{
+  "schema": "jbible.fr88.batch-diagnostic.v1",
+  "captured_utc": "2026-10-16T16:36:17.815664+00:00",
+  "page_range": [
+    101,
+    200
+  ],
+  "batch_state": "not_started_or_log_missing",
+  "processes": {
+    "batch_runner": {
+      "count": 0,
+      "pids": []
+    },
+    "ocr_runner": {
+      "count": 0,
+      "pids": []
+    },
+    "status_watcher": {
+      "count": 1,
+      "pids": [
+        6197
+      ]
+    }
+  },
+  "log_files": {
+    "ocr": {
+      "exists": false
+    },
+    "status": {
+      "exists": true,
+      "bytes": 0,
+      "modified_utc": "2026-10-16T16:22:03.194825+00:00"
+    }
+  },
+  "ocr_observations": {
+    "job_start_seen": false,
+    "job_success_seen": false,
+    "fatal_marker_seen": false,
+    "latest_pass": null,
+    "latest_completed_page": null,
+    "latest_deepseek_task": null,
+    "api_budget_stop_count": 0,
+    "published_pass_count": 0,
+    "regression_pass_count": 0
+  },
+  "checkpoints": {
+    "new_page_bundles": 0,
+    "new_page_stages_cached": 0,
+    "last_new_page": null,
+    "first_missing_new_page": 101,
+    "base_dir_exists": true
+  },
+  "progress_file": {
+    "exists": true,
+    "range": [
+      31,
+      100
+    ],
+    "pages_bundled": 70,
+    "pages_requested": 70,
+    "new_paid_tasks_this_run": 0
+  },
+  "status_integration": {
+    "status_env_file_exists": true,
+    "status_sdk_file_exists": true,
+    "bridge_file_exists": true,
+    "watcher_file_exists": true,
+    "watcher_error_category": "none"
+  },
+  "note": "Sanitized operational metadata only. No logs, credentials, raw OCR, image content, command-line arguments or environment variable values.",
+  "status_portal_probe": {
+    "attempted": true,
+    "success": true,
+    "error_category": null
+  }
+}
