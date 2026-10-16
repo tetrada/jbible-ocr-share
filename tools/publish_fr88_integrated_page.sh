@@ -74,6 +74,7 @@ for fn in sorted(src.glob("image_????.bundle.json")):
         "image_page":j["image_page"],"page_book":j.get("page_book"),
         "running_head":{k:head.get(k) for k in (
             "header_position","boundary_role","chapter","verse","book_code",
+            "ocr_original_book_code",
             "confidence","scan_confidence","visible","raw")},
         "main_text_verse_markers":markers,
         "source_to_destination_edges":edges,
