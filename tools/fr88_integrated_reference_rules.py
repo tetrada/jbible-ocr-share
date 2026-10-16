@@ -103,6 +103,18 @@ def canonicalize(row,page_book,catalog_path):
                 ref["printed_target_group"]=part.get("literal")
                 ref["interpretation_flags"]=list(flags)
                 atomic.append(ref)
+        elif item.get("type")=="VERSE_MIXED_LIST" and isinstance(item.get("members"),list):
+            members=item.pop("members")
+            for sub_index,member in enumerate(members,1):
+                ref=copy.deepcopy(item)
+                ref.update({key:member.get(key) for key in (
+                    "type","verse","end_verse")})
+                ref["parent_type"]="VERSE_MIXED_LIST"
+                ref["parent_segment_index"]=outer_index
+                ref["member_index"]=sub_index
+                ref["printed_target_group"]=part.get("literal")
+                ref["interpretation_flags"]=list(flags)
+                atomic.append(ref)
         else:
             item["parent_segment_index"]=outer_index
             item["member_index"]=1
