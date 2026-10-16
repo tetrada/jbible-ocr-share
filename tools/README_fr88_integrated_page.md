@@ -58,6 +58,45 @@ Each of five DeepSeek provider answers is saved **privately on VPS** as `image_0
 
 A finished page gets `image_0033.bundle.json` with page header, all main-text verse markers, all marginal OCR rows, **atomic source→destination edges**, QA flags and summary. No SQL writes.
 
+### After the 24 human-reviewed exception cases (2026-10-16)
+
+See [the complete review lessons](../training/fr88_integrated_review_lessons.md).
+All 24 individual, authenticated, scanned-page review decisions are published
+as text in `fr88_integrated_v1/human_exception_reviews.json`, without scans
+or credentials. The latest pipeline:
+
+- Uses the previous page/column to recover top-of-page source verses.
+- Accepts structurally valid references missing from the local, sparse
+  chapter-verse catalog; such references retain a coverage warning.
+- Preserves `sp` and visible verse prefixes before cropped punctuation.
+- Includes the exact human-reviewed source/target corrections on their original
+  atomic edge IDs, without teaching questionable one-off OCR corrections
+  globally.
+- Restores a V2 reference row missed by V1 (page 36 `Ch 1 1-4`) as an
+  `ACCEPTED_ESTIMATED` edge.
+- Reinterprets an incorrect DeepSeek output `column` label according to the
+  image-half supplied in that task; records the event for audit.
+- Flags nonmonotonic vertical verse markers; *does not claim* they are exact.
+
+To rebuild completed pages **using cached provider replies only** (0 paid
+DeepSeek requests, no SQL):
+
+```bash
+set -o pipefail
+curl -fsSL https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main/tools/run_fr88_integrated_page.sh | bash -s -- --start 31 --end 40 --max-new-calls 1 --rebuild-bundles 2>&1 | tee /root/jbible_integrated_rebuild.log
+curl -fsSL https://raw.githubusercontent.com/tetrada/jbible-ocr-share/main/tools/publish_fr88_integrated_page.sh | bash
+```
+
+`--rebuild-bundles` deliberately leaves pages 38–40 unfinished if their
+five-stage observations are incomplete. Once the rebuilt seven pages have
+been checked, rerun the **normal** `--start 31 --end 40` scan with the
+remaining API-call budget; all saved stages are reused, including the
+page-38 `verses_R` provider response.
+
+Do not equate automatic acceptance with accuracy. The user demands 99%+
+correct connections, which must be evaluated independently, not claimed
+from the accepted/exception count.
+
 ### First run, on existing page 33 only
 
 Free test/preflight (also runs offline regression tests in the installed Docker image):
