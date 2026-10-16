@@ -285,6 +285,25 @@ def test():
         p75,"Gen",caps,dict(hdr75,verse=33))
     assert not none and unchanged[4]["chapter"]==42
 
+    # Page82: printed Gen49:16 left start and Gen49:29 right start
+    # correct the OCR left sequence 5:16..28 without changing provider JSON.
+    p82=[{"column":"L","chapter":5,"verse":v,
+          "y_fraction":.07+(v-16)*.04,"confidence":"HIGH"}
+         for v in range(16,29)]
+    p82 += [{"column":"R","chapter":49,"verse":v,
+             "y_fraction":.12+(v-29)*.04,"confidence":"HIGH"}
+            for v in range(29,34)]
+    hd82={"header_position":"TOP_LEFT","boundary_role":"FIRST_ON_PAGE",
+          "chapter":49,"verse":16,"book_code":"Gen","visible":True}
+    fixed82,flags82=g.repair_same_page_chapter_slips(p82,"Gen",
+       {("Gen",49):33},hd82)
+    assert flags82==["LEFT_COLUMN_CHAPTER_REPAIRED_FROM_HEADER_AND_RIGHT"]
+    assert all(x["chapter"]==49 and x["ocr_original_chapter"]==5 for x in fixed82[:13])
+    assert p82[0]["chapter"]==5
+    no_fix82,no_flags82=g.repair_same_page_chapter_slips(
+        p82,"Gen",{("Gen",49):33},dict(hd82,verse=17))
+    assert not no_flags82 and no_fix82[0]["chapter"]==5
+
     for raw,expected in [
         ({"book_code":"Gen","chapter":27,"verse":46,
           "end_chapter":28,"end_verse":5,
