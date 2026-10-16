@@ -220,7 +220,10 @@ def parse_task(response,task,page):
                 "image_page":page,"side":side,"kind":item.get("kind","REFERENCE"),
                 "raw_line":line,"y_fraction":y,"visibility_status":visibility,
                 "visibility_note":str(item.get("visibility_note") or "")[:220],
-                "layout_uncertain":item.get("layout_uncertain") is True or len(lines)>1,
+                "layout_uncertain":item.get("layout_uncertain") is True or
+                                   item.get("shifted_down_possible") is True or len(lines)>1,
+                "group_separator_before":item.get("group_separator_before") is True,
+                "shifted_down_possible":item.get("shifted_down_possible") is True,
                 "typography_uncertain":item.get("typography_uncertain") is True or
                                         visibility!="COMPLETE",
                 "typography_evidence":str(item.get("typography_evidence") or "")[:220]
