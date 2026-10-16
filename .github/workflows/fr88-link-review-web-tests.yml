@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'tools/fr88_review_web_server.py'
+      - 'tools/fr88_link_edges.py'
+      - 'training/fr88_page_book_registry.json'
       - 'tools/fr88_link_review_index.html'
       - 'tools/fr88_link_review_app.js'
       - 'tools/fr88_review_web_index.html'
@@ -20,7 +22,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Check server and reviewed-decision parser syntax
-        run: python -m py_compile tools/fr88_review_web_server.py tools/test_fr88_link_review_web.py
+        run: python -m py_compile tools/fr88_review_web_server.py tools/fr88_link_edges.py tools/test_fr88_link_review_web.py
       - name: Offline visual decision validation; no API or SQL
         run: cd tools && python test_fr88_link_review_web.py
       - name: Shell syntax and existing log-in unchanged
