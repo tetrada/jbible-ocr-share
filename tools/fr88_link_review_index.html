@@ -44,7 +44,7 @@ textarea{min-height:58px;resize:vertical}.hint{background:#fff8e9;border:1px sol
 </header>
 <div class="container">
 <aside>
-<div class="sidebar-top"><strong>Links needing verification</strong><p>Each item is one printed marginal row. Several target passages can belong to it.</p>
+<div class="sidebar-top"><strong>Links needing verification</strong><p>Each item is ONE source → ONE destination. A printed marginal row can produce several independent links.</p>
 <select id="filter"><option value="pending">Unreviewed first</option><option value="all">All rows</option><option value="candidates">Proposed matches</option><option value="reviews">Uncertain matches</option><option value="done">Reviewed</option></select>
 </div><nav id="queue" aria-label="Margin source link cases"></nav></aside>
 <main id="main">
@@ -69,7 +69,7 @@ textarea{min-height:58px;resize:vertical}.hint{background:#fff8e9;border:1px sol
 <p class="hint">Source and marginal rows may be several lines apart. Use the zoom/position controls and adjacent pages to check the printed chapter, verse and book. Vertical proximity alone is not verification.</p>
 </div>
 <div>
-<p class="sectionlabel">Printed margin (target)</p>
+<p class="sectionlabel">One destination reference (from printed margin)</p>
 <div class="box">
 <strong id="marginRaw" class="code"></strong>
 <div class="tags" id="targetTags"></div><div class="small muted" id="targetDetails"></div>
@@ -90,14 +90,15 @@ textarea{min-height:58px;resize:vertical}.hint{background:#fff8e9;border:1px sol
 <label>Scope<select id="scope"><option value="VERSE">Single verse</option><option value="PASSAGE">Passage</option><option value="CHAPTER">Chapter</option><option value="UNKNOWN">Unknown</option></select></label>
 </div>
 <label class="field" style="margin-top:9px">How the source book is established
-<select id="bookBasis"><option value="PRINTED_THIS_PAGE">Printed on this page</option><option value="NEIGHBORING_PAGE">Printed on nearby page</option><option value="VISUALLY_CHECKED_CONTINUATION">Checked book continuation</option><option value="UNKNOWN">Not established</option></select></label>
+<select id="bookBasis"><option value="PRINTED_THIS_PAGE">Printed on this page</option><option value="PAGE_REGISTRY">Known from page/book registry</option><option value="NEIGHBORING_PAGE">Printed on nearby page</option><option value="VISUALLY_CHECKED_CONTINUATION">Checked book continuation</option><option value="UNKNOWN">Not established</option></select></label>
 </div>
 <div class="section">
-<label class="field">Visible marginal text (edit if OCR differs from print)
+<label class="field">This destination reference only (edit if OCR differs from print)
 <textarea id="targetText" rows="2"></textarea></label>
-<p class="small muted">Correcting the raw margin does not automatically resolve or validate the canonical target book/verse; that requires a separate interpretation check.</p>
-<div class="checkrow"><input type="checkbox" id="sourceChecked"><label for="sourceChecked">I checked the source verse/chapter against the visible main text.</label></div>
-<div class="checkrow"><input type="checkbox" id="targetChecked"><label for="targetChecked">I checked the marginal reference text against the visible print.</label></div>
+<p class="small muted">Each destination becomes a distinct relationship record. Changing a target transcription does not automatically verify its canonical book/chapter/verse.</p>
+<div class="checkrow"><input type="checkbox" id="pageChecked"><label for="pageChecked">I checked that this scanned page belongs to the selected source book (printed header, page register, or verified continuation).</label></div>
+<div class="checkrow"><input type="checkbox" id="sourceChecked"><label for="sourceChecked">I checked the source chapter/verse number in the main text, following the page-start marker and subsequent printed verse markers.</label></div>
+<div class="checkrow"><input type="checkbox" id="targetChecked"><label for="targetChecked">I checked THIS individual destination reference against the printed margin.</label></div>
 <div class="checkrow"><input type="checkbox" id="alignmentChecked"><label for="alignmentChecked">I checked that this margin row applies to this source verse/passage.</label></div>
 <label class="field" style="margin-top:10px">Review notes<textarea id="notes" rows="2" placeholder="Why this source verse; uncertainty or correction details"></textarea></label>
 </div>
