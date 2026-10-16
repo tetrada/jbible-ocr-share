@@ -246,7 +246,13 @@ def adjacent_verse_candidates(row,intervals,source):
 
 
 def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None):
-    """Flatten one margin printed ROW into N independent destination edges."""
+    """One printed marginal destination -> one automatically accepted edge.
+
+    The user accepts plausible source-verse offsets of +/-1 (and other
+    non-fatal OCR/layout uncertainty) WITHOUT human approval. We preserve
+    uncertainty flags, but reserve EXCEPTION for genuinely unusable
+    source/destination coordinates or cut-off/unreadable print.
+    """
     pages=set(page_issues or [])
     overrides=set(overrides or [])
     output=[]
@@ -260,52 +266,82 @@ def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None
             if eid in used:
                 raise ValueError("Duplicate atomic source-target edge: "+eid)
             used.add(eid)
-            reasons=list(position_issues)
-            if not book: reasons.append("SOURCE_BOOK_UNRESOLVED")
-            if not target_valid(ref,limits): reasons.append("DESTINATION_UNRESOLVED")
+            blockers=[]
+            notices=list(position_issues)
+            if not book:
+                blockers.append("SOURCE_BOOK_UNRESOLVED")
+            if source is None:
+                blockers.append("SOURCE_VERSE_UNRESOLVED")
+            if book and source is not None and (
+                    book,source["chapter"]) not in limits:
+                blockers.append("SOURCE_COORDINATES_NOT_IN_CATALOG")
+            elif book and source is not None and source["verse"]>limits.get(
+                    (book,source["chapter"]),0):
+                blockers.append("SOURCE_VERSE_OUTSIDE_CATALOG")
+            if not target_valid(ref,limits):
+                blockers.append("DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG")
             if row.get("visibility_status") in ("CUT_OFF","UNREADABLE"):
-                reasons.append("MARGINAL_TEXT_NOT_FULLY_VISIBLE")
-            if row.get("typography_uncertain"):
-                reasons.append("MARGINAL_TYPOGRAPHY_UNCERTAIN")
-            if row.get("layout_uncertain") and not row.get("shifted_down_possible"):
-                reasons.append("MARGINAL_LAYOUT_AMBIGUOUS")
-            soft=[]
-            if row.get("shifted_down_possible"):
-                soft.append("MARGIN_MAY_BE_SHIFTED_BELOW_ITS_SOURCE")
-            if "NEAR_VERSE_BOUNDARY" in reasons:
-                reasons.remove("NEAR_VERSE_BOUNDARY")
-                soft.append("SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY")
+                blockers.append("MARGINAL_TEXT_NOT_FULLY_VISIBLE")
             if row["id"] in overrides:
-                reasons.append("HUMAN_CONFIRMED_CUT_OFF")
-            if ref.get("status") == "PARSED" and not target_valid(ref,limits):
-                reasons.append("CITATION_OUTSIDE_BIBLE_CATALOG")
-            # A short OCR book abbreviation may be reasonably repaired without
-            # asking the user to check every instance. Preserve the assumption
-            # separately, and DO NOT count it as independently confirmed.
+                blockers.append("HUMAN_CONFIRMED_CUT_OFF")
+            if "BOOK_TRANSITION_ON_PAGE" in pages:
+                blockers.append("SOURCE_BOOK_CHANGES_WITHIN_PAGE")
+            if "PAGE_BOOK_CONFLICT" in pages:
+                blockers.append("CONFLICTING_SOURCE_BOOK_EVIDENCE")
+
+            estimate_flags=[]
+            if row.get("typography_uncertain"):
+                notices.append("MARGINAL_TYPOGRAPHY_ASSUMED")
+            if row.get("layout_uncertain"):
+                estimate_flags.append("MARGINAL_LAYOUT_ESTIMATED")
+            if row.get("shifted_down_possible"):
+                estimate_flags.append("MARGIN_MAY_BE_SHIFTED_BELOW_ITS_SOURCE")
+            if "NEAR_VERSE_BOUNDARY" in notices:
+                notices.remove("NEAR_VERSE_BOUNDARY")
+                estimate_flags.append("SOURCE_WITHIN_1_8_PERCENT_OF_VERSE_BOUNDARY")
+            for marker in ("LOW_VERSE_MARKER_CONFIDENCE",
+                           "INCOMPLETE_VERSE_MARKER_SEQUENCE"):
+                if marker in notices:
+                    notices.remove(marker)
+                    estimate_flags.append(marker)
             warnings=list(ref.get("interpretation_flags") or [])
-            if any(q in pages for q in ("PAGE_BOOK_CONFLICT",
-                                        "BOOK_TRANSITION_ON_PAGE",
-                                        "PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER",
-                                        "NONPOSITIVE_VERSE_INTERVAL")):
-                reasons.append("PAGE_LAYOUT_CONFLICT")
-            status=("REVIEW_REQUIRED" if reasons else
-                    "AUTO_PROPOSED_ADJACENT" if soft else
-                    "AUTO_PROPOSED_FLAGGED" if warnings else "AUTO_PROPOSED")
+            for issue in sorted(pages):
+                if issue in ("PAGE_END_HEADER_DISAGREES_WITH_LAST_MARKER",
+                             "NONPOSITIVE_VERSE_INTERVAL",
+                             "BOOK_INHERITED_FROM_PRIOR_PAGE"):
+                    notices.append(issue)
+
+            if blockers:
+                status="EXCEPTION"
+            elif estimate_flags:
+                status="ACCEPTED_ESTIMATED"
+            elif warnings or notices:
+                status="ACCEPTED_FLAGGED"
+            else:
+                status="ACCEPTED"
+            is_accepted=status!="EXCEPTION"
             output.append({
                 "edge_id":eid,"image_page":page,"column":row.get("side"),
                 "row_id":row["id"],"margin_y_fraction":row.get("y_fraction"),
                 "printed_margin_line":row.get("raw_line"),
                 "target_segment_index":idx,"destination":ref,
-                "editorial_relation_marker":ref.get("relation_marker") or row.get("relation_marker","ORDINARY"),
+                "editorial_relation_marker":ref.get("relation_marker") or
+                                             row.get("relation_marker","ORDINARY"),
                 "destination_interpretation_flags":warnings,
-                "source_alignment_estimate_flags":soft,
+                "source_alignment_estimate_flags":sorted(set(estimate_flags)),
                 "possible_adjacent_source_verses":(
-                    adjacent_verse_candidates(row,intervals,source) if soft else []),
+                    adjacent_verse_candidates(row,intervals,source)
+                    if estimate_flags and source else []),
                 "source":{"book_code":book,
                           "chapter":source["chapter"] if source else None,
                           "verse":source["verse"] if source else None,
-                          "source_verse_interval":source["source_verse_interval"] if source else None},
-                "status":status,"qa_reasons":sorted(set(reasons)),
+                          "source_verse_interval":source["source_verse_interval"]
+                                                  if source else None},
+                "status":status,
+                "accepted_automatically":is_accepted,
+                "human_review_required":not is_accepted,
+                "hard_exceptions":sorted(set(blockers)),
+                "qa_reasons":sorted(set(blockers+notices)),
                 "scan_human_verified":False,"database_written":False
             })
     return output
@@ -313,8 +349,14 @@ def atomic_edges(page,book,rows,intervals,limits,page_issues=None,overrides=None
 
 def summary(links):
     c=Counter(x["status"] for x in links)
-    return {"atomic_links":len(links),"auto_proposed":c["AUTO_PROPOSED"],
-            "auto_proposed_flagged":c["AUTO_PROPOSED_FLAGGED"],
-            "auto_proposed_adjacent":c["AUTO_PROPOSED_ADJACENT"],
-            "needs_review":c["REVIEW_REQUIRED"],
+    accepted=sum(c[status] for status in (
+        "ACCEPTED","ACCEPTED_FLAGGED","ACCEPTED_ESTIMATED"))
+    return {"atomic_links":len(links),
+            "accepted":accepted,
+            "accepted_plain":c["ACCEPTED"],
+            "accepted_flagged":c["ACCEPTED_FLAGGED"],
+            "accepted_estimated":c["ACCEPTED_ESTIMATED"],
+            "exceptions":c["EXCEPTION"],
+            "acceptance_percent":round(100.0*accepted/len(links),2)
+                                  if links else 0.0,
             "human_verified":0,"sql_writes":False}
