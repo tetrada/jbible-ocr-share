@@ -204,7 +204,10 @@ def make_intervals(markers,header,book,limits,previous_page_last=None):
             "column":side,"chapter":m["chapter"],"verse":m["verse"],
             "y_start":m["y_fraction"],"y_end":y_end,
             "start_marker_confidence":m["confidence"],
-            "from_header_seed":m["synthetic"],
+            "from_header_seed":m["synthetic"] and
+                                "FIRST_ON_PAGE" in m.get("evidence",""),
+            "from_adjacent_context":m["synthetic"] and
+                                "FIRST_ON_PAGE" not in m.get("evidence",""),
             "source_seed_evidence":m.get("evidence",""),
             "next_marker_contiguous":contiguous,
             "next_marker_chapter":following["chapter"] if following else None,
@@ -466,7 +469,8 @@ def summary(links):
     accepted=sum(c[status] for status in (
         "ACCEPTED","ACCEPTED_FLAGGED","ACCEPTED_ESTIMATED",
         "ACCEPTED_HUMAN_CORRECTED"))
-    human=sum(1 for e in links if e.get("scan_human_verified") is True)
+    human=sum(1 for e in links if e.get("scan_human_verified") is True
+              and e.get("accepted_automatically") is True)
     return {"atomic_links":len(links),
             "accepted":accepted,
             "accepted_plain":c["ACCEPTED"],
