@@ -119,8 +119,15 @@ def test():
     assert g.atomic_edges(33,"Gen",[row],intervals,limits)[0]["status"]=="ACCEPTED_ESTIMATED"
     cut=dict(row,id="fr88i:p0033:L:009",visibility_status="CUT_OFF",
              typography_uncertain=True)
-    assert g.atomic_edges(33,"Gen",[cut],intervals,limits)[0]["status"]=="EXCEPTION"
-    assert g.atomic_edges(33,"Gen",[cut],intervals,limits)[0]["accepted_automatically"] is False
+    # Partial margin cutoffs can still contain a FULL usable destination.
+    cut_link=g.atomic_edges(33,"Gen",[cut],intervals,limits)[0]
+    assert cut_link["status"]=="ACCEPTED_FLAGGED"
+    assert cut_link["accepted_automatically"] is True
+    assert "MARGIN_TRUNCATED_BUT_THIS_TARGET_IS_READABLE" in cut_link["qa_reasons"]
+    broken=dict(cut,id="fr88i:p0033:L:021",
+        references=[dict(row["references"][0],type="UNRESOLVED_NUMERIC",
+                         verse=None)])
+    assert g.atomic_edges(33,"Gen",[broken],intervals,limits)[0]["status"]=="EXCEPTION"
     # Restore the normal full marker map after the deliberate missing-marker test.
     intervals,_=g.make_intervals(left,head,"Gen",limits)
     # A plausible repaired book abbreviation is ACCEPTED, with audit flags.
