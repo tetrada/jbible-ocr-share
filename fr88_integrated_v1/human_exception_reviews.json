@@ -67,6 +67,71 @@
       "sql_ready": false,
       "sql_writes": false,
       "reviewed_utc": "2026-10-16T09:17:45.952798+00:00"
+    },
+    "fr88i:p0032:R:006/target01": {
+      "edge_id": "fr88i:p0032:R:006/target01",
+      "image_page": 32,
+      "choice": "as_printed",
+      "cause": "CATALOG_REJECTED_VALID_REFERENCE",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 2,
+        "verse": 2,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Exod",
+        "chapter": 20,
+        "verse": 8,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": "+"
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Ex 20 8+",
+      "original_exception_reasons": [
+        "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:19:26.317564+00:00"
+    },
+    "fr88i:p0032:R:007/target01": {
+      "edge_id": "fr88i:p0032:R:007/target01",
+      "image_page": 32,
+      "choice": "unresolved",
+      "cause": "MARGIN_ACTUALLY_CUT_OFF",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 2,
+        "verse": 2,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Exod",
+        "chapter": 20,
+        "verse": 11,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": "s"
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "↗ Ex 20 11s",
+      "original_exception_reasons": [
+        "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG",
+        "MARGINAL_TEXT_NOT_FULLY_VISIBLE"
+      ],
+      "human_review_status": "UNRESOLVED",
+      "notes": "but some additional info is cut off, destination ref is correct",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:20:17.798644+00:00"
     }
   }
 }
