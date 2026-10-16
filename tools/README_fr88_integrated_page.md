@@ -37,23 +37,20 @@ The user provided photographs of the printed **Napomene / Rubne naznake ili refe
 - OCR-only book restorations such as `Ch` → `1 Ch` or `s` → `Is` are **assumed and flagged**, not routinely escalated to user review.
 - Edition paragraph 7: a margin reference may be shifted **below** the line it belongs to when the margin is crowded. A blank margin line ordinarily divides groups aligned with different source lines.
 
-The user explicitly accepts occasional source-verse estimates **off by one verse**. Therefore a margin close to a source-verse boundary or marked as possibly shifted down is assigned **one provisional source** with separately recorded adjacent printed-verse alternatives and status `AUTO_PROPOSED_ADJACENT`, rather than being automatically sent to manual review. Real failures—missing book/chapter, unreadable target, nonsequential markers, and genuine layout contradictions—still need a review/error bucket. *An estimated ±1 match is not silently marked visually confirmed or SQL-imported.*
+**Final acceptance rule (user-confirmed):** Automatically **ACCEPT** every structurally usable connection, including a possible ±1-verse source offset, a slightly shifted marginal note, an inferred/restored abbreviation, or a missing marker elsewhere. No manual review is requested for those cases. Preserve the best source verse and optionally its neighboring verse alternatives as audit metadata. No accepted item requires human confirmation. Only truly unresolvable source/destination data (e.g. no source coordinates, target outside the canonical Bible, cut-off/unreadable citation, or conflicting source-book identity) is withheld as an `EXCEPTION`. `ACCEPTED_ESTIMATED` means **accepted into the resulting link dataset**, not a manual-review state. No SQL writes occur in this OCR batch.
 
 For evaluation, report **exact source-verse agreement and agreement within ±1 verse separately**. Neither score has been established on real integrated-page scans yet; 99% remains a target, not a measured claim.
 
-### Auto QA to avoid thousands of human reviews
+### Automatic acceptance; only genuine nonsense is excluded
 
-Clear links are marked `AUTO_PROPOSED`; unusual cases are `REVIEW_REQUIRED` with actionable reasons:
+Each atomized destination receives `accepted_automatically=true` unless its source/destination coordinate is structurally missing, outside the catalog, cut-off/unreadable, or has conflicting book identity. Accepted status values are:
 
-- Missing/duplicate/invalid main-text verse markers, nonsequential chapters/verses or a margin position that cannot be assigned.
-- Marginal OCR with cut-off/unreadable glyphs, uncertain typography or unsupported target notation.
-- Bible target book/chapter/verse outside the catalog.
-- Vertical margin/source alignment near the boundary between verses.
-- Contradiction between known page-level book and model reading.
-- Top-right LAST header inconsistent with observed last verse.
-- A fresh margin pass detects fewer physical rows than the previously saved V2 OCR.
+- `ACCEPTED`: complete, structurally valid source → destination connection.
+- `ACCEPTED_ESTIMATED`: automatically accepted even when the source might be ±1 verse, a margin was shifted, the visible verse-marker sequence has gaps, or old OCR y-coordinates disagree. Adjacent printed verse alternatives are retained as machine-readable hints, not as additional links.
+- `ACCEPTED_FLAGGED`: automatically accepted with some other nonblocking note (e.g. an assumed missing first letter/ordinal in the destination book).
+- `EXCEPTION`: incomplete or impossible coordinates, unresolvable book, cutoff/unreadable destination. Only these are withheld from the accepted dataset.
 
-These checks reduce needless human verification but **no vision model can guarantee zero OCR mistakes**, especially with cropped print, faint verse markers and edition-specific notation. `AUTO_PROPOSED` is explicitly **not** the same as `HUMAN_VERIFIED`, and nothing is written to SQL automatically. For trustworthy final bulk import we should visually sample some apparently clear links to calibrate precision and audit the true exception rate.
+A page with fewer margin OCR rows than an earlier scan is flagged for audit, but this does not invalidate the otherwise usable records it produced. This approach honors the user's **no review for ±1** requirement without concealing possible OCR gaps. We still cannot claim 99% accuracy without checking an independent sample of the actual scans. Accepted != human verified, and SQL writes remain disabled in the OCR stage.
 
 ### Stage checkpoints and resumption
 
