@@ -292,6 +292,104 @@
       "sql_ready": false,
       "sql_writes": false,
       "reviewed_utc": "2026-10-16T09:25:25.307547+00:00"
+    },
+    "fr88i:p0032:R:015/target01": {
+      "edge_id": "fr88i:p0032:R:015/target01",
+      "image_page": 32,
+      "choice": "as_printed",
+      "cause": "SOURCE_VERSE_POSITION_ERROR",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 2,
+        "verse": 7,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Ps",
+        "chapter": 104,
+        "verse": 29,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": "s"
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Ps 104 29s",
+      "original_exception_reasons": [
+        "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:26:24.278439+00:00"
+    },
+    "fr88i:p0032:R:016/target01": {
+      "edge_id": "fr88i:p0032:R:016/target01",
+      "image_page": 32,
+      "choice": "as_printed",
+      "cause": "MARGIN_ACTUALLY_CUT_OFF",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 2,
+        "verse": 5,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Job",
+        "chapter": 34,
+        "verse": 14,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": "s"
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Jb 34 14s;",
+      "original_exception_reasons": [
+        "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG",
+        "MARGINAL_TEXT_NOT_FULLY_VISIBLE"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "If cut is made and ref can be made - do it",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:26:54.581607+00:00"
+    },
+    "fr88i:p0032:R:017/target01": {
+      "edge_id": "fr88i:p0032:R:017/target01",
+      "image_page": 32,
+      "choice": "cut_off",
+      "cause": "MARGIN_ACTUALLY_CUT_OFF",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 2,
+        "verse": 5,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "1Cor",
+        "chapter": 15,
+        "verse": null,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "↗ 1 Co 15 45",
+      "original_exception_reasons": [
+        "DESTINATION_UNRESOLVED_OR_OUTSIDE_CATALOG",
+        "MARGINAL_TEXT_NOT_FULLY_VISIBLE"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_CUT_OFF",
+      "notes": "only head, ocred wrongly but nevermind..",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:28:04.721515+00:00"
     }
   }
 }
