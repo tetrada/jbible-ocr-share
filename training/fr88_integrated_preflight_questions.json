@@ -1,6 +1,6 @@
 {
   "schema": "jbible.fr88.integrated-preflight-review.v1",
-  "state": "AWAITING_EDITORIAL_CONVENTIONS",
+  "state": "EDITORIAL_CONVENTIONS_RESOLVED_2026_10_16",
   "target": "At least 99 percent of atomic source-to-destination links correct, demonstrated by independent scan-grounded evaluation",
   "baseline": {
     "pages": [
@@ -42,8 +42,10 @@
       ],
       "question": "When a marginal reference has no book prefix, does its destination inherit the source book of the current page (e.g. Genesis here), does it inherit the preceding target book in the margin, or is there a conditional editorial rule?",
       "assumed_rule": null,
-      "review_required": true,
-      "affected_reference_segments_at_least": 1789
+      "review_required": false,
+      "affected_reference_segments_at_least": 1789,
+      "resolved_rule": "Bare standalone destination coordinates use SOURCE PAGE BOOK. If a book is explicit earlier on the SAME printed margin line, later semicolon-delimited bare coordinates inherit that explicit target book, and only within that line.",
+      "resolved": true
     },
     {
       "id": "Q2_EQUALS_PREFIX",
@@ -66,7 +68,9 @@
       ],
       "question": "What does the printed equals sign mean here? Does it change source/destination scope or just indicate a comparison/cross-reference? Should '= 15' be understood as chapter 15, verse 15, or a continuation of an earlier notation?",
       "assumed_rule": null,
-      "review_required": true
+      "review_required": false,
+      "resolved_rule": "'=' indicates a SAME_BOOK_DOUBLET (parallel text in same book). It is a relation mark, not a chapter or verse.",
+      "resolved": true
     },
     {
       "id": "Q3_SINGLE_LETTER_PREFIX",
@@ -90,7 +94,9 @@
       ],
       "question": "The visible print 's 14 14+' (D040) and 'Ch 1 1-4' (D042) was already confirmed against scans. What do these abbreviations mean as canonical target books? Is the leading 's' a physically incomplete book abbreviation/continuation, and what exact book is meant by 'Ch' here? No need to reverify the visible characters.",
       "assumed_rule": null,
-      "review_required": true
+      "review_required": false,
+      "resolved_rule": "OCR book-prefix errors: provisionally correct 'Ch' to '1 Ch', 's' to 'Is' where plausible; preserve raw OCR text and flag assumed repair, no per-instance human review by default.",
+      "resolved": true
     },
     {
       "id": "Q4_COMMA_DISJOINT_TARGETS",
@@ -114,7 +120,9 @@
       ],
       "question": "For independent database connections, should 'Si 43 6,7' produce two target edges (Sir 43:6 and Sir 43:7) or a single destination referencing a verse set? Confirm that 'Ps 8; 104' yields two distinct chapter references.",
       "assumed_rule": null,
-      "review_required": true
+      "review_required": false,
+      "resolved_rule": "'Si 43 6,7' -> TWO atomic destination links to Sir 43:6 and 43:7. 'Ps 8; 104' -> two separate chapter-level destinations.",
+      "resolved": true
     },
     {
       "id": "Q5_FOLLOWING_SUFFIXES",
@@ -145,7 +153,9 @@
       ],
       "question": "For suffixes +, s, ss and p, should the import preserve exactly the printed suffix on its target coordinate without manufacturing an inferred end verse? Are any of these editorial markers that change the number of distinct destination links?",
       "assumed_rule": "Preserve printed suffix as metadata; never synthesize unseen target coordinates",
-      "review_required": true
+      "review_required": false,
+      "resolved_rule": "Preserve s, ss, p and + suffixes exactly as notation metadata. Do not add verse coordinates or additional target records because of suffixes.",
+      "resolved": true
     }
   ],
   "known_issue": {
@@ -157,5 +167,8 @@
     "lesson": "Even correctly exposed print can lose chapter-versus-verse typography; this is not a cropped-edge case."
   },
   "automatic_import": false,
-  "sql_writes": false
+  "sql_writes": false,
+  "verified_from": "User responses and photographs of the printed Jerusalem Bible edition 'Napomene' / 'Rubne naznake ili referencije', paragraphs 1-7.",
+  "ocr_retry_authorized": false,
+  "next_step": "Run one complete-page DeepSeek pilot on image_0033.jpg, verify actual per-verse positions, main-text + margin counting and atomic link record precision before pages 31-500."
 }
