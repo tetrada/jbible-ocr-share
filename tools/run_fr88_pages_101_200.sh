@@ -25,12 +25,18 @@ flock -n 9 || { echo "ERROR: JBible 101..200 job is already running"; exit 3; }
 # If this script is already running, attach the watcher manually using
 # the command in tools/README_jbible_status_watch.md.
 STATUS_MONITOR=/opt/jbible/importer/jbible_status_logwatch.py
+STATUS_TEST=/opt/jbible/importer/test_jbible_status_logwatch.py
 STATUS_TMP=$(mktemp /opt/jbible/importer/.status_monitor_XXXXXXXX)
 if curl -fsSL --retry 3 --connect-timeout 15 \
       "$ROOT/tools/jbible_status_logwatch.py" -o "$STATUS_TMP" && \
-      python3 -m py_compile "$STATUS_TMP"; then
+      python3 -m py_compile "$STATUS_TMP" && \
+      curl -fsSL --retry 3 --connect-timeout 15 \
+      "$ROOT/tools/test_jbible_status_logwatch.py" -o "$STATUS_TEST"; then
     mv -f "$STATUS_TMP" "$STATUS_MONITOR"
     chmod 0644 "$STATUS_MONITOR"
+    if ! python3 "$STATUS_TEST"; then
+        echo "STATUS WARNING: offline status regression test failed" >&2
+    fi
     nohup python3 -u "$STATUS_MONITOR" \
         --log /root/jbible_101_200.log --start 101 --end 200 \
         >/root/jbible_101_200_status.log 2>&1 </dev/null &
