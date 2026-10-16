@@ -121,6 +121,12 @@ def test():
                     ("Judg","VERSE",14,12),
                     ("Judg","VERSE",14,17),
                     ("Tob","CHAPTER_ONLY",8,None)]
+        mixed=run("25 26, 29-34")
+        assert len(mixed["references"])==2
+        assert [(r["book_code"],r["chapter"],r["verse"],r["end_verse"],r["type"])
+                for r in mixed["references"]]==[
+                    ("Gen",25,26,None,"VERSE"),
+                    ("Gen",25,29,34,"VERSE_RANGE")]
         chnote=run("ch. 27.")
         assert len(chnote["references"])==1
         assert chnote["references"][0]["book_code"]=="Gen"
