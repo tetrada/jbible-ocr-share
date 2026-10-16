@@ -29,6 +29,9 @@ VERSE_LIST = re.compile(
 CROSS_CHAPTER_VERSES = re.compile(
     r"^\s*(\d{1,3})\s+(\d{1,3})\s*[-–—]\s*(\d{1,3})\s+(\d{1,3})\s*$"
 )
+MIXED_VERSE_LIST = re.compile(
+    r"^\s*(\d{1,3})\s+(\d{1,3})\s*,\s*(\d{1,3})\s*[-–—]\s*(\d{1,3})\s*$"
+)
 DOTTED_VERSE_LIST = re.compile(
     r"^\s*(\d{1,3})\s+(\d{1,3}(?:\.\d{1,3})+)\s*$"
 )
@@ -61,6 +64,17 @@ def alias_regex(csv_path):
 
 def _parse_numbers(text):
     text = text.strip(" \t\r\n=↗↖→←")
+    m = MIXED_VERSE_LIST.fullmatch(text)
+    if m:
+        ch,first,range_start,range_end=map(int,m.groups())
+        if range_end<range_start:
+            return {"type":"UNRESOLVED_NUMERIC","literal":text,
+                    "reason":"reversed_mixed_verse_list"}
+        return {"type":"VERSE_MIXED_LIST","chapter":ch,
+                "members":[{"type":"VERSE","verse":first,"end_verse":None},
+                           {"type":"VERSE_RANGE","verse":range_start,
+                            "end_verse":range_end}],
+                "literal":text,"suffix":""}
     m = CROSS_CHAPTER_VERSES.fullmatch(text)
     if m:
         ch,verse,end_ch,end_verse=map(int,m.groups())
