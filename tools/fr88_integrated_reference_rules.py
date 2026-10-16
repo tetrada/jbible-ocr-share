@@ -53,9 +53,11 @@ def canonicalize(row,page_book,catalog_path):
     # Parallel markers and editorial "cf." are not destination coordinates.
     # Preserve original typography in raw_line, normalize only the parser view.
     parse_text=re.sub(r"^\s*(?:\|\||∥|Ⅱ|‖)\s*", "",corrected)
-    parse_text=re.sub(r"(?i)\bcf\s*\.\s*(?=[A-Za-z])","",parse_text)
-    # Editorial "cf." and "cf. déjà" are NOT target numbers.
+    # Strip the FULL editorial prefix first. Otherwise a broad 'cf.' rule
+    # leaves 'déjà 3 18,' and the reference parser sees unknown text.
     parse_text=re.sub(r"(?i)^\s*cf\s*\.\s*(?:déjà\s+)?", "",parse_text)
+    # Inside semicolon groups, 'cf. Tb 8' is likewise editorial, not a book.
+    parse_text=re.sub(r"(?i)\bcf\s*\.\s*(?=[A-Za-z])","",parse_text)
     # End-of-coordinate full stops, not dotted verse lists, are punctuation.
     parse_text=re.sub(r"\.(?=\s*(?:;|$))", "",parse_text)
     # An editorial + suffix can end one bare reference followed by a new
