@@ -17,9 +17,12 @@ from pathlib import Path
 from socketserver import ThreadingMixIn
 from urllib.parse import urlsplit
 
+from fr88_link_edges import build_cases, validate_decision
+
 APP = Path("/opt/jbible/review-web")
 STATE = Path("/var/lib/jbible-review/decisions.json")
-LINK_STATE = Path("/var/lib/jbible-review/link_decisions.json")
+LINK_STATE = Path("/var/lib/jbible-review/link_decisions.json")  # Original row-based pilot reviews (untouched)
+LINK_EDGE_STATE = Path("/var/lib/jbible-review/link_edge_decisions.json")
 SCANS = Path("/opt/jbible/data/raw/fr_bible_1988")
 PASSFILE = Path("/opt/jbible/review-web/password")
 LOCK = threading.Lock()
@@ -297,10 +300,11 @@ class Handler(BaseHTTPRequestHandler):
             return self.file(APP / "link_review.js", "text/javascript; charset=utf-8")
         if path == "/api/link-cases":
             try:
-                cases = link_cases_from_export(read_json(APP / "link_results.json", {}))
-                state = read_json(LINK_STATE, {"reviews": {}})
+                cases = build_cases(read_json(APP / "link_results.json", {}),
+                                    read_json(APP / "page_registry.json", {}))
+                state = read_json(LINK_EDGE_STATE, {"reviews": {}})
                 return self.send_json({
-                    "schema": "jbible.fr88.source-link-human-review.v1",
+                    "schema": "jbible.fr88.source-target-edge-review.v2",
                     "cases": cases,
                     "reviews": state.get("reviews", {}),
                     "source": "Read the original scanned page, not a guessed verse match"
@@ -326,8 +330,9 @@ class Handler(BaseHTTPRequestHandler):
             priority = read_json(APP / "priority.json", {})
             valid_pages = {int(c["page"]) for c in priority.get("priorities", [])}
             try:
-                valid_pages.update(c["page"] for c in link_cases_from_export(
-                    read_json(APP / "link_results.json", {})))
+                valid_pages.update(c["page"] for c in build_cases(
+                    read_json(APP / "link_results.json", {}),
+                    read_json(APP / "page_registry.json", {})))
             except (ValueError, OSError, KeyError):
                 pass
             # Adjacent printed headers can be checked on neighboring scanned pages
@@ -371,17 +376,19 @@ class Handler(BaseHTTPRequestHandler):
                 raise ValueError("Invalid request size")
             data = json.loads(self.rfile.read(size).decode("utf-8"))
             if route == "/api/link-review":
-                link_cases = link_cases_from_export(read_json(APP / "link_results.json", {}))
-                cases = {case["row_id"]: case for case in link_cases}
-                new_review = validate_link_review(data, cases)
+                link_cases = build_cases(
+                    read_json(APP / "link_results.json", {}),
+                    read_json(APP / "page_registry.json", {}))
+                cases = {case["link_id"]: case for case in link_cases}
+                new_review = validate_decision(data, cases)
                 with LOCK:
-                    state = read_json(LINK_STATE, {
-                        "schema": "jbible.fr88.source-link-decisions.v1", "reviews": {}
+                    state = read_json(LINK_EDGE_STATE, {
+                        "schema": "jbible.fr88.source-target-edge-decisions.v2", "reviews": {}
                     })
-                    state["schema"] = "jbible.fr88.source-link-decisions.v1"
+                    state["schema"] = "jbible.fr88.source-target-edge-decisions.v2"
                     state.setdefault("reviews", {})
-                    state["reviews"][new_review["row_id"]] = new_review
-                    save_atomic(LINK_STATE, state)
+                    state["reviews"][new_review["link_id"]] = new_review
+                    save_atomic(LINK_EDGE_STATE, state)
             else:
                 cases_doc = read_json(APP / "priority.json", {})
                 cases = {c["case_id"]: c for c in cases_doc.get("priorities", [])}
