@@ -247,6 +247,44 @@ def test():
         from_pages,"Gen",localcaps,None)
     assert not unknown and unchanged[0]["chapter"]==20
 
+    # Real page73: erroneous Gen 42:57 should be Gen 41:57.
+    caps={("Gen",41):57,("Gen",42):38,("Gen",43):34}
+    p73=[{"column":"L","chapter":41,"verse":v,
+          "y_fraction":.1+(v-52)*.06,"confidence":"HIGH"}
+         for v in (52,53,54)]
+    p73 += [
+      {"column":"R","chapter":42,"verse":57,"y_fraction":.13,"confidence":"HIGH"},
+      {"column":"R","chapter":42,"verse":1,"y_fraction":.208,"confidence":"HIGH"},
+      {"column":"R","chapter":42,"verse":2,"y_fraction":.243,"confidence":"HIGH"},
+      {"column":"R","chapter":42,"verse":3,"y_fraction":.288,"confidence":"HIGH"}]
+    hdr={"boundary_role":"LAST_ON_PAGE","visible":True,
+         "chapter":42,"verse":12,"book_code":"Gen","scan_confidence":"HIGH"}
+    corrected,flags=g.repair_same_page_chapter_slips(p73,"Gen",caps,hdr)
+    assert flags==["RIGHT_FIRST_MARKER_CHAPTER_REPAIRED_FROM_CHAPTER_END"]
+    assert corrected[3]["chapter"]==41 and corrected[3]["verse"]==57
+    assert p73[3]["chapter"]==42
+    intervals73,_=g.make_intervals(corrected,hdr,"Gen",caps)
+    src73,_=g.choose_source({"side":"R","y_fraction":.148},intervals73)
+    assert (src73["chapter"],src73["verse"])==(41,57),src73
+
+    # Real page75: left Gen 43:18 followed by right misread 42:19..34;
+    # printed end-header says 43:34. This is a whole-column typo.
+    p75=[{"column":"L","chapter":43,"verse":v,
+          "y_fraction":.55+(v-15)*.1,"confidence":"HIGH"}
+         for v in range(15,19)]
+    p75 += [{"column":"R","chapter":42,"verse":v,
+             "y_fraction":.1+(v-19)*.04,"confidence":"HIGH"}
+            for v in range(19,35)]
+    hdr75=dict(hdr,chapter=43,verse=34)
+    repaired75,flags75=g.repair_same_page_chapter_slips(p75,"Gen",caps,hdr75)
+    assert flags75==["RIGHT_COLUMN_CHAPTER_REPAIRED_FROM_LEFT_AND_HEADER"]
+    assert all(m["chapter"]==43 and m["ocr_original_chapter"]==42
+               for m in repaired75[4:])
+    assert p75[4]["chapter"]==42
+    unchanged,none=g.repair_same_page_chapter_slips(
+        p75,"Gen",caps,dict(hdr75,verse=33))
+    assert not none and unchanged[4]["chapter"]==42
+
     for raw,expected in [
         ({"book_code":"Gen","chapter":27,"verse":46,
           "end_chapter":28,"end_verse":5,
