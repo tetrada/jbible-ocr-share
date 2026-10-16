@@ -174,7 +174,14 @@ def parse_task(response,task,page):
         markers=data.get("markers")
         if not isinstance(markers,list) or len(markers)>150:
             raise ValueError("Expected up to 150 visible verse markers")
-        # Never fabricate missing verse markers even if marker sequence has gaps.
+        for marker in markers:
+            if not isinstance(marker,dict):
+                raise ValueError("Malformed main-text verse marker")
+            if marker.get("column") not in (None,side):
+                raise ValueError("Main-text marker assigned to wrong half page")
+            marker["column"]=side
+        # Every marker MUST retain its physical text-column identity;
+        # the model is only required to specify column at JSON root.
         return {"column":side,"markers":markers,
                 "warnings":list(data.get("warnings") or [])[:15]}
     if not task.startswith("margin_"):
