@@ -88,7 +88,7 @@
           "ocr": "Ch 1 1-4"
         }
       ],
-      "question": "Check the exact printed book abbreviation(s). Is 's 14 14+' a physically clipped first letter (for example 'Is') or an intentional shorthand/continuation? Is 'Ch' an explicit Bible-book abbreviation, and which one?",
+      "question": "The visible print 's 14 14+' (D040) and 'Ch 1 1-4' (D042) was already confirmed against scans. What do these abbreviations mean as canonical target books? Is the leading 's' a physically incomplete book abbreviation/continuation, and what exact book is meant by 'Ch' here? No need to reverify the visible characters.",
       "assumed_rule": null,
       "review_required": true
     },
@@ -114,6 +114,37 @@
       ],
       "question": "For independent database connections, should 'Si 43 6,7' produce two target edges (Sir 43:6 and Sir 43:7) or a single destination referencing a verse set? Confirm that 'Ps 8; 104' yields two distinct chapter references.",
       "assumed_rule": null,
+      "review_required": true
+    },
+    {
+      "id": "Q5_FOLLOWING_SUFFIXES",
+      "pages": [
+        31,
+        33,
+        46
+      ],
+      "real_printed_examples": [
+        {
+          "page": 31,
+          "side": "L",
+          "row_id": "fr88v2:p0031:L:09",
+          "ocr": "7 11+"
+        },
+        {
+          "page": 33,
+          "side": "R",
+          "row_id": "fr88v2:p0033:R:11",
+          "ocr": "s 14 14+"
+        },
+        {
+          "page": 46,
+          "side": "L",
+          "row_id": "fr88v2:p0046:L:03",
+          "ocr": "9 9+"
+        }
+      ],
+      "question": "For suffixes +, s, ss and p, should the import preserve exactly the printed suffix on its target coordinate without manufacturing an inferred end verse? Are any of these editorial markers that change the number of distinct destination links?",
+      "assumed_rule": "Preserve printed suffix as metadata; never synthesize unseen target coordinates",
       "review_required": true
     }
   ],
