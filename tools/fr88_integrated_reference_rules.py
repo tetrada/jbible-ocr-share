@@ -78,6 +78,18 @@ def canonicalize(row,page_book,catalog_path):
     for outer_index,part in enumerate(parsed,1):
         item=copy.deepcopy(part)
         flags=[]
+        # Abdias/Obadiah is ONE chapter: "Ab 18" denotes verse 18,
+        # not a non-existent chapter 18. Only this explicit one-book
+        # shorthand is repaired; the printed OCR text is untouched.
+        if (item.get("book_code")=="Obad" and
+                item.get("type")=="CHAPTER_ONLY" and
+                type(item.get("chapter")) is int and
+                1<item["chapter"]<=21):
+            item["verse"]=item["chapter"]
+            item["chapter"]=1
+            item["type"]="VERSE"
+            item["status"]="PARSED"
+            flags.append("SINGLE_CHAPTER_OBADIAH_VERSE_SHORTHAND")
         if not item.get("book_code") and page_book and item.get("type")!="UNRESOLVED_NUMERIC":
             # Bare target without a preceding explicit book (within THIS row)
             # references the known PAGE BOOK, not the previous printed row.
