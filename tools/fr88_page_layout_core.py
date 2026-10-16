@@ -272,7 +272,76 @@ def repair_same_page_chapter_slips(markers,book,limits,header):
             marker["chapter"]=ch
             marker["chapter_ocr_repair_evidence"]="LEFT_COLUMN_CONTINUITY_AND_PAGE_END_HEADER"
         issues.append("RIGHT_COLUMN_CHAPTER_REPAIRED_FROM_LEFT_AND_HEADER")
+    # Real Exodus p95: L ends 11:3, early R OCR says 12:4..10,
+    # then R really starts 12:1..3 and printed head ends 12:3.
+    # Fix only the pre-reset right prefix, with both independent anchors.
+    reset=next((i for i,m in enumerate(right[1:],1)
+                if m.get("chapter")==right[0].get("chapter") and
+                   m.get("verse")==1),None)
+    prior_ch=last_left.get("chapter")
+    right_ch=right[0].get("chapter")
+    if (reset is not None and reset>=3 and
+            type(prior_ch) is int and right_ch==prior_ch+1 and
+            type(last_left.get("verse")) is int and
+            right[0].get("verse")==last_left["verse"]+1 and
+            all(m.get("chapter")==right_ch and
+                type(m.get("verse")) is int for m in right) and
+            all(a["verse"]+1==b["verse"] for a,b in
+                zip(right[:reset],right[1:reset])) and
+            right[reset].get("verse")==1 and
+            all(a["verse"]+1==b["verse"] for a,b in
+                zip(right[reset:],right[reset+1:])) and
+            header.get("visible") is True and
+            header.get("book_code") in (None,book) and
+            header.get("chapter")==right_ch and
+            header.get("verse")==right[-1]["verse"]):
+        for marker in right[:reset]:
+            marker["ocr_original_chapter"]=right_ch
+            marker["chapter"]=prior_ch
+            marker["chapter_ocr_repair_evidence"]="LEFT_CONTINUATION_AND_RIGHT_RESTART_AND_PAGE_HEAD"
+        issues.append("RIGHT_PREFIX_CHAPTER_REPAIRED_BEFORE_RESTART")
     return fixed,issues
+
+
+def repair_right_column_chapter_from_next_page(markers,next_left,book):
+    """Correct a whole right column only if L->R->next L exactly joins.
+
+    Exodus p92 right OCR says 9:9..23, but p92 L ends 8:8
+    and p93 L starts 8:24. This repair is confined to the narrow
+    three-anchor numeric sequence. Preserve the raw chapter as evidence.
+    """
+    fixed=[dict(m) for m in markers]
+    left=sorted((m for m in fixed if m.get("column")=="L" and
+                type(m.get("y_fraction")) in (float,int)),
+               key=lambda m:m["y_fraction"])
+    right=sorted((m for m in fixed if m.get("column")=="R" and
+                 type(m.get("y_fraction")) in (float,int)),
+                key=lambda m:m["y_fraction"])
+    following=sorted((m for m in next_left if
+                      type(m.get("y_fraction")) in (float,int)),
+                     key=lambda m:m["y_fraction"])
+    if len(left)<3 or len(right)<4 or not following or not book:
+        return fixed,[]
+    last_l,first_r,last_r,first_next=left[-1],right[0],right[-1],following[0]
+    chapter=last_l.get("chapter")
+    bad_ch=first_r.get("chapter")
+    if (type(chapter) is int and bad_ch==chapter+1 and
+            first_next.get("chapter")==chapter and
+            type(last_l.get("verse")) is int and
+            type(first_r.get("verse")) is int and
+            type(last_r.get("verse")) is int and
+            type(first_next.get("verse")) is int and
+            first_r["verse"]==last_l["verse"]+1 and
+            first_next["verse"]==last_r["verse"]+1 and
+            all(m.get("chapter")==bad_ch and
+                type(m.get("verse")) is int for m in right) and
+            all(a["verse"]+1==b["verse"] for a,b in zip(right,right[1:]))):
+        for marker in right:
+            marker["ocr_original_chapter"]=bad_ch
+            marker["chapter"]=chapter
+            marker["chapter_ocr_repair_evidence"]="LEFT_AND_NEXT_PAGE_CONTINUITY"
+        return fixed,["RIGHT_COLUMN_CHAPTER_REPAIRED_FROM_ADJACENT_PAGE"]
+    return fixed,[]
 
 
 def make_intervals(markers,header,book,limits,previous_page_last=None):
