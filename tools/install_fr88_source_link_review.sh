@@ -22,6 +22,7 @@ download() {
   chmod 0644 "$STAGE/$name"
 }
 download tools/fr88_review_web_server.py server.py
+cp "$STAGE/server.py" "$STAGE/fr88_review_web_server.py"
 download tools/fr88_review_web_index.html index.html
 download tools/fr88_link_review_index.html link_review.html
 download tools/fr88_link_review_app.js link_review.js
