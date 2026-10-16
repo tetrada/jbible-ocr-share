@@ -1,0 +1,72 @@
+{
+  "schema": "jbible.fr88.integrated-human-exception-review.v1",
+  "source": "Authenticated private scan viewer; text-only reviewer conclusions",
+  "no_scanned_pages_published": true,
+  "no_sql_writes": true,
+  "reviews": {
+    "fr88i:p0032:R:003/target01": {
+      "edge_id": "fr88i:p0032:R:003/target01",
+      "image_page": 32,
+      "choice": "as_printed",
+      "cause": "MARGIN_ACTUALLY_CUT_OFF",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 1,
+        "verse": 31,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Eccl",
+        "chapter": 3,
+        "verse": 11,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Qo 3 11; 7 2",
+      "original_exception_reasons": [
+        "MARGINAL_TEXT_NOT_FULLY_VISIBLE"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "these are 2 refs. Second is Qu 7,2 - but that verse 2 is cut off mostly, but good call",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:16:56.114235+00:00"
+    },
+    "fr88i:p0032:R:003/target02": {
+      "edge_id": "fr88i:p0032:R:003/target02",
+      "image_page": 32,
+      "choice": "as_printed",
+      "cause": "MARGIN_ACTUALLY_CUT_OFF",
+      "source": {
+        "book_code": "Gen",
+        "chapter": 1,
+        "verse": 31,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Eccl",
+        "chapter": 7,
+        "verse": 2,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Qo 3 11; 7 2",
+      "original_exception_reasons": [
+        "MARGINAL_TEXT_NOT_FULLY_VISIBLE"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-16T09:17:45.952798+00:00"
+    }
+  }
+}
