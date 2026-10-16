@@ -24,17 +24,25 @@ get() {
 }
 get tools/fr88_integrated_page.py fr88_integrated_page.py
 get tools/fr88_page_layout_core.py fr88_page_layout_core.py
+get tools/fr88_integrated_reference_rules.py fr88_integrated_reference_rules.py
 get tools/fr88_v2_normalize.py fr88_v2_normalize.py
 get tools/fr88_link_edges.py fr88_link_edges.py
 get tools/fr88_learning_prompt.py fr88_learning_prompt.py
 get tools/test_fr88_page_layout_core.py test_fr88_page_layout_core.py
+get tools/test_fr88_integrated_reference_rules.py test_fr88_integrated_reference_rules.py
 get tools/test_fr88_integrated_page.py test_fr88_integrated_page.py
 get training/fr88_page_book_registry.json fr88_page_book_registry.json
 get training/fr88_ocr_gold.json fr88_ocr_gold.json
 python3 -m py_compile "$BASE/fr88_integrated_page.py" "$BASE/fr88_page_layout_core.py" \
   "$BASE/fr88_v2_normalize.py" "$BASE/fr88_link_edges.py" \
-  "$BASE/test_fr88_page_layout_core.py" "$BASE/test_fr88_integrated_page.py"
+  "$BASE/test_fr88_page_layout_core.py" "$BASE/test_fr88_integrated_page.py" \
+  "$BASE/fr88_integrated_reference_rules.py" "$BASE/test_fr88_integrated_reference_rules.py"
 # Tests always run before any DeepSeek-paid OCR.
+docker run --rm --memory=2g --entrypoint python \
+  -v "$BASE/fr88_integrated_reference_rules.py:/app/fr88_integrated_reference_rules.py:ro" \
+  -v "$BASE/fr88_v2_normalize.py:/app/fr88_v2_normalize.py:ro" \
+  -v "$BASE/test_fr88_integrated_reference_rules.py:/app/test_fr88_integrated_reference_rules.py:ro" \
+  jbible-ocr:1 /app/test_fr88_integrated_reference_rules.py
 docker run --rm --memory=2g --entrypoint python \
   -v "$BASE/fr88_page_layout_core.py:/app/fr88_page_layout_core.py:ro" \
   -v "$BASE/test_fr88_page_layout_core.py:/app/test_fr88_page_layout_core.py:ro" \
@@ -44,6 +52,7 @@ docker run --rm --memory=2g --entrypoint python \
   -v "$BASE/fr88_page_layout_core.py:/app/fr88_page_layout_core.py:ro" \
   -v "$BASE/fr88_v2_normalize.py:/app/fr88_v2_normalize.py:ro" \
   -v "$BASE/fr88_link_edges.py:/app/fr88_link_edges.py:ro" \
+  -v "$BASE/fr88_integrated_reference_rules.py:/app/fr88_integrated_reference_rules.py:ro" \
   -v "$BASE/test_fr88_integrated_page.py:/app/test_fr88_integrated_page.py:ro" \
   jbible-ocr:1 /app/test_fr88_integrated_page.py
 
@@ -76,6 +85,7 @@ docker_command=(docker run --rm --memory=4g --env-file "$BASE/.env.deepseek"
   -v "$BASE/fr88_page_layout_core.py:/app/fr88_page_layout_core.py:ro"
   -v "$BASE/fr88_v2_normalize.py:/app/fr88_v2_normalize.py:ro"
   -v "$BASE/fr88_link_edges.py:/app/fr88_link_edges.py:ro"
+  -v "$BASE/fr88_integrated_reference_rules.py:/app/fr88_integrated_reference_rules.py:ro"
   -v "$BASE/fr88_page_book_registry.json:/app/fr88_page_book_registry.json:ro"
   -v "$RAW:/raw:ro"
   -v "$OUT:/raw/jbible_fr88_integrated_v1:rw"
