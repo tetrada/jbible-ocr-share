@@ -75,6 +75,14 @@ def apply_reviews(edges,document,limits):
                 "end_chapter":dst.get("end_chapter"),
                 "status":"PARSED"
             })
+            # A reviewer may leave type UNKNOWN for a visibly complete
+            # numeric prefix because the line is cut off after the comma.
+            # Do not invent the unseen remainder or discard the visible verse.
+            if (choice=="unresolved" and transformed.get("type")=="UNKNOWN"
+                    and type(new_verse) is int and new_verse>0):
+                transformed["type"]="VERSE"
+                transformed.setdefault("interpretation_flags",[]).append(
+                    "USER_IDENTIFIED_USABLE_VERSE_PREFIX")
             edge["destination"]=transformed
 
         valid,destination_warnings=reference_assessment(edge["destination"],limits)
