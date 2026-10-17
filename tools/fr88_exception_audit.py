@@ -40,8 +40,16 @@ for page in pages:
             "reasons": reasons
         })
     if exceptions:
-        detail.append({"page": number, "quality_flags": page.get("quality_flags", []),
-                       "exception_count": len(exceptions), "exceptions": exceptions})
+        intervals = page.get("verse_intervals_by_column") or {}
+        detail.append({
+            "page": number,
+            "page_book": page.get("page_book"),
+            "running_head": page.get("running_head"),
+            "verse_intervals_count": {side: len(intervals.get(side) or [])
+                                      for side in ("L", "R")},
+            "quality_flags": page.get("quality_flags", []),
+            "exception_count": len(exceptions), "exceptions": exceptions
+        })
 numbers = sorted(p.get("image_page") for p in pages if type(p.get("image_page")) is int)
 ranges = []
 for n in numbers:
