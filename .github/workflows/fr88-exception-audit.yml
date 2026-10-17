@@ -1,0 +1,31 @@
+name: FR88 published exception audit
+on:
+  push:
+    paths:
+      - 'tools/fr88_exception_audit.py'
+      - '.github/workflows/fr88-exception-audit.yml'
+      - 'fr88_integrated_v1/pilot_report.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: fr88-published-exception-audit
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Generate audit from already published data
+        run: python3 tools/fr88_exception_audit.py
+      - name: Commit diagnostic if changed
+        run: |
+          git add -- fr88_integrated_v1/exception_audit.json
+          if git diff --cached --quiet; then
+            echo 'Audit unchanged'
+            exit 0
+          fi
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Refresh FR88 exception audit'
+          git push
