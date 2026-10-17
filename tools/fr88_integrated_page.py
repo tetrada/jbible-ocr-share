@@ -182,8 +182,11 @@ def parse_task(response,task,page):
         # actually describing R. Trust the immutable input TASK, not its label.
         label_mismatch=supplied_column!=side
         markers=data.get("markers")
-        if not isinstance(markers,list) or len(markers)>150:
-            raise ValueError("Expected up to 150 visible verse markers")
+        if not isinstance(markers,list) or len(markers)>1000:
+            raise ValueError("Expected a list of at most 1000 visible verse markers")
+        # A provider may repeat markers or include oversized OCR output.
+        # Preserve and audit it rather than discarding a paid, cached reply.
+        oversized_marker_output = len(markers)>150
         for marker in markers:
             if not isinstance(marker,dict):
                 raise ValueError("Malformed main-text verse marker")
@@ -207,6 +210,8 @@ def parse_task(response,task,page):
         warnings=list(data.get("warnings") or [])[:15]
         if label_mismatch:
             warnings.append("OCR_JSON_COLUMN_LABEL_OVERRIDDEN_FROM_IMAGE_TASK")
+        if oversized_marker_output:
+            warnings.append("OVERSIZED_MAIN_TEXT_MARKER_OUTPUT_REQUIRES_AUDIT")
         return {"column":side,"markers":markers,
                 "book_transitions":transitions,
                 "warnings":warnings}
