@@ -252,7 +252,7 @@ def parse_task(response,task,page):
 
 def canonical_source_book(book_code):
     """Map OCR display abbreviations to internal canonical source codes."""
-    return {"Ex":"Exod"}.get(book_code,book_code)
+    return {"Ex":"Exod","Lv":"Lev"}.get(book_code,book_code)
 
 
 def is_book_opening_title_only(transitions,book,header,markers,previous):
