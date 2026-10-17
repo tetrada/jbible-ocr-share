@@ -17,7 +17,8 @@ def test():
     document=json.loads(review_file().read_text(encoding="utf-8"))
     reviews=document["reviews"]
     assert isinstance(reviews,dict)
-    pilot={eid:review for eid,review in reviews.items()\n           if int(eid.split(":")[1][1:]) in range(31,38)}
+    pilot={eid:review for eid,review in reviews.items()
+           if int(eid.split(":")[1][1:]) in range(31,38)}
     assert len(pilot)==24, ("Original pilot reviews changed",len(pilot))
     pilot_document=dict(document, reviews=pilot)
     lines=[]
