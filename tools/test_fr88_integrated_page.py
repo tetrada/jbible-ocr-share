@@ -96,6 +96,15 @@ def test():
             # Cached Exodus header emits OCR abbreviation Ex; canonical source
             # code must remain Exod for catalog and verse interval logic.
             assert m.canonical_source_book("Ex")=="Exod"
+            # Real pp150-152 print Lv, but the verse catalog uses Lev.
+            # Do not discard all readable page markers under the OCR alias.
+            assert m.canonical_source_book("Lv")=="Lev"
+            assert m.canonical_source_book("Lev")=="Lev"
+            printed_lev,lev_issues,lev_basis=m.choose_book(150,
+                {"book_code":"Lv","book_title":"LE LÉVITIQUE",
+                 "scan_confidence":"HIGH"}, {},{"book_code":"Lev"})
+            assert printed_lev=="Lev" and not lev_issues
+            assert lev_basis=="PRINTED_PAGE_HEADER"
             assert m.canonical_source_book("Gen")=="Gen"
             chosen,issues,evidence=m.choose_book(85,
                 {"book_code":"Ex","book_title":"L'EXODE",
