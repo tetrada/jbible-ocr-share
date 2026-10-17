@@ -22,7 +22,14 @@ get() {
   chmod 0644 "$temp"
   mv -f "$temp" "$BASE/$local_name"
 }
-get tools/fr88_integrated_page.py fr88_integrated_page.py
+# Pin the OCR parser fix: raw /main may lag behind current GitHub contents.
+PARSER_FIX_REF=8ca25c31894842d1d8ec28d908309c0fb8c84eda
+curl -fsSL --retry 3 --connect-timeout 25 \
+  "https://raw.githubusercontent.com/tetrada/jbible-ocr-share/${PARSER_FIX_REF}/tools/fr88_integrated_page.py" \
+  -o "$BASE/fr88_integrated_page.py"
+grep -q "at most 1000 visible verse markers" "$BASE/fr88_integrated_page.py" || {
+  echo "Parser version check failed; refusing stale 150-marker parser" >&2; exit 1;
+}
 get tools/fr88_page_layout_core.py fr88_page_layout_core.py
 get tools/fr88_integrated_reference_rules.py fr88_integrated_reference_rules.py
 get tools/fr88_integrated_human_replay.py fr88_integrated_human_replay.py
