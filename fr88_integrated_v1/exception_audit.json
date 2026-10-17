@@ -65,11 +65,16 @@
         "visible": true,
         "raw": "1 19"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 10,
+        "R": 12
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R",
+        "LEGACY_WRAPPED_REFERENCE_ROWS_REJOINED"
+      ],
       "exception_count": 1,
       "exceptions": [
         {
@@ -104,11 +109,20 @@
         "visible": true,
         "raw": "24 45"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 5,
+        "R": 2
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "COLUMN_VERSE_SEQUENCE_REWINDS",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_MARGIN_ROWS_AUTOMATICALLY_RECOVERED",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
+        "PAGE_START_HEADER_CONTRADICTS_BODY",
+        "PAGE_TOP_SOURCE_VERSE_RECOVERED",
+        "SOURCE_PAGE_SEQUENCE_IMPOSSIBLE_REWIND"
+      ],
       "exception_count": 11,
       "exceptions": [
         {
@@ -268,11 +282,15 @@
         "visible": true,
         "raw": null
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 11,
+        "R": 10
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "BOOK_OPENING_TITLE_BEFORE_FIRST_VERSE",
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE"
+      ],
       "exception_count": 1,
       "exceptions": [
         {
@@ -307,11 +325,15 @@
         "visible": true,
         "raw": "1 22"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 11,
+        "R": 9
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "ADJACENT_PHYSICAL_PAGE_ORDER_SWAP_PROVEN_BY_VERSES",
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE"
+      ],
       "exception_count": 1,
       "exceptions": [
         {
@@ -346,11 +368,19 @@
         "visible": true,
         "raw": "12 3"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 9,
+        "R": 10
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R",
+        "PAGE_START_HEADER_CONTRADICTS_BODY",
+        "PAGE_TOP_SOURCE_VERSE_RECOVERED",
+        "RIGHT_PREFIX_CHAPTER_REPAIRED_BEFORE_RESTART"
+      ],
       "exception_count": 1,
       "exceptions": [
         {
@@ -385,11 +415,16 @@
         "visible": true,
         "raw": "14 29"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 13,
+        "R": 14
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
+        "PAGE_TOP_SOURCE_VERSE_RECOVERED"
+      ],
       "exception_count": 4,
       "exceptions": [
         {
@@ -463,11 +498,17 @@
         "visible": true,
         "raw": "16 21"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 15,
+        "R": 13
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "INVALID_MARKER_FIELDS",
+        "LEGACY_MARGIN_ROWS_AUTOMATICALLY_RECOVERED",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R"
+      ],
       "exception_count": 1,
       "exceptions": [
         {
@@ -503,11 +544,18 @@
         "visible": true,
         "raw": "L'EXODE"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 8,
+        "R": 11
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R",
+        "NONPOSITIVE_VERSE_INTERVAL",
+        "PAGE_TOP_SOURCE_VERSE_RECOVERED"
+      ],
       "exception_count": 1,
       "exceptions": [
         {
@@ -542,11 +590,19 @@
         "visible": true,
         "raw": "21 36"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 16,
+        "R": 16
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "BOOK_INHERITED_FROM_PRIOR_PAGE",
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_WRAPPED_REFERENCE_ROWS_REJOINED",
+        "PAGE_START_HEADER_CONTRADICTS_BODY",
+        "PAGE_TOP_SOURCE_VERSE_RECOVERED",
+        "RUNNING_HEADER_ROLE_REPAIRED_TOP_LEFT_IS_PAGE_START"
+      ],
       "exception_count": 2,
       "exceptions": [
         {
@@ -593,11 +649,16 @@
         "visible": true,
         "raw": "21 37"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 13,
+        "R": 17
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_MARGIN_ROWS_AUTOMATICALLY_RECOVERED",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R"
+      ],
       "exception_count": 1,
       "exceptions": [
         {
@@ -632,11 +693,18 @@
         "visible": true,
         "raw": "23 25"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 13,
+        "R": 13
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "BOOK_INHERITED_FROM_PRIOR_PAGE",
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "COLUMN_VERSE_SEQUENCE_REWINDS",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
+        "LEGACY_WRAPPED_REFERENCE_ROWS_REJOINED"
+      ],
       "exception_count": 1,
       "exceptions": [
         {
@@ -671,11 +739,17 @@
         "visible": true,
         "raw": "27 9"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 18,
+        "R": 16
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "BOOK_INHERITED_FROM_PRIOR_PAGE",
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "COLUMN_VERSE_SEQUENCE_REWINDS",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "PAGE_TOP_SOURCE_VERSE_RECOVERED"
+      ],
       "exception_count": 1,
       "exceptions": [
         {
@@ -710,11 +784,18 @@
         "visible": true,
         "raw": "26 31-32, 36-37"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 21,
+        "R": 19
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "INVALID_MARKER_FIELDS",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
+        "SOURCE_PAGE_SEQUENCE_IMPOSSIBLE_REWIND",
+        "VERSE_OUT_OF_CATALOG"
+      ],
       "exception_count": 9,
       "exceptions": [
         {
@@ -847,11 +928,14 @@
         "visible": true,
         "raw": "40 6"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 18,
+        "R": 15
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE"
+      ],
       "exception_count": 1,
       "exceptions": [
         {
@@ -886,11 +970,17 @@
         "visible": false,
         "raw": null
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 5,
+        "R": 7
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "BOOK_INHERITED_FROM_PRIOR_PAGE",
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R",
+        "SOURCE_PAGE_SEQUENCE_IMPOSSIBLE_REWIND"
+      ],
       "exception_count": 6,
       "exceptions": [
         {
@@ -986,11 +1076,17 @@
         "visible": true,
         "raw": "6 5"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 15,
+        "R": 16
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "BOOK_INHERITED_FROM_PRIOR_PAGE",
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_MARGIN_ROWS_AUTOMATICALLY_RECOVERED",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R"
+      ],
       "exception_count": 13,
       "exceptions": [
         {
@@ -1169,11 +1265,20 @@
         "visible": true,
         "raw": null
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 15,
+        "R": 14
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "BOOK_INHERITED_FROM_PRIOR_PAGE",
+        "BOOK_TRANSITION_ON_PAGE",
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "COLUMN_VERSE_SEQUENCE_REWINDS",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R",
+        "NONPOSITIVE_VERSE_INTERVAL",
+        "PAGE_TOP_SOURCE_VERSE_RECOVERED"
+      ],
       "exception_count": 22,
       "exceptions": [
         {
@@ -1464,11 +1569,18 @@
         "visible": true,
         "raw": "10 6"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 10,
+        "R": 8
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "COLUMN_VERSE_SEQUENCE_REWINDS",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_MARGIN_ROWS_AUTOMATICALLY_RECOVERED",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
+        "LEGACY_WRAPPED_REFERENCE_ROWS_REJOINED"
+      ],
       "exception_count": 3,
       "exceptions": [
         {
@@ -1527,11 +1639,15 @@
         "visible": true,
         "raw": "16 19"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 13,
+        "R": 10
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "COLUMN_VERSE_SEQUENCE_REWINDS",
+        "DISCONTINUOUS_VERSE_SEQUENCE"
+      ],
       "exception_count": 1,
       "exceptions": [
         {
@@ -1566,11 +1682,18 @@
         "visible": true,
         "raw": "18 18"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 12,
+        "R": 14
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "BOOK_INHERITED_FROM_PRIOR_PAGE",
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "LEGACY_WRAPPED_REFERENCE_ROWS_REJOINED",
+        "NONPOSITIVE_VERSE_INTERVAL",
+        "PAGE_TOP_SOURCE_VERSE_RECOVERED"
+      ],
       "exception_count": 2,
       "exceptions": [
         {
@@ -1617,11 +1740,15 @@
         "visible": true,
         "raw": "20 10"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 13,
+        "R": 13
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "BOOK_INHERITED_FROM_PRIOR_PAGE",
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE"
+      ],
       "exception_count": 2,
       "exceptions": [
         {
@@ -1668,11 +1795,18 @@
         "visible": true,
         "raw": "18 19"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 12,
+        "R": 15
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "IMPOSSIBLE_SOURCE_CHAPTER_OR_VERSE",
+        "INVALID_MARKER_FIELDS",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R",
+        "LEGACY_WRAPPED_REFERENCE_ROWS_REJOINED",
+        "NO_MAIN_TEXT_VERSE_MARKERS"
+      ],
       "exception_count": 25,
       "exceptions": [
         {
@@ -2003,11 +2137,17 @@
         "visible": true,
         "raw": "20 9"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 15,
+        "R": 13
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "BOOK_INHERITED_FROM_PRIOR_PAGE",
+        "IMPOSSIBLE_SOURCE_CHAPTER_OR_VERSE",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
+        "MODEL_VERSES_R_COLUMN_LABEL_OVERRIDDEN",
+        "NO_MAIN_TEXT_VERSE_MARKERS"
+      ],
       "exception_count": 28,
       "exceptions": [
         {
@@ -2378,11 +2518,16 @@
         "visible": true,
         "raw": "22 15"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 14,
+        "R": 12
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "BOOK_INHERITED_FROM_PRIOR_PAGE",
+        "IMPOSSIBLE_SOURCE_CHAPTER_OR_VERSE",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_R",
+        "NO_MAIN_TEXT_VERSE_MARKERS"
+      ],
       "exception_count": 25,
       "exceptions": [
         {
@@ -2721,11 +2866,14 @@
         "visible": true,
         "raw": "23 43"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 13,
+        "R": 14
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L"
+      ],
       "exception_count": 1,
       "exceptions": [
         {
@@ -2760,11 +2908,19 @@
         "visible": true,
         "raw": "27 34"
       },
-      "verse_intervals_count": {
-        "L": 0,
-        "R": 0
+      "verse_marker_count": {
+        "L": 4,
+        "R": 6
       },
-      "quality_flags": [],
+      "quality_flags": [
+        "COLUMN_TOP_SOURCE_VERSE_RECOVERED",
+        "DISCONTINUOUS_VERSE_SEQUENCE",
+        "IMPOSSIBLE_SOURCE_CHAPTER_OR_VERSE",
+        "LEGACY_MARGIN_ROWS_AUTOMATICALLY_RECOVERED",
+        "LEGACY_MARGIN_Y_POSITION_DISAGREEMENT_L",
+        "PAGE_TOP_SOURCE_VERSE_RECOVERED",
+        "SOURCE_PAGE_SEQUENCE_IMPOSSIBLE_REWIND"
+      ],
       "exception_count": 9,
       "exceptions": [
         {
