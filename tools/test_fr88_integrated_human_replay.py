@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Offline regression over all 24 real scan-reviewed JBible exceptions."""
+"""Offline regression over the original 24 scan-reviewed JBible exceptions.\n\nNewer reviews remain in the live replay document; regression counts are\nintentionally scoped to the original fixed pilot cohort.\n"""
 import json
 from pathlib import Path
 from fr88_page_layout_core import summary, reference_assessment, make_intervals, choose_source
@@ -15,9 +15,13 @@ def review_file():
 
 def test():
     document=json.loads(review_file().read_text(encoding="utf-8"))
-    assert len(document["reviews"])==24
+    reviews=document["reviews"]
+    assert isinstance(reviews,dict)
+    pilot={eid:review for eid,review in reviews.items()\n           if int(eid.split(":")[1][1:]) in range(31,38)}
+    assert len(pilot)==24, ("Original pilot reviews changed",len(pilot))
+    pilot_document=dict(document, reviews=pilot)
     lines=[]
-    for eid,review in document["reviews"].items():
+    for eid,review in pilot.items():
         dst=review.get("destination") or {}
         src=review.get("source") or {}
         # Test each real saved decision against a deliberately unverified
@@ -37,7 +41,7 @@ def test():
             "scan_human_verified":False
         }
         lines.append(line)
-    apply_reviews(lines,document,{})
+    apply_reviews(lines,pilot_document,{})
     by_id={e["edge_id"]:e for e in lines}
     stats=summary(lines)
     assert stats["atomic_links"]==24
