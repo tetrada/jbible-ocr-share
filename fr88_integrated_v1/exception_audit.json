@@ -49,6 +49,26 @@
   "pages_with_exceptions": [
     {
       "page": 32,
+      "page_book": {
+        "book_code": "Gen",
+        "basis": "PAGE_REGISTRY"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 1,
+        "verse": 19,
+        "book_code": "Gen",
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "1 19"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 1,
       "exceptions": [
@@ -68,6 +88,26 @@
     },
     {
       "page": 84,
+      "page_book": {
+        "book_code": "Gen",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 24,
+        "verse": 45,
+        "book_code": "Gen",
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "24 45"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 11,
       "exceptions": [
@@ -212,6 +252,26 @@
     },
     {
       "page": 85,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "NONE",
+        "boundary_role": "UNKNOWN",
+        "chapter": null,
+        "verse": null,
+        "book_code": "Exod",
+        "ocr_original_book_code": "Ex",
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": null
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 1,
       "exceptions": [
@@ -231,6 +291,26 @@
     },
     {
       "page": 87,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 1,
+        "verse": 22,
+        "book_code": "Exod",
+        "ocr_original_book_code": "Ex",
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "1 22"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 1,
       "exceptions": [
@@ -250,6 +330,26 @@
     },
     {
       "page": 95,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 12,
+        "verse": 3,
+        "book_code": "Exod",
+        "ocr_original_book_code": "Ex",
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "12 3"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 1,
       "exceptions": [
@@ -269,6 +369,26 @@
     },
     {
       "page": 99,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_RIGHT",
+        "boundary_role": "LAST_ON_PAGE",
+        "chapter": 14,
+        "verse": 29,
+        "book_code": "Exod",
+        "ocr_original_book_code": "Ex",
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "14 29"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 4,
       "exceptions": [
@@ -327,6 +447,26 @@
     },
     {
       "page": 102,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PAGE_REGISTRY"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 16,
+        "verse": 21,
+        "book_code": "Exod",
+        "ocr_original_book_code": "Ex",
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "16 21"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 1,
       "exceptions": [
@@ -347,6 +487,26 @@
     },
     {
       "page": 105,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "UNKNOWN",
+        "chapter": null,
+        "verse": null,
+        "book_code": "Exod",
+        "ocr_original_book_code": "Ex",
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "L'EXODE"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 1,
       "exceptions": [
@@ -366,6 +526,26 @@
     },
     {
       "page": 107,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PREVIOUS_PAGE_PROVISIONAL"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 21,
+        "verse": 36,
+        "book_code": null,
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "21 36"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 2,
       "exceptions": [
@@ -397,6 +577,26 @@
     },
     {
       "page": 108,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 21,
+        "verse": 37,
+        "book_code": "Exod",
+        "ocr_original_book_code": "Ex",
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "21 37"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 1,
       "exceptions": [
@@ -416,6 +616,26 @@
     },
     {
       "page": 110,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PREVIOUS_PAGE_PROVISIONAL"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 23,
+        "verse": 25,
+        "book_code": null,
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "23 25"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 1,
       "exceptions": [
@@ -435,6 +655,26 @@
     },
     {
       "page": 113,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PREVIOUS_PAGE_PROVISIONAL"
+      },
+      "running_head": {
+        "header_position": "TOP_RIGHT",
+        "boundary_role": "UNKNOWN",
+        "chapter": 27,
+        "verse": 9,
+        "book_code": null,
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "27 9"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 1,
       "exceptions": [
@@ -454,6 +694,26 @@
     },
     {
       "page": 125,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 26,
+        "verse": 31,
+        "book_code": "Exod",
+        "ocr_original_book_code": "Ex",
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "26 31-32, 36-37"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 9,
       "exceptions": [
@@ -571,6 +831,26 @@
     },
     {
       "page": 128,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 40,
+        "verse": 6,
+        "book_code": "Exod",
+        "ocr_original_book_code": "Ex",
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "40 6"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 1,
       "exceptions": [
@@ -590,6 +870,26 @@
     },
     {
       "page": 129,
+      "page_book": {
+        "book_code": "Exod",
+        "basis": "PREVIOUS_PAGE_PROVISIONAL"
+      },
+      "running_head": {
+        "header_position": "NONE",
+        "boundary_role": "UNKNOWN",
+        "chapter": null,
+        "verse": null,
+        "book_code": null,
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": false,
+        "raw": null
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 6,
       "exceptions": [
@@ -670,6 +970,26 @@
     },
     {
       "page": 134,
+      "page_book": {
+        "book_code": "Lev",
+        "basis": "PREVIOUS_PAGE_PROVISIONAL"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 6,
+        "verse": 5,
+        "book_code": null,
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "6 5"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 13,
       "exceptions": [
@@ -833,6 +1153,26 @@
     },
     {
       "page": 135,
+      "page_book": {
+        "book_code": "Lev",
+        "basis": "PREVIOUS_PAGE_PROVISIONAL"
+      },
+      "running_head": {
+        "header_position": "TOP_RIGHT",
+        "boundary_role": "UNKNOWN",
+        "chapter": null,
+        "verse": null,
+        "book_code": null,
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": null
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 22,
       "exceptions": [
@@ -1108,6 +1448,26 @@
     },
     {
       "page": 138,
+      "page_book": {
+        "book_code": "Lev",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 10,
+        "verse": 6,
+        "book_code": "Lev",
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "10 6"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 3,
       "exceptions": [
@@ -1151,6 +1511,26 @@
     },
     {
       "page": 146,
+      "page_book": {
+        "book_code": "Lev",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 16,
+        "verse": 19,
+        "book_code": "Lev",
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "16 19"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 1,
       "exceptions": [
@@ -1170,6 +1550,26 @@
     },
     {
       "page": 147,
+      "page_book": {
+        "book_code": "Lev",
+        "basis": "PREVIOUS_PAGE_PROVISIONAL"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "UNKNOWN",
+        "chapter": 18,
+        "verse": 18,
+        "book_code": null,
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "18 18"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 2,
       "exceptions": [
@@ -1201,6 +1601,26 @@
     },
     {
       "page": 148,
+      "page_book": {
+        "book_code": "Lev",
+        "basis": "PREVIOUS_PAGE_PROVISIONAL"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 20,
+        "verse": 10,
+        "book_code": null,
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "20 10"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 2,
       "exceptions": [
@@ -1232,6 +1652,26 @@
     },
     {
       "page": 150,
+      "page_book": {
+        "book_code": "Lv",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 18,
+        "verse": 19,
+        "book_code": "Lv",
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "18 19"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 25,
       "exceptions": [
@@ -1547,6 +1987,26 @@
     },
     {
       "page": 151,
+      "page_book": {
+        "book_code": "Lv",
+        "basis": "PREVIOUS_PAGE_PROVISIONAL"
+      },
+      "running_head": {
+        "header_position": "TOP_RIGHT",
+        "boundary_role": "LAST_ON_PAGE",
+        "chapter": 20,
+        "verse": 9,
+        "book_code": null,
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "20 9"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 28,
       "exceptions": [
@@ -1902,6 +2362,26 @@
     },
     {
       "page": 152,
+      "page_book": {
+        "book_code": "Lv",
+        "basis": "PREVIOUS_PAGE_PROVISIONAL"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 22,
+        "verse": 15,
+        "book_code": null,
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "22 15"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 25,
       "exceptions": [
@@ -2225,6 +2705,26 @@
     },
     {
       "page": 154,
+      "page_book": {
+        "book_code": "Lev",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_LEFT",
+        "boundary_role": "FIRST_ON_PAGE",
+        "chapter": 23,
+        "verse": 43,
+        "book_code": "Lev",
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "23 43"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 1,
       "exceptions": [
@@ -2244,6 +2744,26 @@
     },
     {
       "page": 159,
+      "page_book": {
+        "book_code": "Lev",
+        "basis": "PRINTED_PAGE_HEADER"
+      },
+      "running_head": {
+        "header_position": "TOP_RIGHT",
+        "boundary_role": "LAST_ON_PAGE",
+        "chapter": 27,
+        "verse": 34,
+        "book_code": "Lev",
+        "ocr_original_book_code": null,
+        "confidence": null,
+        "scan_confidence": "HIGH",
+        "visible": true,
+        "raw": "27 34"
+      },
+      "verse_intervals_count": {
+        "L": 0,
+        "R": 0
+      },
       "quality_flags": [],
       "exception_count": 9,
       "exceptions": [
