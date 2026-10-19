@@ -871,6 +871,70 @@
       "sql_ready": false,
       "sql_writes": false,
       "reviewed_utc": "2026-10-19T06:27:38.401323+00:00"
+    },
+    "fr88:p0107:ref013": {
+      "edge_id": "fr88:p0107:ref013",
+      "image_page": 107,
+      "choice": "corrected",
+      "cause": "BOOK_ABBREVIATION_ERROR",
+      "source": {
+        "book_code": "Exod",
+        "chapter": 21,
+        "verse": 24,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Matt",
+        "chapter": 5,
+        "verse": 38,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "↗ Mt 5 38-4",
+      "original_exception_reasons": [
+        "UNREADABLE_END_OF_PRINTED_RANGE"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "It's printed error obsiously, it cannot be possible. In  cases like this correct it to single verse ref.",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-19T06:29:13.128724+00:00"
+    },
+    "fr88:p0378:ref011": {
+      "edge_id": "fr88:p0378:ref011",
+      "image_page": 378,
+      "choice": "corrected",
+      "cause": "BOOK_ABBREVIATION_ERROR",
+      "source": {
+        "book_code": "1Kgs",
+        "chapter": 3,
+        "verse": 4,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Wis",
+        "chapter": 8,
+        "verse": 19,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "Sg 8 19 – 9",
+      "original_exception_reasons": [
+        "AMBIGUOUS_CROSS_CHAPTER_NOTATION"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_LINK",
+      "notes": "Printing error. Correct it to single verse ref.",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-19T06:30:06.560744+00:00"
     }
   }
 }
