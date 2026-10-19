@@ -1,0 +1,48 @@
+name: JBible minimal human-review queue validation
+
+on:
+  push:
+    paths:
+      - "tools/fr88_integrated_exception_review.py"
+      - "tools/fr88_review_web_server.py"
+      - "tools/fr88_integrated_exceptions_app.js"
+      - "tools/fr88_integrated_exceptions_index.html"
+      - "tools/fr88_integrated_exception_publish.sh"
+      - "tools/test_fr88_qa_focus.py"
+      - "training/fr88_curated_qa_focus.json"
+      - ".github/workflows/fr88-qa-focus-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-focus-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python syntax checks
+        run: python3 -m py_compile tools/fr88_integrated_exception_review.py tools/fr88_review_web_server.py tools/test_fr88_integrated_exception_review.py tools/test_fr88_qa_focus.py
+      - name: Validate existing integrated reviewer
+        run: PYTHONPATH=tools python3 tools/test_fr88_integrated_exception_review.py
+      - name: Validate focused three-case review
+        run: PYTHONPATH=tools python3 tools/test_fr88_qa_focus.py
+      - name: Browser JavaScript syntax and publisher shell check
+        run: |
+          node --check tools/fr88_integrated_exceptions_app.js
+          bash -n tools/fr88_integrated_exception_publish.sh
+      - name: Validate focus data and UI wiring
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          doc=json.loads(Path("training/fr88_curated_qa_focus.json").read_text())
+          js=Path("tools/fr88_integrated_exceptions_app.js").read_text()
+          html=Path("tools/fr88_integrated_exceptions_index.html").read_text()
+          server=Path("tools/fr88_review_web_server.py").read_text()
+          assert doc["expected_case_count"] == len(doc["cases"]) == 3
+          assert all(x in js for x in ("focusIds", "reviewHint", "visibleCases"))
+          assert 'value="focus"' in html and 'id="reviewHint"' in html
+          assert server.count('read_json(APP / "qa_focus.json",{})') == 3
+          print("PASS: 3 case focus, API GET/POST/image routing and UI wiring")
+          PY
