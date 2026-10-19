@@ -37,7 +37,7 @@ jobs:
           from fr88_integrated_exception_review import cases_from_report
           data=json.loads(Path('fr88_integrated_v1/pilot_report.json').read_text(encoding='utf8'))
           cases=cases_from_report(data)
-          expected=data['progress']['source_link_metrics']['exceptions']
+          expected=sum(1 for page in data['pages'] for edge in page['source_to_destination_edges'] if edge.get('status')=='EXCEPTION')
           assert len(cases)==expected,(len(cases),expected)
           assert len({c['edge_id'] for c in cases})==len(cases)
           assert all(c['reason_codes'] for c in cases)
