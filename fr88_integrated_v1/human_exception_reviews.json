@@ -839,6 +839,38 @@
       "sql_ready": false,
       "sql_writes": false,
       "reviewed_utc": "2026-10-16T17:08:52.169305+00:00"
+    },
+    "fr88:p0102:ref005": {
+      "edge_id": "fr88:p0102:ref005",
+      "image_page": 102,
+      "choice": "cut_off",
+      "cause": "MARGIN_ACTUALLY_CUT_OFF",
+      "source": {
+        "book_code": "Exod",
+        "chapter": 17,
+        "verse": 1,
+        "end_chapter": null,
+        "end_verse": null
+      },
+      "destination": {
+        "book_code": "Num",
+        "chapter": 20,
+        "verse": 1,
+        "end_chapter": null,
+        "end_verse": null,
+        "type": "VERSE",
+        "suffix": ""
+      },
+      "checked_original_scan": true,
+      "original_margin_text": "|| Nb 20 1-1",
+      "original_exception_reasons": [
+        "VISIBLE_RANGE_END_UNCLEAR"
+      ],
+      "human_review_status": "SCAN_CONFIRMED_CUT_OFF",
+      "notes": "If you have a case like this - dont make it a range, just single verse ref.",
+      "sql_ready": false,
+      "sql_writes": false,
+      "reviewed_utc": "2026-10-19T06:27:38.401323+00:00"
     }
   }
 }
