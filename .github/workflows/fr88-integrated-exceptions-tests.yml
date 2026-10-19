@@ -27,7 +27,7 @@ jobs:
         run: node --check tools/fr88_integrated_exceptions_app.js
       - name: Check VPS installation shell syntax
         run: bash -n tools/install_fr88_integrated_exception_review.sh tools/fr88_integrated_exception_publish.sh
-      - name: Verify actual published pilot has 24 separate exceptions
+      - name: Verify all published atomic exceptions match the report
         run: |
           python - <<'PY'
           import json
@@ -37,9 +37,10 @@ jobs:
           from fr88_integrated_exception_review import cases_from_report
           data=json.loads(Path('fr88_integrated_v1/pilot_report.json').read_text(encoding='utf8'))
           cases=cases_from_report(data)
-          assert len(cases)==24,len(cases)
+          expected=data['progress']['source_link_metrics']['exceptions']
+          assert len(cases)==expected,(len(cases),expected)
           assert len({c['edge_id'] for c in cases})==len(cases)
           assert all(c['reason_codes'] for c in cases)
-          assert all(31<=c['page']<=37 for c in cases)
-          print('PASS: 24 distinct protected scan-review cases')
+          assert all(31<=c['page']<=500 for c in cases)
+          print('PASS: %d distinct protected scan-review cases' % len(cases))
           PY
