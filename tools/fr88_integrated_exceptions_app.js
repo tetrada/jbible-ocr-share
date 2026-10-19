@@ -5,15 +5,16 @@
  const num = id => $(id).value.trim() === "" ? null : Number($(id).value);
  const fmt = x => typeof x==="number" ? x.toFixed(3) : "unknown";
  const clamp = (v,a,b) => Math.max(a,Math.min(b,v));
- let cases=[], reviews={}, selected=null, decision="unresolved", zoom=1.4, centerY=.5, busy=false;
+ let cases=[], reviews={}, focusIds=new Set(), selected=null, decision="unresolved", zoom=1.4, centerY=.5, busy=false;
  const imageCache = new Map();
  function lineDesc(c){return c.margin_text || "(unreadable)";}
  function isDone(e){return !!e && !!e.choice;}
  function visibleCases(){
    const mode=$("filter").value;
    return cases.filter(c=>mode==="all" ||
+     (mode==="focus" && focusIds.has(c.edge_id) && !isDone(reviews[c.edge_id])) ||
      (mode==="done" && isDone(reviews[c.edge_id])) ||
-     (mode==="pending" && !isDone(reviews[c.edge_id])));
+     (mode==="pending" && !focusIds.has(c.edge_id) && !isDone(reviews[c.edge_id])));
  }
  function nav(){
    const queue=$("queue");queue.replaceChildren();
@@ -27,7 +28,9 @@
      b.onclick=()=>show(c);
      queue.appendChild(b);
    }
-   $("progress").textContent=cases.filter(c=>isDone(reviews[c.edge_id])).length+" / "+cases.length+" classified";
+   $("progress").textContent=focusIds.size ?
+     (Array.from(focusIds).filter(id=>isDone(reviews[id])).length+" / "+focusIds.size+" priority decisions saved") :
+     (cases.filter(c=>isDone(reviews[c.edge_id])).length+" / "+cases.length+" classified");
  }
  function imageUrl(page){return "../api/image/"+String(page).padStart(4,"0")+".jpg";}
  function getImage(page){
@@ -90,6 +93,7 @@
    $("caseId").textContent=c.edge_id;
    $("marginLine").textContent=lineDesc(c);
    $("targetNum").textContent="Individual destination #"+c.target_index+" · margin y="+fmt(c.margin_y_fraction);
+   $("reviewHint").textContent=c.review_hint || "";
    $("reasons").replaceChildren();
    for(const reason of c.reason_codes||[]){
      const tag=document.createElement("span");tag.className="tag bad";tag.textContent=reason;
@@ -114,7 +118,7 @@
    assign("dstEndChapter",dst.end_chapter!==undefined?dst.end_chapter:c.destination_end_chapter);
    assign("dstEndVerse",dst.end_verse!==undefined?dst.end_verse:c.destination_end_verse);
    assign("dstSuffix",dst.suffix!==undefined?dst.suffix:c.destination_suffix);
-   $("dstType").value=["VERSE","VERSE_RANGE","CHAPTER_ONLY","CHAPTER_RANGE"].includes(
+   $("dstType").value=["VERSE","VERSE_RANGE","CHAPTER_ONLY","CHAPTER_RANGE","VERSE_CROSS_CHAPTER_RANGE"].includes(
      dst.type||c.destination_type)?(dst.type||c.destination_type):"UNKNOWN";
    $("cause").value=saved.cause||"OTHER_OR_UNKNOWN";
    $("notes").value=saved.notes||"";
@@ -142,7 +146,7 @@
    };
    busy=true;$("feedback").textContent="Saving…";
    const oldId=selected.edge_id;
-   const before=cases.findIndex(x=>x.edge_id===oldId);
+   
    try{
      const response=await fetch("../api/integrated-exception-review",{
        method:"POST",credentials:"same-origin",
@@ -155,7 +159,8 @@
      nav();
      $("feedback").textContent="Saved. Your observation will be available for parser improvements.";
      if(next){
-       const following=cases.slice(before+1).concat(cases.slice(0,before));
+       const pool=visibleCases();
+       const following=pool.filter(x=>x.edge_id!==oldId);
        const target=following.find(x=>!isDone(reviews[x.edge_id]))||
          (following.length?following[0]:null);
        if(target&&target.edge_id!==oldId)show(target);
@@ -192,9 +197,9 @@
        credentials:"same-origin",cache:"no-store"});
      const body=await response.json();
      if(!response.ok||!Array.isArray(body.cases))throw Error(body.error||"Queue unavailable");
-     cases=body.cases;reviews=body.reviews||{};
+     cases=body.cases;reviews=body.reviews||{};focusIds=new Set(body.focus_ids||[]);
      if(!cases.length)throw Error("No integrated OCR exceptions available");
-     nav();show(cases.find(c=>!isDone(reviews[c.edge_id]))||cases[0]);
+     nav();show(visibleCases()[0]||cases.find(c=>focusIds.has(c.edge_id))||cases.find(c=>!isDone(reviews[c.edge_id]))||cases[0]);
    }catch(error){
      $("progress").textContent="Unable to load exceptions";
      $("title").textContent="Unable to load";
