@@ -19,7 +19,7 @@ CAUSES=("CATALOG_REJECTED_VALID_REFERENCE",
         "BOOK_ABBREVIATION_ERROR",
         "UNUSUAL_PRINTED_NOTATION",
         "OTHER_OR_UNKNOWN")
-TYPES=("VERSE","VERSE_RANGE","CHAPTER_ONLY","CHAPTER_RANGE","UNKNOWN")
+TYPES=("VERSE","VERSE_RANGE","CHAPTER_ONLY","CHAPTER_RANGE","VERSE_CROSS_CHAPTER_RANGE","UNKNOWN")
 
 
 def cases_from_report(report):
@@ -123,6 +123,8 @@ def validate_decision(body,cases):
             raise ValueError("Verse-level destination needs a verse number")
         if dst["type"]=="VERSE_RANGE" and not dst["end_verse"]:
             raise ValueError("Verse range needs an end verse")
+        if dst["type"]=="VERSE_CROSS_CHAPTER_RANGE" and (not dst["verse"] or not dst["end_chapter"]):
+            raise ValueError("Cross-chapter notation needs starting verse and ending chapter")
         if dst["type"]=="UNKNOWN":
             raise ValueError("Choose the correct destination type before accepting")
     if choice=="cut_off" and not checked:
