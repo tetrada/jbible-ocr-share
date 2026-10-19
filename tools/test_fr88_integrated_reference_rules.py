@@ -10,7 +10,7 @@ def test():
         cat=Path(tmp)/"catalog.csv"
         cat.write_text("\n".join([
           "record_type,book_code,bali_alias,chap_number,max_verse",
-          "A,Gen,Gn,,","A,Ps,Ps,,","A,Sir,Si,,",
+          "A,Gen,Gn,,","A,Ps,Ps,,","A,Sir,Si,,","A,Num,Nb,,",
           "A,Rev,Ap,,","A,Isa,Is,,","A,1Chr,1 Ch,,","A,1Kgs,1 R,,",
           "A,Wis,Sg,,","A,Matt,Mt,,","A,Luke,Lc,,",
           "A,Judg,Jg,,","A,Tob,Tb,,",
@@ -20,7 +20,8 @@ def test():
           "C,Gen,,18,33","C,Ps,,78,72","C,Ps,,105,45","C,Ps,,8,9",
           "C,Ps,,104,35","C,Sir,,43,36","C,Rev,,16,21",
           "C,Isa,,14,32","C,1Chr,,1,54","C,1Kgs,,10,29",
-          "C,Wis,,15,19","C,Matt,,24,51"
+          "C,Wis,,15,19","C,Wis,,8,21","C,Matt,,24,51",
+          "C,Matt,,5,48","C,Num,,20,29"
         ])+"\n",encoding="utf-8")
         def run(t,book="Gen"):
             return canonicalize({"kind":"REFERENCE","raw_line":t,
@@ -90,6 +91,31 @@ def test():
         assert trailing["references"][0]["verse"]==1
         assert trailing["references"][0]["suffix"]=="s"
         assert trailing["references"][0]["ignored_unreadable_or_following_tail"]=="1"
+        # 2026-10-19: user reviewed broken tail and requested SINGLE verses.
+        # Preserve the printed original; never infer an unseen final verse.
+        for text_,bk,ch,v in (
+                ("|| Nb 20 1-1","Num",20,1),
+                ("↗ Mt 5 38-4","Matt",5,38),
+                ("Sg 8 19 – 9","Wis",8,19)):
+            recovered=run(text_)["references"]
+            assert len(recovered)==1, (text_,recovered)
+            ref=recovered[0]
+            assert (ref["book_code"],ref["chapter"],ref["verse"],ref["type"])==(
+                bk,ch,v,"VERSE"),(text_,ref)
+            assert ref["end_verse"] is None
+            assert ref["status"]=="PARSED"
+            assert "MALFORMED_RANGE_VISIBLE_START_ONLY_NO_INVENTED_ENDPOINT" in ref["interpretation_flags"]
+            assert ref["original_malformed_range"]
+        correct_range=run("Mt 5 38-40")["references"][0]
+        assert correct_range["type"]=="VERSE_RANGE"
+        assert correct_range["end_verse"]==40
+        assert "MALFORMED_RANGE_VISIBLE_START_ONLY_NO_INVENTED_ENDPOINT" not in correct_range["interpretation_flags"]
+        assert run("Mt 5 40-??")["references"][0]["status"]!="PARSED"
+        # Source and destination coordinates that are impossible in the catalog
+        # are not rescued just because a start number is present.
+        impossible=run("Mt 5 58-4")["references"][0]
+        assert impossible["type"]=="UNRESOLVED_NUMERIC",impossible
+
         # New October 16 pilot cases: no manual review needed for notation.
         parallel=run("‖ 1 Ch 1 29-31")
         assert parallel["relation_marker"]=="CROSS_BOOK_PARALLEL"
