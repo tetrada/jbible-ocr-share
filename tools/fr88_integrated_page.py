@@ -42,7 +42,7 @@ from fr88_integrated_human_replay import apply_reviews
 RAW=Path("/raw")
 IMAGES=RAW/"fr_bible_1988"
 CATALOG=RAW/"jbible_catalog.csv"
-OUT=RAW/"jbible_fr88_integrated_v1"
+OUT=Path(os.environ.get("JBIBLE_FR88_OUT",str(RAW/"jbible_fr88_integrated_v1")))
 PAGE_REGISTRY=Path("/app/fr88_page_book_registry.json")
 HUMAN_REVIEWS=Path("/app/fr88_human_exception_reviews.json")
 MODEL="deepseek-flash"
@@ -699,8 +699,8 @@ def status(start,end,new_calls):
 
 
 def run(args):
-    if not 1<=args.start<=args.end<=500:
-        raise ValueError("Only existing scanned image range 1..500 supported")
+    if not 1<=args.start<=args.end<=1801:
+        raise ValueError("Only scanned image pages 1..1801 are supported")
     if not 1<=args.max_new_calls<=100:
         raise ValueError("--max-new-calls must be 1..100")
     if args.report_only:
