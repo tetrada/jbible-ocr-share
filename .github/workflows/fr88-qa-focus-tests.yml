@@ -9,6 +9,7 @@ on:
       - "tools/fr88_integrated_exceptions_index.html"
       - "tools/fr88_integrated_exception_publish.sh"
       - "tools/test_fr88_qa_focus.py"
+      - "tools/install_fr88_qa_focus.sh"
       - "training/fr88_curated_qa_focus.json"
       - ".github/workflows/fr88-qa-focus-tests.yml"
   workflow_dispatch:
@@ -30,7 +31,7 @@ jobs:
       - name: Browser JavaScript syntax and publisher shell check
         run: |
           node --check tools/fr88_integrated_exceptions_app.js
-          bash -n tools/fr88_integrated_exception_publish.sh
+          bash -n tools/fr88_integrated_exception_publish.sh tools/install_fr88_qa_focus.sh
       - name: Validate focus data and UI wiring
         run: |
           python3 - <<'PY'
