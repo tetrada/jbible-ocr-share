@@ -1,0 +1,74 @@
+{
+  "schema": "jbible.fr88.curated-unresolved-qa.v1",
+  "provenance": "tetrada/jbible-fr88-data; 2026-10-17 quality review; only cases with genuinely incomplete or ambiguous printed targets",
+  "expected_case_count": 3,
+  "cases": [
+    {
+      "edge_id": "fr88:p0102:ref005",
+      "page": 102,
+      "column": "R",
+      "margin_y_fraction": 0.14,
+      "margin_text": "|| Nb 20 1-1",
+      "source_book": "Exod",
+      "source_chapter": 17,
+      "source_verse": 1,
+      "destination_book": "Num",
+      "destination_chapter": 20,
+      "destination_verse": 1,
+      "destination_type": "UNKNOWN",
+      "destination_literal": "Nb 20 1-1 (printed endpoint ambiguous)",
+      "reason_codes": [
+        "VISIBLE_RANGE_END_UNCLEAR"
+      ],
+      "review_hint": "Only decide what the printed target range actually ends with. If cropped/unreadable, select Cut off; do not invent an ending.",
+      "source_ref": "refs_0102.json#fr88:p0102:ref005"
+    },
+    {
+      "edge_id": "fr88:p0107:ref013",
+      "page": 107,
+      "column": "R",
+      "margin_y_fraction": 0.215,
+      "margin_text": "↗ Mt 5 38-4",
+      "source_book": "Exod",
+      "source_chapter": 21,
+      "source_verse": 24,
+      "destination_book": "Matt",
+      "destination_chapter": 5,
+      "destination_verse": 38,
+      "destination_type": "UNKNOWN",
+      "destination_literal": "Mt 5 38-4 (printed end truncated/uncertain)",
+      "reason_codes": [
+        "UNREADABLE_END_OF_PRINTED_RANGE"
+      ],
+      "review_hint": "Confirm whether the printed citation really ends at the page edge. If yes, choose Cut off. Do not guess the missing final digit.",
+      "source_ref": "refs_0107.json#fr88:p0107:ref013"
+    },
+    {
+      "edge_id": "fr88:p0378:ref011",
+      "page": 378,
+      "column": "R",
+      "margin_y_fraction": 0.725,
+      "margin_text": "Sg 8 19 – 9",
+      "source_book": "1Kgs",
+      "source_chapter": 3,
+      "source_verse": 4,
+      "destination_book": "Wis",
+      "destination_chapter": 8,
+      "destination_verse": 19,
+      "destination_end_chapter": 9,
+      "destination_type": "UNKNOWN",
+      "destination_literal": "Sg 8:19–9 (printed cross-chapter notation)",
+      "reason_codes": [
+        "AMBIGUOUS_CROSS_CHAPTER_NOTATION"
+      ],
+      "review_hint": "Confirm whether the printed 'Sg 8 19 – 9' intentionally refers to Wisdom 8:19 through chapter 9 (without an endpoint verse). Do not create an invented endpoint verse.",
+      "source_ref": "refs_0378.json#fr88:p0378:ref011"
+    }
+  ],
+  "automatic_or_deferred": [
+    "Inferred book abbreviations, ±1 source-verse estimates and heading placements do not require review.",
+    "Clearly cut-off endpoints elsewhere remain marked incomplete; no guessed verse is imported.",
+    "Systemic page sequence and catalog issues must be repaired in the importer, not sent for human classification."
+  ],
+  "sql_writes": false
+}
