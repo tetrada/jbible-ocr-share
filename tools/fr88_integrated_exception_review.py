@@ -8,7 +8,7 @@ Human decisions do not write SQL or alter the automatic accepted link dataset.
 import re
 from datetime import datetime, timezone
 
-EDGE=re.compile(r"^fr88i:p\d{4}:[LR]:\d{3}/target\d{2}$")
+EDGE=re.compile(r"^(?:fr88i:p\d{4}:[LR]:\d{3}/target\d{2}|fr88:p\d{4}:ref\d{3})$")
 BOOK=re.compile(r"^[A-Za-z0-9]{1,12}$")
 CHOICES=("as_printed","corrected","cut_off","unresolved")
 CAUSES=("CATALOG_REJECTED_VALID_REFERENCE",
@@ -146,3 +146,78 @@ def validate_decision(body,cases):
         "sql_ready":False,"sql_writes":False,
         "reviewed_utc":datetime.now(timezone.utc).isoformat()
     }
+
+
+def curated_qa_cases(manifest):
+    """Three explicitly curated FR88 draft-reference ambiguities for private scan review.
+
+    Separate provenance/IDs from the integrated OCR edges. Read-only manifest.
+    Never promote catalog failures, estimated verse shifts or cutoff claims to
+    verified links merely because they appear here.
+    """
+    if (not isinstance(manifest, dict) or
+            manifest.get("schema") != "jbible.fr88.curated-unresolved-qa.v1" or
+            manifest.get("sql_writes") is not False):
+        raise ValueError("Invalid curated QA manifest")
+    raw = manifest.get("cases")
+    if not isinstance(raw, list) or len(raw) != manifest.get("expected_case_count"):
+        raise ValueError("Curated QA count mismatch")
+    out = []
+    seen = set()
+    for c in raw:
+        eid = c.get("edge_id")
+        page = c.get("page")
+        side = c.get("column")
+        if (not isinstance(eid, str) or
+                not re.fullmatch(r"fr88:p\d{4}:ref\d{3}", eid) or
+                type(page) is not int or page < 31 or page > 500 or
+                "p%04d:" % page not in eid or side not in ("L", "R") or
+                eid in seen):
+            raise ValueError("Bad curated QA edge identity")
+        seen.add(eid)
+        y = c.get("margin_y_fraction")
+        if type(y) not in (float, int) or not 0 <= y <= 1:
+            raise ValueError("Invalid curated margin marker")
+        reasons = c.get("reason_codes")
+        if not isinstance(reasons, list) or not reasons or not all(
+                isinstance(x, str) and 0 < len(x) < 100 for x in reasons):
+            raise ValueError("Missing specific QA reason")
+        out.append({
+            "edge_id": eid,
+            "page": page,
+            "column": side,
+            "margin_y_fraction": y,
+            "margin_text": str(c.get("margin_text") or "")[:400],
+            "target_index": 1,
+            "source_book": c.get("source_book"),
+            "source_chapter": c.get("source_chapter"),
+            "source_verse": c.get("source_verse"),
+            "source_y_interval": None,
+            "destination_book": c.get("destination_book"),
+            "destination_chapter": c.get("destination_chapter"),
+            "destination_verse": c.get("destination_verse"),
+            "destination_end_chapter": c.get("destination_end_chapter"),
+            "destination_end_verse": c.get("destination_end_verse"),
+            "destination_type": c.get("destination_type") or "UNKNOWN",
+            "destination_suffix": "",
+            "destination_literal": c.get("destination_literal") or "",
+            "reason_codes": reasons,
+            "other_notes": [],
+            "source_book_context": {"book_code": c.get("source_book")},
+            "running_head": {},
+            "review_hint": str(c.get("review_hint") or "")[:450],
+            "source_ref": str(c.get("source_ref") or "")[:200],
+            "curated_focus": True,
+            "human_verified": False,
+            "sql_writes": False
+        })
+    return out
+
+
+def focused_cases(integrated_report, manifest):
+    """Preserve unmodified integrated cases; add a distinct curated QA focus."""
+    combined = curated_qa_cases(manifest) + cases_from_report(integrated_report)
+    ids = [c["edge_id"] for c in combined]
+    if len(set(ids)) != len(ids):
+        raise ValueError("Duplicate edge ID across integrated and focused QA")
+    return combined
