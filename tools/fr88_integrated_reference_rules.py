@@ -15,7 +15,10 @@ Heuristically restored missing first letter/ordinal is an AUDITED ASSUMPTION.
 No SQL writes, provider calls, or mutation of original OCR text.
 """
 import copy
+import csv
 import re
+from functools import lru_cache
+from pathlib import Path
 from fr88_v2_normalize import interpret_line, SOURCE_BARE
 
 
@@ -29,6 +32,56 @@ def marker_of(line):
         return "SCRIPTURAL_QUOTATION"
     return "ORDINARY"
 
+
+
+@lru_cache(maxsize=8)
+def _visible_prefix_catalog(path):
+    """Reference limits, read once; never infer a missing chapter's max verse."""
+    limits={}
+    with Path(path).open(encoding="utf-8-sig", newline="") as stream:
+        for row in csv.DictReader(stream):
+            if row.get("record_type")=="C":
+                try:
+                    limits[(row["book_code"],int(row["chap_number"]))]=int(row["max_verse"])
+                except (ValueError,TypeError,KeyError):
+                    pass
+    return limits
+
+
+def recover_malformed_range_start(item,catalog_path):
+    """Keep an unequivocal valid start verse from a malformed verse range.
+
+    Reviewer policy (2026-10-19): for 'Mt 5 38-4', 'Sg 8 19 - 9'
+    or 'Nb 20 1-1', do not invent the missing/end verse or force a
+    human review. Only recover one full starting coordinate already
+    visible. Never alter valid 'Mt 5 38-40', cross-chapter four-number
+    ranges, or multi-destination printed lines. Preserve original literal.
+    """
+    original=item.get("literal")
+    if not isinstance(original,str) or item.get("type") not in (
+            "VERSE_RANGE","UNRESOLVED_NUMERIC"):
+        return None
+    m=re.fullmatch(r"\s*(\d{1,3})\s+(\d{1,3})\s*[-–—]\s*(\d{1,3})\s*",original)
+    if not m:
+        return None
+    chapter,first,last=map(int,m.groups())
+    if last>first:
+        return None  # A valid range stays a valid range.
+    book=item.get("book_code")
+    if not book or first<1:
+        return None
+    maximum=_visible_prefix_catalog(str(catalog_path)).get((book,chapter))
+    if maximum is None or first>maximum:
+        return None  # No catalog proof; do NOT silently rescue bad coordinates.
+    fixed=copy.deepcopy(item)
+    fixed.update({"type":"VERSE","chapter":chapter,"verse":first,
+                  "end_verse":None,"end_chapter":None,"status":"PARSED",
+                  "partial_range_tail_ignored":str(last),
+                  "original_malformed_range":original,
+                  "prefix_recovery_reason":(
+                      "REDUNDANT_SAME_VERSE_RANGE" if last==first
+                      else "REVERSED_OR_TRUNCATED_RANGE_END")})
+    return fixed
 
 def canonicalize(row,page_book,catalog_path):
     """Return new dict with exact raw_line and flattened atomic destinations."""
@@ -77,7 +130,12 @@ def canonicalize(row,page_book,catalog_path):
     atomic=[]
     for outer_index,part in enumerate(parsed,1):
         item=copy.deepcopy(part)
+        prefix_recovered=recover_malformed_range_start(item,catalog_path)
+        if prefix_recovered is not None:
+            item=prefix_recovered
         flags=[]
+        if prefix_recovered is not None:
+            flags.append("MALFORMED_RANGE_VISIBLE_START_ONLY_NO_INVENTED_ENDPOINT")
         # Abdias/Obadiah is ONE chapter: "Ab 18" denotes verse 18,
         # not a non-existent chapter 18. Only this explicit one-book
         # shorthand is repaired; the printed OCR text is untouched.
