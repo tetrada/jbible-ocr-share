@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>JBible · Integrated OCR Exceptions</title>
+<title>JBible · Focus Review</title>
 <style>
 :root{--page:#f4f5f1;--surface:#fff;--ink:#1a3026;--muted:#67786f;--line:#dce5dd;--green:#16794f;--green2:#ebf6ee;--orange:#935819}
 *{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -42,16 +42,16 @@ dialog{width:min(96vw,1150px);max-height:95vh;padding:12px;border:0;border-radiu
 <main>
 <aside class="panel sidebar">
   <div class="pad">
-    <h2>Unresolved references</h2>
-    <p class="small muted">One entry = one destination. Each saved decision helps diagnose the importer.</p>
-    <select id="filter" aria-label="Filter exceptions"><option value="pending">Not yet classified</option><option value="all">All exceptions</option><option value="done">Already classified</option></select>
+    <h2>Needs your judgment</h2>
+    <p class="small muted">Only a few genuinely ambiguous printed references are selected by default. Other historical exceptions remain accessible in the filter.</p>
+    <select id="filter" aria-label="Filter exceptions"><option value="focus">Focus: only 3 important cases</option><option value="pending">Other pending exceptions</option><option value="all">All exceptions</option><option value="done">Already classified</option></select>
   </div>
   <nav id="queue" aria-label="Unresolved OCR references"></nav>
 </aside>
 <section class="panel">
  <div class="panelhead"><div><h2 id="title">Original scan</h2><div class="small muted" id="caseId"></div></div><div><button type="button" id="prev">←</button> <button type="button" id="next">→</button></div></div>
  <div class="pad">
-  <div class="rblock"><div class="sectiontitle">Printed marginal line</div><div class="big coord" id="marginLine">—</div><div class="small muted" id="targetNum"></div></div>
+  <div class="rblock"><div class="sectiontitle">Printed marginal line</div><div class="big coord" id="marginLine">—</div><div class="small muted" id="targetNum"></div><div class="small muted" id="reviewHint" style="margin-top:6px"></div></div>
   <div class="viewport">
     <canvas id="scan" width="980" height="1120" aria-label="Protected scanned Bible page at original margin-reference position"></canvas>
     <div class="toolbar">
@@ -99,7 +99,7 @@ dialog{width:min(96vw,1150px);max-height:95vh;padding:12px;border:0;border-radiu
       <label class="field">Suffix<input id="dstSuffix" maxlength="30" placeholder="s, p, +"/></label>
     </div>
     <label class="field">Type
-      <select id="dstType"><option value="VERSE">Verse</option><option value="VERSE_RANGE">Verse range</option><option value="CHAPTER_ONLY">Whole chapter</option><option value="CHAPTER_RANGE">Chapter range</option><option value="UNKNOWN">Unknown</option></select>
+      <select id="dstType"><option value="VERSE">Verse</option><option value="VERSE_RANGE">Verse range</option><option value="CHAPTER_ONLY">Whole chapter</option><option value="CHAPTER_RANGE">Chapter range</option><option value="VERSE_CROSS_CHAPTER_RANGE">Cross-chapter range (unspecified final verse)</option><option value="UNKNOWN">Unknown</option></select>
     </label>
   </div>
   <div class="section"><div class="sectiontitle">Your decision</div>
