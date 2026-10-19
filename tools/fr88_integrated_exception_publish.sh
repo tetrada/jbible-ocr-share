@@ -31,7 +31,7 @@ reviews=document.get("reviews",{})
 if not isinstance(reviews,dict): raise ValueError("Bad review map")
 safe={}
 for eid,item in reviews.items():
-    if not re.fullmatch(r"fr88i:p\d{4}:[LR]:\d{3}/target\d{2}",eid):
+    if not re.fullmatch(r"(?:fr88i:p\d{4}:[LR]:\d{3}/target\d{2}|fr88:p\d{4}:ref\d{3})",eid):
         raise ValueError("Bad exception edge ID")
     if not isinstance(item,dict) or item.get("edge_id")!=eid:
         raise ValueError("Review identity mismatch")
