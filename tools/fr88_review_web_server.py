@@ -18,7 +18,7 @@ from socketserver import ThreadingMixIn
 from urllib.parse import urlsplit
 
 from fr88_link_edges import build_cases, validate_decision
-from fr88_integrated_exception_review import cases_from_report, validate_decision as validate_exception_decision
+from fr88_integrated_exception_review import cases_from_report, focused_cases, validate_decision as validate_exception_decision
 
 APP = Path("/opt/jbible/review-web")
 STATE = Path("/var/lib/jbible-review/decisions.json")
@@ -306,11 +306,13 @@ class Handler(BaseHTTPRequestHandler):
             return self.file(APP / "integrated_exceptions.js", "text/javascript; charset=utf-8")
         if path == "/api/integrated-exceptions":
             try:
-                queue = cases_from_report(read_json(APP / "integrated_report.json",{}))
+                queue = focused_cases(read_json(APP / "integrated_report.json",{}),
+                    read_json(APP / "qa_focus.json",{}))
                 state = read_json(INTEGRATED_EXCEPTION_STATE,{"reviews":{}})
                 return self.send_json({
                     "schema":"jbible.fr88.integrated-exception-review.v1",
                     "cases":queue,"reviews":state.get("reviews",{}),
+                    "focus_ids":[c["edge_id"] for c in queue if c.get("curated_focus")],
                     "notice":"Review only the hard exceptions on the original scanned page"
                 })
             except (ValueError,OSError,KeyError):
@@ -354,8 +356,9 @@ class Handler(BaseHTTPRequestHandler):
                 pass
             # Also authorize only original scans appearing in current exception queue.
             try:
-                valid_pages.update(c["page"] for c in cases_from_report(
-                    read_json(APP / "integrated_report.json",{})))
+                valid_pages.update(c["page"] for c in focused_cases(
+                    read_json(APP / "integrated_report.json",{}),
+                    read_json(APP / "qa_focus.json",{})))
             except (ValueError,OSError,KeyError):
                 pass
             # Adjacent printed headers can be checked on neighboring scanned pages
@@ -399,8 +402,9 @@ class Handler(BaseHTTPRequestHandler):
                 raise ValueError("Invalid request size")
             data = json.loads(self.rfile.read(size).decode("utf-8"))
             if route == "/api/integrated-exception-review":
-                case_list = cases_from_report(
-                    read_json(APP / "integrated_report.json",{}))
+                case_list = focused_cases(
+                    read_json(APP / "integrated_report.json",{}),
+                    read_json(APP / "qa_focus.json",{}))
                 cases = {case["edge_id"]:case for case in case_list}
                 new_review = validate_exception_decision(data,cases)
                 with LOCK:
